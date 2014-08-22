@@ -44,7 +44,7 @@ namespace LiveSplit.Skyrim
 
         public string XMLURL
         {
-            get { return this.UpdateURL + "update.LiveSplit.Skyrim.xml"; }
+            get { return this.UpdateURL + "Components/update.LiveSplit.Skyrim.xml"; }
         }
     }
 }
