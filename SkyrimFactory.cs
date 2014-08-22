@@ -34,7 +34,7 @@ namespace LiveSplit.Skyrim
 
         public string UpdateURL
         {
-            get { return "http://fatalis.hive.ai/livesplit/update/"; }
+            get { return "https://raw.githubusercontent.com/drtchops/LiveSplit.Skyrim/master/"; }
         }
 
         public Version Version
@@ -44,7 +44,7 @@ namespace LiveSplit.Skyrim
 
         public string XMLURL
         {
-            get { return this.UpdateURL + "Components/update.LiveSplit.Skyrim.xml"; }
+            get { return this.UpdateURL + "update.LiveSplit.Skyrim.xml"; }
         }
     }
 }

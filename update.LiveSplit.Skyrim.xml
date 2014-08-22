@@ -1,0 +1,18 @@
+<updates>
+    <update version="1.2.0">
+        <files>
+            <file path="bin/LiveSplit.Skyrim.dll" status="changed"/>
+        </files>
+        <changelog>
+            <change>
+                Added support for LiveSplit 1.4's 'Game Time as primary timing method' feature.
+            </change>
+            <change>
+                Right-click -> Compare By -> Game Time
+            </change>
+            <change>
+                Huge thanks to Fatalis and Dalleth.
+            </change>
+        </changelog>
+    </update>
+</updates>
