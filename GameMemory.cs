@@ -17,6 +17,7 @@ namespace LiveSplit.Skyrim
         public event EventHandler OnLoadScreenStarted;
         public event EventHandler OnLoadScreenFinished;
         public event EventHandler OnAlduinDefeated;
+        public event EventHandler OnPlayerGainedControl;
 
         private Task _thread;
         private CancellationTokenSource _cancelSource;
@@ -26,6 +27,7 @@ namespace LiveSplit.Skyrim
         // private DeepPointer _currentLevelPtr;
         private DeepPointer _isLoadingPtr;
         private DeepPointer _isLoadingScreenPtr;
+        private DeepPointer _isInLoadScreenFadeOutPtr;
         private DeepPointer _isAlduinDefeatedPtr;
         // private int _stringBase;
 
@@ -41,6 +43,8 @@ namespace LiveSplit.Skyrim
             _isLoadingScreenPtr = new DeepPointer("TESV.exe", 0xEE3561); // == 1 if in a loading screen
             // _isPausedPtr = new DeepPointer("TESV.exe", 0x172E85F); // == 1 if in a menu or a loading screen
 
+            _isInLoadScreenFadeOutPtr = new DeepPointer("TESV.exe", 0x172EE2E); // == 1 from the fade out of a loading, it goes back to 0 once control is gained
+            
             _isAlduinDefeatedPtr = new DeepPointer("TESV.exe", 0x12ACF78C); // == 1 when last blow is struck on alduin
             // possible: 0x12ACF78C, 0x12FD23DB
 
@@ -96,6 +100,7 @@ namespace LiveSplit.Skyrim
                     bool prevIsLoading = false;
                     bool prevIsLoadingScreen = false;
                     bool prevIsAlduinDefeated = false;
+                    bool prevIsInLoadScreenFadeOut = false;
 
                     bool loadingStarted = false;
                     bool loadingScreenStarted = false;
@@ -114,6 +119,9 @@ namespace LiveSplit.Skyrim
 
                         if (isLoadingScreen)
                             isLoading = true;
+
+                        bool isInLoadScreenFadeOut;
+                        _isInLoadScreenFadeOutPtr.Deref(game, out isInLoadScreenFadeOut);
 
                         bool isAlduinDefeated;
                         _isAlduinDefeatedPtr.Deref(game, out isAlduinDefeated);
@@ -188,16 +196,15 @@ namespace LiveSplit.Skyrim
                                             this.OnLoadScreenFinished(this, EventArgs.Empty);
                                     }, null);
                                 }
-
-                                // if (((currentMovie == "LoadingEmpressTower" || currentMovie == "INTRO_LOC") && currentLevelStr == "l_tower_p")
-                                //     || (currentMovie == "Loading" || currentMovie == "LoadingDLC06Tower") && currentLevelStr == "DLC06_Tower_P") // KoD
-                                // {
-                                //     _uiThread.Post(d => {
-                                //         if (this.OnPlayerGainedControl != null)
-                                //             this.OnPlayerGainedControl(this, EventArgs.Empty);
-                                //     }, null);
-                                // }
                             }
+                        }
+
+                        if (isInLoadScreenFadeOut == false && prevIsInLoadScreenFadeOut == true) //start the timer when we gained control after a fade out
+                        {
+                            _uiThread.Post(d => {
+                                 if (this.OnPlayerGainedControl != null)
+                                     this.OnPlayerGainedControl(this, EventArgs.Empty);
+                            }, null);
                         }
 
                         //if (isAlduinDefeated != prevIsAlduinDefeated && isAlduinDefeated)
@@ -212,6 +219,7 @@ namespace LiveSplit.Skyrim
                         prevIsLoading = isLoading;
                         prevIsLoadingScreen = isLoadingScreen;
                         prevIsAlduinDefeated = isAlduinDefeated;
+                        prevIsInLoadScreenFadeOut = isInLoadScreenFadeOut;
                         frameCounter++;
 
                         Thread.Sleep(15);

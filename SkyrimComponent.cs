@@ -44,6 +44,7 @@ namespace LiveSplit.Skyrim
             _gameMemory.OnLoadScreenStarted += gameMemory_OnLoadScreenStarted;
             _gameMemory.OnLoadScreenFinished += gameMemory_OnLoadScreenFinished;
             _gameMemory.OnAlduinDefeated += gameMemory_OnAlduinDefeated;
+            _gameMemory.OnPlayerGainedControl += gameMemory_OnPlayerGainedControl;
             _gameMemory.StartMonitoring();
         }
 
@@ -96,11 +97,11 @@ namespace LiveSplit.Skyrim
         //         _timer.Reset();
         // }
 
-        // void gameMemory_OnPlayerGainedControl(object sender, EventArgs e)
-        // {
-        //     if (this.Settings.AutoStartEnd)
-        //         _timer.Start();
-        // }
+        void gameMemory_OnPlayerGainedControl(object sender, EventArgs e)
+        {
+            //if (this.Settings.AutoStartEnd)
+                _timer.Start();
+        }
 
         void gameMemory_OnLoadStarted(object sender, EventArgs e)
         {
