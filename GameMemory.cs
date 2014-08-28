@@ -46,6 +46,11 @@ namespace LiveSplit.Skyrim
         }
 
         private bool[] splitStates = new bool[(int)SplitArea.AlduinDefeated + 1];
+  
+        public void setSplitState(SplitArea split, bool value)
+        {
+            splitStates[(int)split] = value;
+        }
 
         public void resetSplitStates()
         {
@@ -209,7 +214,6 @@ namespace LiveSplit.Skyrim
                                         if (this.OnSplitCompleted != null)
                                             this.OnSplitCompleted(this, SplitArea.Helgen);
                                     }, null);
-                                    splitStates[(int)SplitArea.Helgen] = true;
                                 }
                             }
                             else
@@ -276,7 +280,6 @@ namespace LiveSplit.Skyrim
                                 if (this.OnSplitCompleted != null)
                                     this.OnSplitCompleted(this, SplitArea.AlduinDefeated);
                             }, null);
-                            splitStates[(int)SplitArea.AlduinDefeated] = true;
                         }
 
                         prevIsLoading = isLoading;

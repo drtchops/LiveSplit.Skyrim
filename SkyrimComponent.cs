@@ -127,7 +127,10 @@ namespace LiveSplit.Skyrim
         {
             if ((split == GameMemory.SplitArea.Helgen && this.Settings.Helgen)
                 || (split == GameMemory.SplitArea.AlduinDefeated && this.Settings.AutoStartEnd))
+            {
                 _timer.Split();
+                _gameMemory.setSplitState(split, true);
+            }
         }
 
         public XmlNode GetSettings(XmlDocument document)
