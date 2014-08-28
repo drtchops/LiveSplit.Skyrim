@@ -10,26 +10,25 @@ namespace LiveSplit.Skyrim
 {
     class GameMemory
     {
-        // public event EventHandler OnFirstLevelLoading;
-        // public event EventHandler OnPlayerGainedControl;
+        public event EventHandler OnFirstLevelLoading;
+        public event EventHandler OnPlayerGainedControl;
         public event EventHandler OnLoadStarted;
         public event EventHandler OnLoadFinished;
         public event EventHandler OnLoadScreenStarted;
         public event EventHandler OnLoadScreenFinished;
         public event EventHandler OnAlduinDefeated;
-        public event EventHandler OnPlayerGainedControl;
 
         private Task _thread;
         private CancellationTokenSource _cancelSource;
         private SynchronizationContext _uiThread;
         private List<int> _ignorePIDs;
 
-        // private DeepPointer _currentLevelPtr;
         private DeepPointer _isLoadingPtr;
         private DeepPointer _isLoadingScreenPtr;
         private DeepPointer _isInLoadScreenFadeOutPtr;
+        private DeepPointer _world_XPtr;
+        private DeepPointer _world_YPtr;
         private DeepPointer _isAlduinDefeatedPtr;
-        // private int _stringBase;
 
         private enum ExpectedDllSizes
         {
@@ -44,7 +43,10 @@ namespace LiveSplit.Skyrim
             // _isPausedPtr = new DeepPointer("TESV.exe", 0x172E85F); // == 1 if in a menu or a loading screen
 
             _isInLoadScreenFadeOutPtr = new DeepPointer("TESV.exe", 0x172EE2E); // == 1 from the fade out of a loading, it goes back to 0 once control is gained
-            
+
+            _world_XPtr = new DeepPointer("TESV.exe", 0x01B2E864, 0x64); // X world position (cell)
+            _world_YPtr = new DeepPointer("TESV.exe", 0x01B2E864, 0x68); // Y world position (cell)
+
             _isAlduinDefeatedPtr = new DeepPointer("TESV.exe", 0x12ACF78C); // == 1 when last blow is struck on alduin
             // possible: 0x12ACF78C, 0x12FD23DB
 
@@ -96,7 +98,6 @@ namespace LiveSplit.Skyrim
 
                     uint frameCounter = 0;
 
-                    // int prevCurrentLevel = 0;
                     bool prevIsLoading = false;
                     bool prevIsLoadingScreen = false;
                     bool prevIsAlduinDefeated = false;
@@ -107,10 +108,6 @@ namespace LiveSplit.Skyrim
 
                     while (!game.HasExited)
                     {
-                        // int currentLevel;
-                        // _currentLevelPtr.Deref(game, out currentLevel);
-                        // string currentLevelStr = GetEngineStringByID(game, currentLevel);
-
                         bool isLoading;
                         _isLoadingPtr.Deref(game, out isLoading);
 
@@ -123,21 +120,14 @@ namespace LiveSplit.Skyrim
                         bool isInLoadScreenFadeOut;
                         _isInLoadScreenFadeOutPtr.Deref(game, out isInLoadScreenFadeOut);
 
+                        int world_X;
+                        _world_XPtr.Deref(game, out world_X);
+
+                        int world_Y;
+                        _world_YPtr.Deref(game, out world_Y);
+
                         bool isAlduinDefeated;
                         _isAlduinDefeatedPtr.Deref(game, out isAlduinDefeated);
-
-                        // if (currentLevel != prevCurrentLevel)
-                        // {
-                        //     Trace.WriteLine(String.Format("{0} [NoLoads] Level Changed - {1} -> {2} '{3}'", frameCounter, prevCurrentLevel, currentLevel, currentLevelStr));
-
-                        //     if (currentLevelStr == "l_tower_p" || currentLevelStr == "L_DLC07_BaseIntro_P" || currentLevelStr == "DLC06_Tower_P")
-                        //     {
-                        //         _uiThread.Post(d => {
-                        //             if (this.OnFirstLevelLoading != null)
-                        //                 this.OnFirstLevelLoading(this, EventArgs.Empty);
-                        //         }, null);
-                        //     }
-                        // }
 
                         if (isLoading != prevIsLoading)
                         {
@@ -199,12 +189,25 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        if (isInLoadScreenFadeOut == false && prevIsInLoadScreenFadeOut == true) //start the timer when we gained control after a fade out
+                        if (isInLoadScreenFadeOut != prevIsInLoadScreenFadeOut)
                         {
-                            _uiThread.Post(d => {
-                                 if (this.OnPlayerGainedControl != null)
-                                     this.OnPlayerGainedControl(this, EventArgs.Empty);
-                            }, null);
+                            _uiThread.Send(d => MessageBox.Show("X:" + world_X.ToString() + " Y:" + world_Y.ToString(), "LiveSplit.Skyrim",
+                MessageBoxButtons.OK, MessageBoxIcon.Error), null);
+                            if (isInLoadScreenFadeOut == false && prevIsInLoadScreenFadeOut == true)
+                            {
+                                _uiThread.Post(d =>
+                                {
+                                    if (this.OnPlayerGainedControl != null)
+                                        this.OnPlayerGainedControl(this, EventArgs.Empty);
+                                }, null);
+                            }
+                            else if (isInLoadScreenFadeOut && world_X == 3 && world_Y == -20)
+                            {
+                                _uiThread.Post(d => {
+                                    if (this.OnFirstLevelLoading != null)
+                                    this.OnFirstLevelLoading(this, EventArgs.Empty);
+                                }, null);
+                            }
                         }
 
                         //if (isAlduinDefeated != prevIsAlduinDefeated && isAlduinDefeated)
@@ -215,7 +218,6 @@ namespace LiveSplit.Skyrim
                         //    }, null);
                         //}
 
-                        // prevCurrentLevel = currentLevel;
                         prevIsLoading = isLoading;
                         prevIsLoadingScreen = isLoadingScreen;
                         prevIsAlduinDefeated = isAlduinDefeated;

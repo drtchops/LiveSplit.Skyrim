@@ -37,14 +37,13 @@ namespace LiveSplit.Skyrim
             _state = state;
 
             _gameMemory = new GameMemory();
-            // _gameMemory.OnFirstLevelLoading += gameMemory_OnFirstLevelLoading;
-            // _gameMemory.OnPlayerGainedControl += gameMemory_OnPlayerGainedControl;
+            _gameMemory.OnFirstLevelLoading += gameMemory_OnFirstLevelLoading;
+            _gameMemory.OnPlayerGainedControl += gameMemory_OnPlayerGainedControl;
             _gameMemory.OnLoadStarted += gameMemory_OnLoadStarted;
             _gameMemory.OnLoadFinished += gameMemory_OnLoadFinished;
             _gameMemory.OnLoadScreenStarted += gameMemory_OnLoadScreenStarted;
             _gameMemory.OnLoadScreenFinished += gameMemory_OnLoadScreenFinished;
             _gameMemory.OnAlduinDefeated += gameMemory_OnAlduinDefeated;
-            _gameMemory.OnPlayerGainedControl += gameMemory_OnPlayerGainedControl;
             _gameMemory.StartMonitoring();
         }
 
@@ -91,15 +90,15 @@ namespace LiveSplit.Skyrim
             this.InternalComponent.NameLabel.HasShadow = this.InternalComponent.ValueLabel.HasShadow = state.LayoutSettings.DropShadows;
         }
 
-        // void gameMemory_OnFirstLevelLoading(object sender, EventArgs e)
-        // {
-        //     if (this.Settings.AutoStartEnd)
-        //         _timer.Reset();
-        // }
+        void gameMemory_OnFirstLevelLoading(object sender, EventArgs e)
+        {
+             if (this.Settings.AutoStartEnd)
+                 _timer.Reset();
+        }
 
         void gameMemory_OnPlayerGainedControl(object sender, EventArgs e)
         {
-            //if (this.Settings.AutoStartEnd)
+            if (this.Settings.AutoStartEnd)
                 _timer.Start();
         }
 
