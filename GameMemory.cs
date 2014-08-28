@@ -26,6 +26,7 @@ namespace LiveSplit.Skyrim
         private DeepPointer _isLoadingPtr;
         private DeepPointer _isLoadingScreenPtr;
         private DeepPointer _isInLoadScreenFadeOutPtr;
+        private DeepPointer _isInTamriel;
         private DeepPointer _world_XPtr;
         private DeepPointer _world_YPtr;
         private DeepPointer _isAlduinDefeatedPtr;
@@ -45,6 +46,7 @@ namespace LiveSplit.Skyrim
 
             _isInLoadScreenFadeOutPtr = new DeepPointer("TESV.exe", 0x172EE2E); // == 1 from the fade out of a loading, it goes back to 0 once control is gained
 
+            _isInTamriel = new DeepPointer("TESV.exe", 0x173815C); // == 1 if the player is in the Tamriel world space
             _world_XPtr = new DeepPointer("TESV.exe", 0x0172E864, 0x64); // X world position (cell)
             _world_YPtr = new DeepPointer("TESV.exe", 0x0172E864, 0x68); // Y world position (cell)
 
@@ -119,6 +121,9 @@ namespace LiveSplit.Skyrim
 
                         bool isInLoadScreenFadeOut;
                         _isInLoadScreenFadeOutPtr.Deref(game, out isInLoadScreenFadeOut);
+
+                        bool isInTamriel;
+                        _isInTamriel.Deref(game, out isInTamriel);
 
                         int world_X;
                         _world_XPtr.Deref(game, out world_X);
@@ -203,9 +208,9 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        if (isInLoadScreenFadeOut != prevIsInLoadScreenFadeOut && world_X == 3 && world_Y == -20)
+                        if (isInLoadScreenFadeOut != prevIsInLoadScreenFadeOut && isInTamriel && world_X == 3 && world_Y == -20)
                         {
-                            if (isInLoadScreenFadeOut == false && prevIsInLoadScreenFadeOut == true)
+                            if (!isInLoadScreenFadeOut && prevIsInLoadScreenFadeOut)
                             {
                                 //reset
                                 _uiThread.Post(d =>
@@ -232,7 +237,8 @@ namespace LiveSplit.Skyrim
                         //    }, null);
                         //}
 
-                        if (isAlduinDefeated != prevIsAlduinDefeated && isAlduinDefeated)
+                        if (isAlduinDefeated != prevIsAlduinDefeated && isAlduinDefeated
+                            && !isInTamriel && ((world_X == 15 && world_Y == 19) || (world_X == 15 && world_Y == 20)))
                         {
                             // split
                             _uiThread.Post(d =>
