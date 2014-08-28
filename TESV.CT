@@ -4,7 +4,7 @@
     <CheatEntry>
       <ID>0</ID>
       <Description>"isPaused"</Description>
-      <LastState Value="0" Activated="0" RealAddress="01B2E85F"/>
+      <LastState Value="1" Activated="0" RealAddress="01B2E85F"/>
       <Color>80000008</Color>
       <VariableType>Byte</VariableType>
       <Address>"TESV.exe"+172E85F</Address>
@@ -28,7 +28,7 @@
     <CheatEntry>
       <ID>4</ID>
       <Description>"AreHandsTied?"</Description>
-      <LastState Value="1" Activated="0" RealAddress="01B2EE2C"/>
+      <LastState Value="0" Activated="0" RealAddress="01B2EE2C"/>
       <Color>80000008</Color>
       <VariableType>Byte</VariableType>
       <Address>TESV.exe+172EE2C</Address>
@@ -40,6 +40,14 @@
       <Color>80000008</Color>
       <VariableType>Byte</VariableType>
       <Address>TESV.exe+172EE2E</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>12</ID>
+      <Description>"IsAlduinDead?"</Description>
+      <LastState Value="0" Activated="0" RealAddress="01B11608"/>
+      <Color>80000008</Color>
+      <VariableType>Byte</VariableType>
+      <Address>TESV.exe+1711608</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>6</ID>
@@ -60,7 +68,7 @@
     <CheatEntry>
       <ID>9</ID>
       <Description>"X world coord"</Description>
-      <LastState Value="3" Activated="0" RealAddress="201B4984"/>
+      <LastState Value="5" Activated="0" RealAddress="201B4984"/>
       <Color>80000008</Color>
       <VariableType>2 Bytes</VariableType>
       <Address>"TESV.exe"+0172E864</Address>
@@ -71,12 +79,23 @@
     <CheatEntry>
       <ID>11</ID>
       <Description>"Y world coord"</Description>
-      <LastState Value="-20" Activated="0" RealAddress="201B4988"/>
+      <LastState Value="-1" Activated="0" RealAddress="201B4988"/>
       <Color>80000008</Color>
       <VariableType>2 Bytes</VariableType>
       <Address>"TESV.exe"+0172E864</Address>
       <Offsets>
         <Offset>68</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>14</ID>
+      <Description>"PlayerHasControl"</Description>
+      <LastState Value="1" Activated="0" RealAddress="22A461C2"/>
+      <Color>80000008</Color>
+      <VariableType>Byte</VariableType>
+      <Address>74814710</Address>
+      <Offsets>
+        <Offset>2</Offset>
       </Offsets>
     </CheatEntry>
   </CheatEntries>

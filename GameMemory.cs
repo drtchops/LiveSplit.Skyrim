@@ -29,6 +29,7 @@ namespace LiveSplit.Skyrim
         private DeepPointer _world_XPtr;
         private DeepPointer _world_YPtr;
         private DeepPointer _isAlduinDefeatedPtr;
+        private DeepPointer _playerHasControlPtr;
 
         private enum ExpectedDllSizes
         {
@@ -47,10 +48,8 @@ namespace LiveSplit.Skyrim
             _world_XPtr = new DeepPointer("TESV.exe", 0x0172E864, 0x64); // X world position (cell)
             _world_YPtr = new DeepPointer("TESV.exe", 0x0172E864, 0x68); // Y world position (cell)
 
-            _isAlduinDefeatedPtr = new DeepPointer("TESV.exe", 0x12ACF78C); // == 1 when last blow is struck on alduin
-            // possible: 0x12ACF78C, 0x12FD23DB
-
-            // possible for start of splits: 13682838 == 18A4A
+            _isAlduinDefeatedPtr = new DeepPointer("TESV.exe", 0x1711608); // == 1 when last blow is struck on alduin
+            _playerHasControlPtr = new DeepPointer("TESV.exe", 0x74814710); // == 1 when player has full control
 
             _ignorePIDs = new List<int>();
         }
@@ -102,6 +101,7 @@ namespace LiveSplit.Skyrim
                     bool prevIsLoadingScreen = false;
                     bool prevIsAlduinDefeated = false;
                     bool prevIsInLoadScreenFadeOut = false;
+                    bool prevPlayerHasControl = false;
 
                     bool loadingStarted = false;
                     bool loadingScreenStarted = false;
@@ -129,6 +129,9 @@ namespace LiveSplit.Skyrim
                         bool isAlduinDefeated;
                         _isAlduinDefeatedPtr.Deref(game, out isAlduinDefeated);
 
+                        bool playerHasControl;
+                        _playerHasControlPtr.Deref(game, out playerHasControl);
+
                         if (isLoading != prevIsLoading)
                         {
                             if (isLoading)
@@ -137,6 +140,7 @@ namespace LiveSplit.Skyrim
 
                                 loadingStarted = true;
 
+                                // pause game timer
                                 _uiThread.Post(d => {
                                     if (this.OnLoadStarted != null)
                                         this.OnLoadStarted(this, EventArgs.Empty);
@@ -150,6 +154,7 @@ namespace LiveSplit.Skyrim
                                 {
                                     loadingStarted = false;
 
+                                    // unpause game timer
                                     _uiThread.Post(d => {
                                         if (this.OnLoadFinished != null)
                                             this.OnLoadFinished(this, EventArgs.Empty);
@@ -185,6 +190,15 @@ namespace LiveSplit.Skyrim
                                         if (this.OnLoadScreenFinished != null)
                                             this.OnLoadScreenFinished(this, EventArgs.Empty);
                                     }, null);
+
+                                    //if (!playerHasControl)
+                                    //{
+                                    //    _uiThread.Post(d =>
+                                    //    {
+                                    //        if (this.OnFirstLevelLoading != null)
+                                    //            this.OnFirstLevelLoading(this, EventArgs.Empty);
+                                    //    }, null);
+                                    //}
                                 }
                             }
                         }
@@ -209,18 +223,30 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        //if (isAlduinDefeated != prevIsAlduinDefeated && isAlduinDefeated)
+                        //if (playerHasControl != prevPlayerHasControl && playerHasControl && !isLoading)
                         //{
-                        //    _uiThread.Post(d => {
-                        //        if (this.OnAlduinDefeated != null)
-                        //            this.OnAlduinDefeated(this, EventArgs.Empty);
+                        //    _uiThread.Post(d =>
+                        //    {
+                        //        if (this.OnPlayerGainedControl != null)
+                        //            this.OnPlayerGainedControl(this, EventArgs.Empty);
                         //    }, null);
                         //}
+
+                        if (isAlduinDefeated != prevIsAlduinDefeated && isAlduinDefeated)
+                        {
+                            // split
+                            _uiThread.Post(d =>
+                            {
+                                if (this.OnAlduinDefeated != null)
+                                    this.OnAlduinDefeated(this, EventArgs.Empty);
+                            }, null);
+                        }
 
                         prevIsLoading = isLoading;
                         prevIsLoadingScreen = isLoadingScreen;
                         prevIsAlduinDefeated = isAlduinDefeated;
                         prevIsInLoadScreenFadeOut = isInLoadScreenFadeOut;
+                        prevPlayerHasControl = playerHasControl;
                         frameCounter++;
 
                         Thread.Sleep(15);
