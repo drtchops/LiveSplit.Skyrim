@@ -9,6 +9,7 @@ namespace LiveSplit.Skyrim
     {
         public bool DrawWithoutLoads { get; set; }
         public bool AutoStartEnd { get; set; }
+        public bool Helgen { get; set; }
 
         public SkyrimSettings()
         {
@@ -16,10 +17,12 @@ namespace LiveSplit.Skyrim
 
             this.chkDisplayWithoutLoads.DataBindings.Add("Checked", this, "DrawWithoutLoads", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkAutoStartEnd.DataBindings.Add("Checked", this, "AutoStartEnd", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkHelgen.DataBindings.Add("Checked", this, "Helgen", false, DataSourceUpdateMode.OnPropertyChanged);
 
             // defaults
             this.DrawWithoutLoads = true;
             this.AutoStartEnd = true;
+            this.Helgen = false;
         }
 
         public XmlNode GetSettings(XmlDocument doc)
@@ -30,6 +33,7 @@ namespace LiveSplit.Skyrim
 
             settingsNode.AppendChild(ToElement(doc, "DrawWithoutLoads", this.DrawWithoutLoads));
             settingsNode.AppendChild(ToElement(doc, "AutoStartEnd", this.AutoStartEnd));
+            settingsNode.AppendChild(ToElement(doc, "Helgen", this.Helgen));
 
             return settingsNode;
         }
@@ -38,6 +42,7 @@ namespace LiveSplit.Skyrim
         {
             this.DrawWithoutLoads = ParseBool(settings, "DrawWithoutLoads", true);
             this.AutoStartEnd = ParseBool(settings, "AutoStartEnd", true);
+            this.Helgen = ParseBool(settings, "Helgen", true);
         }
 
         static bool ParseBool(XmlNode settings, string setting, bool default_ = false)

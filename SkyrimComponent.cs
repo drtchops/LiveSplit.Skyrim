@@ -43,7 +43,7 @@ namespace LiveSplit.Skyrim
             _gameMemory.OnLoadFinished += gameMemory_OnLoadFinished;
             _gameMemory.OnLoadScreenStarted += gameMemory_OnLoadScreenStarted;
             _gameMemory.OnLoadScreenFinished += gameMemory_OnLoadScreenFinished;
-            _gameMemory.OnAlduinDefeated += gameMemory_OnAlduinDefeated;
+            _gameMemory.OnSplitCompleted += gameMemory_OnSplitCompleted;
             _gameMemory.StartMonitoring();
         }
 
@@ -92,6 +92,7 @@ namespace LiveSplit.Skyrim
 
         void gameMemory_OnFirstLevelLoading(object sender, EventArgs e)
         {
+            _gameMemory.resetSplitStates();
              if (this.Settings.AutoStartEnd)
                  _timer.Reset();
         }
@@ -122,9 +123,10 @@ namespace LiveSplit.Skyrim
             // TODO
         }
 
-        void gameMemory_OnAlduinDefeated(object sender, EventArgs e)
+        void gameMemory_OnSplitCompleted(object sender, GameMemory.SplitArea split)
         {
-            if (this.Settings.AutoStartEnd)
+            if ((split == GameMemory.SplitArea.Helgen && this.Settings.Helgen)
+                || (split == GameMemory.SplitArea.AlduinDefeated && this.Settings.AutoStartEnd))
                 _timer.Split();
         }
 

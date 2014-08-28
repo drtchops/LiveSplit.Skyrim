@@ -35,6 +35,7 @@
             this.gbLoadRemoval = new System.Windows.Forms.GroupBox();
             this.tlpLoadRemoval = new System.Windows.Forms.TableLayoutPanel();
             this.chkDisplayWithoutLoads = new System.Windows.Forms.CheckBox();
+            this.chkHelgen = new System.Windows.Forms.CheckBox();
             this.tlpMain.SuspendLayout();
             this.gbAutoSplit.SuspendLayout();
             this.tlpAutoSplit.SuspendLayout();
@@ -72,6 +73,7 @@
             // 
             this.tlpAutoSplit.ColumnCount = 1;
             this.tlpAutoSplit.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpAutoSplit.Controls.Add(this.chkHelgen, 0, 5);
             this.tlpAutoSplit.Controls.Add(this.chkAutoStartEnd, 0, 0);
             this.tlpAutoSplit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpAutoSplit.Location = new System.Drawing.Point(3, 16);
@@ -83,7 +85,7 @@
             this.tlpAutoSplit.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpAutoSplit.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpAutoSplit.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpAutoSplit.Size = new System.Drawing.Size(464, 44);
+            this.tlpAutoSplit.Size = new System.Drawing.Size(464, 144);
             this.tlpAutoSplit.TabIndex = 0;
             // 
             // chkAutoStartEnd
@@ -93,9 +95,9 @@
             this.chkAutoStartEnd.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkAutoStartEnd.Location = new System.Drawing.Point(3, 3);
             this.chkAutoStartEnd.Name = "chkAutoStartEnd";
-            this.chkAutoStartEnd.Size = new System.Drawing.Size(203, 17);
+            this.chkAutoStartEnd.Size = new System.Drawing.Size(117, 17);
             this.chkAutoStartEnd.TabIndex = 4;
-            this.chkAutoStartEnd.Text = "Start / Reset / End (Not yet working!)";
+            this.chkAutoStartEnd.Text = "Start / Reset / End";
             this.chkAutoStartEnd.UseVisualStyleBackColor = true;
             // 
             // gbLoadRemoval
@@ -134,6 +136,16 @@
             this.chkDisplayWithoutLoads.Text = "Enable";
             this.chkDisplayWithoutLoads.UseVisualStyleBackColor = true;
             // 
+            // chkHelgen
+            // 
+            this.chkHelgen.AutoSize = true;
+            this.chkHelgen.Location = new System.Drawing.Point(3, 26);
+            this.chkHelgen.Name = "chkHelgen";
+            this.chkHelgen.Size = new System.Drawing.Size(60, 17);
+            this.chkHelgen.TabIndex = 5;
+            this.chkHelgen.Text = "Helgen";
+            this.chkHelgen.UseVisualStyleBackColor = true;
+            // 
             // SkyrimSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,5 +173,6 @@
         private System.Windows.Forms.TableLayoutPanel tlpLoadRemoval;
         private System.Windows.Forms.TableLayoutPanel tlpAutoSplit;
         private System.Windows.Forms.CheckBox chkAutoStartEnd;
+        private System.Windows.Forms.CheckBox chkHelgen;
     }
 }

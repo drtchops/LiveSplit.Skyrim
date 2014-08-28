@@ -10,13 +10,20 @@ namespace LiveSplit.Skyrim
 {
     class GameMemory
     {
+        public enum SplitArea : int
+        {
+            Helgen,
+            AlduinDefeated
+        }
+
         public event EventHandler OnFirstLevelLoading;
         public event EventHandler OnPlayerGainedControl;
         public event EventHandler OnLoadStarted;
         public event EventHandler OnLoadFinished;
         public event EventHandler OnLoadScreenStarted;
         public event EventHandler OnLoadScreenFinished;
-        public event EventHandler OnAlduinDefeated;
+        public delegate void SplitCompletedEventHandler(object sender, SplitArea type);
+        public event SplitCompletedEventHandler OnSplitCompleted;
 
         private Task _thread;
         private CancellationTokenSource _cancelSource;
@@ -38,6 +45,16 @@ namespace LiveSplit.Skyrim
             SkyrimCracked = 26771456,
         }
 
+        private bool[] splitStates = new bool[(int)SplitArea.AlduinDefeated + 1];
+
+        public void resetSplitStates()
+        {
+            for (int i = 0; i <= (int)SplitArea.AlduinDefeated; i++)
+            {
+                splitStates[i] = false;
+            }
+        }
+
         public GameMemory()
         {
             _isLoadingPtr = new DeepPointer("TESV.exe", 0x17337CC); // == 1 if a loading is happening (any except loading screens in Helgen for some reason)
@@ -52,6 +69,8 @@ namespace LiveSplit.Skyrim
 
             _isAlduinDefeatedPtr = new DeepPointer("TESV.exe", 0x1711608); // == 1 when last blow is struck on alduin
             _playerHasControlPtr = new DeepPointer("TESV.exe", 0x74814710); // == 1 when player has full control
+
+            resetSplitStates();
 
             _ignorePIDs = new List<int>();
         }
@@ -181,6 +200,17 @@ namespace LiveSplit.Skyrim
                                     if (this.OnLoadScreenStarted != null)
                                         this.OnLoadScreenStarted(this, EventArgs.Empty);
                                 }, null);
+
+                                if (!isInTamriel && world_X == -2 && world_Y == -5 && !splitStates[(int)SplitArea.Helgen])
+                                {
+                                  // Helgen split
+                                    _uiThread.Post(d =>
+                                    {
+                                        if (this.OnSplitCompleted != null)
+                                            this.OnSplitCompleted(this, SplitArea.Helgen);
+                                    }, null);
+                                    splitStates[(int)SplitArea.Helgen] = true;
+                                }
                             }
                             else
                             {
@@ -237,15 +267,16 @@ namespace LiveSplit.Skyrim
                         //    }, null);
                         //}
 
-                        if (isAlduinDefeated != prevIsAlduinDefeated && isAlduinDefeated
+                        if (isAlduinDefeated != prevIsAlduinDefeated && isAlduinDefeated && !splitStates[(int)SplitArea.AlduinDefeated]
                             && !isInTamriel && ((world_X == 15 && world_Y == 19) || (world_X == 15 && world_Y == 20)))
                         {
                             // split
                             _uiThread.Post(d =>
                             {
-                                if (this.OnAlduinDefeated != null)
-                                    this.OnAlduinDefeated(this, EventArgs.Empty);
+                                if (this.OnSplitCompleted != null)
+                                    this.OnSplitCompleted(this, SplitArea.AlduinDefeated);
                             }, null);
+                            splitStates[(int)SplitArea.AlduinDefeated] = true;
                         }
 
                         prevIsLoading = isLoading;
