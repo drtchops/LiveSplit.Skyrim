@@ -63,7 +63,7 @@
       <LastState Value="3" Activated="0" RealAddress="201B4984"/>
       <Color>80000008</Color>
       <VariableType>2 Bytes</VariableType>
-      <Address>01B2E864</Address>
+      <Address>"TESV.exe"+0172E864</Address>
       <Offsets>
         <Offset>64</Offset>
       </Offsets>
@@ -74,7 +74,7 @@
       <LastState Value="-20" Activated="0" RealAddress="201B4988"/>
       <Color>80000008</Color>
       <VariableType>2 Bytes</VariableType>
-      <Address>01B2E864</Address>
+      <Address>"TESV.exe"+0172E864</Address>
       <Offsets>
         <Offset>68</Offset>
       </Offsets>

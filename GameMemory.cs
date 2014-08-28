@@ -44,8 +44,8 @@ namespace LiveSplit.Skyrim
 
             _isInLoadScreenFadeOutPtr = new DeepPointer("TESV.exe", 0x172EE2E); // == 1 from the fade out of a loading, it goes back to 0 once control is gained
 
-            _world_XPtr = new DeepPointer("TESV.exe", 0x01B2E864, 0x64); // X world position (cell)
-            _world_YPtr = new DeepPointer("TESV.exe", 0x01B2E864, 0x68); // Y world position (cell)
+            _world_XPtr = new DeepPointer("TESV.exe", 0x0172E864, 0x64); // X world position (cell)
+            _world_YPtr = new DeepPointer("TESV.exe", 0x0172E864, 0x68); // Y world position (cell)
 
             _isAlduinDefeatedPtr = new DeepPointer("TESV.exe", 0x12ACF78C); // == 1 when last blow is struck on alduin
             // possible: 0x12ACF78C, 0x12FD23DB
@@ -189,23 +189,22 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        if (isInLoadScreenFadeOut != prevIsInLoadScreenFadeOut)
+                        if (isInLoadScreenFadeOut != prevIsInLoadScreenFadeOut && world_X == 3 && world_Y == -20)
                         {
-                            _uiThread.Send(d => MessageBox.Show("X:" + world_X.ToString() + " Y:" + world_Y.ToString(), "LiveSplit.Skyrim",
-                MessageBoxButtons.OK, MessageBoxIcon.Error), null);
                             if (isInLoadScreenFadeOut == false && prevIsInLoadScreenFadeOut == true)
                             {
+                                //reset
+                                _uiThread.Post(d =>
+                                {
+                                    if (this.OnFirstLevelLoading != null)
+                                        this.OnFirstLevelLoading(this, EventArgs.Empty);
+                                }, null);
+
+                                //start
                                 _uiThread.Post(d =>
                                 {
                                     if (this.OnPlayerGainedControl != null)
                                         this.OnPlayerGainedControl(this, EventArgs.Empty);
-                                }, null);
-                            }
-                            else if (isInLoadScreenFadeOut && world_X == 3 && world_Y == -20)
-                            {
-                                _uiThread.Post(d => {
-                                    if (this.OnFirstLevelLoading != null)
-                                    this.OnFirstLevelLoading(this, EventArgs.Empty);
                                 }, null);
                             }
                         }
