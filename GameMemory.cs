@@ -209,6 +209,7 @@ namespace LiveSplit.Skyrim
                                 if (!isInTamriel && world_X == -2 && world_Y == -5 && !splitStates[(int)SplitArea.Helgen])
                                 {
                                   // Helgen split
+                                    Trace.WriteLine(String.Format("[NoLoads] Helgen Split - {0}", frameCounter));
                                     _uiThread.Post(d =>
                                     {
                                         if (this.OnSplitCompleted != null)
@@ -247,6 +248,7 @@ namespace LiveSplit.Skyrim
                             if (!isInLoadScreenFadeOut && prevIsInLoadScreenFadeOut)
                             {
                                 //reset
+                                Trace.WriteLine(String.Format("[NoLoads] Reset - {0}", frameCounter));
                                 _uiThread.Post(d =>
                                 {
                                     if (this.OnFirstLevelLoading != null)
@@ -254,6 +256,7 @@ namespace LiveSplit.Skyrim
                                 }, null);
 
                                 //start
+                                Trace.WriteLine(String.Format("[NoLoads] Start - {0}", frameCounter));
                                 _uiThread.Post(d =>
                                 {
                                     if (this.OnPlayerGainedControl != null)
@@ -274,7 +277,8 @@ namespace LiveSplit.Skyrim
                         if (isAlduinDefeated != prevIsAlduinDefeated && isAlduinDefeated && !splitStates[(int)SplitArea.AlduinDefeated]
                             && !isInTamriel && ((world_X == 15 && world_Y == 19) || (world_X == 15 && world_Y == 20)))
                         {
-                            // split
+                            // AlduinDefeated split
+                            Trace.WriteLine(String.Format("[NoLoads] AlduinDefeated Split - {0}", frameCounter));
                             _uiThread.Post(d =>
                             {
                                 if (this.OnSplitCompleted != null)
