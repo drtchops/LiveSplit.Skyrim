@@ -99,7 +99,6 @@ namespace LiveSplit.Skyrim
 
         void gameMemory_OnFirstLevelLoading(object sender, EventArgs e)
         {
-            state_OnReset(this, _state.CurrentPhase);
             if (this.Settings.AutoStartEnd)
                 _timer.Reset();
         }
