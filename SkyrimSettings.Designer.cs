@@ -42,9 +42,9 @@
             this.gbLoadRemoval.SuspendLayout();
             this.tlpLoadRemoval.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // tlpMain
-            // 
+            //
             this.tlpMain.ColumnCount = 1;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.Controls.Add(this.gbAutoSplit, 1, 0);
@@ -57,9 +57,9 @@
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpMain.Size = new System.Drawing.Size(476, 226);
             this.tlpMain.TabIndex = 0;
-            // 
+            //
             // gbAutoSplit
-            // 
+            //
             this.gbAutoSplit.Controls.Add(this.tlpAutoSplit);
             this.gbAutoSplit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbAutoSplit.Location = new System.Drawing.Point(3, 3);
@@ -68,9 +68,9 @@
             this.gbAutoSplit.TabIndex = 5;
             this.gbAutoSplit.TabStop = false;
             this.gbAutoSplit.Text = "Auto-Split";
-            // 
+            //
             // tlpAutoSplit
-            // 
+            //
             this.tlpAutoSplit.ColumnCount = 1;
             this.tlpAutoSplit.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpAutoSplit.Controls.Add(this.chkHelgen, 0, 5);
@@ -87,9 +87,9 @@
             this.tlpAutoSplit.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpAutoSplit.Size = new System.Drawing.Size(464, 144);
             this.tlpAutoSplit.TabIndex = 0;
-            // 
+            //
             // chkAutoStartEnd
-            // 
+            //
             this.chkAutoStartEnd.AutoSize = true;
             this.chkAutoStartEnd.Checked = true;
             this.chkAutoStartEnd.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -99,9 +99,9 @@
             this.chkAutoStartEnd.TabIndex = 4;
             this.chkAutoStartEnd.Text = "Start / Reset / End";
             this.chkAutoStartEnd.UseVisualStyleBackColor = true;
-            // 
+            //
             // gbLoadRemoval
-            // 
+            //
             this.gbLoadRemoval.Controls.Add(this.tlpLoadRemoval);
             this.gbLoadRemoval.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbLoadRemoval.Location = new System.Drawing.Point(3, 172);
@@ -110,9 +110,9 @@
             this.gbLoadRemoval.TabIndex = 6;
             this.gbLoadRemoval.TabStop = false;
             this.gbLoadRemoval.Text = "Show Alternate Timing Time";
-            // 
+            //
             // tlpLoadRemoval
-            // 
+            //
             this.tlpLoadRemoval.ColumnCount = 1;
             this.tlpLoadRemoval.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpLoadRemoval.Controls.Add(this.chkDisplayWithoutLoads, 0, 0);
@@ -123,9 +123,9 @@
             this.tlpLoadRemoval.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpLoadRemoval.Size = new System.Drawing.Size(464, 32);
             this.tlpLoadRemoval.TabIndex = 0;
-            // 
+            //
             // chkDisplayWithoutLoads
-            // 
+            //
             this.chkDisplayWithoutLoads.AutoSize = true;
             this.chkDisplayWithoutLoads.Checked = true;
             this.chkDisplayWithoutLoads.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -135,9 +135,9 @@
             this.chkDisplayWithoutLoads.TabIndex = 0;
             this.chkDisplayWithoutLoads.Text = "Enable";
             this.chkDisplayWithoutLoads.UseVisualStyleBackColor = true;
-            // 
+            //
             // chkHelgen
-            // 
+            //
             this.chkHelgen.AutoSize = true;
             this.chkHelgen.Location = new System.Drawing.Point(3, 26);
             this.chkHelgen.Name = "chkHelgen";
@@ -145,9 +145,9 @@
             this.chkHelgen.TabIndex = 5;
             this.chkHelgen.Text = "Helgen";
             this.chkHelgen.UseVisualStyleBackColor = true;
-            // 
+            //
             // SkyrimSettings
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tlpMain);

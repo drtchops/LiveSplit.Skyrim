@@ -13,7 +13,7 @@ namespace LiveSplit.Skyrim
         public enum SplitArea : int
         {
             Helgen,
-            AlduinDefeated
+            AlduinDefeated,
         }
 
         public event EventHandler OnFirstLevelLoading;
@@ -37,7 +37,6 @@ namespace LiveSplit.Skyrim
         private DeepPointer _world_XPtr;
         private DeepPointer _world_YPtr;
         private DeepPointer _isAlduinDefeatedPtr;
-        private DeepPointer _playerHasControlPtr;
 
         private enum ExpectedDllSizes
         {
@@ -46,7 +45,56 @@ namespace LiveSplit.Skyrim
         }
 
         private bool[] splitStates = new bool[(int)SplitArea.AlduinDefeated + 1];
-  
+
+        public GameMemory()
+        {
+            // Loads
+            _isLoadingPtr = new DeepPointer("TESV.exe", 0x17337CC); // == 1 if a load is happening (any except loading screens in Helgen for some reason)
+            _isLoadingScreenPtr = new DeepPointer("TESV.exe", 0xEE3561); // == 1 if in a loading screen
+            // _isPausedPtr = new DeepPointer("TESV.exe", 0x172E85F); // == 1 if in a menu or a loading screen
+            _isInLoadScreenFadeOutPtr = new DeepPointer("TESV.exe", 0x172EE2E); // == 1 from the fade out of a loading, it goes back to 0 once control is gained
+
+            // Position
+            _isInTamriel = new DeepPointer("TESV.exe", 0x173815C); // == 1 if the player is in the Tamriel world space
+            _world_XPtr = new DeepPointer("TESV.exe", 0x0172E864, 0x64); // X world position (cell)
+            _world_YPtr = new DeepPointer("TESV.exe", 0x0172E864, 0x68); // Y world position (cell)
+
+            // Game state
+            _isAlduinDefeatedPtr = new DeepPointer("TESV.exe", 0x1711608); // == 1 when last blow is struck on alduin
+            // _playerHasControlPtr = new DeepPointer("TESV.exe", 0x74814710); // == 1 when player has full control
+
+            resetSplitStates();
+
+            _ignorePIDs = new List<int>();
+        }
+
+        public void StartMonitoring()
+        {
+            if (_thread != null && _thread.Status == TaskStatus.Running)
+            {
+                throw new InvalidOperationException();
+            }
+            if (!(SynchronizationContext.Current is WindowsFormsSynchronizationContext))
+            {
+                throw new InvalidOperationException("SynchronizationContext.Current is not a UI thread.");
+            }
+
+            _uiThread = SynchronizationContext.Current;
+            _cancelSource = new CancellationTokenSource();
+            _thread = Task.Factory.StartNew(MemoryReadThread);
+        }
+
+        public void Stop()
+        {
+            if (_cancelSource == null || _thread == null || _thread.Status != TaskStatus.Running)
+            {
+                return;
+            }
+
+            _cancelSource.Cancel();
+            _thread.Wait();
+        }
+
         public void setSplitState(SplitArea split, bool value)
         {
             splitStates[(int)split] = value;
@@ -58,47 +106,6 @@ namespace LiveSplit.Skyrim
             {
                 splitStates[i] = false;
             }
-        }
-
-        public GameMemory()
-        {
-            _isLoadingPtr = new DeepPointer("TESV.exe", 0x17337CC); // == 1 if a loading is happening (any except loading screens in Helgen for some reason)
-            _isLoadingScreenPtr = new DeepPointer("TESV.exe", 0xEE3561); // == 1 if in a loading screen
-            // _isPausedPtr = new DeepPointer("TESV.exe", 0x172E85F); // == 1 if in a menu or a loading screen
-
-            _isInLoadScreenFadeOutPtr = new DeepPointer("TESV.exe", 0x172EE2E); // == 1 from the fade out of a loading, it goes back to 0 once control is gained
-
-            _isInTamriel = new DeepPointer("TESV.exe", 0x173815C); // == 1 if the player is in the Tamriel world space
-            _world_XPtr = new DeepPointer("TESV.exe", 0x0172E864, 0x64); // X world position (cell)
-            _world_YPtr = new DeepPointer("TESV.exe", 0x0172E864, 0x68); // Y world position (cell)
-
-            _isAlduinDefeatedPtr = new DeepPointer("TESV.exe", 0x1711608); // == 1 when last blow is struck on alduin
-            _playerHasControlPtr = new DeepPointer("TESV.exe", 0x74814710); // == 1 when player has full control
-
-            resetSplitStates();
-
-            _ignorePIDs = new List<int>();
-        }
-
-        public void StartMonitoring()
-        {
-            if (_thread != null && _thread.Status == TaskStatus.Running)
-                throw new InvalidOperationException();
-            if (!(SynchronizationContext.Current is WindowsFormsSynchronizationContext))
-                throw new InvalidOperationException("SynchronizationContext.Current is not a UI thread.");
-
-            _uiThread = SynchronizationContext.Current;
-            _cancelSource = new CancellationTokenSource();
-            _thread = Task.Factory.StartNew(MemoryReadThread);
-        }
-
-        public void Stop()
-        {
-            if (_cancelSource == null || _thread == null || _thread.Status != TaskStatus.Running)
-                return;
-
-            _cancelSource.Cancel();
-            _thread.Wait();
         }
 
         void MemoryReadThread()
@@ -116,7 +123,9 @@ namespace LiveSplit.Skyrim
                     {
                         Thread.Sleep(250);
                         if (_cancelSource.IsCancellationRequested)
+                        {
                             return;
+                        }
                     }
 
                     Trace.WriteLine("[NoLoads] Got TESV.exe!");
@@ -127,7 +136,6 @@ namespace LiveSplit.Skyrim
                     bool prevIsLoadingScreen = false;
                     bool prevIsAlduinDefeated = false;
                     bool prevIsInLoadScreenFadeOut = false;
-                    bool prevPlayerHasControl = false;
 
                     bool loadingStarted = false;
                     bool loadingScreenStarted = false;
@@ -141,7 +149,9 @@ namespace LiveSplit.Skyrim
                         _isLoadingScreenPtr.Deref(game, out isLoadingScreen);
 
                         if (isLoadingScreen)
+                        {
                             isLoading = true;
+                        }
 
                         bool isInLoadScreenFadeOut;
                         _isInLoadScreenFadeOutPtr.Deref(game, out isInLoadScreenFadeOut);
@@ -158,9 +168,6 @@ namespace LiveSplit.Skyrim
                         bool isAlduinDefeated;
                         _isAlduinDefeatedPtr.Deref(game, out isAlduinDefeated);
 
-                        bool playerHasControl;
-                        _playerHasControlPtr.Deref(game, out playerHasControl);
-
                         if (isLoading != prevIsLoading)
                         {
                             if (isLoading)
@@ -172,7 +179,9 @@ namespace LiveSplit.Skyrim
                                 // pause game timer
                                 _uiThread.Post(d => {
                                     if (this.OnLoadStarted != null)
+                                    {
                                         this.OnLoadStarted(this, EventArgs.Empty);
+                                    }
                                 }, null);
                             }
                             else
@@ -186,7 +195,9 @@ namespace LiveSplit.Skyrim
                                     // unpause game timer
                                     _uiThread.Post(d => {
                                         if (this.OnLoadFinished != null)
+                                        {
                                             this.OnLoadFinished(this, EventArgs.Empty);
+                                        }
                                     }, null);
                                 }
                             }
@@ -200,20 +211,26 @@ namespace LiveSplit.Skyrim
 
                                 loadingScreenStarted = true;
 
-                                _uiThread.Post(d =>
-                                {
-                                    if (this.OnLoadScreenStarted != null)
-                                        this.OnLoadScreenStarted(this, EventArgs.Empty);
-                                }, null);
+                                // nothing currently
+                                // _uiThread.Post(d =>
+                                // {
+                                //     if (this.OnLoadScreenStarted != null)
+                                //     {
+                                //         this.OnLoadScreenStarted(this, EventArgs.Empty);
+                                //     }
+                                // }, null);
 
+                                // if loadscreen starts while leaving helgen
                                 if (!isInTamriel && world_X == -2 && world_Y == -5 && !splitStates[(int)SplitArea.Helgen])
                                 {
-                                  // Helgen split
+                                    // Helgen split
                                     Trace.WriteLine(String.Format("[NoLoads] Helgen Split - {0}", frameCounter));
                                     _uiThread.Post(d =>
                                     {
                                         if (this.OnSplitCompleted != null)
+                                        {
                                             this.OnSplitCompleted(this, SplitArea.Helgen);
+                                        }
                                     }, null);
                                 }
                             }
@@ -225,55 +242,46 @@ namespace LiveSplit.Skyrim
                                 {
                                     loadingScreenStarted = false;
 
-                                    _uiThread.Post(d =>
-                                    {
-                                        if (this.OnLoadScreenFinished != null)
-                                            this.OnLoadScreenFinished(this, EventArgs.Empty);
-                                    }, null);
-
-                                    //if (!playerHasControl)
-                                    //{
-                                    //    _uiThread.Post(d =>
-                                    //    {
-                                    //        if (this.OnFirstLevelLoading != null)
-                                    //            this.OnFirstLevelLoading(this, EventArgs.Empty);
-                                    //    }, null);
-                                    //}
+                                    // nothing currently
+                                    // _uiThread.Post(d =>
+                                    // {
+                                    //     if (this.OnLoadScreenFinished != null)
+                                    //     {
+                                    //         this.OnLoadScreenFinished(this, EventArgs.Empty);
+                                    //     }
+                                    // }, null);
                                 }
                             }
                         }
 
+                        // if loadscreen fadeout finishes in helgen
                         if (isInLoadScreenFadeOut != prevIsInLoadScreenFadeOut && isInTamriel && world_X == 3 && world_Y == -20)
                         {
                             if (!isInLoadScreenFadeOut && prevIsInLoadScreenFadeOut)
                             {
-                                //reset
+                                // reset
                                 Trace.WriteLine(String.Format("[NoLoads] Reset - {0}", frameCounter));
                                 _uiThread.Post(d =>
                                 {
                                     if (this.OnFirstLevelLoading != null)
+                                    {
                                         this.OnFirstLevelLoading(this, EventArgs.Empty);
+                                    }
                                 }, null);
 
-                                //start
+                                // start
                                 Trace.WriteLine(String.Format("[NoLoads] Start - {0}", frameCounter));
                                 _uiThread.Post(d =>
                                 {
                                     if (this.OnPlayerGainedControl != null)
+                                    {
                                         this.OnPlayerGainedControl(this, EventArgs.Empty);
+                                    }
                                 }, null);
                             }
                         }
 
-                        //if (playerHasControl != prevPlayerHasControl && playerHasControl && !isLoading)
-                        //{
-                        //    _uiThread.Post(d =>
-                        //    {
-                        //        if (this.OnPlayerGainedControl != null)
-                        //            this.OnPlayerGainedControl(this, EventArgs.Empty);
-                        //    }, null);
-                        //}
-
+                        // if alduin is defeated in sovngarde
                         if (isAlduinDefeated != prevIsAlduinDefeated && isAlduinDefeated && !splitStates[(int)SplitArea.AlduinDefeated]
                             && !isInTamriel && ((world_X == 15 && world_Y == 19) || (world_X == 15 && world_Y == 20)))
                         {
@@ -282,7 +290,9 @@ namespace LiveSplit.Skyrim
                             _uiThread.Post(d =>
                             {
                                 if (this.OnSplitCompleted != null)
+                                {
                                     this.OnSplitCompleted(this, SplitArea.AlduinDefeated);
+                                }
                             }, null);
                         }
 
@@ -290,13 +300,14 @@ namespace LiveSplit.Skyrim
                         prevIsLoadingScreen = isLoadingScreen;
                         prevIsAlduinDefeated = isAlduinDefeated;
                         prevIsInLoadScreenFadeOut = isInLoadScreenFadeOut;
-                        prevPlayerHasControl = playerHasControl;
                         frameCounter++;
 
                         Thread.Sleep(15);
 
                         if (_cancelSource.IsCancellationRequested)
+                        {
                             return;
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -312,25 +323,19 @@ namespace LiveSplit.Skyrim
             Process game = Process.GetProcesses().FirstOrDefault(p => p.ProcessName.ToLower() == "tesv"
                 && !p.HasExited && !_ignorePIDs.Contains(p.Id));
             if (game == null)
+            {
                 return null;
+            }
 
             if (game.MainModule.ModuleMemorySize != (int)ExpectedDllSizes.SkyrimSteam && game.MainModule.ModuleMemorySize != (int)ExpectedDllSizes.SkyrimCracked)
             {
                 _ignorePIDs.Add(game.Id);
                 _uiThread.Send(d => MessageBox.Show("Unexpected game version. Skyrim 1.9.32.0.8 is required.", "LiveSplit.Skyrim",
-                MessageBoxButtons.OK, MessageBoxIcon.Error), null);
+                    MessageBoxButtons.OK, MessageBoxIcon.Error), null);
                 return null;
             }
 
             return game;
         }
-
-        // string GetEngineStringByID(Process p, int id)
-        // {
-        //     string str;
-        //     var ptr = new DeepPointer(_stringBase, (id*4), 0x10);
-        //     ptr.Deref(p, out str, 32);
-        //     return str;
-        // }
     }
 }
