@@ -44,6 +44,7 @@ namespace LiveSplit.Skyrim
             _gameMemory.OnLoadScreenStarted += gameMemory_OnLoadScreenStarted;
             _gameMemory.OnLoadScreenFinished += gameMemory_OnLoadScreenFinished;
             _gameMemory.OnSplitCompleted += gameMemory_OnSplitCompleted;
+            state.OnReset += state_OnReset;
             _gameMemory.StartMonitoring();
         }
 
@@ -53,11 +54,15 @@ namespace LiveSplit.Skyrim
                 _gameMemory.Stop();
         }
 
+         void state_OnReset(object sender, TimerPhase e)
+        {
+            _gameMemory.resetSplitStates();
+        }
+
         public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
             if (!this.Settings.DrawWithoutLoads)
                 return;
-
             this.InternalComponent.TimeValue =
                 state.CurrentTime[state.CurrentTimingMethod == TimingMethod.GameTime
                     ? TimingMethod.RealTime : TimingMethod.GameTime];
@@ -70,6 +75,8 @@ namespace LiveSplit.Skyrim
             if (invalidator != null && _cache.HasChanged)
                 invalidator.Invalidate(0f, 0f, width, height);
         }
+
+        
 
         public void DrawVertical(Graphics g, LiveSplitState state, float width, Region region)
         {
@@ -92,9 +99,9 @@ namespace LiveSplit.Skyrim
 
         void gameMemory_OnFirstLevelLoading(object sender, EventArgs e)
         {
-            _gameMemory.resetSplitStates();
-             if (this.Settings.AutoStartEnd)
-                 _timer.Reset();
+            state_OnReset(this, _state.CurrentPhase);
+            if (this.Settings.AutoStartEnd)
+                _timer.Reset();
         }
 
         void gameMemory_OnPlayerGainedControl(object sender, EventArgs e)
