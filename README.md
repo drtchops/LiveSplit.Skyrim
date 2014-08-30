@@ -1,7 +1,7 @@
 ﻿LiveSplit.Skyrim v1.3
 =====================
 
-LiveSplit.Skyrim is a [LiveSplit] component for The Elder Scrolls V: Skyrim.
+LiveSplit.Skyrim is a [LiveSplit](http://livesplit.org/) component for The Elder Scrolls V: Skyrim.
 
 Features
 --------
@@ -31,13 +31,6 @@ https://github.com/drtchops/LiveSplit.Skyrim/releases
 
 Credits
 -------
-	* [DrTChops]
-	* [Dalleth]
-	* Plugin is based off [LiveSplit.Dishonored] by [Fatalis].
-
-
-[LiveSplit]:http://livesplit.org/
-[DrTChops]:http://twitch.tv/drtchops
-[Dalleth]:http://twitch.tv/dalleth_
-[LiveSplit.Dishonored]:https://github.com/fatalis/LiveSplit.Dishonored
-[Fatalis]:http://twitch.tv/fatalis_
+  * [DrTChops](http://twitch.tv/drtchops)
+  * [Dalleth](http://twitch.tv/dalleth_)
+  * Plugin is based off [LiveSplit.Dishonored](https://github.com/fatalis/LiveSplit.Dishonored) by [Fatalis](http://twitch.tv/fatalis_).
