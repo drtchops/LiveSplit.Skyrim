@@ -49,19 +49,19 @@ namespace LiveSplit.Skyrim
         public GameMemory()
         {
             // Loads
-            _isLoadingPtr = new DeepPointer("TESV.exe", 0x17337CC); // == 1 if a load is happening (any except loading screens in Helgen for some reason)
-            _isLoadingScreenPtr = new DeepPointer("TESV.exe", 0xEE3561); // == 1 if in a loading screen
-            // _isPausedPtr = new DeepPointer("TESV.exe", 0x172E85F); // == 1 if in a menu or a loading screen
-            _isInLoadScreenFadeOutPtr = new DeepPointer("TESV.exe", 0x172EE2E); // == 1 from the fade out of a loading, it goes back to 0 once control is gained
+            _isLoadingPtr = new DeepPointer(0x17337CC); // == 1 if a load is happening (any except loading screens in Helgen for some reason)
+            _isLoadingScreenPtr = new DeepPointer(0xEE3561); // == 1 if in a loading screen
+            // _isPausedPtr = new DeepPointer(0x172E85F); // == 1 if in a menu or a loading screen
+            _isInLoadScreenFadeOutPtr = new DeepPointer(0x172EE2E); // == 1 from the fade out of a loading, it goes back to 0 once control is gained
 
             // Position
-            _isInTamriel = new DeepPointer("TESV.exe", 0x173815C); // == 1 if the player is in the Tamriel world space
-            _world_XPtr = new DeepPointer("TESV.exe", 0x0172E864, 0x64); // X world position (cell)
-            _world_YPtr = new DeepPointer("TESV.exe", 0x0172E864, 0x68); // Y world position (cell)
+            _isInTamriel = new DeepPointer(0x173815C); // == 1 if the player is in the Tamriel world space
+            _world_XPtr = new DeepPointer(0x0172E864, 0x64); // X world position (cell)
+            _world_YPtr = new DeepPointer(0x0172E864, 0x68); // Y world position (cell)
 
             // Game state
-            _isAlduinDefeatedPtr = new DeepPointer("TESV.exe", 0x1711608); // == 1 when last blow is struck on alduin
-            // _playerHasControlPtr = new DeepPointer("TESV.exe", 0x74814710); // == 1 when player has full control
+            _isAlduinDefeatedPtr = new DeepPointer(0x1711608); // == 1 when last blow is struck on alduin
+            // _playerHasControlPtr = new DeepPointer(0x74814710); // == 1 when player has full control
 
             resetSplitStates();
 
