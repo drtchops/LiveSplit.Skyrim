@@ -21,20 +21,25 @@ namespace LiveSplit.Skyrim
         protected InfoTimeComponent InternalComponent { get; set; }
         public SkyrimSettings Settings { get; set; }
 
+        public bool Disposed { get; private set; }
+        public bool IsLayoutComponent { get; private set; }
+
         private TimerModel _timer;
         private GameMemory _gameMemory;
         private LiveSplitState _state;
         private GraphicsCache _cache;
 
-        public SkyrimComponent(LiveSplitState state)
+        public SkyrimComponent(LiveSplitState state, bool isLayoutComponent)
         {
+            _state = state;
+            this.IsLayoutComponent = isLayoutComponent;
+
             this.Settings = new SkyrimSettings();
             this.ContextMenuControls = new Dictionary<String, Action>();
             this.InternalComponent = new InfoTimeComponent(null, null, new RegularTimeFormatter(TimeAccuracy.Hundredths));
 
             _cache = new GraphicsCache();
             _timer = new TimerModel { CurrentState = state };
-            _state = state;
 
             _gameMemory = new GameMemory();
             _gameMemory.OnFirstLevelLoading += gameMemory_OnFirstLevelLoading;
@@ -50,6 +55,8 @@ namespace LiveSplit.Skyrim
 
         public void Dispose()
         {
+            this.Disposed = true;
+
             _state.OnReset -= state_OnReset;
 
             if (_gameMemory != null)
