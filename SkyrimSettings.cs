@@ -11,6 +11,10 @@ namespace LiveSplit.Skyrim
         public bool AutoStartEnd { get; set; }
         public bool Helgen { get; set; }
 
+        private const bool DEFAULT_DRAWWITHOUTLOADS = true;
+        private const bool DEFAULT_AUTOSTARTENED = true;
+        private const bool DEFAULT_HELGEN = false;
+
         public SkyrimSettings()
         {
             InitializeComponent();
@@ -20,9 +24,9 @@ namespace LiveSplit.Skyrim
             this.chkHelgen.DataBindings.Add("Checked", this, "Helgen", false, DataSourceUpdateMode.OnPropertyChanged);
 
             // defaults
-            this.DrawWithoutLoads = true;
-            this.AutoStartEnd = true;
-            this.Helgen = false;
+            this.DrawWithoutLoads = DEFAULT_DRAWWITHOUTLOADS;
+            this.AutoStartEnd = DEFAULT_AUTOSTARTENED;
+            this.Helgen = DEFAULT_HELGEN;
         }
 
         public XmlNode GetSettings(XmlDocument doc)
@@ -40,9 +44,9 @@ namespace LiveSplit.Skyrim
 
         public void SetSettings(XmlNode settings)
         {
-            this.DrawWithoutLoads = ParseBool(settings, "DrawWithoutLoads", true);
-            this.AutoStartEnd = ParseBool(settings, "AutoStartEnd", true);
-            this.Helgen = ParseBool(settings, "Helgen", true);
+            this.DrawWithoutLoads = ParseBool(settings, "DrawWithoutLoads", DEFAULT_DRAWWITHOUTLOADS);
+            this.AutoStartEnd = ParseBool(settings, "AutoStartEnd", DEFAULT_AUTOSTARTENED);
+            this.Helgen = ParseBool(settings, "Helgen", DEFAULT_HELGEN);
         }
 
         static bool ParseBool(XmlNode settings, string setting, bool default_ = false)
