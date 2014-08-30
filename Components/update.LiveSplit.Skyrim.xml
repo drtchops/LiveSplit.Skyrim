@@ -1,4 +1,14 @@
 <updates>
+    <update version="1.3.0">
+        <files>
+            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+        </files>
+        <changelog>
+            <change>
+                Added automatic reset / start / end and Helgen split.
+            </change>
+        </changelog>
+    </update>
     <update version="1.2.0">
         <files>
             <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
