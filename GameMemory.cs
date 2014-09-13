@@ -13,7 +13,8 @@ namespace LiveSplit.Skyrim
         public enum SplitArea : int
         {
             Helgen,
-            AlduinDefeated,
+            HailSithisCompleted,
+            AlduinDefeated
         }
 
         public event EventHandler OnFirstLevelLoading;
@@ -37,6 +38,7 @@ namespace LiveSplit.Skyrim
         private DeepPointer _world_XPtr;
         private DeepPointer _world_YPtr;
         private DeepPointer _isAlduinDefeatedPtr;
+        private DeepPointer _isHailSithisCompleted;
 
         private enum ExpectedDllSizes
         {
@@ -44,10 +46,20 @@ namespace LiveSplit.Skyrim
             SkyrimCracked = 26771456,
         }
 
-        private bool[] splitStates = new bool[(int)SplitArea.AlduinDefeated + 1];
+        public bool[] splitStates { get; set; }
+                
+        public void resetSplitStates()
+        {
+            for (int i = 0; i <= (int)SplitArea.AlduinDefeated; i++)
+            {
+                splitStates[i] = false;
+            }
+        }
 
         public GameMemory()
         {
+            splitStates = new bool[(int)SplitArea.AlduinDefeated + 1];
+
             // Loads
             _isLoadingPtr = new DeepPointer(0x17337CC); // == 1 if a load is happening (any except loading screens in Helgen for some reason)
             _isLoadingScreenPtr = new DeepPointer(0xEE3561); // == 1 if in a loading screen
@@ -61,6 +73,7 @@ namespace LiveSplit.Skyrim
 
             // Game state
             _isAlduinDefeatedPtr = new DeepPointer(0x1711608); // == 1 when last blow is struck on alduin
+            _isHailSithisCompleted = new DeepPointer(0x00EE6C34, 0xEF0); // == 1 once Hail Sithis quest is completed
             // _playerHasControlPtr = new DeepPointer(0x74814710); // == 1 when player has full control
 
             resetSplitStates();
@@ -95,19 +108,6 @@ namespace LiveSplit.Skyrim
             _thread.Wait();
         }
 
-        public void setSplitState(SplitArea split, bool value)
-        {
-            splitStates[(int)split] = value;
-        }
-
-        public void resetSplitStates()
-        {
-            for (int i = 0; i <= (int)SplitArea.AlduinDefeated; i++)
-            {
-                splitStates[i] = false;
-            }
-        }
-
         void MemoryReadThread()
         {
             Trace.WriteLine("[NoLoads] MemoryReadThread");
@@ -135,6 +135,7 @@ namespace LiveSplit.Skyrim
                     bool prevIsLoading = false;
                     bool prevIsLoadingScreen = false;
                     bool prevIsAlduinDefeated = false;
+                    bool prevIsHailSithisCompleted = false;
                     bool prevIsInLoadScreenFadeOut = false;
 
                     bool loadingStarted = false;
@@ -167,6 +168,9 @@ namespace LiveSplit.Skyrim
 
                         bool isAlduinDefeated;
                         _isAlduinDefeatedPtr.Deref(game, out isAlduinDefeated);
+
+                        bool isHailSithisCompleted;
+                        _isHailSithisCompleted.Deref(game, out isHailSithisCompleted);
 
                         if (isLoading != prevIsLoading)
                         {
@@ -221,7 +225,7 @@ namespace LiveSplit.Skyrim
                                 // }, null);
 
                                 // if loadscreen starts while leaving helgen
-                                if (!isInTamriel && world_X == -2 && world_Y == -5 && !splitStates[(int)SplitArea.Helgen])
+                                if (!isInTamriel && world_X == -2 && world_Y == -5)
                                 {
                                     // Helgen split
                                     Trace.WriteLine(String.Format("[NoLoads] Helgen Split - {0}", frameCounter));
@@ -282,7 +286,7 @@ namespace LiveSplit.Skyrim
                         }
 
                         // if alduin is defeated in sovngarde
-                        if (isAlduinDefeated != prevIsAlduinDefeated && isAlduinDefeated && !splitStates[(int)SplitArea.AlduinDefeated]
+                        if (isAlduinDefeated != prevIsAlduinDefeated && isAlduinDefeated
                             && !isInTamriel && ((world_X == 15 && world_Y == 19) || (world_X == 15 && world_Y == 20)))
                         {
                             // AlduinDefeated split
@@ -296,9 +300,29 @@ namespace LiveSplit.Skyrim
                             }, null);
                         }
 
+                        // ======DEBUG======
+                        if (isHailSithisCompleted != prevIsHailSithisCompleted)
+                            Trace.WriteLine(String.Format("isHailSithisCompleted: {0}", isHailSithisCompleted));
+                        // =================
+
+                        // if Hail Sithis quest is completed
+                        if (isHailSithisCompleted != prevIsHailSithisCompleted && isHailSithisCompleted && !isInTamriel)
+                        {
+                            // HailSithisCompleted split
+                            Trace.WriteLine(String.Format("[NoLoads] HailSithisCompleted Split - {0}", frameCounter));
+                            _uiThread.Post(d =>
+                            {
+                                if (this.OnSplitCompleted != null)
+                                {
+                                    this.OnSplitCompleted(this, SplitArea.HailSithisCompleted);
+                                }
+                            }, null);
+                        }
+
                         prevIsLoading = isLoading;
                         prevIsLoadingScreen = isLoadingScreen;
                         prevIsAlduinDefeated = isAlduinDefeated;
+                        prevIsHailSithisCompleted = isHailSithisCompleted;
                         prevIsInLoadScreenFadeOut = isInLoadScreenFadeOut;
                         frameCounter++;
 

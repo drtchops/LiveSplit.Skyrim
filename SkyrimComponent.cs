@@ -113,7 +113,7 @@ namespace LiveSplit.Skyrim
 
         void gameMemory_OnFirstLevelLoading(object sender, EventArgs e)
         {
-            if (this.Settings.AutoStartEnd)
+            if (this.Settings.AutoStart)
             {
                 _timer.Reset();
             }
@@ -121,7 +121,7 @@ namespace LiveSplit.Skyrim
 
         void gameMemory_OnPlayerGainedControl(object sender, EventArgs e)
         {
-            if (this.Settings.AutoStartEnd)
+            if (this.Settings.AutoStart)
             {
                 _timer.Start();
             }
@@ -149,11 +149,13 @@ namespace LiveSplit.Skyrim
 
         void gameMemory_OnSplitCompleted(object sender, GameMemory.SplitArea split)
         {
-            if ((split == GameMemory.SplitArea.Helgen && this.Settings.Helgen) ||
-                (split == GameMemory.SplitArea.AlduinDefeated && this.Settings.AutoStartEnd))
+            if (!_gameMemory.splitStates[(int)split] &&
+                ((split == GameMemory.SplitArea.Helgen && this.Settings.Helgen) ||
+                (split == GameMemory.SplitArea.HailSithisCompleted && this.Settings.HailSithis) ||
+                (split == GameMemory.SplitArea.AlduinDefeated && this.Settings.AlduinDefeated)))
             {
                 _timer.Split();
-                _gameMemory.setSplitState(split, true);
+                _gameMemory.splitStates[(int)split] = true;
             }
         }
 

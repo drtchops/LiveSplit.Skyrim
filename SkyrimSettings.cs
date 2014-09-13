@@ -8,25 +8,32 @@ namespace LiveSplit.Skyrim
     public partial class SkyrimSettings : UserControl
     {
         public bool DrawWithoutLoads { get; set; }
-        public bool AutoStartEnd { get; set; }
+        public bool AutoStart { get; set; }
+        public bool AlduinDefeated { get; set; }
         public bool Helgen { get; set; }
+        public bool HailSithis { get; set; }
 
         private const bool DEFAULT_DRAWWITHOUTLOADS = true;
-        private const bool DEFAULT_AUTOSTARTENED = true;
+        private const bool DEFAULT_AUTOSTART = true;
+        private const bool DEFAULT_ALDUINDEFEATED = true;
         private const bool DEFAULT_HELGEN = false;
+        private const bool DEFAULT_HAILSITHIS = false;
 
         public SkyrimSettings()
         {
             InitializeComponent();
 
             this.chkDisplayWithoutLoads.DataBindings.Add("Checked", this, "DrawWithoutLoads", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.chkAutoStartEnd.DataBindings.Add("Checked", this, "AutoStartEnd", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkAutoStart.DataBindings.Add("Checked", this, "AutoStart", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkAlduinDefeated.DataBindings.Add("Checked", this, "AlduinDefeated", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkHelgen.DataBindings.Add("Checked", this, "Helgen", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkHailSithis.DataBindings.Add("Checked", this, "HailSithis", false, DataSourceUpdateMode.OnPropertyChanged);
 
             // defaults
             this.DrawWithoutLoads = DEFAULT_DRAWWITHOUTLOADS;
-            this.AutoStartEnd = DEFAULT_AUTOSTARTENED;
+            this.AutoStart = DEFAULT_AUTOSTART;
             this.Helgen = DEFAULT_HELGEN;
+            this.HailSithis = DEFAULT_HAILSITHIS;
         }
 
         public XmlNode GetSettings(XmlDocument doc)
@@ -36,8 +43,10 @@ namespace LiveSplit.Skyrim
             settingsNode.AppendChild(ToElement(doc, "Version", Assembly.GetExecutingAssembly().GetName().Version.ToString(3)));
 
             settingsNode.AppendChild(ToElement(doc, "DrawWithoutLoads", this.DrawWithoutLoads));
-            settingsNode.AppendChild(ToElement(doc, "AutoStartEnd", this.AutoStartEnd));
+            settingsNode.AppendChild(ToElement(doc, "AutoStart", this.AutoStart));
+            settingsNode.AppendChild(ToElement(doc, "AlduinDefeated", this.AlduinDefeated));
             settingsNode.AppendChild(ToElement(doc, "Helgen", this.Helgen));
+            settingsNode.AppendChild(ToElement(doc, "HailSithis", this.HailSithis));
 
             return settingsNode;
         }
@@ -45,8 +54,10 @@ namespace LiveSplit.Skyrim
         public void SetSettings(XmlNode settings)
         {
             this.DrawWithoutLoads = ParseBool(settings, "DrawWithoutLoads", DEFAULT_DRAWWITHOUTLOADS);
-            this.AutoStartEnd = ParseBool(settings, "AutoStartEnd", DEFAULT_AUTOSTARTENED);
+            this.AutoStart = ParseBool(settings, "AutoStart", DEFAULT_AUTOSTART);
+            this.AlduinDefeated = ParseBool(settings, "AlduinDefeated", DEFAULT_ALDUINDEFEATED);
             this.Helgen = ParseBool(settings, "Helgen", DEFAULT_HELGEN);
+            this.HailSithis = ParseBool(settings, "HailSithis", DEFAULT_HAILSITHIS);
         }
 
         static bool ParseBool(XmlNode settings, string setting, bool default_ = false)
