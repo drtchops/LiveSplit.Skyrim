@@ -32,6 +32,7 @@ namespace LiveSplit.Skyrim
             // defaults
             this.DrawWithoutLoads = DEFAULT_DRAWWITHOUTLOADS;
             this.AutoStart = DEFAULT_AUTOSTART;
+            this.AlduinDefeated = DEFAULT_ALDUINDEFEATED;
             this.Helgen = DEFAULT_HELGEN;
             this.HailSithis = DEFAULT_HAILSITHIS;
         }

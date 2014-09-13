@@ -301,12 +301,12 @@ namespace LiveSplit.Skyrim
                         }
 
                         // ======DEBUG======
-                        if (isHailSithisCompleted != prevIsHailSithisCompleted)
+                        //if (isHailSithisCompleted != prevIsHailSithisCompleted)
                             Trace.WriteLine(String.Format("isHailSithisCompleted: {0}", isHailSithisCompleted));
                         // =================
 
                         // if Hail Sithis quest is completed
-                        if (isHailSithisCompleted != prevIsHailSithisCompleted && isHailSithisCompleted && !isInTamriel)
+                        if (isHailSithisCompleted != prevIsHailSithisCompleted && isHailSithisCompleted)
                         {
                             // HailSithisCompleted split
                             Trace.WriteLine(String.Format("[NoLoads] HailSithisCompleted Split - {0}", frameCounter));
