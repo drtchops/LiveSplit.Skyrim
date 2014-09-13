@@ -73,7 +73,7 @@ namespace LiveSplit.Skyrim
 
             // Game state
             _isAlduinDefeatedPtr = new DeepPointer(0x1711608); // == 1 when last blow is struck on alduin
-            _isHailSithisCompleted = new DeepPointer(0x00EE6C34, 0xEF0); // == 1 once Hail Sithis quest is completed
+            _isHailSithisCompleted = new DeepPointer(0x00EE6C34, 0x3F0); // == 1 once Hail Sithis quest is completed
             // _playerHasControlPtr = new DeepPointer(0x74814710); // == 1 when player has full control
 
             resetSplitStates();
@@ -299,11 +299,6 @@ namespace LiveSplit.Skyrim
                                 }
                             }, null);
                         }
-
-                        // ======DEBUG======
-                        //if (isHailSithisCompleted != prevIsHailSithisCompleted)
-                            Trace.WriteLine(String.Format("isHailSithisCompleted: {0}", isHailSithisCompleted));
-                        // =================
 
                         // if Hail Sithis quest is completed
                         if (isHailSithisCompleted != prevIsHailSithisCompleted && isHailSithisCompleted)
