@@ -14,6 +14,9 @@ namespace LiveSplit.Skyrim
         {
             Helgen,
             HailSithisCompleted,
+            GloryOfTheDeadCompleted,
+            UnderNewManagenementCompleted,
+            TheEyeOfMagnusCompleted,
             AlduinDefeated
         }
 
@@ -38,7 +41,9 @@ namespace LiveSplit.Skyrim
         private DeepPointer _world_XPtr;
         private DeepPointer _world_YPtr;
         private DeepPointer _isAlduinDefeatedPtr;
-        private DeepPointer _isHailSithisCompleted;
+        private DeepPointer _guildsCompleted;
+        private DeepPointer _isGloryOfTheDeadCompleted;
+        private DeepPointer _isTheEyeOfMagnusCompleted;
 
         private enum ExpectedDllSizes
         {
@@ -73,7 +78,9 @@ namespace LiveSplit.Skyrim
 
             // Game state
             _isAlduinDefeatedPtr = new DeepPointer(0x1711608); // == 1 when last blow is struck on alduin
-            _isHailSithisCompleted = new DeepPointer(0x00EE6C34, 0x3F0); // == 1 once Hail Sithis quest is completed
+            _guildsCompleted = new DeepPointer(0x00EE6C34, 0x3F0); // == 1 once Hail Sithis quest is completed
+            _isGloryOfTheDeadCompleted = new DeepPointer(0x00EE6C34, 0x378);
+            _isTheEyeOfMagnusCompleted = new DeepPointer(0x0172E2DC, 0x13c);
             // _playerHasControlPtr = new DeepPointer(0x74814710); // == 1 when player has full control
 
             resetSplitStates();
@@ -135,7 +142,9 @@ namespace LiveSplit.Skyrim
                     bool prevIsLoading = false;
                     bool prevIsLoadingScreen = false;
                     bool prevIsAlduinDefeated = false;
-                    bool prevIsHailSithisCompleted = false;
+                    int prevGuildsCompleted = 0;
+                    bool prevIsGloryOfTheDeadCompleted = false;
+                    bool prevIsTheEyeOfMagnusCompleted = false;
                     bool prevIsInLoadScreenFadeOut = false;
 
                     bool loadingStarted = false;
@@ -169,8 +178,14 @@ namespace LiveSplit.Skyrim
                         bool isAlduinDefeated;
                         _isAlduinDefeatedPtr.Deref(game, out isAlduinDefeated);
 
-                        bool isHailSithisCompleted;
-                        _isHailSithisCompleted.Deref(game, out isHailSithisCompleted);
+                        int guildsCompleted;
+                        _guildsCompleted.Deref(game, out guildsCompleted);
+
+                        bool isGloryOfTheDeadCompleted;
+                        _isGloryOfTheDeadCompleted.Deref(game, out isGloryOfTheDeadCompleted);
+
+                        bool isTheEyeOfMagnusCompleted;
+                        _isTheEyeOfMagnusCompleted.Deref(game, out isTheEyeOfMagnusCompleted);
 
                         if (isLoading != prevIsLoading)
                         {
@@ -300,16 +315,45 @@ namespace LiveSplit.Skyrim
                             }, null);
                         }
 
-                        // if Hail Sithis quest is completed
-                        if (isHailSithisCompleted != prevIsHailSithisCompleted && isHailSithisCompleted)
+                        // if a guild is completed
+                        if (guildsCompleted != prevGuildsCompleted)
                         {
-                            // HailSithisCompleted split
-                            Trace.WriteLine(String.Format("[NoLoads] HailSithisCompleted Split - {0}", frameCounter));
+                            // while in dawnstar sanctuary
+                            if (!isInTamriel && world_X == 7 && world_Y == 27)
+                            {
+                                Trace.WriteLine(String.Format("[NoLoads] HailSithisCompleted Split - {0}", frameCounter));
+                                _uiThread.Post(d =>
+                                {
+                                    if (this.OnSplitCompleted != null)
+                                    {
+                                        this.OnSplitCompleted(this, SplitArea.HailSithisCompleted);
+                                    }
+                                }, null);
+                            }
+                        }
+
+                        // if Glory Of The Dead quest is completed
+                        if (isGloryOfTheDeadCompleted != prevIsGloryOfTheDeadCompleted && isGloryOfTheDeadCompleted)
+                        {
+                            Trace.WriteLine(String.Format("[NoLoads] GloryOfTheDeadCompleted Split - {0}", frameCounter));
                             _uiThread.Post(d =>
                             {
                                 if (this.OnSplitCompleted != null)
                                 {
-                                    this.OnSplitCompleted(this, SplitArea.HailSithisCompleted);
+                                    this.OnSplitCompleted(this, SplitArea.GloryOfTheDeadCompleted);
+                                }
+                            }, null);
+                        }
+
+                        // if The Eye of Magnus quest is completed
+                        if (isTheEyeOfMagnusCompleted != prevIsTheEyeOfMagnusCompleted && isTheEyeOfMagnusCompleted)
+                        {
+                            Trace.WriteLine(String.Format("[NoLoads] TheEyeOfMagnusCompleted Split - {0}", frameCounter));
+                            _uiThread.Post(d =>
+                            {
+                                if (this.OnSplitCompleted != null)
+                                {
+                                    this.OnSplitCompleted(this, SplitArea.TheEyeOfMagnusCompleted);
                                 }
                             }, null);
                         }
@@ -317,7 +361,9 @@ namespace LiveSplit.Skyrim
                         prevIsLoading = isLoading;
                         prevIsLoadingScreen = isLoadingScreen;
                         prevIsAlduinDefeated = isAlduinDefeated;
-                        prevIsHailSithisCompleted = isHailSithisCompleted;
+                        prevGuildsCompleted = guildsCompleted;
+                        prevIsGloryOfTheDeadCompleted = isGloryOfTheDeadCompleted;
+                        prevIsTheEyeOfMagnusCompleted = isTheEyeOfMagnusCompleted;
                         prevIsInLoadScreenFadeOut = isInLoadScreenFadeOut;
                         frameCounter++;
 

@@ -152,6 +152,9 @@ namespace LiveSplit.Skyrim
             if (!_gameMemory.splitStates[(int)split] &&
                 ((split == GameMemory.SplitArea.Helgen && this.Settings.Helgen) ||
                 (split == GameMemory.SplitArea.HailSithisCompleted && this.Settings.HailSithis) ||
+                (split == GameMemory.SplitArea.GloryOfTheDeadCompleted && this.Settings.GloryOfTheDead) ||
+                (split == GameMemory.SplitArea.TheEyeOfMagnusCompleted && this.Settings.TheEyeofMagnus) ||
+                (split == GameMemory.SplitArea.UnderNewManagenementCompleted && this.Settings.UnderNewManagement) ||
                 (split == GameMemory.SplitArea.AlduinDefeated && this.Settings.AlduinDefeated)))
             {
                 _timer.Split();
