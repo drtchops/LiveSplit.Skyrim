@@ -229,7 +229,6 @@
             // chkUnderNewManagement
             // 
             this.chkUnderNewManagement.AutoSize = true;
-            this.chkUnderNewManagement.Enabled = false;
             this.chkUnderNewManagement.Location = new System.Drawing.Point(3, 95);
             this.chkUnderNewManagement.Name = "chkUnderNewManagement";
             this.chkUnderNewManagement.Size = new System.Drawing.Size(394, 17);

@@ -4,7 +4,7 @@
     <CheatEntry>
       <ID>0</ID>
       <Description>"isPaused"</Description>
-      <LastState Value="0" Activated="0" RealAddress="01B2E85F"/>
+      <LastState Value="1" Activated="0" RealAddress="01B2E85F"/>
       <Color>80000008</Color>
       <VariableType>Byte</VariableType>
       <Address>"TESV.exe"+172E85F</Address>
@@ -28,7 +28,7 @@
     <CheatEntry>
       <ID>4</ID>
       <Description>"AreHandsTied?"</Description>
-      <LastState Value="0" Activated="0" RealAddress="01B2EE2C"/>
+      <LastState Value="1" Activated="0" RealAddress="01B2EE2C"/>
       <Color>80000008</Color>
       <VariableType>Byte</VariableType>
       <Address>TESV.exe+172EE2C</Address>
@@ -52,7 +52,7 @@
     <CheatEntry>
       <ID>9</ID>
       <Description>"X world coord"</Description>
-      <LastState Value="0" Activated="0" RealAddress="201B4984"/>
+      <LastState Value="3" Activated="0" RealAddress="201B4984"/>
       <Color>80000008</Color>
       <VariableType>4 Bytes</VariableType>
       <Address>"TESV.exe"+0172E864</Address>
@@ -63,7 +63,7 @@
     <CheatEntry>
       <ID>11</ID>
       <Description>"Y world coord"</Description>
-      <LastState Value="-1" Activated="0" RealAddress="201B4988"/>
+      <LastState Value="-20" Activated="0" RealAddress="201B4988"/>
       <Color>80000008</Color>
       <VariableType>4 Bytes</VariableType>
       <Address>"TESV.exe"+0172E864</Address>
@@ -82,7 +82,7 @@
     <CheatEntry>
       <ID>20</ID>
       <Description>"guildsCompleted"</Description>
-      <LastState Value="2" Activated="0" RealAddress="12A20F40"/>
+      <LastState Value="0" Activated="0" RealAddress="10823CD0"/>
       <Color>80000008</Color>
       <VariableType>4 Bytes</VariableType>
       <Address>"TESV.exe"+00EE6C34</Address>
@@ -93,7 +93,7 @@
     <CheatEntry>
       <ID>23</ID>
       <Description>"isGloryOfTheDeadCompleted"</Description>
-      <LastState Value="1" Activated="0" RealAddress="12A20EC8"/>
+      <LastState Value="0" Activated="0" RealAddress="10823C58"/>
       <Color>80000008</Color>
       <VariableType>Byte</VariableType>
       <Address>"TESV.exe"+00EE6C34</Address>
@@ -104,12 +104,27 @@
     <CheatEntry>
       <ID>25</ID>
       <Description>"isTheEyeOfMagnusCompleted"</Description>
-      <LastState Value="0" Activated="0" RealAddress="1229EDC4"/>
+      <LastState Value="0" Activated="0" RealAddress="122A6CC4"/>
       <Color>80000008</Color>
       <VariableType>Byte</VariableType>
       <Address>"TESV.exe"+0172E2DC</Address>
       <Offsets>
         <Offset>13C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26</ID>
+      <Description>"Location ID"</Description>
+      <LastState Value="00016BD0" Activated="0" RealAddress="201BE5AC"/>
+      <ShowAsHex>1</ShowAsHex>
+      <Color>80000008</Color>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"TESV.exe"+01738308</Address>
+      <Offsets>
+        <Offset>EC</Offset>
+        <Offset>670</Offset>
+        <Offset>78</Offset>
+        <Offset>4</Offset>
       </Offsets>
     </CheatEntry>
   </CheatEntries>
