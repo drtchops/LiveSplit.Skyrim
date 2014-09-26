@@ -160,6 +160,7 @@ namespace LiveSplit.Skyrim
 
                     bool loadingStarted = false;
                     bool loadingScreenStarted = false;
+                    bool helgenFadeoutStarted = false;
 
                     while (!game.HasExited)
                     {
@@ -284,30 +285,44 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        // if loadscreen fadeout finishes in helgen
-                        if (isInLoadScreenFadeOut != prevIsInLoadScreenFadeOut && locationID == (int)Locations.Tamriel && world_X == 3 && world_Y == -20)
+                        if (isInLoadScreenFadeOut != prevIsInLoadScreenFadeOut)
                         {
-                            if (!isInLoadScreenFadeOut && prevIsInLoadScreenFadeOut)
+                            if(isInLoadScreenFadeOut)
                             {
-                                // reset
-                                Trace.WriteLine(String.Format("[NoLoads] Reset - {0}", frameCounter));
-                                _uiThread.Post(d =>
+                                Trace.WriteLine(String.Format("[NoLoads] Fadeout started - {0}", frameCounter));
+                                if (isLoadingScreen)
                                 {
-                                    if (this.OnFirstLevelLoading != null)
+                                    helgenFadeoutStarted = true;
+                                }
+                            }
+                            else
+                            {
+                                Trace.WriteLine(String.Format("[NoLoads] Fadeout ended - {0}", frameCounter));
+                                // if loadscreen fadeout finishes in helgen
+                                if (prevIsInLoadScreenFadeOut && helgenFadeoutStarted
+                                    && locationID == (int)Locations.Tamriel && world_X == 3 && world_Y == -20)
+                                {
+                                    // reset
+                                    Trace.WriteLine(String.Format("[NoLoads] Reset - {0}", frameCounter));
+                                    _uiThread.Post(d =>
                                     {
-                                        this.OnFirstLevelLoading(this, EventArgs.Empty);
-                                    }
-                                }, null);
+                                        if (this.OnFirstLevelLoading != null)
+                                        {
+                                            this.OnFirstLevelLoading(this, EventArgs.Empty);
+                                        }
+                                    }, null);
 
-                                // start
-                                Trace.WriteLine(String.Format("[NoLoads] Start - {0}", frameCounter));
-                                _uiThread.Post(d =>
-                                {
-                                    if (this.OnPlayerGainedControl != null)
+                                    // start
+                                    Trace.WriteLine(String.Format("[NoLoads] Start - {0}", frameCounter));
+                                    _uiThread.Post(d =>
                                     {
-                                        this.OnPlayerGainedControl(this, EventArgs.Empty);
-                                    }
-                                }, null);
+                                        if (this.OnPlayerGainedControl != null)
+                                        {
+                                            this.OnPlayerGainedControl(this, EventArgs.Empty);
+                                        }
+                                    }, null);
+                                }
+                                helgenFadeoutStarted = false;
                             }
                         }
 
