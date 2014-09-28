@@ -25,10 +25,6 @@ namespace LiveSplit.Skyrim
         private const bool DEFAULT_UNDERNEWMANAGEMENT = false;
         private const bool DEFAULT_THEEYEOFMAGNUS = false;
 
-        private const bool DEFAULT_DRAWWITHOUTLOADS = true;
-        private const bool DEFAULT_AUTOSTARTENED = true;
-        private const bool DEFAULT_HELGEN = false;
-
         public SkyrimSettings()
         {
             InitializeComponent();
