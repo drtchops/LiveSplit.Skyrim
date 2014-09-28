@@ -63,7 +63,7 @@ namespace LiveSplit.Skyrim
         }
 
         public bool[] splitStates { get; set; }
-                
+
         public void resetSplitStates()
         {
             for (int i = 0; i <= (int)SplitArea.AlduinDefeated; i++)
