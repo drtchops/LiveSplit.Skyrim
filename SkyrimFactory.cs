@@ -41,7 +41,9 @@ namespace LiveSplit.Skyrim
             {
                 // "autosplit components" can't throw exceptions for some reason, so return a dummy component
                 if (callercaller == "CreateAutoSplitter")
+                {
                     return new DummyComponent();
+                }
 
                 MessageBox.Show(
                     "LiveSplit.Skyrim is already loaded in the " +

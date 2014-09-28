@@ -13,7 +13,11 @@ namespace LiveSplit.Skyrim
         public enum SplitArea : int
         {
             Helgen,
-            AlduinDefeated,
+            HailSithisCompleted,
+            GloryOfTheDeadCompleted,
+            UnderNewManagenementCompleted,
+            TheEyeOfMagnusCompleted,
+            AlduinDefeated
         }
 
         public event EventHandler OnFirstLevelLoading;
@@ -33,10 +37,24 @@ namespace LiveSplit.Skyrim
         private DeepPointer _isLoadingPtr;
         private DeepPointer _isLoadingScreenPtr;
         private DeepPointer _isInLoadScreenFadeOutPtr;
-        private DeepPointer _isInTamriel;
+        private DeepPointer _locationID;
         private DeepPointer _world_XPtr;
         private DeepPointer _world_YPtr;
         private DeepPointer _isAlduinDefeatedPtr;
+        private DeepPointer _guildsCompleted;
+        private DeepPointer _isGloryOfTheDeadCompleted;
+        private DeepPointer _isTheEyeOfMagnusCompleted;
+
+        private enum Locations
+        {
+            Tamriel = 0x0000003C,
+            Sovngarde = 0x0002EE41,
+            HelgenKeep01 = 0x0005DE24,
+            DawnstarSanctuary = 0x000193EE,
+            ThievesGuildHQ = 0x00016BD0,
+            YsgramorsTomb = 0x00015254,
+            HallOfTheElements = 0x0001380E
+        }
 
         private enum ExpectedDllSizes
         {
@@ -44,10 +62,20 @@ namespace LiveSplit.Skyrim
             SkyrimCracked = 26771456,
         }
 
-        private bool[] splitStates = new bool[(int)SplitArea.AlduinDefeated + 1];
+        public bool[] splitStates { get; set; }
+
+        public void resetSplitStates()
+        {
+            for (int i = 0; i <= (int)SplitArea.AlduinDefeated; i++)
+            {
+                splitStates[i] = false;
+            }
+        }
 
         public GameMemory()
         {
+            splitStates = new bool[(int)SplitArea.AlduinDefeated + 1];
+
             // Loads
             _isLoadingPtr = new DeepPointer(0x17337CC); // == 1 if a load is happening (any except loading screens in Helgen for some reason)
             _isLoadingScreenPtr = new DeepPointer(0xEE3561); // == 1 if in a loading screen
@@ -55,12 +83,15 @@ namespace LiveSplit.Skyrim
             _isInLoadScreenFadeOutPtr = new DeepPointer(0x172EE2E); // == 1 from the fade out of a loading, it goes back to 0 once control is gained
 
             // Position
-            _isInTamriel = new DeepPointer(0x173815C); // == 1 if the player is in the Tamriel world space
+            _locationID = new DeepPointer(0x01738308, 0x4, 0x78, 0x670, 0xEC); // ID of the current location (see http://steamcommunity.com/sharedfiles/filedetails/?id=148834641 or http://www.skyrimsearch.com/cells.php)
             _world_XPtr = new DeepPointer(0x0172E864, 0x64); // X world position (cell)
             _world_YPtr = new DeepPointer(0x0172E864, 0x68); // Y world position (cell)
 
             // Game state
             _isAlduinDefeatedPtr = new DeepPointer(0x1711608); // == 1 when last blow is struck on alduin
+            _guildsCompleted = new DeepPointer(0x00EE6C34, 0x3F0); // == 1 once Hail Sithis quest is completed
+            _isGloryOfTheDeadCompleted = new DeepPointer(0x00EE6C34, 0x378);
+            _isTheEyeOfMagnusCompleted = new DeepPointer(0x0172E2DC, 0x13c);
             // _playerHasControlPtr = new DeepPointer(0x74814710); // == 1 when player has full control
 
             resetSplitStates();
@@ -95,19 +126,6 @@ namespace LiveSplit.Skyrim
             _thread.Wait();
         }
 
-        public void setSplitState(SplitArea split, bool value)
-        {
-            splitStates[(int)split] = value;
-        }
-
-        public void resetSplitStates()
-        {
-            for (int i = 0; i <= (int)SplitArea.AlduinDefeated; i++)
-            {
-                splitStates[i] = false;
-            }
-        }
-
         void MemoryReadThread()
         {
             Trace.WriteLine("[NoLoads] MemoryReadThread");
@@ -135,10 +153,14 @@ namespace LiveSplit.Skyrim
                     bool prevIsLoading = false;
                     bool prevIsLoadingScreen = false;
                     bool prevIsAlduinDefeated = false;
+                    int prevGuildsCompleted = 0;
+                    bool prevIsGloryOfTheDeadCompleted = false;
+                    bool prevIsTheEyeOfMagnusCompleted = false;
                     bool prevIsInLoadScreenFadeOut = false;
 
                     bool loadingStarted = false;
                     bool loadingScreenStarted = false;
+                    bool helgenFadeoutStarted = false;
 
                     while (!game.HasExited)
                     {
@@ -156,8 +178,8 @@ namespace LiveSplit.Skyrim
                         bool isInLoadScreenFadeOut;
                         _isInLoadScreenFadeOutPtr.Deref(game, out isInLoadScreenFadeOut);
 
-                        bool isInTamriel;
-                        _isInTamriel.Deref(game, out isInTamriel);
+                        int locationID;
+                        _locationID.Deref(game, out locationID);
 
                         int world_X;
                         _world_XPtr.Deref(game, out world_X);
@@ -167,6 +189,15 @@ namespace LiveSplit.Skyrim
 
                         bool isAlduinDefeated;
                         _isAlduinDefeatedPtr.Deref(game, out isAlduinDefeated);
+
+                        int guildsCompleted;
+                        _guildsCompleted.Deref(game, out guildsCompleted);
+
+                        bool isGloryOfTheDeadCompleted;
+                        _isGloryOfTheDeadCompleted.Deref(game, out isGloryOfTheDeadCompleted);
+
+                        bool isTheEyeOfMagnusCompleted;
+                        _isTheEyeOfMagnusCompleted.Deref(game, out isTheEyeOfMagnusCompleted);
 
                         if (isLoading != prevIsLoading)
                         {
@@ -221,7 +252,7 @@ namespace LiveSplit.Skyrim
                                 // }, null);
 
                                 // if loadscreen starts while leaving helgen
-                                if (!isInTamriel && world_X == -2 && world_Y == -5 && !splitStates[(int)SplitArea.Helgen])
+                                if (locationID == (int)Locations.HelgenKeep01)
                                 {
                                     // Helgen split
                                     Trace.WriteLine(String.Format("[NoLoads] Helgen Split - {0}", frameCounter));
@@ -254,36 +285,49 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        // if loadscreen fadeout finishes in helgen
-                        if (isInLoadScreenFadeOut != prevIsInLoadScreenFadeOut && isInTamriel && world_X == 3 && world_Y == -20)
+                        if (isInLoadScreenFadeOut != prevIsInLoadScreenFadeOut)
                         {
-                            if (!isInLoadScreenFadeOut && prevIsInLoadScreenFadeOut)
+                            if(isInLoadScreenFadeOut)
                             {
-                                // reset
-                                Trace.WriteLine(String.Format("[NoLoads] Reset - {0}", frameCounter));
-                                _uiThread.Post(d =>
+                                Trace.WriteLine(String.Format("[NoLoads] Fadeout started - {0}", frameCounter));
+                                if (isLoadingScreen)
                                 {
-                                    if (this.OnFirstLevelLoading != null)
+                                    helgenFadeoutStarted = true;
+                                }
+                            }
+                            else
+                            {
+                                Trace.WriteLine(String.Format("[NoLoads] Fadeout ended - {0}", frameCounter));
+                                // if loadscreen fadeout finishes in helgen
+                                if (prevIsInLoadScreenFadeOut && helgenFadeoutStarted
+                                    && locationID == (int)Locations.Tamriel && world_X == 3 && world_Y == -20)
+                                {
+                                    // reset
+                                    Trace.WriteLine(String.Format("[NoLoads] Reset - {0}", frameCounter));
+                                    _uiThread.Post(d =>
                                     {
-                                        this.OnFirstLevelLoading(this, EventArgs.Empty);
-                                    }
-                                }, null);
+                                        if (this.OnFirstLevelLoading != null)
+                                        {
+                                            this.OnFirstLevelLoading(this, EventArgs.Empty);
+                                        }
+                                    }, null);
 
-                                // start
-                                Trace.WriteLine(String.Format("[NoLoads] Start - {0}", frameCounter));
-                                _uiThread.Post(d =>
-                                {
-                                    if (this.OnPlayerGainedControl != null)
+                                    // start
+                                    Trace.WriteLine(String.Format("[NoLoads] Start - {0}", frameCounter));
+                                    _uiThread.Post(d =>
                                     {
-                                        this.OnPlayerGainedControl(this, EventArgs.Empty);
-                                    }
-                                }, null);
+                                        if (this.OnPlayerGainedControl != null)
+                                        {
+                                            this.OnPlayerGainedControl(this, EventArgs.Empty);
+                                        }
+                                    }, null);
+                                }
+                                helgenFadeoutStarted = false;
                             }
                         }
 
                         // if alduin is defeated in sovngarde
-                        if (isAlduinDefeated != prevIsAlduinDefeated && isAlduinDefeated && !splitStates[(int)SplitArea.AlduinDefeated]
-                            && !isInTamriel && ((world_X == 15 && world_Y == 19) || (world_X == 15 && world_Y == 20)))
+                        if (isAlduinDefeated != prevIsAlduinDefeated && isAlduinDefeated && locationID == (int)Locations.Sovngarde)
                         {
                             // AlduinDefeated split
                             Trace.WriteLine(String.Format("[NoLoads] AlduinDefeated Split - {0}", frameCounter));
@@ -296,9 +340,65 @@ namespace LiveSplit.Skyrim
                             }, null);
                         }
 
+                        // if a guild is completed
+                        if (guildsCompleted == prevGuildsCompleted + 1)
+                        {
+                            // while in Dawnstar's Sanctuary
+                            if (locationID == (int)Locations.DawnstarSanctuary)
+                            {
+                                Trace.WriteLine(String.Format("[NoLoads] HailSithisCompleted Split - {0}", frameCounter));
+                                _uiThread.Post(d =>
+                                {
+                                    if (this.OnSplitCompleted != null)
+                                    {
+                                        this.OnSplitCompleted(this, SplitArea.HailSithisCompleted);
+                                    }
+                                }, null);
+                            }
+                            // while in the Thieves Guild Headquarters
+                            else if (locationID == (int)Locations.ThievesGuildHQ)
+                            {
+                                Trace.WriteLine(String.Format("[NoLoads] UnderNewManagenementCompleted Split - {0}", frameCounter));
+                                _uiThread.Post(d =>
+                                {
+                                    if (this.OnSplitCompleted != null)
+                                    {
+                                        this.OnSplitCompleted(this, SplitArea.UnderNewManagenementCompleted);
+                                    }
+                                }, null);
+                            }
+                            // while in Ysgramor's Tomb
+                            else if (locationID == (int)Locations.YsgramorsTomb)
+                            {
+                                Trace.WriteLine(String.Format("[NoLoads] GloryOfTheDeadCompleted Split - {0}", frameCounter));
+                                _uiThread.Post(d =>
+                                {
+                                    if (this.OnSplitCompleted != null)
+                                    {
+                                        this.OnSplitCompleted(this, SplitArea.GloryOfTheDeadCompleted);
+                                    }
+                                }, null);
+                            }
+                            // while in the Hall of the Elements
+                            else if (locationID == (int)Locations.HallOfTheElements)
+                            {
+                                Trace.WriteLine(String.Format("[NoLoads] TheEyeOfMagnusCompleted Split - {0}", frameCounter));
+                                _uiThread.Post(d =>
+                                {
+                                    if (this.OnSplitCompleted != null)
+                                    {
+                                        this.OnSplitCompleted(this, SplitArea.TheEyeOfMagnusCompleted);
+                                    }
+                                }, null);
+                            }
+                        }
+
                         prevIsLoading = isLoading;
                         prevIsLoadingScreen = isLoadingScreen;
                         prevIsAlduinDefeated = isAlduinDefeated;
+                        prevGuildsCompleted = guildsCompleted;
+                        prevIsGloryOfTheDeadCompleted = isGloryOfTheDeadCompleted;
+                        prevIsTheEyeOfMagnusCompleted = isTheEyeOfMagnusCompleted;
                         prevIsInLoadScreenFadeOut = isInLoadScreenFadeOut;
                         frameCounter++;
 
