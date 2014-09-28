@@ -252,7 +252,7 @@ namespace LiveSplit.Skyrim
                                 // }, null);
 
                                 // if loadscreen starts while leaving helgen
-                                if (locationID == (int)Locations.HelgenKeep01)
+                                if (locationID == (int)Locations.HelgenKeep01 && world_X == -2 && world_Y == -5)
                                 {
                                     // Helgen split
                                     Trace.WriteLine(String.Format("[NoLoads] Helgen Split - {0}", frameCounter));
