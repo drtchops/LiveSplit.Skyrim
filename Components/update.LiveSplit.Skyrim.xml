@@ -1,4 +1,20 @@
 <updates>
+    <update version="1.4.0">
+        <files>
+            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+        </files>
+        <changelog>
+            <change>
+                Added automatic aplits for all guilds.
+            </change>
+            <change>
+                Added check to prevent double loading of component.
+            </change>
+            <change>
+                Added check to prevent incorrect reset in Helgen.
+            </change>
+        </changelog>
+    </update>
     <update version="1.3.0">
         <files>
             <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>

@@ -27,7 +27,7 @@
     </CheatEntry>
     <CheatEntry>
       <ID>4</ID>
-      <Description>"AreHandsTied?"</Description>
+      <Description>"AreHandsTied"</Description>
       <LastState Value="1" Activated="0" RealAddress="01B2EE2C"/>
       <Color>80000008</Color>
       <VariableType>Byte</VariableType>
@@ -43,7 +43,7 @@
     </CheatEntry>
     <CheatEntry>
       <ID>12</ID>
-      <Description>"IsAlduinDead?"</Description>
+      <Description>"IsAlduinDead"</Description>
       <LastState Value="0" Activated="0" RealAddress="01B11608"/>
       <Color>80000008</Color>
       <VariableType>Byte</VariableType>

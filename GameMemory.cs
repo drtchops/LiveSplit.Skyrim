@@ -392,6 +392,7 @@ namespace LiveSplit.Skyrim
                                 }, null);
                             }
                         }
+
                         prevIsLoading = isLoading;
                         prevIsLoadingScreen = isLoadingScreen;
                         prevIsAlduinDefeated = isAlduinDefeated;
