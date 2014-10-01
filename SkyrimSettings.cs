@@ -13,7 +13,7 @@ namespace LiveSplit.Skyrim
         public bool Helgen { get; set; }
         public bool HailSithis { get; set; }
         public bool GloryOfTheDead { get; set; }
-        public bool UnderNewManagement { get; set; }
+        public bool DarknessReturns { get; set; }
         public bool TheEyeofMagnus { get; set; }
 
         private const bool DEFAULT_DRAWWITHOUTLOADS = true;
@@ -22,7 +22,7 @@ namespace LiveSplit.Skyrim
         private const bool DEFAULT_HELGEN = false;
         private const bool DEFAULT_HAILSITHIS = false;
         private const bool DEFAULT_GLORYOFTHEDEAD = false;
-        private const bool DEFAULT_UNDERNEWMANAGEMENT = false;
+        private const bool DEFAULT_DARKNESSRETURNS = false;
         private const bool DEFAULT_THEEYEOFMAGNUS = false;
 
         public SkyrimSettings()
@@ -35,7 +35,7 @@ namespace LiveSplit.Skyrim
             this.chkHelgen.DataBindings.Add("Checked", this, "Helgen", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkHailSithis.DataBindings.Add("Checked", this, "HailSithis", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkGloryOfTheDead.DataBindings.Add("Checked", this, "GloryOfTheDead", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.chkUnderNewManagement.DataBindings.Add("Checked", this, "UnderNewManagement", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkDarknessReturns.DataBindings.Add("Checked", this, "DarknessReturns", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkTheEyeofMagnus.DataBindings.Add("Checked", this, "TheEyeofMagnus", false, DataSourceUpdateMode.OnPropertyChanged);
 
             // defaults
@@ -46,7 +46,7 @@ namespace LiveSplit.Skyrim
             this.HailSithis = DEFAULT_HAILSITHIS;
             this.GloryOfTheDead = DEFAULT_GLORYOFTHEDEAD;
             this.TheEyeofMagnus = DEFAULT_THEEYEOFMAGNUS;
-            this.UnderNewManagement = DEFAULT_UNDERNEWMANAGEMENT;
+            this.DarknessReturns = DEFAULT_DARKNESSRETURNS;
         }
 
         public XmlNode GetSettings(XmlDocument doc)
@@ -61,7 +61,7 @@ namespace LiveSplit.Skyrim
             settingsNode.AppendChild(ToElement(doc, "Helgen", this.Helgen));
             settingsNode.AppendChild(ToElement(doc, "HailSithis", this.HailSithis));
             settingsNode.AppendChild(ToElement(doc, "GloryOfTheDead", this.GloryOfTheDead));
-            settingsNode.AppendChild(ToElement(doc, "UnderNewManagement", this.UnderNewManagement));
+            settingsNode.AppendChild(ToElement(doc, "DarknessReturns", this.DarknessReturns));
             settingsNode.AppendChild(ToElement(doc, "TheEyeofMagnus", this.TheEyeofMagnus));
 
             return settingsNode;
@@ -75,7 +75,7 @@ namespace LiveSplit.Skyrim
             this.Helgen = ParseBool(settings, "Helgen", DEFAULT_HELGEN);
             this.HailSithis = ParseBool(settings, "HailSithis", DEFAULT_HAILSITHIS);
             this.GloryOfTheDead = ParseBool(settings, "GloryOfTheDead", DEFAULT_GLORYOFTHEDEAD);
-            this.UnderNewManagement = ParseBool(settings, "UnderNewManagement", DEFAULT_UNDERNEWMANAGEMENT);
+            this.DarknessReturns = ParseBool(settings, "DarknessReturns", DEFAULT_DARKNESSRETURNS);
             this.TheEyeofMagnus = ParseBool(settings, "TheEyeofMagnus", DEFAULT_THEEYEOFMAGNUS);
         }
 

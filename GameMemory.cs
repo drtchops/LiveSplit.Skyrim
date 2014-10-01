@@ -15,7 +15,7 @@ namespace LiveSplit.Skyrim
             Helgen,
             HailSithisCompleted,
             GloryOfTheDeadCompleted,
-            UnderNewManagenementCompleted,
+            DarknessReturnsCompleted,
             TheEyeOfMagnusCompleted,
             AlduinDefeated
         }
@@ -41,9 +41,7 @@ namespace LiveSplit.Skyrim
         private DeepPointer _world_XPtr;
         private DeepPointer _world_YPtr;
         private DeepPointer _isAlduinDefeatedPtr;
-        private DeepPointer _guildsCompleted;
-        private DeepPointer _isGloryOfTheDeadCompleted;
-        private DeepPointer _isTheEyeOfMagnusCompleted;
+        private DeepPointer _questlinesCompleted;
 
         private enum Locations
         {
@@ -51,7 +49,7 @@ namespace LiveSplit.Skyrim
             Sovngarde = 0x0002EE41,
             HelgenKeep01 = 0x0005DE24,
             DawnstarSanctuary = 0x000193EE,
-            ThievesGuildHQ = 0x00016BD0,
+            TwilightSepulcherInnerSanctum = 0x0002E521,
             YsgramorsTomb = 0x00015254,
             HallOfTheElements = 0x0001380E
         }
@@ -89,9 +87,7 @@ namespace LiveSplit.Skyrim
 
             // Game state
             _isAlduinDefeatedPtr = new DeepPointer(0x1711608); // == 1 when last blow is struck on alduin
-            _guildsCompleted = new DeepPointer(0x00EE6C34, 0x3F0); // == 1 once Hail Sithis quest is completed
-            _isGloryOfTheDeadCompleted = new DeepPointer(0x00EE6C34, 0x378);
-            _isTheEyeOfMagnusCompleted = new DeepPointer(0x0172E2DC, 0x13c);
+            _questlinesCompleted = new DeepPointer(0x00EE6C34, 0x3F0); // == 1 once Hail Sithis quest is completed
             // _playerHasControlPtr = new DeepPointer(0x74814710); // == 1 when player has full control
 
             resetSplitStates();
@@ -154,8 +150,6 @@ namespace LiveSplit.Skyrim
                     bool prevIsLoadingScreen = false;
                     bool prevIsAlduinDefeated = false;
                     int prevGuildsCompleted = 0;
-                    bool prevIsGloryOfTheDeadCompleted = false;
-                    bool prevIsTheEyeOfMagnusCompleted = false;
                     bool prevIsInFadeOut = false;
 
                     bool loadingStarted = false;
@@ -190,14 +184,8 @@ namespace LiveSplit.Skyrim
                         bool isAlduinDefeated;
                         _isAlduinDefeatedPtr.Deref(game, out isAlduinDefeated);
 
-                        int guildsCompleted;
-                        _guildsCompleted.Deref(game, out guildsCompleted);
-
-                        bool isGloryOfTheDeadCompleted;
-                        _isGloryOfTheDeadCompleted.Deref(game, out isGloryOfTheDeadCompleted);
-
-                        bool isTheEyeOfMagnusCompleted;
-                        _isTheEyeOfMagnusCompleted.Deref(game, out isTheEyeOfMagnusCompleted);
+                        int questlinesCompleted;
+                        _questlinesCompleted.Deref(game, out questlinesCompleted);
 
                         if (isLoading != prevIsLoading)
                         {
@@ -347,8 +335,8 @@ namespace LiveSplit.Skyrim
                             }, null);
                         }
 
-                        // if a guild is completed
-                        if (guildsCompleted == prevGuildsCompleted + 1)
+                        // if a questline is completed
+                        if (questlinesCompleted == prevGuildsCompleted + 1)
                         {
                             // while in Dawnstar's Sanctuary
                             if (locationID == (int)Locations.DawnstarSanctuary)
@@ -362,15 +350,15 @@ namespace LiveSplit.Skyrim
                                     }
                                 }, null);
                             }
-                            // while in the Thieves Guild Headquarters
-                            else if (locationID == (int)Locations.ThievesGuildHQ)
+                            // while in the Twilight Sepulcher Inner Sanctum
+                            else if (locationID == (int)Locations.TwilightSepulcherInnerSanctum)
                             {
-                                Trace.WriteLine(String.Format("[NoLoads] UnderNewManagenementCompleted Split - {0}", frameCounter));
+                                Trace.WriteLine(String.Format("[NoLoads] DarknessReturnsCompleted Split - {0}", frameCounter));
                                 _uiThread.Post(d =>
                                 {
                                     if (this.OnSplitCompleted != null)
                                     {
-                                        this.OnSplitCompleted(this, SplitArea.UnderNewManagenementCompleted);
+                                        this.OnSplitCompleted(this, SplitArea.DarknessReturnsCompleted);
                                     }
                                 }, null);
                             }
@@ -403,9 +391,7 @@ namespace LiveSplit.Skyrim
                         prevIsLoading = isLoading;
                         prevIsLoadingScreen = isLoadingScreen;
                         prevIsAlduinDefeated = isAlduinDefeated;
-                        prevGuildsCompleted = guildsCompleted;
-                        prevIsGloryOfTheDeadCompleted = isGloryOfTheDeadCompleted;
-                        prevIsTheEyeOfMagnusCompleted = isTheEyeOfMagnusCompleted;
+                        prevGuildsCompleted = questlinesCompleted;
                         prevIsInFadeOut = isInFadeOut;
                         frameCounter++;
 

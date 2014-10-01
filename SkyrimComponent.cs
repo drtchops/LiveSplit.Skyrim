@@ -154,7 +154,7 @@ namespace LiveSplit.Skyrim
                 (split == GameMemory.SplitArea.HailSithisCompleted && this.Settings.HailSithis) ||
                 (split == GameMemory.SplitArea.GloryOfTheDeadCompleted && this.Settings.GloryOfTheDead) ||
                 (split == GameMemory.SplitArea.TheEyeOfMagnusCompleted && this.Settings.TheEyeofMagnus) ||
-                (split == GameMemory.SplitArea.UnderNewManagenementCompleted && this.Settings.UnderNewManagement) ||
+                (split == GameMemory.SplitArea.DarknessReturnsCompleted && this.Settings.DarknessReturns) ||
                 (split == GameMemory.SplitArea.AlduinDefeated && this.Settings.AlduinDefeated)))
             {
                 _timer.Split();

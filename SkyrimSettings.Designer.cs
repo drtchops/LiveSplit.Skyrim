@@ -41,7 +41,7 @@
             this.chkAlduinDefeated = new System.Windows.Forms.CheckBox();
             this.chkTheEyeofMagnus = new System.Windows.Forms.CheckBox();
             this.chkGloryOfTheDead = new System.Windows.Forms.CheckBox();
-            this.chkUnderNewManagement = new System.Windows.Forms.CheckBox();
+            this.chkDarknessReturns = new System.Windows.Forms.CheckBox();
             this.chkHailSithis = new System.Windows.Forms.CheckBox();
             this.tlpMain.SuspendLayout();
             this.gbLoadRemoval.SuspendLayout();
@@ -51,9 +51,9 @@
             this.gbEndSplits.SuspendLayout();
             this.tlpEndSplits.SuspendLayout();
             this.SuspendLayout();
-            //
+            // 
             // tlpMain
-            //
+            // 
             this.tlpMain.AutoSize = true;
             this.tlpMain.ColumnCount = 1;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -69,9 +69,9 @@
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.Size = new System.Drawing.Size(476, 259);
             this.tlpMain.TabIndex = 0;
-            //
+            // 
             // gbLoadRemoval
-            //
+            // 
             this.gbLoadRemoval.AutoSize = true;
             this.gbLoadRemoval.Controls.Add(this.tlpLoadRemoval);
             this.gbLoadRemoval.Dock = System.Windows.Forms.DockStyle.Top;
@@ -81,9 +81,9 @@
             this.gbLoadRemoval.TabIndex = 8;
             this.gbLoadRemoval.TabStop = false;
             this.gbLoadRemoval.Text = "Show Alternate Timing Time";
-            //
+            // 
             // tlpLoadRemoval
-            //
+            // 
             this.tlpLoadRemoval.AutoSize = true;
             this.tlpLoadRemoval.ColumnCount = 1;
             this.tlpLoadRemoval.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -95,9 +95,9 @@
             this.tlpLoadRemoval.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpLoadRemoval.Size = new System.Drawing.Size(464, 23);
             this.tlpLoadRemoval.TabIndex = 0;
-            //
+            // 
             // chkDisplayWithoutLoads
-            //
+            // 
             this.chkDisplayWithoutLoads.AutoSize = true;
             this.chkDisplayWithoutLoads.Checked = true;
             this.chkDisplayWithoutLoads.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -107,9 +107,9 @@
             this.chkDisplayWithoutLoads.TabIndex = 0;
             this.chkDisplayWithoutLoads.Text = "Enable";
             this.chkDisplayWithoutLoads.UseVisualStyleBackColor = true;
-            //
+            // 
             // gbStartSplits
-            //
+            // 
             this.gbStartSplits.AutoSize = true;
             this.gbStartSplits.Controls.Add(this.tlpStartSplits);
             this.gbStartSplits.Dock = System.Windows.Forms.DockStyle.Top;
@@ -119,9 +119,9 @@
             this.gbStartSplits.TabIndex = 5;
             this.gbStartSplits.TabStop = false;
             this.gbStartSplits.Text = "Start Auto-splits";
-            //
+            // 
             // tlpStartSplits
-            //
+            // 
             this.tlpStartSplits.AutoSize = true;
             this.tlpStartSplits.BackColor = System.Drawing.Color.Transparent;
             this.tlpStartSplits.ColumnCount = 1;
@@ -136,9 +136,9 @@
             this.tlpStartSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpStartSplits.Size = new System.Drawing.Size(464, 46);
             this.tlpStartSplits.TabIndex = 4;
-            //
+            // 
             // chkHelgen
-            //
+            // 
             this.chkHelgen.AutoSize = true;
             this.chkHelgen.Location = new System.Drawing.Point(3, 26);
             this.chkHelgen.Name = "chkHelgen";
@@ -146,9 +146,9 @@
             this.chkHelgen.TabIndex = 7;
             this.chkHelgen.Text = "Helgen";
             this.chkHelgen.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkAutoStart
-            //
+            // 
             this.chkAutoStart.AutoSize = true;
             this.chkAutoStart.Checked = true;
             this.chkAutoStart.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -158,9 +158,9 @@
             this.chkAutoStart.TabIndex = 4;
             this.chkAutoStart.Text = "Start / Reset";
             this.chkAutoStart.UseVisualStyleBackColor = true;
-            //
+            // 
             // gbEndSplits
-            //
+            // 
             this.gbEndSplits.AutoSize = true;
             this.gbEndSplits.Controls.Add(this.tlpEndSplits);
             this.gbEndSplits.Dock = System.Windows.Forms.DockStyle.Top;
@@ -170,9 +170,9 @@
             this.gbEndSplits.TabIndex = 7;
             this.gbEndSplits.TabStop = false;
             this.gbEndSplits.Text = "End Auto-splits";
-            //
+            // 
             // tlpEndSplits
-            //
+            // 
             this.tlpEndSplits.AutoSize = true;
             this.tlpEndSplits.BackColor = System.Drawing.Color.Transparent;
             this.tlpEndSplits.ColumnCount = 1;
@@ -180,7 +180,7 @@
             this.tlpEndSplits.Controls.Add(this.chkAlduinDefeated, 0, 0);
             this.tlpEndSplits.Controls.Add(this.chkTheEyeofMagnus, 0, 1);
             this.tlpEndSplits.Controls.Add(this.chkGloryOfTheDead, 0, 2);
-            this.tlpEndSplits.Controls.Add(this.chkUnderNewManagement, 0, 4);
+            this.tlpEndSplits.Controls.Add(this.chkDarknessReturns, 0, 4);
             this.tlpEndSplits.Controls.Add(this.chkHailSithis, 0, 3);
             this.tlpEndSplits.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpEndSplits.Location = new System.Drawing.Point(3, 16);
@@ -193,9 +193,9 @@
             this.tlpEndSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpEndSplits.Size = new System.Drawing.Size(464, 115);
             this.tlpEndSplits.TabIndex = 4;
-            //
+            // 
             // chkAlduinDefeated
-            //
+            // 
             this.chkAlduinDefeated.AutoSize = true;
             this.chkAlduinDefeated.Checked = true;
             this.chkAlduinDefeated.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -205,9 +205,9 @@
             this.chkAlduinDefeated.TabIndex = 5;
             this.chkAlduinDefeated.Text = "Alduin\'s Defeat (Main Quest)";
             this.chkAlduinDefeated.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkTheEyeofMagnus
-            //
+            // 
             this.chkTheEyeofMagnus.AutoSize = true;
             this.chkTheEyeofMagnus.Location = new System.Drawing.Point(3, 26);
             this.chkTheEyeofMagnus.Name = "chkTheEyeofMagnus";
@@ -215,9 +215,9 @@
             this.chkTheEyeofMagnus.TabIndex = 10;
             this.chkTheEyeofMagnus.Text = "[EXPERIMENTAL] The Eye of Magnus quest completion (College of Winterhold)";
             this.chkTheEyeofMagnus.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkGloryOfTheDead
-            //
+            // 
             this.chkGloryOfTheDead.AutoSize = true;
             this.chkGloryOfTheDead.Location = new System.Drawing.Point(3, 49);
             this.chkGloryOfTheDead.Name = "chkGloryOfTheDead";
@@ -225,19 +225,19 @@
             this.chkGloryOfTheDead.TabIndex = 8;
             this.chkGloryOfTheDead.Text = "[EXPERIMENTAL] Glory of The Dead quest completion (Companions)";
             this.chkGloryOfTheDead.UseVisualStyleBackColor = true;
-            //
-            // chkUnderNewManagement
-            //
-            this.chkUnderNewManagement.AutoSize = true;
-            this.chkUnderNewManagement.Location = new System.Drawing.Point(3, 95);
-            this.chkUnderNewManagement.Name = "chkUnderNewManagement";
-            this.chkUnderNewManagement.Size = new System.Drawing.Size(394, 17);
-            this.chkUnderNewManagement.TabIndex = 9;
-            this.chkUnderNewManagement.Text = "[EXPERIMENTAL] Under New Management quest completion (Thieves Guild)";
-            this.chkUnderNewManagement.UseVisualStyleBackColor = true;
-            //
+            // 
+            // chkDarknessReturns
+            // 
+            this.chkDarknessReturns.AutoSize = true;
+            this.chkDarknessReturns.Location = new System.Drawing.Point(3, 95);
+            this.chkDarknessReturns.Name = "chkDarknessReturns";
+            this.chkDarknessReturns.Size = new System.Drawing.Size(360, 17);
+            this.chkDarknessReturns.TabIndex = 9;
+            this.chkDarknessReturns.Text = "[EXPERIMENTAL] Darkness Returns quest completion (Thieves Guild)";
+            this.chkDarknessReturns.UseVisualStyleBackColor = true;
+            // 
             // chkHailSithis
-            //
+            // 
             this.chkHailSithis.AutoSize = true;
             this.chkHailSithis.Location = new System.Drawing.Point(3, 72);
             this.chkHailSithis.Name = "chkHailSithis";
@@ -245,9 +245,9 @@
             this.chkHailSithis.TabIndex = 7;
             this.chkHailSithis.Text = "[EXPERIMENTAL] Hail Sithis quest completion (Dark Brotherhood)";
             this.chkHailSithis.UseVisualStyleBackColor = true;
-            //
+            // 
             // SkyrimSettings
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tlpMain);
@@ -287,7 +287,7 @@
         private System.Windows.Forms.GroupBox gbLoadRemoval;
         private System.Windows.Forms.TableLayoutPanel tlpLoadRemoval;
         private System.Windows.Forms.CheckBox chkDisplayWithoutLoads;
-        private System.Windows.Forms.CheckBox chkUnderNewManagement;
+        private System.Windows.Forms.CheckBox chkDarknessReturns;
         private System.Windows.Forms.CheckBox chkTheEyeofMagnus;
     }
 }
