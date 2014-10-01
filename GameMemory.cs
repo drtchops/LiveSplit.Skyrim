@@ -36,7 +36,7 @@ namespace LiveSplit.Skyrim
 
         private DeepPointer _isLoadingPtr;
         private DeepPointer _isLoadingScreenPtr;
-        private DeepPointer _isInLoadScreenFadeOutPtr;
+        private DeepPointer _isInFadeOutPtr;
         private DeepPointer _locationID;
         private DeepPointer _world_XPtr;
         private DeepPointer _world_YPtr;
@@ -80,7 +80,7 @@ namespace LiveSplit.Skyrim
             _isLoadingPtr = new DeepPointer(0x17337CC); // == 1 if a load is happening (any except loading screens in Helgen for some reason)
             _isLoadingScreenPtr = new DeepPointer(0xEE3561); // == 1 if in a loading screen
             // _isPausedPtr = new DeepPointer(0x172E85F); // == 1 if in a menu or a loading screen
-            _isInLoadScreenFadeOutPtr = new DeepPointer(0x172EE2E); // == 1 from the fade out of a loading, it goes back to 0 once control is gained
+            _isInFadeOutPtr = new DeepPointer(0x172EE2E); // == 1 from the fade out of a loading, it goes back to 0 once control is gained
 
             // Position
             _locationID = new DeepPointer(0x01738308, 0x4, 0x78, 0x670, 0xEC); // ID of the current location (see http://steamcommunity.com/sharedfiles/filedetails/?id=148834641 or http://www.skyrimsearch.com/cells.php)
@@ -156,11 +156,11 @@ namespace LiveSplit.Skyrim
                     int prevGuildsCompleted = 0;
                     bool prevIsGloryOfTheDeadCompleted = false;
                     bool prevIsTheEyeOfMagnusCompleted = false;
-                    bool prevIsInLoadScreenFadeOut = false;
+                    bool prevIsInFadeOut = false;
 
                     bool loadingStarted = false;
                     bool loadingScreenStarted = false;
-                    bool helgenFadeoutStarted = false;
+                    bool loadScreenFadeoutStarted = false;
 
                     while (!game.HasExited)
                     {
@@ -175,8 +175,8 @@ namespace LiveSplit.Skyrim
                             isLoading = true;
                         }
 
-                        bool isInLoadScreenFadeOut;
-                        _isInLoadScreenFadeOutPtr.Deref(game, out isInLoadScreenFadeOut);
+                        bool isInFadeOut;
+                        _isInFadeOutPtr.Deref(game, out isInFadeOut);
 
                         int locationID;
                         _locationID.Deref(game, out locationID);
@@ -208,7 +208,8 @@ namespace LiveSplit.Skyrim
                                 loadingStarted = true;
 
                                 // pause game timer
-                                _uiThread.Post(d => {
+                                _uiThread.Post(d =>
+                                {
                                     if (this.OnLoadStarted != null)
                                     {
                                         this.OnLoadStarted(this, EventArgs.Empty);
@@ -224,7 +225,8 @@ namespace LiveSplit.Skyrim
                                     loadingStarted = false;
 
                                     // unpause game timer
-                                    _uiThread.Post(d => {
+                                    _uiThread.Post(d =>
+                                    {
                                         if (this.OnLoadFinished != null)
                                         {
                                             this.OnLoadFinished(this, EventArgs.Empty);
@@ -241,6 +243,11 @@ namespace LiveSplit.Skyrim
                                 Trace.WriteLine(String.Format("[NoLoads] LoadScreen Start - {0}", frameCounter));
 
                                 loadingScreenStarted = true;
+
+                                if (isInFadeOut)
+                                {
+                                    loadScreenFadeoutStarted = true;
+                                }
 
                                 // nothing currently
                                 // _uiThread.Post(d =>
@@ -285,21 +292,21 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        if (isInLoadScreenFadeOut != prevIsInLoadScreenFadeOut)
+                        if (isInFadeOut != prevIsInFadeOut)
                         {
-                            if(isInLoadScreenFadeOut)
+                            if (isInFadeOut)
                             {
                                 Trace.WriteLine(String.Format("[NoLoads] Fadeout started - {0}", frameCounter));
                                 if (isLoadingScreen)
                                 {
-                                    helgenFadeoutStarted = true;
+                                    loadScreenFadeoutStarted = true;
                                 }
                             }
                             else
                             {
                                 Trace.WriteLine(String.Format("[NoLoads] Fadeout ended - {0}", frameCounter));
                                 // if loadscreen fadeout finishes in helgen
-                                if (prevIsInLoadScreenFadeOut && helgenFadeoutStarted
+                                if (prevIsInFadeOut && loadScreenFadeoutStarted
                                     && locationID == (int)Locations.Tamriel && world_X == 3 && world_Y == -20)
                                 {
                                     // reset
@@ -322,7 +329,7 @@ namespace LiveSplit.Skyrim
                                         }
                                     }, null);
                                 }
-                                helgenFadeoutStarted = false;
+                                loadScreenFadeoutStarted = false;
                             }
                         }
 
@@ -399,7 +406,7 @@ namespace LiveSplit.Skyrim
                         prevGuildsCompleted = guildsCompleted;
                         prevIsGloryOfTheDeadCompleted = isGloryOfTheDeadCompleted;
                         prevIsTheEyeOfMagnusCompleted = isTheEyeOfMagnusCompleted;
-                        prevIsInLoadScreenFadeOut = isInLoadScreenFadeOut;
+                        prevIsInFadeOut = isInFadeOut;
                         frameCounter++;
 
                         Thread.Sleep(15);
