@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
-            this.gbLoadRemoval = new System.Windows.Forms.GroupBox();
-            this.tlpLoadRemoval = new System.Windows.Forms.TableLayoutPanel();
-            this.chkDisplayWithoutLoads = new System.Windows.Forms.CheckBox();
             this.gbStartSplits = new System.Windows.Forms.GroupBox();
             this.tlpStartSplits = new System.Windows.Forms.TableLayoutPanel();
             this.chkHelgen = new System.Windows.Forms.CheckBox();
@@ -43,23 +40,26 @@
             this.chkGloryOfTheDead = new System.Windows.Forms.CheckBox();
             this.chkDarknessReturns = new System.Windows.Forms.CheckBox();
             this.chkHailSithis = new System.Windows.Forms.CheckBox();
+            this.gbMiscellaneous = new System.Windows.Forms.GroupBox();
+            this.tlpMiscellaneous = new System.Windows.Forms.TableLayoutPanel();
+            this.chkDisplayWithoutLoads = new System.Windows.Forms.CheckBox();
+            this.chkPauseInEscapeMenu = new System.Windows.Forms.CheckBox();
             this.tlpMain.SuspendLayout();
-            this.gbLoadRemoval.SuspendLayout();
-            this.tlpLoadRemoval.SuspendLayout();
             this.gbStartSplits.SuspendLayout();
             this.tlpStartSplits.SuspendLayout();
             this.gbEndSplits.SuspendLayout();
             this.tlpEndSplits.SuspendLayout();
+            this.gbMiscellaneous.SuspendLayout();
+            this.tlpMiscellaneous.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpMain
             // 
-            this.tlpMain.AutoSize = true;
             this.tlpMain.ColumnCount = 1;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpMain.Controls.Add(this.gbLoadRemoval, 0, 2);
             this.tlpMain.Controls.Add(this.gbStartSplits, 0, 0);
             this.tlpMain.Controls.Add(this.gbEndSplits, 0, 1);
+            this.tlpMain.Controls.Add(this.gbMiscellaneous, 0, 2);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpMain.Location = new System.Drawing.Point(0, 0);
             this.tlpMain.Name = "tlpMain";
@@ -67,46 +67,9 @@
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpMain.Size = new System.Drawing.Size(476, 259);
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpMain.Size = new System.Drawing.Size(476, 365);
             this.tlpMain.TabIndex = 0;
-            // 
-            // gbLoadRemoval
-            // 
-            this.gbLoadRemoval.AutoSize = true;
-            this.gbLoadRemoval.Controls.Add(this.tlpLoadRemoval);
-            this.gbLoadRemoval.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbLoadRemoval.Location = new System.Drawing.Point(3, 214);
-            this.gbLoadRemoval.Name = "gbLoadRemoval";
-            this.gbLoadRemoval.Size = new System.Drawing.Size(470, 42);
-            this.gbLoadRemoval.TabIndex = 8;
-            this.gbLoadRemoval.TabStop = false;
-            this.gbLoadRemoval.Text = "Show Alternate Timing Time";
-            // 
-            // tlpLoadRemoval
-            // 
-            this.tlpLoadRemoval.AutoSize = true;
-            this.tlpLoadRemoval.ColumnCount = 1;
-            this.tlpLoadRemoval.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpLoadRemoval.Controls.Add(this.chkDisplayWithoutLoads, 0, 0);
-            this.tlpLoadRemoval.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpLoadRemoval.Location = new System.Drawing.Point(3, 16);
-            this.tlpLoadRemoval.Name = "tlpLoadRemoval";
-            this.tlpLoadRemoval.RowCount = 1;
-            this.tlpLoadRemoval.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpLoadRemoval.Size = new System.Drawing.Size(464, 23);
-            this.tlpLoadRemoval.TabIndex = 0;
-            // 
-            // chkDisplayWithoutLoads
-            // 
-            this.chkDisplayWithoutLoads.AutoSize = true;
-            this.chkDisplayWithoutLoads.Checked = true;
-            this.chkDisplayWithoutLoads.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDisplayWithoutLoads.Location = new System.Drawing.Point(3, 3);
-            this.chkDisplayWithoutLoads.Name = "chkDisplayWithoutLoads";
-            this.chkDisplayWithoutLoads.Size = new System.Drawing.Size(59, 17);
-            this.chkDisplayWithoutLoads.TabIndex = 0;
-            this.chkDisplayWithoutLoads.Text = "Enable";
-            this.chkDisplayWithoutLoads.UseVisualStyleBackColor = true;
             // 
             // gbStartSplits
             // 
@@ -246,6 +209,56 @@
             this.chkHailSithis.Text = "[EXPERIMENTAL] Hail Sithis quest completion (Dark Brotherhood)";
             this.chkHailSithis.UseVisualStyleBackColor = true;
             // 
+            // gbMiscellaneous
+            // 
+            this.gbMiscellaneous.AutoSize = true;
+            this.gbMiscellaneous.Controls.Add(this.tlpMiscellaneous);
+            this.gbMiscellaneous.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbMiscellaneous.Location = new System.Drawing.Point(3, 214);
+            this.gbMiscellaneous.Name = "gbMiscellaneous";
+            this.gbMiscellaneous.Size = new System.Drawing.Size(470, 65);
+            this.gbMiscellaneous.TabIndex = 9;
+            this.gbMiscellaneous.TabStop = false;
+            this.gbMiscellaneous.Text = "Miscellaneous";
+            // 
+            // tlpMiscellaneous
+            // 
+            this.tlpMiscellaneous.AutoSize = true;
+            this.tlpMiscellaneous.ColumnCount = 1;
+            this.tlpMiscellaneous.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpMiscellaneous.Controls.Add(this.chkDisplayWithoutLoads, 0, 0);
+            this.tlpMiscellaneous.Controls.Add(this.chkPauseInEscapeMenu, 0, 1);
+            this.tlpMiscellaneous.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpMiscellaneous.Location = new System.Drawing.Point(3, 16);
+            this.tlpMiscellaneous.Name = "tlpMiscellaneous";
+            this.tlpMiscellaneous.RowCount = 2;
+            this.tlpMiscellaneous.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpMiscellaneous.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpMiscellaneous.Size = new System.Drawing.Size(464, 46);
+            this.tlpMiscellaneous.TabIndex = 0;
+            // 
+            // chkDisplayWithoutLoads
+            // 
+            this.chkDisplayWithoutLoads.AutoSize = true;
+            this.chkDisplayWithoutLoads.Checked = true;
+            this.chkDisplayWithoutLoads.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkDisplayWithoutLoads.Location = new System.Drawing.Point(3, 3);
+            this.chkDisplayWithoutLoads.Name = "chkDisplayWithoutLoads";
+            this.chkDisplayWithoutLoads.Size = new System.Drawing.Size(165, 17);
+            this.chkDisplayWithoutLoads.TabIndex = 0;
+            this.chkDisplayWithoutLoads.Text = "Show alternate timing method";
+            this.chkDisplayWithoutLoads.UseVisualStyleBackColor = true;
+            // 
+            // chkPauseInEscapeMenu
+            // 
+            this.chkPauseInEscapeMenu.AutoSize = true;
+            this.chkPauseInEscapeMenu.Location = new System.Drawing.Point(3, 26);
+            this.chkPauseInEscapeMenu.Name = "chkPauseInEscapeMenu";
+            this.chkPauseInEscapeMenu.Size = new System.Drawing.Size(195, 17);
+            this.chkPauseInEscapeMenu.TabIndex = 0;
+            this.chkPauseInEscapeMenu.Text = "Pause the timer in the escape menu";
+            this.chkPauseInEscapeMenu.UseVisualStyleBackColor = true;
+            // 
             // SkyrimSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,10 +268,6 @@
             this.Size = new System.Drawing.Size(476, 443);
             this.tlpMain.ResumeLayout(false);
             this.tlpMain.PerformLayout();
-            this.gbLoadRemoval.ResumeLayout(false);
-            this.gbLoadRemoval.PerformLayout();
-            this.tlpLoadRemoval.ResumeLayout(false);
-            this.tlpLoadRemoval.PerformLayout();
             this.gbStartSplits.ResumeLayout(false);
             this.gbStartSplits.PerformLayout();
             this.tlpStartSplits.ResumeLayout(false);
@@ -267,8 +276,11 @@
             this.gbEndSplits.PerformLayout();
             this.tlpEndSplits.ResumeLayout(false);
             this.tlpEndSplits.PerformLayout();
+            this.gbMiscellaneous.ResumeLayout(false);
+            this.gbMiscellaneous.PerformLayout();
+            this.tlpMiscellaneous.ResumeLayout(false);
+            this.tlpMiscellaneous.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -284,10 +296,11 @@
         private System.Windows.Forms.CheckBox chkAutoStart;
         private System.Windows.Forms.CheckBox chkHailSithis;
         private System.Windows.Forms.CheckBox chkGloryOfTheDead;
-        private System.Windows.Forms.GroupBox gbLoadRemoval;
-        private System.Windows.Forms.TableLayoutPanel tlpLoadRemoval;
         private System.Windows.Forms.CheckBox chkDisplayWithoutLoads;
         private System.Windows.Forms.CheckBox chkDarknessReturns;
         private System.Windows.Forms.CheckBox chkTheEyeofMagnus;
+        private System.Windows.Forms.GroupBox gbMiscellaneous;
+        private System.Windows.Forms.TableLayoutPanel tlpMiscellaneous;
+        private System.Windows.Forms.CheckBox chkPauseInEscapeMenu;
     }
 }

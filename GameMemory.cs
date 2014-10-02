@@ -28,6 +28,8 @@ namespace LiveSplit.Skyrim
         // public event EventHandler OnLoadScreenFinished;
         public delegate void SplitCompletedEventHandler(object sender, SplitArea type);
         public event SplitCompletedEventHandler OnSplitCompleted;
+        public delegate void EscapeMenuChangedEventHandler(object sender, bool state);
+        public event EscapeMenuChangedEventHandler OnEscapeMenuChanged;
 
         private Task _thread;
         private CancellationTokenSource _cancelSource;
@@ -36,6 +38,7 @@ namespace LiveSplit.Skyrim
 
         private DeepPointer _isLoadingPtr;
         private DeepPointer _isLoadingScreenPtr;
+        private DeepPointer _isInEscapeMenuPtr;
         private DeepPointer _isInFadeOutPtr;
         private DeepPointer _locationID;
         private DeepPointer _world_XPtr;
@@ -77,8 +80,9 @@ namespace LiveSplit.Skyrim
             // Loads
             _isLoadingPtr = new DeepPointer(0x17337CC); // == 1 if a load is happening (any except loading screens in Helgen for some reason)
             _isLoadingScreenPtr = new DeepPointer(0xEE3561); // == 1 if in a loading screen
-            // _isPausedPtr = new DeepPointer(0x172E85F); // == 1 if in a menu or a loading screen
-            _isInFadeOutPtr = new DeepPointer(0x172EE2E); // == 1 from the fade out of a loading, it goes back to 0 once control is gained
+            _isInEscapeMenuPtr = new DeepPointer(0x172E85E);
+            // _isPausedPtr = new DeepPointer(0x172E85F); // == 1 if the game is paused (menu or loading screen)
+            _isInFadeOutPtr = new DeepPointer(0x172EE2E); // == 1 when in a fadeout, it goes back to 0 once control is gained
 
             // Position
             _locationID = new DeepPointer(0x01738308, 0x4, 0x78, 0x670, 0xEC); // ID of the current location (see http://steamcommunity.com/sharedfiles/filedetails/?id=148834641 or http://www.skyrimsearch.com/cells.php)
@@ -87,7 +91,7 @@ namespace LiveSplit.Skyrim
 
             // Game state
             _isAlduinDefeatedPtr = new DeepPointer(0x1711608); // == 1 when last blow is struck on alduin
-            _questlinesCompleted = new DeepPointer(0x00EE6C34, 0x3F0); // == 1 once Hail Sithis quest is completed
+            _questlinesCompleted = new DeepPointer(0x00EE6C34, 0x3F0); // number of questlines completed (same as in the stats of the game)
             // _playerHasControlPtr = new DeepPointer(0x74814710); // == 1 when player has full control
 
             resetSplitStates();
@@ -148,6 +152,7 @@ namespace LiveSplit.Skyrim
 
                     bool prevIsLoading = false;
                     bool prevIsLoadingScreen = false;
+                    bool prevIsInEscapeMenu = false;
                     bool prevIsAlduinDefeated = false;
                     int prevQuestlinesCompleted = 0;
                     bool prevIsInFadeOut = false;
@@ -168,6 +173,9 @@ namespace LiveSplit.Skyrim
                         {
                             isLoading = true;
                         }
+
+                        bool isInEscapeMenu;
+                        _isInEscapeMenuPtr.Deref(game, out isInEscapeMenu);
 
                         bool isInFadeOut;
                         _isInFadeOutPtr.Deref(game, out isInFadeOut);
@@ -280,6 +288,18 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
+                        if (isInEscapeMenu != prevIsInEscapeMenu)
+                        {
+                            Trace.WriteLine(String.Format("[NoLoads] EscapeMenu changed to {0} - {1}", isInEscapeMenu, frameCounter));
+                            _uiThread.Post(d =>
+                            {
+                                if (this.OnEscapeMenuChanged != null)
+                                {
+                                    this.OnEscapeMenuChanged(this, isInEscapeMenu);
+                                }
+                            }, null);
+                        }
+
                         if (isInFadeOut != prevIsInFadeOut)
                         {
                             if (isInFadeOut)
@@ -295,7 +315,7 @@ namespace LiveSplit.Skyrim
                                 Trace.WriteLine(String.Format("[NoLoads] Fadeout ended - {0}", frameCounter));
                                 // if loadscreen fadeout finishes in helgen
                                 if (prevIsInFadeOut && loadScreenFadeoutStarted
-                                    && locationID == (int)Locations.Tamriel && world_X == 3 && world_Y == -20)
+                                        && locationID == (int)Locations.Tamriel && world_X == 3 && world_Y == -20)
                                 {
                                     // reset
                                     Trace.WriteLine(String.Format("[NoLoads] Reset - {0}", frameCounter));
@@ -390,6 +410,7 @@ namespace LiveSplit.Skyrim
 
                         prevIsLoading = isLoading;
                         prevIsLoadingScreen = isLoadingScreen;
+                        prevIsInEscapeMenu = isInEscapeMenu;
                         prevIsAlduinDefeated = isAlduinDefeated;
                         prevQuestlinesCompleted = questlinesCompleted;
                         prevIsInFadeOut = isInFadeOut;

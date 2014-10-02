@@ -49,6 +49,7 @@ namespace LiveSplit.Skyrim
             // _gameMemory.OnLoadScreenStarted += gameMemory_OnLoadScreenStarted;
             // _gameMemory.OnLoadScreenFinished += gameMemory_OnLoadScreenFinished;
             _gameMemory.OnSplitCompleted += gameMemory_OnSplitCompleted;
+            _gameMemory.OnEscapeMenuChanged += gameMemory_OnEscapeMenuChanged;
             state.OnReset += state_OnReset;
             _gameMemory.StartMonitoring();
         }
@@ -159,6 +160,15 @@ namespace LiveSplit.Skyrim
             {
                 _timer.Split();
                 _gameMemory.splitStates[(int)split] = true;
+            }
+        }
+
+        void gameMemory_OnEscapeMenuChanged(object sender, bool isInEscapeMenu)
+        {
+            if (this.Settings.PauseInEscapeMenu && _state.CurrentPhase != TimerPhase.NotRunning
+                && (_state.CurrentPhase == TimerPhase.Paused) != isInEscapeMenu)
+            {
+                _timer.Pause();
             }
         }
 
