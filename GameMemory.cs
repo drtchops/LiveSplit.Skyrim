@@ -391,7 +391,7 @@ namespace LiveSplit.Skyrim
                             }, null);
                         }
 
-                        // reset lastQuest 133 frames (2 seconds) after a completion to avoid splitting on a wrong questline.
+                        // reset lastQuest 100 frames (1.5 seconds) after a completion to avoid splitting on a wrong questline.
                         if(frameCounter >= lastQuestframeCounter + 100 && lastQuestCompleted != SplitArea.None)
                         {
                             lastQuestCompleted = SplitArea.None;
