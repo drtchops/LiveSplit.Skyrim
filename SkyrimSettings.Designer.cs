@@ -36,10 +36,10 @@
             this.gbEndSplits = new System.Windows.Forms.GroupBox();
             this.tlpEndSplits = new System.Windows.Forms.TableLayoutPanel();
             this.chkAlduinDefeated = new System.Windows.Forms.CheckBox();
-            this.chkTheEyeofMagnus = new System.Windows.Forms.CheckBox();
-            this.chkGloryOfTheDead = new System.Windows.Forms.CheckBox();
-            this.chkDarknessReturns = new System.Windows.Forms.CheckBox();
-            this.chkHailSithis = new System.Windows.Forms.CheckBox();
+            this.chkCollege = new System.Windows.Forms.CheckBox();
+            this.chkCompanions = new System.Windows.Forms.CheckBox();
+            this.chkThievesGuild = new System.Windows.Forms.CheckBox();
+            this.chkDarkBrotherhood = new System.Windows.Forms.CheckBox();
             this.gbMiscellaneous = new System.Windows.Forms.GroupBox();
             this.tlpMiscellaneous = new System.Windows.Forms.TableLayoutPanel();
             this.chkDisplayWithoutLoads = new System.Windows.Forms.CheckBox();
@@ -141,10 +141,10 @@
             this.tlpEndSplits.ColumnCount = 1;
             this.tlpEndSplits.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpEndSplits.Controls.Add(this.chkAlduinDefeated, 0, 0);
-            this.tlpEndSplits.Controls.Add(this.chkTheEyeofMagnus, 0, 1);
-            this.tlpEndSplits.Controls.Add(this.chkGloryOfTheDead, 0, 2);
-            this.tlpEndSplits.Controls.Add(this.chkDarknessReturns, 0, 4);
-            this.tlpEndSplits.Controls.Add(this.chkHailSithis, 0, 3);
+            this.tlpEndSplits.Controls.Add(this.chkCollege, 0, 1);
+            this.tlpEndSplits.Controls.Add(this.chkCompanions, 0, 2);
+            this.tlpEndSplits.Controls.Add(this.chkThievesGuild, 0, 4);
+            this.tlpEndSplits.Controls.Add(this.chkDarkBrotherhood, 0, 3);
             this.tlpEndSplits.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpEndSplits.Location = new System.Drawing.Point(3, 16);
             this.tlpEndSplits.Name = "tlpEndSplits";
@@ -169,45 +169,45 @@
             this.chkAlduinDefeated.Text = "Alduin\'s Defeat (Main Quest)";
             this.chkAlduinDefeated.UseVisualStyleBackColor = true;
             // 
-            // chkTheEyeofMagnus
+            // chkCollege
             // 
-            this.chkTheEyeofMagnus.AutoSize = true;
-            this.chkTheEyeofMagnus.Location = new System.Drawing.Point(3, 26);
-            this.chkTheEyeofMagnus.Name = "chkTheEyeofMagnus";
-            this.chkTheEyeofMagnus.Size = new System.Drawing.Size(404, 17);
-            this.chkTheEyeofMagnus.TabIndex = 10;
-            this.chkTheEyeofMagnus.Text = "[EXPERIMENTAL] The Eye of Magnus quest completion (College of Winterhold)";
-            this.chkTheEyeofMagnus.UseVisualStyleBackColor = true;
+            this.chkCollege.AutoSize = true;
+            this.chkCollege.Location = new System.Drawing.Point(3, 26);
+            this.chkCollege.Name = "chkCollege";
+            this.chkCollege.Size = new System.Drawing.Size(318, 17);
+            this.chkCollege.TabIndex = 10;
+            this.chkCollege.Text = "[EXPERIMENTAL] College of Winterhold questline completion";
+            this.chkCollege.UseVisualStyleBackColor = true;
             // 
-            // chkGloryOfTheDead
+            // chkCompanions
             // 
-            this.chkGloryOfTheDead.AutoSize = true;
-            this.chkGloryOfTheDead.Location = new System.Drawing.Point(3, 49);
-            this.chkGloryOfTheDead.Name = "chkGloryOfTheDead";
-            this.chkGloryOfTheDead.Size = new System.Drawing.Size(355, 17);
-            this.chkGloryOfTheDead.TabIndex = 8;
-            this.chkGloryOfTheDead.Text = "[EXPERIMENTAL] Glory of The Dead quest completion (Companions)";
-            this.chkGloryOfTheDead.UseVisualStyleBackColor = true;
+            this.chkCompanions.AutoSize = true;
+            this.chkCompanions.Location = new System.Drawing.Point(3, 49);
+            this.chkCompanions.Name = "chkCompanions";
+            this.chkCompanions.Size = new System.Drawing.Size(275, 17);
+            this.chkCompanions.TabIndex = 8;
+            this.chkCompanions.Text = "[EXPERIMENTAL] Companions questline completion";
+            this.chkCompanions.UseVisualStyleBackColor = true;
             // 
-            // chkDarknessReturns
+            // chkThievesGuild
             // 
-            this.chkDarknessReturns.AutoSize = true;
-            this.chkDarknessReturns.Location = new System.Drawing.Point(3, 95);
-            this.chkDarknessReturns.Name = "chkDarknessReturns";
-            this.chkDarknessReturns.Size = new System.Drawing.Size(360, 17);
-            this.chkDarknessReturns.TabIndex = 9;
-            this.chkDarknessReturns.Text = "[EXPERIMENTAL] Darkness Returns quest completion (Thieves Guild)";
-            this.chkDarknessReturns.UseVisualStyleBackColor = true;
+            this.chkThievesGuild.AutoSize = true;
+            this.chkThievesGuild.Location = new System.Drawing.Point(3, 95);
+            this.chkThievesGuild.Name = "chkThievesGuild";
+            this.chkThievesGuild.Size = new System.Drawing.Size(284, 17);
+            this.chkThievesGuild.TabIndex = 9;
+            this.chkThievesGuild.Text = "[EXPERIMENTAL] Thieves\' Guild questline completion";
+            this.chkThievesGuild.UseVisualStyleBackColor = true;
             // 
-            // chkHailSithis
+            // chkDarkBrotherhood
             // 
-            this.chkHailSithis.AutoSize = true;
-            this.chkHailSithis.Location = new System.Drawing.Point(3, 72);
-            this.chkHailSithis.Name = "chkHailSithis";
-            this.chkHailSithis.Size = new System.Drawing.Size(340, 17);
-            this.chkHailSithis.TabIndex = 7;
-            this.chkHailSithis.Text = "[EXPERIMENTAL] Hail Sithis quest completion (Dark Brotherhood)";
-            this.chkHailSithis.UseVisualStyleBackColor = true;
+            this.chkDarkBrotherhood.AutoSize = true;
+            this.chkDarkBrotherhood.Location = new System.Drawing.Point(3, 72);
+            this.chkDarkBrotherhood.Name = "chkDarkBrotherhood";
+            this.chkDarkBrotherhood.Size = new System.Drawing.Size(301, 17);
+            this.chkDarkBrotherhood.TabIndex = 7;
+            this.chkDarkBrotherhood.Text = "[EXPERIMENTAL] Dark Brotherhood questline completion";
+            this.chkDarkBrotherhood.UseVisualStyleBackColor = true;
             // 
             // gbMiscellaneous
             // 
@@ -294,11 +294,11 @@
         private System.Windows.Forms.TableLayoutPanel tlpStartSplits;
         private System.Windows.Forms.CheckBox chkHelgen;
         private System.Windows.Forms.CheckBox chkAutoStart;
-        private System.Windows.Forms.CheckBox chkHailSithis;
-        private System.Windows.Forms.CheckBox chkGloryOfTheDead;
+        private System.Windows.Forms.CheckBox chkDarkBrotherhood;
+        private System.Windows.Forms.CheckBox chkCompanions;
         private System.Windows.Forms.CheckBox chkDisplayWithoutLoads;
-        private System.Windows.Forms.CheckBox chkDarknessReturns;
-        private System.Windows.Forms.CheckBox chkTheEyeofMagnus;
+        private System.Windows.Forms.CheckBox chkThievesGuild;
+        private System.Windows.Forms.CheckBox chkCollege;
         private System.Windows.Forms.GroupBox gbMiscellaneous;
         private System.Windows.Forms.TableLayoutPanel tlpMiscellaneous;
         private System.Windows.Forms.CheckBox chkPauseInEscapeMenu;

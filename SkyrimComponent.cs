@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Xml;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace LiveSplit.Skyrim
 {
@@ -148,14 +149,15 @@ namespace LiveSplit.Skyrim
         //     // Nothing to do
         // }
 
-        void gameMemory_OnSplitCompleted(object sender, GameMemory.SplitArea split)
+        void gameMemory_OnSplitCompleted(object sender, GameMemory.SplitArea split, uint frame)
         {
+            Trace.WriteLineIf(split != GameMemory.SplitArea.None, String.Format("[NoLoads] {0} Split - {1}", split, frame));
             if (!_gameMemory.splitStates[(int)split] &&
                 ((split == GameMemory.SplitArea.Helgen && this.Settings.Helgen) ||
-                (split == GameMemory.SplitArea.HailSithisCompleted && this.Settings.HailSithis) ||
-                (split == GameMemory.SplitArea.GloryOfTheDeadCompleted && this.Settings.GloryOfTheDead) ||
-                (split == GameMemory.SplitArea.TheEyeOfMagnusCompleted && this.Settings.TheEyeofMagnus) ||
-                (split == GameMemory.SplitArea.DarknessReturnsCompleted && this.Settings.DarknessReturns) ||
+                (split == GameMemory.SplitArea.DarkBrotherhoodQuestlineCompleted && this.Settings.DarkBrotherhood) ||
+                (split == GameMemory.SplitArea.CompanionsQuestlineCompleted && this.Settings.Companions) ||
+                (split == GameMemory.SplitArea.CollegeQuestlineCompleted && this.Settings.CollegeOfWinterhold) ||
+                (split == GameMemory.SplitArea.ThievesGuildQuestlineCompleted && this.Settings.ThievesGuild) ||
                 (split == GameMemory.SplitArea.AlduinDefeated && this.Settings.AlduinDefeated)))
             {
                 _timer.Split();

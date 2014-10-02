@@ -12,11 +12,12 @@ namespace LiveSplit.Skyrim
     {
         public enum SplitArea : int
         {
+            None,
             Helgen,
-            HailSithisCompleted,
-            GloryOfTheDeadCompleted,
-            DarknessReturnsCompleted,
-            TheEyeOfMagnusCompleted,
+            DarkBrotherhoodQuestlineCompleted,
+            CompanionsQuestlineCompleted,
+            ThievesGuildQuestlineCompleted,
+            CollegeQuestlineCompleted,
             AlduinDefeated
         }
 
@@ -26,7 +27,7 @@ namespace LiveSplit.Skyrim
         public event EventHandler OnLoadFinished;
         // public event EventHandler OnLoadScreenStarted;
         // public event EventHandler OnLoadScreenFinished;
-        public delegate void SplitCompletedEventHandler(object sender, SplitArea type);
+        public delegate void SplitCompletedEventHandler(object sender, SplitArea type, uint frame);
         public event SplitCompletedEventHandler OnSplitCompleted;
         public delegate void EscapeMenuChangedEventHandler(object sender, bool state);
         public event EscapeMenuChangedEventHandler OnEscapeMenuChanged;
@@ -45,6 +46,10 @@ namespace LiveSplit.Skyrim
         private DeepPointer _world_YPtr;
         private DeepPointer _isAlduinDefeatedPtr;
         private DeepPointer _questlinesCompleted;
+        private DeepPointer _companionsQuestsCompletedPtr;
+        private DeepPointer _collegeQuestsCompletedPtr;
+        private DeepPointer _darkBrotherhoodQuestsCompletedPtr;
+        private DeepPointer _thievesGuildQuestsCompletedPtr;
 
         private enum Locations
         {
@@ -91,8 +96,11 @@ namespace LiveSplit.Skyrim
 
             // Game state
             _isAlduinDefeatedPtr = new DeepPointer(0x1711608); // == 1 when last blow is struck on alduin
-            _questlinesCompleted = new DeepPointer(0x00EE6C34, 0x3F0); // number of questlines completed (same as in the stats of the game)
-            // _playerHasControlPtr = new DeepPointer(0x74814710); // == 1 when player has full control
+            _questlinesCompleted = new DeepPointer(0x00EE6C34, 0x3F0); // number of questlines completed (from ingame stats)
+            _companionsQuestsCompletedPtr = new DeepPointer(0x00EE6C34, 0x378); // number of companions quests completed (from ingame stats)
+            _collegeQuestsCompletedPtr = new DeepPointer(0x00EE6C34, 0x38c); // number of college of winterhold quests completed (from ingame stats)
+            _darkBrotherhoodQuestsCompletedPtr = new DeepPointer(0x00EE6C34, 0x3b4); // number of dark brotherhood quests completed (from ingame stats)
+            _thievesGuildQuestsCompletedPtr = new DeepPointer(0x00EE6C34, 0x3a0); // number of thieves' guild quests completed (from ingame stats)
 
             resetSplitStates();
 
@@ -153,14 +161,20 @@ namespace LiveSplit.Skyrim
                     bool prevIsLoading = false;
                     bool prevIsLoadingScreen = false;
                     bool prevIsInEscapeMenu = false;
-                    bool prevIsAlduinDefeated = false;
-                    int prevQuestlinesCompleted = 0;
                     bool prevIsInFadeOut = false;
+                    bool prevIsAlduinDefeated = false;                    
+                    int prevQuestlinesCompleted = 0;
+                    int prevCompanionsQuestsCompleted = 0;
+                    int prevCollegeQuestsCompleted = 0;
+                    int prevDarkBrotherhoodQuestsCompleted = 0;
+                    int prevThievesGuildQuestsCompleted = 0;
 
                     bool loadingStarted = false;
                     bool loadingScreenStarted = false;
                     bool loadScreenFadeoutStarted = false;
-                    bool escapeMenuStarted = false;
+
+                    SplitArea lastQuestCompleted = SplitArea.None;
+                    uint lastQuestframeCounter = 0;
 
                     while (!game.HasExited)
                     {
@@ -195,6 +209,19 @@ namespace LiveSplit.Skyrim
 
                         int questlinesCompleted;
                         _questlinesCompleted.Deref(game, out questlinesCompleted);
+
+                        int companionsQuestsCompleted;
+                        _companionsQuestsCompletedPtr.Deref(game, out companionsQuestsCompleted);
+
+                        int collegeQuestsCompleted;
+                        _collegeQuestsCompletedPtr.Deref(game, out collegeQuestsCompleted);
+
+                        int darkBrotherhoodQuestsCompleted;
+                        _darkBrotherhoodQuestsCompletedPtr.Deref(game, out darkBrotherhoodQuestsCompleted);
+
+                        int thievesGuildQuestsCompleted;
+                        _thievesGuildQuestsCompletedPtr.Deref(game, out thievesGuildQuestsCompleted);
+
 
                         if (isLoading != prevIsLoading)
                         {
@@ -259,15 +286,23 @@ namespace LiveSplit.Skyrim
                                 if (locationID == (int)Locations.HelgenKeep01 && world_X == -2 && world_Y == -5)
                                 {
                                     // Helgen split
-                                    Trace.WriteLine(String.Format("[NoLoads] Helgen Split - {0}", frameCounter));
                                     _uiThread.Post(d =>
                                     {
                                         if (this.OnSplitCompleted != null)
                                         {
-                                            this.OnSplitCompleted(this, SplitArea.Helgen);
+                                            this.OnSplitCompleted(this, SplitArea.Helgen, frameCounter);
                                         }
                                     }, null);
                                 }
+
+                                //unpause the timer to count the load
+                                _uiThread.Post(d =>
+                                {
+                                    if (this.OnEscapeMenuChanged != null)
+                                    {
+                                        this.OnEscapeMenuChanged(this, false);
+                                    }
+                                }, null);
                             }
                             else
                             {
@@ -289,16 +324,15 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        if (isInEscapeMenu != prevIsInEscapeMenu && isInEscapeMenu)
+                        if (isInEscapeMenu != prevIsInEscapeMenu)
                         {
-                            Trace.WriteLine(String.Format("[NoLoads] EscapeMenu started - {0}", frameCounter));
-                            escapeMenuStarted = true;
-                            // pause
+                            Trace.WriteLine(String.Format("[NoLoads] EscapeMenu changed to {0} - {1}", isInEscapeMenu, frameCounter));
+	                        // pause
                             _uiThread.Post(d =>
                             {
                                 if (this.OnEscapeMenuChanged != null)
                                 {
-                                    this.OnEscapeMenuChanged(this, true);
+                                    this.OnEscapeMenuChanged(this, isInEscapeMenu);
                                 }
                             }, null);
                         }
@@ -340,20 +374,6 @@ namespace LiveSplit.Skyrim
                                         }
                                     }, null);
                                 }
-
-                                if (escapeMenuStarted)
-                                {
-                                    Trace.WriteLine(String.Format("[NoLoads] EscapeMenu ended - {0}", frameCounter));
-                                    // unpause when the fade out ended (== control gained)
-                                    _uiThread.Post(d =>
-                                    {
-                                        if (this.OnEscapeMenuChanged != null)
-                                        {
-                                            this.OnEscapeMenuChanged(this, false);
-                                        }
-                                    }, null);
-                                }
-                                escapeMenuStarted = false;
                                 loadScreenFadeoutStarted = false;
                             }
                         }
@@ -362,75 +382,69 @@ namespace LiveSplit.Skyrim
                         if (isAlduinDefeated != prevIsAlduinDefeated && isAlduinDefeated && locationID == (int)Locations.Sovngarde)
                         {
                             // AlduinDefeated split
-                            Trace.WriteLine(String.Format("[NoLoads] AlduinDefeated Split - {0}", frameCounter));
                             _uiThread.Post(d =>
                             {
                                 if (this.OnSplitCompleted != null)
                                 {
-                                    this.OnSplitCompleted(this, SplitArea.AlduinDefeated);
+                                    this.OnSplitCompleted(this, SplitArea.AlduinDefeated, frameCounter);
                                 }
                             }, null);
                         }
 
-                        // if a questline is completed
-                        if (questlinesCompleted == prevQuestlinesCompleted + 1)
+                        // reset lastQuest 133 frames (2 seconds) after a completion to avoid splitting on a wrong questline.
+                        if(frameCounter >= lastQuestframeCounter + 100 && lastQuestCompleted != SplitArea.None)
                         {
-                            // while in Dawnstar's Sanctuary
-                            if (locationID == (int)Locations.DawnstarSanctuary)
-                            {
-                                Trace.WriteLine(String.Format("[NoLoads] HailSithisCompleted Split - {0}", frameCounter));
-                                _uiThread.Post(d =>
+                            lastQuestCompleted = SplitArea.None;
+                        }
+                        
+                        if(darkBrotherhoodQuestsCompleted > prevDarkBrotherhoodQuestsCompleted)
+                        {
+                            Trace.WriteLine(String.Format("[NoLoads] A Dark Brotherhood quest has been completed - {0}", frameCounter));
+                            lastQuestCompleted = SplitArea.DarkBrotherhoodQuestlineCompleted;
+                            lastQuestframeCounter = frameCounter;
+                        }
+                        else if (thievesGuildQuestsCompleted > prevThievesGuildQuestsCompleted)
+                        {
+                            Trace.WriteLine(String.Format("[NoLoads] A Thieves' Guild quest has been completed - {0}", frameCounter));
+                            lastQuestCompleted = SplitArea.ThievesGuildQuestlineCompleted;
+                            lastQuestframeCounter = frameCounter;
+                        }
+                        else if(companionsQuestsCompleted > prevCompanionsQuestsCompleted)
+                        {
+                            Trace.WriteLine(String.Format("[NoLoads] A Companions quest has been completed - {0}", frameCounter));
+                            lastQuestCompleted = SplitArea.CompanionsQuestlineCompleted;
+                            lastQuestframeCounter = frameCounter;
+                        }
+                        else if(collegeQuestsCompleted > prevCollegeQuestsCompleted)
+                        {
+                            Trace.WriteLine(String.Format("[NoLoads] A College of Winterhold quest has been completed - {0}", frameCounter));
+                            lastQuestCompleted = SplitArea.CollegeQuestlineCompleted;
+                            lastQuestframeCounter = frameCounter;
+                        }
+
+                        // if a questline is completed
+                        if (questlinesCompleted > prevQuestlinesCompleted)
+                        {
+                            Trace.WriteLineIf(lastQuestCompleted == SplitArea.None, String.Format("[NoLoads] A questline has been completed. - {0}", frameCounter));
+                            _uiThread.Post(d =>
                                 {
                                     if (this.OnSplitCompleted != null)
                                     {
-                                        this.OnSplitCompleted(this, SplitArea.HailSithisCompleted);
+                                        this.OnSplitCompleted(this, lastQuestCompleted, frameCounter);
                                     }
                                 }, null);
-                            }
-                            // while in the Twilight Sepulcher Inner Sanctum
-                            else if (locationID == (int)Locations.TwilightSepulcherInnerSanctum)
-                            {
-                                Trace.WriteLine(String.Format("[NoLoads] DarknessReturnsCompleted Split - {0}", frameCounter));
-                                _uiThread.Post(d =>
-                                {
-                                    if (this.OnSplitCompleted != null)
-                                    {
-                                        this.OnSplitCompleted(this, SplitArea.DarknessReturnsCompleted);
-                                    }
-                                }, null);
-                            }
-                            // while in Ysgramor's Tomb
-                            else if (locationID == (int)Locations.YsgramorsTomb)
-                            {
-                                Trace.WriteLine(String.Format("[NoLoads] GloryOfTheDeadCompleted Split - {0}", frameCounter));
-                                _uiThread.Post(d =>
-                                {
-                                    if (this.OnSplitCompleted != null)
-                                    {
-                                        this.OnSplitCompleted(this, SplitArea.GloryOfTheDeadCompleted);
-                                    }
-                                }, null);
-                            }
-                            // while in the Hall of the Elements
-                            else if (locationID == (int)Locations.HallOfTheElements)
-                            {
-                                Trace.WriteLine(String.Format("[NoLoads] TheEyeOfMagnusCompleted Split - {0}", frameCounter));
-                                _uiThread.Post(d =>
-                                {
-                                    if (this.OnSplitCompleted != null)
-                                    {
-                                        this.OnSplitCompleted(this, SplitArea.TheEyeOfMagnusCompleted);
-                                    }
-                                }, null);
-                            }
                         }
 
                         prevIsLoading = isLoading;
                         prevIsLoadingScreen = isLoadingScreen;
                         prevIsInEscapeMenu = isInEscapeMenu;
+                        prevIsInFadeOut = isInFadeOut;
                         prevIsAlduinDefeated = isAlduinDefeated;
                         prevQuestlinesCompleted = questlinesCompleted;
-                        prevIsInFadeOut = isInFadeOut;
+                        prevCompanionsQuestsCompleted = companionsQuestsCompleted;
+                        prevCollegeQuestsCompleted = collegeQuestsCompleted;
+                        prevDarkBrotherhoodQuestsCompleted = darkBrotherhoodQuestsCompleted;
+                        prevThievesGuildQuestsCompleted = thievesGuildQuestsCompleted;
                         frameCounter++;
 
                         Thread.Sleep(15);
