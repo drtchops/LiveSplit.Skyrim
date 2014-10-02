@@ -160,6 +160,7 @@ namespace LiveSplit.Skyrim
                     bool loadingStarted = false;
                     bool loadingScreenStarted = false;
                     bool loadScreenFadeoutStarted = false;
+                    bool escapeMenuStarted = false;
 
                     while (!game.HasExited)
                     {
@@ -288,14 +289,16 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        if (isInEscapeMenu != prevIsInEscapeMenu)
+                        if (isInEscapeMenu != prevIsInEscapeMenu && isInEscapeMenu)
                         {
-                            Trace.WriteLine(String.Format("[NoLoads] EscapeMenu changed to {0} - {1}", isInEscapeMenu, frameCounter));
+                            Trace.WriteLine(String.Format("[NoLoads] EscapeMenu started - {0}", frameCounter));
+                            escapeMenuStarted = true;
+                            // pause
                             _uiThread.Post(d =>
                             {
                                 if (this.OnEscapeMenuChanged != null)
                                 {
-                                    this.OnEscapeMenuChanged(this, isInEscapeMenu);
+                                    this.OnEscapeMenuChanged(this, true);
                                 }
                             }, null);
                         }
@@ -337,6 +340,20 @@ namespace LiveSplit.Skyrim
                                         }
                                     }, null);
                                 }
+
+                                if (escapeMenuStarted)
+                                {
+                                    Trace.WriteLine(String.Format("[NoLoads] EscapeMenu ended - {0}", frameCounter));
+                                    // unpause when the fade out ended (== control gained)
+                                    _uiThread.Post(d =>
+                                    {
+                                        if (this.OnEscapeMenuChanged != null)
+                                        {
+                                            this.OnEscapeMenuChanged(this, false);
+                                        }
+                                    }, null);
+                                }
+                                escapeMenuStarted = false;
                                 loadScreenFadeoutStarted = false;
                             }
                         }
