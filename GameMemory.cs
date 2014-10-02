@@ -149,7 +149,7 @@ namespace LiveSplit.Skyrim
                     bool prevIsLoading = false;
                     bool prevIsLoadingScreen = false;
                     bool prevIsAlduinDefeated = false;
-                    int prevGuildsCompleted = 0;
+                    int prevQuestlinesCompleted = 0;
                     bool prevIsInFadeOut = false;
 
                     bool loadingStarted = false;
@@ -336,7 +336,7 @@ namespace LiveSplit.Skyrim
                         }
 
                         // if a questline is completed
-                        if (questlinesCompleted == prevGuildsCompleted + 1)
+                        if (questlinesCompleted == prevQuestlinesCompleted + 1)
                         {
                             // while in Dawnstar's Sanctuary
                             if (locationID == (int)Locations.DawnstarSanctuary)
@@ -391,7 +391,7 @@ namespace LiveSplit.Skyrim
                         prevIsLoading = isLoading;
                         prevIsLoadingScreen = isLoadingScreen;
                         prevIsAlduinDefeated = isAlduinDefeated;
-                        prevGuildsCompleted = questlinesCompleted;
+                        prevQuestlinesCompleted = questlinesCompleted;
                         prevIsInFadeOut = isInFadeOut;
                         frameCounter++;
 
