@@ -29,8 +29,6 @@ namespace LiveSplit.Skyrim
         // public event EventHandler OnLoadScreenFinished;
         public delegate void SplitCompletedEventHandler(object sender, SplitArea type, uint frame);
         public event SplitCompletedEventHandler OnSplitCompleted;
-        public delegate void EscapeMenuChangedEventHandler(object sender, bool state);
-        public event EscapeMenuChangedEventHandler OnEscapeMenuChanged;
 
         private Task _thread;
         private CancellationTokenSource _cancelSource;
@@ -39,7 +37,6 @@ namespace LiveSplit.Skyrim
 
         private DeepPointer _isLoadingPtr;
         private DeepPointer _isLoadingScreenPtr;
-        private DeepPointer _isInEscapeMenuPtr;
         private DeepPointer _isInFadeOutPtr;
         private DeepPointer _locationID;
         private DeepPointer _world_XPtr;
@@ -56,10 +53,6 @@ namespace LiveSplit.Skyrim
             Tamriel = 0x0000003C,
             Sovngarde = 0x0002EE41,
             HelgenKeep01 = 0x0005DE24,
-            DawnstarSanctuary = 0x000193EE,
-            TwilightSepulcherInnerSanctum = 0x0002E521,
-            YsgramorsTomb = 0x00015254,
-            HallOfTheElements = 0x0001380E
         }
 
         private enum ExpectedDllSizes
@@ -85,8 +78,6 @@ namespace LiveSplit.Skyrim
             // Loads
             _isLoadingPtr = new DeepPointer(0x17337CC); // == 1 if a load is happening (any except loading screens in Helgen for some reason)
             _isLoadingScreenPtr = new DeepPointer(0xEE3561); // == 1 if in a loading screen
-            _isInEscapeMenuPtr = new DeepPointer(0x172E85E);
-            // _isPausedPtr = new DeepPointer(0x172E85F); // == 1 if the game is paused (menu or loading screen)
             _isInFadeOutPtr = new DeepPointer(0x172EE2E); // == 1 when in a fadeout, it goes back to 0 once control is gained
 
             // Position
@@ -160,7 +151,6 @@ namespace LiveSplit.Skyrim
 
                     bool prevIsLoading = false;
                     bool prevIsLoadingScreen = false;
-                    bool prevIsInEscapeMenu = false;
                     bool prevIsInFadeOut = false;
                     bool prevIsAlduinDefeated = false;                    
                     int prevQuestlinesCompleted = 0;
@@ -188,9 +178,6 @@ namespace LiveSplit.Skyrim
                         {
                             isLoading = true;
                         }
-
-                        bool isInEscapeMenu;
-                        _isInEscapeMenuPtr.Deref(game, out isInEscapeMenu);
 
                         bool isInFadeOut;
                         _isInFadeOutPtr.Deref(game, out isInFadeOut);
@@ -294,15 +281,6 @@ namespace LiveSplit.Skyrim
                                         }
                                     }, null);
                                 }
-
-                                //unpause the timer to count the load
-                                _uiThread.Post(d =>
-                                {
-                                    if (this.OnEscapeMenuChanged != null)
-                                    {
-                                        this.OnEscapeMenuChanged(this, false);
-                                    }
-                                }, null);
                             }
                             else
                             {
@@ -322,19 +300,6 @@ namespace LiveSplit.Skyrim
                                     // }, null);
                                 }
                             }
-                        }
-
-                        if (isInEscapeMenu != prevIsInEscapeMenu)
-                        {
-                            Trace.WriteLine(String.Format("[NoLoads] EscapeMenu changed to {0} - {1}", isInEscapeMenu, frameCounter));
-	                        // pause
-                            _uiThread.Post(d =>
-                            {
-                                if (this.OnEscapeMenuChanged != null)
-                                {
-                                    this.OnEscapeMenuChanged(this, isInEscapeMenu);
-                                }
-                            }, null);
                         }
 
                         if (isInFadeOut != prevIsInFadeOut)
@@ -437,7 +402,6 @@ namespace LiveSplit.Skyrim
 
                         prevIsLoading = isLoading;
                         prevIsLoadingScreen = isLoadingScreen;
-                        prevIsInEscapeMenu = isInEscapeMenu;
                         prevIsInFadeOut = isInFadeOut;
                         prevIsAlduinDefeated = isAlduinDefeated;
                         prevQuestlinesCompleted = questlinesCompleted;
