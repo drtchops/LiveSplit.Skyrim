@@ -11,19 +11,19 @@ namespace LiveSplit.Skyrim
         public bool AutoStart { get; set; }
         public bool AlduinDefeated { get; set; }
         public bool Helgen { get; set; }
-        public bool HailSithis { get; set; }
-        public bool GloryOfTheDead { get; set; }
-        public bool UnderNewManagement { get; set; }
-        public bool TheEyeofMagnus { get; set; }
+        public bool DarkBrotherhood { get; set; }
+        public bool Companions { get; set; }
+        public bool ThievesGuild { get; set; }
+        public bool CollegeOfWinterhold { get; set; }
 
         private const bool DEFAULT_DRAWWITHOUTLOADS = true;
         private const bool DEFAULT_AUTOSTART = true;
         private const bool DEFAULT_ALDUINDEFEATED = true;
         private const bool DEFAULT_HELGEN = false;
-        private const bool DEFAULT_HAILSITHIS = false;
-        private const bool DEFAULT_GLORYOFTHEDEAD = false;
-        private const bool DEFAULT_UNDERNEWMANAGEMENT = false;
-        private const bool DEFAULT_THEEYEOFMAGNUS = false;
+        private const bool DEFAULT_DARKBROTHERHOOD = false;
+        private const bool DEFAULT_COMPANIONS = false;
+        private const bool DEFAULT_THIEVESGUILD = false;
+        private const bool DEFAULT_COLLEGEOFWINTERHOLD = false;
 
         public SkyrimSettings()
         {
@@ -33,20 +33,20 @@ namespace LiveSplit.Skyrim
             this.chkAutoStart.DataBindings.Add("Checked", this, "AutoStart", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkAlduinDefeated.DataBindings.Add("Checked", this, "AlduinDefeated", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkHelgen.DataBindings.Add("Checked", this, "Helgen", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.chkHailSithis.DataBindings.Add("Checked", this, "HailSithis", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.chkGloryOfTheDead.DataBindings.Add("Checked", this, "GloryOfTheDead", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.chkUnderNewManagement.DataBindings.Add("Checked", this, "UnderNewManagement", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.chkTheEyeofMagnus.DataBindings.Add("Checked", this, "TheEyeofMagnus", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkDarkBrotherhood.DataBindings.Add("Checked", this, "DarkBrotherhood", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkCompanions.DataBindings.Add("Checked", this, "Companions", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkThievesGuild.DataBindings.Add("Checked", this, "ThievesGuild", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkCollege.DataBindings.Add("Checked", this, "CollegeOfWinterhold", false, DataSourceUpdateMode.OnPropertyChanged);
 
             // defaults
             this.DrawWithoutLoads = DEFAULT_DRAWWITHOUTLOADS;
             this.AutoStart = DEFAULT_AUTOSTART;
             this.AlduinDefeated = DEFAULT_ALDUINDEFEATED;
             this.Helgen = DEFAULT_HELGEN;
-            this.HailSithis = DEFAULT_HAILSITHIS;
-            this.GloryOfTheDead = DEFAULT_GLORYOFTHEDEAD;
-            this.TheEyeofMagnus = DEFAULT_THEEYEOFMAGNUS;
-            this.UnderNewManagement = DEFAULT_UNDERNEWMANAGEMENT;
+            this.DarkBrotherhood = DEFAULT_DARKBROTHERHOOD;
+            this.Companions = DEFAULT_COMPANIONS;
+            this.CollegeOfWinterhold = DEFAULT_COLLEGEOFWINTERHOLD;
+            this.ThievesGuild = DEFAULT_THIEVESGUILD;
         }
 
         public XmlNode GetSettings(XmlDocument doc)
@@ -59,10 +59,10 @@ namespace LiveSplit.Skyrim
             settingsNode.AppendChild(ToElement(doc, "AutoStart", this.AutoStart));
             settingsNode.AppendChild(ToElement(doc, "AlduinDefeated", this.AlduinDefeated));
             settingsNode.AppendChild(ToElement(doc, "Helgen", this.Helgen));
-            settingsNode.AppendChild(ToElement(doc, "HailSithis", this.HailSithis));
-            settingsNode.AppendChild(ToElement(doc, "GloryOfTheDead", this.GloryOfTheDead));
-            settingsNode.AppendChild(ToElement(doc, "UnderNewManagement", this.UnderNewManagement));
-            settingsNode.AppendChild(ToElement(doc, "TheEyeofMagnus", this.TheEyeofMagnus));
+            settingsNode.AppendChild(ToElement(doc, "DarkBrotherhood", this.DarkBrotherhood));
+            settingsNode.AppendChild(ToElement(doc, "Companions", this.Companions));
+            settingsNode.AppendChild(ToElement(doc, "ThievesGuild", this.ThievesGuild));
+            settingsNode.AppendChild(ToElement(doc, "CollegeOfWinterhold", this.CollegeOfWinterhold));
 
             return settingsNode;
         }
@@ -73,10 +73,10 @@ namespace LiveSplit.Skyrim
             this.AutoStart = ParseBool(settings, "AutoStart", DEFAULT_AUTOSTART);
             this.AlduinDefeated = ParseBool(settings, "AlduinDefeated", DEFAULT_ALDUINDEFEATED);
             this.Helgen = ParseBool(settings, "Helgen", DEFAULT_HELGEN);
-            this.HailSithis = ParseBool(settings, "HailSithis", DEFAULT_HAILSITHIS);
-            this.GloryOfTheDead = ParseBool(settings, "GloryOfTheDead", DEFAULT_GLORYOFTHEDEAD);
-            this.UnderNewManagement = ParseBool(settings, "UnderNewManagement", DEFAULT_UNDERNEWMANAGEMENT);
-            this.TheEyeofMagnus = ParseBool(settings, "TheEyeofMagnus", DEFAULT_THEEYEOFMAGNUS);
+            this.DarkBrotherhood = ParseBool(settings, "DarkBrotherhood", DEFAULT_DARKBROTHERHOOD);
+            this.Companions = ParseBool(settings, "Companions", DEFAULT_COMPANIONS);
+            this.ThievesGuild = ParseBool(settings, "ThievesGuild", DEFAULT_THIEVESGUILD);
+            this.CollegeOfWinterhold = ParseBool(settings, "CollegeOfWinterhold", DEFAULT_COLLEGEOFWINTERHOLD);
         }
 
         static bool ParseBool(XmlNode settings, string setting, bool default_ = false)

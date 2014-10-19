@@ -1,5 +1,5 @@
-﻿LiveSplit.Skyrim v1.4
-=====================
+﻿LiveSplit.Skyrim v1.4.2
+=======================
 
 LiveSplit.Skyrim is a [LiveSplit](http://livesplit.org/) component for The Elder Scrolls V: Skyrim.
 
