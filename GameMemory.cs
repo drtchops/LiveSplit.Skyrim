@@ -209,7 +209,8 @@ namespace LiveSplit.Skyrim
                     int loadScreenStartLocationID = 0;
                     int loadScreenStartWorld_X = 0;
                     int loadScreenStartWorld_Y = 0;
-                    bool isWaitingLocationUpdate = false;
+                    bool isWaitingLocationOrCoordsUpdate = false;
+                    bool isWaitingLocationIDUpdate = false;
 
                     SplitArea lastQuestCompleted = SplitArea.None;
                     uint lastQuestframeCounter = 0;
@@ -349,7 +350,8 @@ namespace LiveSplit.Skyrim
                                 // if it isn't a loadscreen from loading a save
                                 if (!isLoadingSaveFromMenu)
                                 {
-                                    isWaitingLocationUpdate = true;
+                                    isWaitingLocationOrCoordsUpdate = true;
+                                    isWaitingLocationIDUpdate = true;
 
                                     // if loadscreen starts while leaving helgen
                                     if (loadScreenStartLocationID == (int)Locations.HelgenKeep01 && loadScreenStartWorld_X == -2 && loadScreenStartWorld_Y == -5)
@@ -453,17 +455,17 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        if ((locationID != prevLocationID || world_X != prevWorld_X || world_Y != prevWorld_Y) && isWaitingLocationUpdate)
+                        if (locationID != prevLocationID && isWaitingLocationOrCoordsUpdate)
                         {
-                            isWaitingLocationUpdate = false;
+                            isWaitingLocationOrCoordsUpdate = false;
 
                             if (locationID == (int)Locations.SkyHavenTemple && mainQuestsWhenEnteringSkyHavenTemple == -1)
                             {
                                 mainQuestsWhenEnteringSkyHavenTemple = mainquestsCompleted;
                             }
 
-                            // if loadscreen starts in Whiterun and doesn't end in dragonsreach
-                            if (loadScreenStartLocationID == (int)Locations.WhiterunWorld &&
+                            // if loadscreen starts in Whiterun in front the entry of dragonsreach and doesn't end inside it
+                            if (loadScreenStartLocationID == (int)Locations.WhiterunWorld && loadScreenStartWorld_X == 6 && loadScreenStartWorld_Y == 0 &&
                                 locationID != (int)Locations.WhiterunDragonsreach)
                             {
                                 _uiThread.Post(d =>
@@ -584,17 +586,6 @@ namespace LiveSplit.Skyrim
                                     }
                                 }, null);
                             }
-                            // if loadscreen ends in Skuldafn
-                            else if (locationID == (int)Locations.SkuldafnWorld)
-                            {
-                                _uiThread.Post(d =>
-                                {
-                                    if (this.OnSplitCompleted != null)
-                                    {
-                                        this.OnSplitCompleted(this, SplitArea.Odahviing, frameCounter);
-                                    }
-                                }, null);
-                            }
                             // if loadscreen ends in Sovngarde
                             else if (locationID == (int)Locations.Sovngarde)
                             {
@@ -606,6 +597,24 @@ namespace LiveSplit.Skyrim
                                     }
                                 }, null);
 
+                            }
+                        }
+
+                        if (locationID != prevLocationID && isWaitingLocationIDUpdate)
+                        {
+                            isWaitingLocationIDUpdate = false;
+
+                            // if loadscreen ends in Skuldafn.
+                            // Note: For some reason in this loadscreen the coordinates are updated at the beginning of the loadscreen location ID instead of at the end
+                            if (locationID == (int)Locations.SkuldafnWorld)
+                            {
+                                _uiThread.Post(d =>
+                                {
+                                    if (this.OnSplitCompleted != null)
+                                    {
+                                        this.OnSplitCompleted(this, SplitArea.Odahviing, frameCounter);
+                                    }
+                                }, null);
                             }
                         }
 
@@ -666,7 +675,9 @@ namespace LiveSplit.Skyrim
                             }, null);
                         }
 
-                        Debug.WriteLineIf(locationID != prevLocationID || world_X != prevWorld_X || world_Y != prevWorld_Y, String.Format("[NoLoads] Location changed to {0} at X: {1} Y: {2} - {3}", locationID.ToString("X8"), world_X, world_Y, frameCounter));
+
+                        Debug.WriteLineIf(locationID != prevLocationID, String.Format("[NoLoads] Location changed to {0} - {1}", locationID.ToString("X8"), frameCounter));
+                        Debug.WriteLineIf(world_X != prevWorld_X || world_Y != prevWorld_Y, String.Format("[NoLoads] Coords changed to X: {0} Y: {1} - {2}", world_X, world_Y, frameCounter));
                         Debug.WriteLineIf(isInEscapeMenu != prevIsInEscapeMenu, String.Format("[NoLoads] isInEscapeMenu changed to {0} - {1}", isInEscapeMenu, frameCounter));
 
                         prevIsLoading = isLoading;

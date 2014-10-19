@@ -30,6 +30,10 @@ namespace LiveSplit.Skyrim
         public bool Companions { get; set; }
         public bool ThievesGuild { get; set; }
         public bool CollegeOfWinterhold { get; set; }
+        public string AnyPercentPreset { get; set; }
+
+        public static string PRESET_MRWALRUS = "MrWalrus";
+        public static string PRESET_DRTCHOPS = "DrTChops";
 
         private const bool DEFAULT_DRAWWITHOUTLOADS = true;
         private const bool DEFAULT_AUTOSTART = true;
@@ -54,6 +58,7 @@ namespace LiveSplit.Skyrim
         private const bool DEFAULT_COMPANIONS = false;
         private const bool DEFAULT_THIEVESGUILD = false;
         private const bool DEFAULT_COLLEGEOFWINTERHOLD = false;
+        private const string DEFAULT_ANYPERCENTPRESET = "MrWalrus";
 
         public SkyrimSettings()
         {
@@ -107,6 +112,10 @@ namespace LiveSplit.Skyrim
             this.Companions = DEFAULT_COMPANIONS;
             this.CollegeOfWinterhold = DEFAULT_COLLEGEOFWINTERHOLD;
             this.ThievesGuild = DEFAULT_THIEVESGUILD;
+            this.AnyPercentPreset = DEFAULT_ANYPERCENTPRESET;
+
+            this.rbMrwalrus.Checked = this.AnyPercentPreset == PRESET_MRWALRUS;
+            this.rbDrtchops.Checked = this.AnyPercentPreset == PRESET_DRTCHOPS;
         }
 
         public XmlNode GetSettings(XmlDocument doc)
@@ -138,6 +147,7 @@ namespace LiveSplit.Skyrim
             settingsNode.AppendChild(ToElement(doc, "Companions", this.Companions));
             settingsNode.AppendChild(ToElement(doc, "ThievesGuild", this.ThievesGuild));
             settingsNode.AppendChild(ToElement(doc, "CollegeOfWinterhold", this.CollegeOfWinterhold));
+            settingsNode.AppendChild(ToElement(doc, "AnyPercentPreset", this.AnyPercentPreset));
 
             return settingsNode;
         }
@@ -167,6 +177,7 @@ namespace LiveSplit.Skyrim
             this.Companions = ParseBool(settings, "Companions", DEFAULT_COMPANIONS);
             this.ThievesGuild = ParseBool(settings, "ThievesGuild", DEFAULT_THIEVESGUILD);
             this.CollegeOfWinterhold = ParseBool(settings, "CollegeOfWinterhold", DEFAULT_COLLEGEOFWINTERHOLD);
+            this.AnyPercentPreset = settings.Attributes["AnyPercentPreset"] != null ? settings.Attributes["AnyPercentPreset"].Value : DEFAULT_ANYPERCENTPRESET;
         }
 
         static bool ParseBool(XmlNode settings, string setting, bool default_ = false)
@@ -182,6 +193,28 @@ namespace LiveSplit.Skyrim
             XmlElement str = document.CreateElement(name);
             str.InnerText = value.ToString();
             return str;
+        }
+
+        private void rbDrtchops_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdatePreset();
+        }
+
+        private void rbMrwalrus_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdatePreset();
+        }
+
+        private void UpdatePreset()
+        {
+            if (rbMrwalrus.Checked)
+            {
+                this.AnyPercentPreset = PRESET_MRWALRUS;
+            }
+            else if (rbDrtchops.Checked)
+            {
+                this.AnyPercentPreset = PRESET_DRTCHOPS;
+            }
         }
     }
 }
