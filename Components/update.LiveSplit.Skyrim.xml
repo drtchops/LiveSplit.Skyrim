@@ -1,4 +1,17 @@
 <updates>
+    <update version="1.4.2">
+        <files>
+            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+        </files>
+        <changelog>
+            <change>
+                Fixed guild autosplits.
+            </change>
+            <change>
+                Fixed timer not starting on first run.
+            </change>
+        </changelog>
+    </update>
     <update version="1.4.1">
         <files>
             <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
