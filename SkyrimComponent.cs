@@ -150,15 +150,31 @@ namespace LiveSplit.Skyrim
 
         void gameMemory_OnSplitCompleted(object sender, GameMemory.SplitArea split, uint frame)
         {
-            Trace.WriteLineIf(split != GameMemory.SplitArea.None, String.Format("[NoLoads] {0} Split - {1}", split, frame));
+            Debug.WriteLineIf(split != GameMemory.SplitArea.None, String.Format("[NoLoads] Trying to split {0}, State: {1} - {2}", split, _gameMemory.splitStates[(int)split], frame));
             if (!_gameMemory.splitStates[(int)split] &&
                 ((split == GameMemory.SplitArea.Helgen && this.Settings.Helgen) ||
+                (split == GameMemory.SplitArea.Whiterun && this.Settings.Whiterun) ||
+                (split == GameMemory.SplitArea.ThalmorEmbassy && this.Settings.ThalmorEmbassy) ||
+                (split == GameMemory.SplitArea.Esbern && this.Settings.Esbern) ||
+                (split == GameMemory.SplitArea.Riverwood && this.Settings.Riverwood) ||
+                (split == GameMemory.SplitArea.TheWall && this.Settings.TheWall) ||
+                (split == GameMemory.SplitArea.Septimus && this.Settings.Septimus) ||
+                (split == GameMemory.SplitArea.MzarkTower && this.Settings.MzarkTower) ||
+                (split == GameMemory.SplitArea.ClearSky && this.Settings.ClearSky) ||
+                (split == GameMemory.SplitArea.Alduin1 && this.Settings.Alduin1) ||
+                (split == GameMemory.SplitArea.HighHrothgar && this.Settings.HighHrothgar) ||
+                (split == GameMemory.SplitArea.Solitude && this.Settings.Solitude) ||
+                (split == GameMemory.SplitArea.Windhelm && this.Settings.Windhelm) ||
+                (split == GameMemory.SplitArea.Council && this.Settings.Council) ||
+                (split == GameMemory.SplitArea.Odahviing && this.Settings.Odahviing) ||
+                (split == GameMemory.SplitArea.EnterSovngarde && this.Settings.EnterSovngarde) ||
                 (split == GameMemory.SplitArea.DarkBrotherhoodQuestlineCompleted && this.Settings.DarkBrotherhood) ||
                 (split == GameMemory.SplitArea.CompanionsQuestlineCompleted && this.Settings.Companions) ||
                 (split == GameMemory.SplitArea.CollegeQuestlineCompleted && this.Settings.CollegeOfWinterhold) ||
                 (split == GameMemory.SplitArea.ThievesGuildQuestlineCompleted && this.Settings.ThievesGuild) ||
                 (split == GameMemory.SplitArea.AlduinDefeated && this.Settings.AlduinDefeated)))
             {
+                Trace.WriteLine(String.Format("[NoLoads] {0} Split - {1}", split, frame));
                 _timer.Split();
                 _gameMemory.splitStates[(int)split] = true;
             }
