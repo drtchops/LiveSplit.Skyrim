@@ -32,8 +32,9 @@ namespace LiveSplit.Skyrim
         public bool CollegeOfWinterhold { get; set; }
         public string AnyPercentPreset { get; set; }
 
-        public static string PRESET_MRWALRUS = "MrWalrus";
-        public static string PRESET_DRTCHOPS = "DrTChops";
+        public const string PRESET_MRWALRUS = "MrWalrus";
+        public const string PRESET_DRTCHOPS = "DrTChops";
+        public const string PRESET_DALLETH = "Dalleth";
 
         private const bool DEFAULT_DRAWWITHOUTLOADS = true;
         private const bool DEFAULT_AUTOSTART = true;
@@ -113,9 +114,6 @@ namespace LiveSplit.Skyrim
             this.CollegeOfWinterhold = DEFAULT_COLLEGEOFWINTERHOLD;
             this.ThievesGuild = DEFAULT_THIEVESGUILD;
             this.AnyPercentPreset = DEFAULT_ANYPERCENTPRESET;
-
-            this.rbMrwalrus.Checked = this.AnyPercentPreset == PRESET_MRWALRUS;
-            this.rbDrtchops.Checked = this.AnyPercentPreset == PRESET_DRTCHOPS;
         }
 
         public XmlNode GetSettings(XmlDocument doc)
@@ -154,6 +152,8 @@ namespace LiveSplit.Skyrim
 
         public void SetSettings(XmlNode settings)
         {
+            var element = (XmlElement)settings;
+
             this.DrawWithoutLoads = ParseBool(settings, "DrawWithoutLoads", DEFAULT_DRAWWITHOUTLOADS);
             this.AutoStart = ParseBool(settings, "AutoStart", DEFAULT_AUTOSTART);
             this.AlduinDefeated = ParseBool(settings, "AlduinDefeated", DEFAULT_ALDUINDEFEATED);
@@ -177,7 +177,11 @@ namespace LiveSplit.Skyrim
             this.Companions = ParseBool(settings, "Companions", DEFAULT_COMPANIONS);
             this.ThievesGuild = ParseBool(settings, "ThievesGuild", DEFAULT_THIEVESGUILD);
             this.CollegeOfWinterhold = ParseBool(settings, "CollegeOfWinterhold", DEFAULT_COLLEGEOFWINTERHOLD);
-            this.AnyPercentPreset = settings.Attributes["AnyPercentPreset"] != null ? settings.Attributes["AnyPercentPreset"].Value : DEFAULT_ANYPERCENTPRESET;
+            this.AnyPercentPreset = element["AnyPercentPreset"].InnerText.Equals(PRESET_MRWALRUS) || element["AnyPercentPreset"].InnerText.Equals(PRESET_DRTCHOPS) || element["AnyPercentPreset"].InnerText.Equals(PRESET_DALLETH)
+                ? element["AnyPercentPreset"].InnerText : DEFAULT_ANYPERCENTPRESET;
+            this.rbMrwalrus.Checked = this.AnyPercentPreset == PRESET_MRWALRUS;
+            this.rbDrtchops.Checked = this.AnyPercentPreset == PRESET_DRTCHOPS;
+            this.rbDalleth.Checked = this.AnyPercentPreset == PRESET_DALLETH;
         }
 
         static bool ParseBool(XmlNode settings, string setting, bool default_ = false)
@@ -195,16 +199,6 @@ namespace LiveSplit.Skyrim
             return str;
         }
 
-        private void rbDrtchops_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdatePreset();
-        }
-
-        private void rbMrwalrus_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdatePreset();
-        }
-
         private void UpdatePreset()
         {
             if (rbMrwalrus.Checked)
@@ -215,6 +209,25 @@ namespace LiveSplit.Skyrim
             {
                 this.AnyPercentPreset = PRESET_DRTCHOPS;
             }
+            else if (rbDalleth.Checked)
+            {
+                this.AnyPercentPreset = PRESET_DALLETH;
+            }
+        }
+
+        private void rbDrtchops_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdatePreset();
+        }
+
+        private void rbMrwalrus_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdatePreset();
+        }
+
+        private void rbDalleth_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdatePreset();
         }
     }
 }

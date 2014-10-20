@@ -42,7 +42,7 @@ namespace LiveSplit.Skyrim
             _cache = new GraphicsCache();
             _timer = new TimerModel { CurrentState = state };
 
-            _gameMemory = new GameMemory();
+            _gameMemory = new GameMemory(this.Settings);
             _gameMemory.OnFirstLevelLoading += gameMemory_OnFirstLevelLoading;
             _gameMemory.OnPlayerGainedControl += gameMemory_OnPlayerGainedControl;
             _gameMemory.OnLoadStarted += gameMemory_OnLoadStarted;
@@ -151,7 +151,7 @@ namespace LiveSplit.Skyrim
         void gameMemory_OnSplitCompleted(object sender, GameMemory.SplitArea split, uint frame)
         {
             Debug.WriteLineIf(split != GameMemory.SplitArea.None, String.Format("[NoLoads] Trying to split {0}, State: {1} - {2}", split, _gameMemory.splitStates[(int)split], frame));
-            if (!_gameMemory.splitStates[(int)split] &&
+            if (_state.CurrentPhase == TimerPhase.Running && !_gameMemory.splitStates[(int)split] &&
                 ((split == GameMemory.SplitArea.Helgen && this.Settings.Helgen) ||
                 (split == GameMemory.SplitArea.Whiterun && this.Settings.Whiterun) ||
                 (split == GameMemory.SplitArea.ThalmorEmbassy && this.Settings.ThalmorEmbassy) ||
@@ -174,7 +174,7 @@ namespace LiveSplit.Skyrim
                 (split == GameMemory.SplitArea.ThievesGuildQuestlineCompleted && this.Settings.ThievesGuild) ||
                 (split == GameMemory.SplitArea.AlduinDefeated && this.Settings.AlduinDefeated)))
             {
-                Trace.WriteLine(String.Format("[NoLoads] {0} Split - {1}", split, frame));
+                Trace.WriteLine(String.Format("[NoLoads] {0} Split with {2} preset - {1}", split, frame, this.Settings.AnyPercentPreset));
                 _timer.Split();
                 _gameMemory.splitStates[(int)split] = true;
             }

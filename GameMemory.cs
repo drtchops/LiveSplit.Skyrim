@@ -49,6 +49,7 @@ namespace LiveSplit.Skyrim
         private CancellationTokenSource _cancelSource;
         private SynchronizationContext _uiThread;
         private List<int> _ignorePIDs;
+        private SkyrimSettings _settings;
 
         private DeepPointer _isLoadingPtr;
         private DeepPointer _isLoadingScreenPtr;
@@ -65,6 +66,7 @@ namespace LiveSplit.Skyrim
         private DeepPointer _isInEscapeMenuPtr;
         private DeepPointer _mainQuestsCompletedPtr;
         private DeepPointer _wordsOfPowerLearnedPtr;
+        private DeepPointer _Alduin1HealthPtr;
 
         private enum Locations
         {
@@ -97,6 +99,7 @@ namespace LiveSplit.Skyrim
 
         public bool[] splitStates { get; set; }
         int mainQuestsWhenEnteringSkyHavenTemple = -1;
+        bool isAlduin1Defeated = false;
 
         public void resetSplitStates()
         {
@@ -105,10 +108,12 @@ namespace LiveSplit.Skyrim
                 splitStates[i] = false;
             }
             mainQuestsWhenEnteringSkyHavenTemple = -1;
+            isAlduin1Defeated = false;
         }
 
-        public GameMemory()
+        public GameMemory(SkyrimSettings componentSettings)
         {
+            _settings = componentSettings;
             splitStates = new bool[(int)SplitArea.AlduinDefeated + 1];
 
             // Loads
@@ -131,6 +136,7 @@ namespace LiveSplit.Skyrim
             _isInEscapeMenuPtr = new DeepPointer(0x172E85E); // == 1 when in the pause menu or level up menu
             _mainQuestsCompletedPtr = new DeepPointer(0x00EE6C34, 0x350); // number of main quests completed (from ingame stats)
             _wordsOfPowerLearnedPtr = new DeepPointer(0x00EE6C34, 0x558); // "Words Of Power Learned" from ingame stats
+            _Alduin1HealthPtr = new DeepPointer(0x00F41764, 0x74, 0x30, 0x30, 0x1c); // Alduin 1's health (if it's at 0 it's 99% of the time because it can't be found)
 
             resetSplitStates();
 
@@ -191,7 +197,7 @@ namespace LiveSplit.Skyrim
                     bool prevIsLoading = false;
                     bool prevIsLoadingScreen = false;
                     bool prevIsInFadeOut = false;
-                    bool prevIsAlduinDefeated = false;
+                    bool prevIsAlduin2Defeated = false;
                     int prevQuestlinesCompleted = 0;
                     int prevCompanionsQuestsCompleted = 0;
                     int prevCollegeQuestsCompleted = 0;
@@ -240,8 +246,8 @@ namespace LiveSplit.Skyrim
                         int world_Y;
                         _world_YPtr.Deref(game, out world_Y);
 
-                        bool isAlduinDefeated;
-                        _isAlduinDefeatedPtr.Deref(game, out isAlduinDefeated);
+                        bool isAlduin2Defeated;
+                        _isAlduinDefeatedPtr.Deref(game, out isAlduin2Defeated);
 
                         int questlinesCompleted;
                         _questlinesCompleted.Deref(game, out questlinesCompleted);
@@ -266,6 +272,9 @@ namespace LiveSplit.Skyrim
 
                         int wordsOfPowerLearned;
                         _wordsOfPowerLearnedPtr.Deref(game, out wordsOfPowerLearned);
+
+                        float alduin1Health;
+                        _Alduin1HealthPtr.Deref(game, out alduin1Health);
 
                         if (isLoading != prevIsLoading)
                         {
@@ -379,7 +388,7 @@ namespace LiveSplit.Skyrim
                                     // if loadscreen starts in Paarthurnax' mountain whereabouts
                                     else if (loadScreenStartLocationID == (int)Locations.Tamriel && ((loadScreenStartWorld_X == 14 && loadScreenStartWorld_Y == -12) ||
                                         (loadScreenStartWorld_X == 14 && loadScreenStartWorld_Y == -13) || (loadScreenStartWorld_X == 13 && loadScreenStartWorld_Y == -12) ||
-                                        (loadScreenStartWorld_X == 13 && loadScreenStartWorld_Y == -13)))
+                                        (loadScreenStartWorld_X == 13 && loadScreenStartWorld_Y == -13)) && (_settings.AnyPercentPreset == SkyrimSettings.PRESET_DRTCHOPS || _settings.AnyPercentPreset == SkyrimSettings.PRESET_DALLETH))
                                     {
                                         _uiThread.Post(d =>
                                         {
@@ -465,7 +474,7 @@ namespace LiveSplit.Skyrim
                             }
 
                             // if loadscreen starts in Whiterun in front the entry of dragonsreach and doesn't end inside it
-                            if (loadScreenStartLocationID == (int)Locations.WhiterunWorld && loadScreenStartWorld_X == 6 && loadScreenStartWorld_Y == 0 &&
+                            if (isAlduin1Defeated && loadScreenStartLocationID == (int)Locations.WhiterunWorld && loadScreenStartWorld_X == 6 && loadScreenStartWorld_Y == 0 &&
                                 locationID != (int)Locations.WhiterunDragonsreach)
                             {
                                 _uiThread.Post(d =>
@@ -618,8 +627,26 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
+                        //
+                        if (alduin1Health < 0 && !isAlduin1Defeated)
+                        {
+                            Debug.WriteLine(String.Format("[NoLoads] Alduin 1 has been defeated. HP: {1} - {0}", frameCounter, alduin1Health));
+                            isAlduin1Defeated = true;
+                            
+                            if (_settings.AnyPercentPreset == SkyrimSettings.PRESET_MRWALRUS)
+                            {
+                                _uiThread.Post(d =>
+                                {
+                                    if (this.OnSplitCompleted != null)
+                                    {
+                                        this.OnSplitCompleted(this, SplitArea.Alduin1, frameCounter);
+                                    }
+                                }, null);
+                            }
+                        }
+
                         // if alduin is defeated in sovngarde
-                        if (isAlduinDefeated != prevIsAlduinDefeated && isAlduinDefeated && locationID == (int)Locations.Sovngarde)
+                        if (isAlduin2Defeated != prevIsAlduin2Defeated && isAlduin2Defeated && locationID == (int)Locations.Sovngarde)
                         {
                             // AlduinDefeated split
                             _uiThread.Post(d =>
@@ -683,7 +710,7 @@ namespace LiveSplit.Skyrim
                         prevIsLoading = isLoading;
                         prevIsLoadingScreen = isLoadingScreen;
                         prevIsInFadeOut = isInFadeOut;
-                        prevIsAlduinDefeated = isAlduinDefeated;
+                        prevIsAlduin2Defeated = isAlduin2Defeated;
                         prevQuestlinesCompleted = questlinesCompleted;
                         prevCompanionsQuestsCompleted = companionsQuestsCompleted;
                         prevCollegeQuestsCompleted = collegeQuestsCompleted;

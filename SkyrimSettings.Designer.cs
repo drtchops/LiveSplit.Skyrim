@@ -60,10 +60,11 @@
             this.chkOdahviing = new System.Windows.Forms.CheckBox();
             this.chkEnterSovngarde = new System.Windows.Forms.CheckBox();
             this.chkAlduin1 = new System.Windows.Forms.CheckBox();
+            this.gbAnyPercentPreset = new System.Windows.Forms.GroupBox();
+            this.tlpAnyPercentPreset = new System.Windows.Forms.TableLayoutPanel();
             this.rbMrwalrus = new System.Windows.Forms.RadioButton();
             this.rbDrtchops = new System.Windows.Forms.RadioButton();
-            this.tlpAnyPercentPreset = new System.Windows.Forms.TableLayoutPanel();
-            this.gbAnyPercentPreset = new System.Windows.Forms.GroupBox();
+            this.rbDalleth = new System.Windows.Forms.RadioButton();
             this.tlpMain.SuspendLayout();
             this.gbStartSplits.SuspendLayout();
             this.tlpStartSplits.SuspendLayout();
@@ -73,8 +74,8 @@
             this.tlpDisplayAlternateTiming.SuspendLayout();
             this.gb_AnyPercentSplits.SuspendLayout();
             this.tlpAnyPercentSplits.SuspendLayout();
-            this.tlpAnyPercentPreset.SuspendLayout();
             this.gbAnyPercentPreset.SuspendLayout();
+            this.tlpAnyPercentPreset.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpMain
@@ -492,48 +493,6 @@
             this.chkAlduin1.Text = "Alduin 1";
             this.chkAlduin1.UseVisualStyleBackColor = true;
             // 
-            // rbMrwalrus
-            // 
-            this.rbMrwalrus.AutoSize = true;
-            this.rbMrwalrus.Checked = true;
-            this.rbMrwalrus.Location = new System.Drawing.Point(3, 3);
-            this.rbMrwalrus.Name = "rbMrwalrus";
-            this.rbMrwalrus.Size = new System.Drawing.Size(70, 17);
-            this.rbMrwalrus.TabIndex = 0;
-            this.rbMrwalrus.TabStop = true;
-            this.rbMrwalrus.Text = "MrWalrus";
-            this.rbMrwalrus.UseVisualStyleBackColor = true;
-            this.rbMrwalrus.CheckedChanged += new System.EventHandler(this.rbMrwalrus_CheckedChanged);
-            // 
-            // rbDrtchops
-            // 
-            this.rbDrtchops.AutoSize = true;
-            this.rbDrtchops.Location = new System.Drawing.Point(79, 3);
-            this.rbDrtchops.Name = "rbDrtchops";
-            this.rbDrtchops.Size = new System.Drawing.Size(73, 17);
-            this.rbDrtchops.TabIndex = 1;
-            this.rbDrtchops.TabStop = true;
-            this.rbDrtchops.Text = "DrTChops";
-            this.rbDrtchops.UseVisualStyleBackColor = true;
-            this.rbDrtchops.CheckedChanged += new System.EventHandler(this.rbDrtchops_CheckedChanged);
-            // 
-            // tlpAnyPercentPreset
-            // 
-            this.tlpAnyPercentPreset.AutoSize = true;
-            this.tlpAnyPercentPreset.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpAnyPercentPreset.ColumnCount = 2;
-            this.tlpAnyPercentPreset.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpAnyPercentPreset.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpAnyPercentPreset.Controls.Add(this.rbMrwalrus, 0, 0);
-            this.tlpAnyPercentPreset.Controls.Add(this.rbDrtchops, 1, 0);
-            this.tlpAnyPercentPreset.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpAnyPercentPreset.Location = new System.Drawing.Point(3, 16);
-            this.tlpAnyPercentPreset.Name = "tlpAnyPercentPreset";
-            this.tlpAnyPercentPreset.RowCount = 1;
-            this.tlpAnyPercentPreset.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpAnyPercentPreset.Size = new System.Drawing.Size(155, 23);
-            this.tlpAnyPercentPreset.TabIndex = 0;
-            // 
             // gbAnyPercentPreset
             // 
             this.gbAnyPercentPreset.AutoSize = true;
@@ -542,10 +501,63 @@
             this.gbAnyPercentPreset.Dock = System.Windows.Forms.DockStyle.Left;
             this.gbAnyPercentPreset.Location = new System.Drawing.Point(3, 3);
             this.gbAnyPercentPreset.Name = "gbAnyPercentPreset";
-            this.gbAnyPercentPreset.Size = new System.Drawing.Size(161, 42);
+            this.gbAnyPercentPreset.Size = new System.Drawing.Size(225, 42);
             this.gbAnyPercentPreset.TabIndex = 19;
             this.gbAnyPercentPreset.TabStop = false;
             this.gbAnyPercentPreset.Text = "Preset";
+            // 
+            // tlpAnyPercentPreset
+            // 
+            this.tlpAnyPercentPreset.AutoSize = true;
+            this.tlpAnyPercentPreset.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tlpAnyPercentPreset.ColumnCount = 3;
+            this.tlpAnyPercentPreset.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpAnyPercentPreset.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpAnyPercentPreset.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpAnyPercentPreset.Controls.Add(this.rbMrwalrus, 0, 0);
+            this.tlpAnyPercentPreset.Controls.Add(this.rbDrtchops, 1, 0);
+            this.tlpAnyPercentPreset.Controls.Add(this.rbDalleth, 2, 0);
+            this.tlpAnyPercentPreset.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpAnyPercentPreset.Location = new System.Drawing.Point(3, 16);
+            this.tlpAnyPercentPreset.Name = "tlpAnyPercentPreset";
+            this.tlpAnyPercentPreset.RowCount = 1;
+            this.tlpAnyPercentPreset.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpAnyPercentPreset.Size = new System.Drawing.Size(219, 23);
+            this.tlpAnyPercentPreset.TabIndex = 0;
+            // 
+            // rbMrwalrus
+            // 
+            this.rbMrwalrus.AutoSize = true;
+            this.rbMrwalrus.Location = new System.Drawing.Point(3, 3);
+            this.rbMrwalrus.Name = "rbMrwalrus";
+            this.rbMrwalrus.Size = new System.Drawing.Size(70, 17);
+            this.rbMrwalrus.TabIndex = 0;
+            this.rbMrwalrus.Text = "MrWalrus";
+            this.rbMrwalrus.UseVisualStyleBackColor = true;
+            this.rbMrwalrus.CheckedChanged += new System.EventHandler(this.rbDrtchops_CheckedChanged);
+            // 
+            // rbDrtchops
+            // 
+            this.rbDrtchops.AutoSize = true;
+            this.rbDrtchops.Enabled = false;
+            this.rbDrtchops.Location = new System.Drawing.Point(79, 3);
+            this.rbDrtchops.Name = "rbDrtchops";
+            this.rbDrtchops.Size = new System.Drawing.Size(73, 17);
+            this.rbDrtchops.TabIndex = 1;
+            this.rbDrtchops.Text = "DrTChops";
+            this.rbDrtchops.UseVisualStyleBackColor = true;
+            this.rbDrtchops.CheckedChanged += new System.EventHandler(this.rbDrtchops_CheckedChanged);
+            // 
+            // rbDalleth
+            // 
+            this.rbDalleth.AutoSize = true;
+            this.rbDalleth.Location = new System.Drawing.Point(158, 3);
+            this.rbDalleth.Name = "rbDalleth";
+            this.rbDalleth.Size = new System.Drawing.Size(58, 17);
+            this.rbDalleth.TabIndex = 2;
+            this.rbDalleth.Text = "Dalleth";
+            this.rbDalleth.UseVisualStyleBackColor = true;
+            this.rbDalleth.CheckedChanged += new System.EventHandler(this.rbDalleth_CheckedChanged);
             // 
             // SkyrimSettings
             // 
@@ -572,10 +584,10 @@
             this.gb_AnyPercentSplits.PerformLayout();
             this.tlpAnyPercentSplits.ResumeLayout(false);
             this.tlpAnyPercentSplits.PerformLayout();
-            this.tlpAnyPercentPreset.ResumeLayout(false);
-            this.tlpAnyPercentPreset.PerformLayout();
             this.gbAnyPercentPreset.ResumeLayout(false);
             this.gbAnyPercentPreset.PerformLayout();
+            this.tlpAnyPercentPreset.ResumeLayout(false);
+            this.tlpAnyPercentPreset.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -619,5 +631,6 @@
         private System.Windows.Forms.RadioButton rbDrtchops;
         private System.Windows.Forms.GroupBox gbAnyPercentPreset;
         private System.Windows.Forms.TableLayoutPanel tlpAnyPercentPreset;
+        private System.Windows.Forms.RadioButton rbDalleth;
     }
 }
