@@ -30,11 +30,11 @@ namespace LiveSplit.Skyrim
         public bool Companions { get; set; }
         public bool ThievesGuild { get; set; }
         public bool CollegeOfWinterhold { get; set; }
-        public string AnyPercentPreset { get; set; }
+        public string AnyPercentTemplate { get; set; }
 
-        public const string PRESET_MRWALRUS = "MrWalrus";
-        public const string PRESET_DRTCHOPS = "DrTChops";
-        public const string PRESET_DALLETH = "Dalleth";
+        public const string TEMPLATE_MRWALRUS = "MrWalrus";
+        public const string TEMPLATE_DRTCHOPS = "DrTChops";
+        public const string TEMPLATE_DALLETH = "Dalleth";
 
         private const bool DEFAULT_DRAWWITHOUTLOADS = true;
         private const bool DEFAULT_AUTOSTART = true;
@@ -59,7 +59,7 @@ namespace LiveSplit.Skyrim
         private const bool DEFAULT_COMPANIONS = false;
         private const bool DEFAULT_THIEVESGUILD = false;
         private const bool DEFAULT_COLLEGEOFWINTERHOLD = false;
-        private const string DEFAULT_ANYPERCENTPRESET = "MrWalrus";
+        private const string DEFAULT_ANYPERCENTTEMPLATE = "MrWalrus";
 
         public SkyrimSettings()
         {
@@ -113,7 +113,7 @@ namespace LiveSplit.Skyrim
             this.Companions = DEFAULT_COMPANIONS;
             this.CollegeOfWinterhold = DEFAULT_COLLEGEOFWINTERHOLD;
             this.ThievesGuild = DEFAULT_THIEVESGUILD;
-            this.AnyPercentPreset = DEFAULT_ANYPERCENTPRESET;
+            this.AnyPercentTemplate = DEFAULT_ANYPERCENTTEMPLATE;
         }
 
         public XmlNode GetSettings(XmlDocument doc)
@@ -145,7 +145,7 @@ namespace LiveSplit.Skyrim
             settingsNode.AppendChild(ToElement(doc, "Companions", this.Companions));
             settingsNode.AppendChild(ToElement(doc, "ThievesGuild", this.ThievesGuild));
             settingsNode.AppendChild(ToElement(doc, "CollegeOfWinterhold", this.CollegeOfWinterhold));
-            settingsNode.AppendChild(ToElement(doc, "AnyPercentPreset", this.AnyPercentPreset));
+            settingsNode.AppendChild(ToElement(doc, "AnyPercentTemplate", this.AnyPercentTemplate));
 
             return settingsNode;
         }
@@ -177,11 +177,12 @@ namespace LiveSplit.Skyrim
             this.Companions = ParseBool(settings, "Companions", DEFAULT_COMPANIONS);
             this.ThievesGuild = ParseBool(settings, "ThievesGuild", DEFAULT_THIEVESGUILD);
             this.CollegeOfWinterhold = ParseBool(settings, "CollegeOfWinterhold", DEFAULT_COLLEGEOFWINTERHOLD);
-            this.AnyPercentPreset = element["AnyPercentPreset"].InnerText.Equals(PRESET_MRWALRUS) || element["AnyPercentPreset"].InnerText.Equals(PRESET_DRTCHOPS) || element["AnyPercentPreset"].InnerText.Equals(PRESET_DALLETH)
-                ? element["AnyPercentPreset"].InnerText : DEFAULT_ANYPERCENTPRESET;
-            this.rbMrwalrus.Checked = this.AnyPercentPreset == PRESET_MRWALRUS;
-            this.rbDrtchops.Checked = this.AnyPercentPreset == PRESET_DRTCHOPS;
-            this.rbDalleth.Checked = this.AnyPercentPreset == PRESET_DALLETH;
+            this.AnyPercentTemplate = element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_MRWALRUS) || element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_DRTCHOPS) || element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_DALLETH)
+                ? element["AnyPercentTemplate"].InnerText : DEFAULT_ANYPERCENTTEMPLATE;
+            this.rbMrwalrus.Checked = this.AnyPercentTemplate == TEMPLATE_MRWALRUS;
+            this.rbDrtchops.Checked = this.AnyPercentTemplate == TEMPLATE_DRTCHOPS;
+            this.rbDalleth.Checked = this.AnyPercentTemplate == TEMPLATE_DALLETH;
+            UpdateTemplate();
         }
 
         static bool ParseBool(XmlNode settings, string setting, bool default_ = false)
@@ -199,35 +200,36 @@ namespace LiveSplit.Skyrim
             return str;
         }
 
-        private void UpdatePreset()
+        private void UpdateTemplate()
         {
             if (rbMrwalrus.Checked)
             {
-                this.AnyPercentPreset = PRESET_MRWALRUS;
+                this.AnyPercentTemplate = TEMPLATE_MRWALRUS;
             }
             else if (rbDrtchops.Checked)
             {
-                this.AnyPercentPreset = PRESET_DRTCHOPS;
+                this.AnyPercentTemplate = TEMPLATE_DRTCHOPS;
             }
             else if (rbDalleth.Checked)
             {
-                this.AnyPercentPreset = PRESET_DALLETH;
+                this.AnyPercentTemplate = TEMPLATE_DALLETH;
             }
+            this.chkReadScroll.Enabled = this.AnyPercentTemplate == TEMPLATE_DRTCHOPS;
         }
 
         private void rbDrtchops_CheckedChanged(object sender, EventArgs e)
         {
-            UpdatePreset();
+            UpdateTemplate();
         }
 
         private void rbMrwalrus_CheckedChanged(object sender, EventArgs e)
         {
-            UpdatePreset();
+            UpdateTemplate();
         }
 
         private void rbDalleth_CheckedChanged(object sender, EventArgs e)
         {
-            UpdatePreset();
+            UpdateTemplate();
         }
     }
 }

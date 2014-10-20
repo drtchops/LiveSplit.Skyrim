@@ -207,6 +207,7 @@ namespace LiveSplit.Skyrim
                     int prevLocationID = 0;
                     int prevWorld_X = 0;
                     int prevWorld_Y = 0;
+                    int prevMainQuestsCompleted = 0;
 
                     bool loadingStarted = false;
                     bool loadingScreenStarted = false;
@@ -379,7 +380,7 @@ namespace LiveSplit.Skyrim
                                     // if loadscreen starts in Paarthurnax' mountain whereabouts
                                     else if (isAlduin1Defeated && loadScreenStartLocationID == (int)Locations.Tamriel && ((loadScreenStartWorld_X == 14 && loadScreenStartWorld_Y == -12) ||
                                         (loadScreenStartWorld_X == 14 && loadScreenStartWorld_Y == -13) || (loadScreenStartWorld_X == 13 && loadScreenStartWorld_Y == -12) ||
-                                        (loadScreenStartWorld_X == 13 && loadScreenStartWorld_Y == -13)) && (_settings.AnyPercentPreset == SkyrimSettings.PRESET_DRTCHOPS || _settings.AnyPercentPreset == SkyrimSettings.PRESET_DALLETH))
+                                        (loadScreenStartWorld_X == 13 && loadScreenStartWorld_Y == -13)) && (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
                                     {
                                         _uiThread.Post(d =>
                                         {
@@ -517,7 +518,7 @@ namespace LiveSplit.Skyrim
                                         }
                                     }, null);
                                 }
-                                else
+                                else if (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH)
                                 {
                                     _uiThread.Post(d =>
                                     {
@@ -617,7 +618,7 @@ namespace LiveSplit.Skyrim
                             Debug.WriteLine(String.Format("[NoLoads] Alduin 1 has been defeated. HP: {1} - {0}", frameCounter, alduin1Health));
                             isAlduin1Defeated = true;
                             
-                            if (_settings.AnyPercentPreset == SkyrimSettings.PRESET_MRWALRUS)
+                            if (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS)
                             {
                                 _uiThread.Post(d =>
                                 {
@@ -627,6 +628,19 @@ namespace LiveSplit.Skyrim
                                     }
                                 }, null);
                             }
+                        }
+
+                        // the only mainquest you can complete here is the council so when a quest completes, walrus' council split
+                        if (mainquestsCompleted  == prevMainQuestsCompleted + 1 && locationID == (int)Locations.HighHrothgar &&
+                            _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS)
+                        {
+                            _uiThread.Post(d =>
+                            {
+                                if (this.OnSplitCompleted != null)
+                                {
+                                    this.OnSplitCompleted(this, SplitArea.Council, frameCounter);
+                                }
+                            }, null);
                         }
 
                         // if alduin is defeated in sovngarde
@@ -704,6 +718,7 @@ namespace LiveSplit.Skyrim
                         prevLocationID = locationID;
                         prevWorld_X = world_X;
                         prevWorld_Y = world_Y;
+                        prevMainQuestsCompleted = mainquestsCompleted;
                         frameCounter++;
 
                         Thread.Sleep(15);
