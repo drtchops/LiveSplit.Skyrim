@@ -177,9 +177,20 @@ namespace LiveSplit.Skyrim
             this.Companions = ParseBool(settings, "Companions", DEFAULT_COMPANIONS);
             this.ThievesGuild = ParseBool(settings, "ThievesGuild", DEFAULT_THIEVESGUILD);
             this.CollegeOfWinterhold = ParseBool(settings, "CollegeOfWinterhold", DEFAULT_COLLEGEOFWINTERHOLD);
-            this.AnyPercentTemplate = element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_MRWALRUS) || element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_DRTCHOPS) || element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_DALLETH)
-                ? element["AnyPercentTemplate"].InnerText : DEFAULT_ANYPERCENTTEMPLATE;
-            this.rbMrwalrus.Checked = this.AnyPercentTemplate == TEMPLATE_MRWALRUS;
+
+            if (element["AnyPercentTemplate"] != null)
+            {
+                this.AnyPercentTemplate = element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_MRWALRUS) ||
+                    element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_DRTCHOPS) || element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_DALLETH)
+                        ? element["AnyPercentTemplate"].InnerText
+                        : DEFAULT_ANYPERCENTTEMPLATE;
+            }
+            else
+            {
+                this.AnyPercentTemplate = DEFAULT_ANYPERCENTTEMPLATE;
+            }
+
+                this.rbMrwalrus.Checked = this.AnyPercentTemplate == TEMPLATE_MRWALRUS;
             this.rbDrtchops.Checked = this.AnyPercentTemplate == TEMPLATE_DRTCHOPS;
             this.rbDalleth.Checked = this.AnyPercentTemplate == TEMPLATE_DALLETH;
             UpdateTemplate();
