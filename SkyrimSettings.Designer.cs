@@ -67,6 +67,7 @@
             this.chkOdahviing = new System.Windows.Forms.CheckBox();
             this.chkEnterSovngarde = new System.Windows.Forms.CheckBox();
             this.chkAlduinDefeated = new System.Windows.Forms.CheckBox();
+            this.llCheckAll = new System.Windows.Forms.LinkLabel();
             this.tlpMain.SuspendLayout();
             this.gbStartSplits.SuspendLayout();
             this.tlpStartSplits.SuspendLayout();
@@ -99,7 +100,7 @@
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpMain.Size = new System.Drawing.Size(450, 476);
+            this.tlpMain.Size = new System.Drawing.Size(450, 489);
             this.tlpMain.TabIndex = 0;
             // 
             // gbStartSplits
@@ -161,7 +162,7 @@
             this.gbGuildsSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gbGuildsSplits.Controls.Add(this.tlpGuildsSplits);
             this.gbGuildsSplits.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbGuildsSplits.Location = new System.Drawing.Point(3, 314);
+            this.gbGuildsSplits.Location = new System.Drawing.Point(3, 327);
             this.gbGuildsSplits.Name = "gbGuildsSplits";
             this.gbGuildsSplits.Size = new System.Drawing.Size(444, 111);
             this.gbGuildsSplits.TabIndex = 7;
@@ -237,7 +238,7 @@
             this.gbDisplayAlternateTiming.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gbDisplayAlternateTiming.Controls.Add(this.tlpDisplayAlternateTiming);
             this.gbDisplayAlternateTiming.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbDisplayAlternateTiming.Location = new System.Drawing.Point(3, 431);
+            this.gbDisplayAlternateTiming.Location = new System.Drawing.Point(3, 444);
             this.gbDisplayAlternateTiming.Name = "gbDisplayAlternateTiming";
             this.gbDisplayAlternateTiming.Size = new System.Drawing.Size(444, 42);
             this.gbDisplayAlternateTiming.TabIndex = 9;
@@ -280,7 +281,7 @@
             this.gb_AnyPercentSplits.Dock = System.Windows.Forms.DockStyle.Top;
             this.gb_AnyPercentSplits.Location = new System.Drawing.Point(3, 74);
             this.gb_AnyPercentSplits.Name = "gb_AnyPercentSplits";
-            this.gb_AnyPercentSplits.Size = new System.Drawing.Size(444, 234);
+            this.gb_AnyPercentSplits.Size = new System.Drawing.Size(444, 247);
             this.gb_AnyPercentSplits.TabIndex = 10;
             this.gb_AnyPercentSplits.TabStop = false;
             this.gb_AnyPercentSplits.Text = "Any% Auto-splits";
@@ -292,31 +293,16 @@
             this.tlpAnyPercentSplits.ColumnCount = 1;
             this.tlpAnyPercentSplits.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tlpAnyPercentSplits.Controls.Add(this.gbAnyPercentTemplate, 0, 0);
-            this.tlpAnyPercentSplits.Controls.Add(this.flp_AnyPercentSplits, 0, 1);
+            this.tlpAnyPercentSplits.Controls.Add(this.flp_AnyPercentSplits, 0, 2);
+            this.tlpAnyPercentSplits.Controls.Add(this.llCheckAll, 0, 1);
             this.tlpAnyPercentSplits.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpAnyPercentSplits.Location = new System.Drawing.Point(3, 16);
             this.tlpAnyPercentSplits.Name = "tlpAnyPercentSplits";
-            this.tlpAnyPercentSplits.RowCount = 2;
+            this.tlpAnyPercentSplits.RowCount = 3;
             this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAnyPercentSplits.Size = new System.Drawing.Size(438, 215);
+            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpAnyPercentSplits.Size = new System.Drawing.Size(438, 228);
             this.tlpAnyPercentSplits.TabIndex = 0;
             // 
             // gbAnyPercentTemplate
@@ -365,7 +351,7 @@
             // rbDrtchops
             // 
             this.rbDrtchops.AutoSize = true;
-            this.rbDrtchops.Location = new System.Drawing.Point(144, 3);
+            this.rbDrtchops.Location = new System.Drawing.Point(145, 3);
             this.rbDrtchops.Name = "rbDrtchops";
             this.rbDrtchops.Size = new System.Drawing.Size(73, 17);
             this.rbDrtchops.TabIndex = 1;
@@ -376,7 +362,7 @@
             // rbDalleth
             // 
             this.rbDalleth.AutoSize = true;
-            this.rbDalleth.Location = new System.Drawing.Point(285, 3);
+            this.rbDalleth.Location = new System.Drawing.Point(287, 3);
             this.rbDalleth.Name = "rbDalleth";
             this.rbDalleth.Size = new System.Drawing.Size(58, 17);
             this.rbDalleth.TabIndex = 2;
@@ -408,7 +394,7 @@
             this.flp_AnyPercentSplits.Controls.Add(this.chkAlduinDefeated);
             this.flp_AnyPercentSplits.Dock = System.Windows.Forms.DockStyle.Top;
             this.flp_AnyPercentSplits.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flp_AnyPercentSplits.Location = new System.Drawing.Point(3, 51);
+            this.flp_AnyPercentSplits.Location = new System.Drawing.Point(3, 64);
             this.flp_AnyPercentSplits.MaximumSize = new System.Drawing.Size(0, 170);
             this.flp_AnyPercentSplits.Name = "flp_AnyPercentSplits";
             this.flp_AnyPercentSplits.Size = new System.Drawing.Size(432, 161);
@@ -620,6 +606,18 @@
             this.chkAlduinDefeated.Text = "Alduin\'s Defeat";
             this.chkAlduinDefeated.UseVisualStyleBackColor = true;
             // 
+            // llCheckAll
+            // 
+            this.llCheckAll.AutoSize = true;
+            this.llCheckAll.Dock = System.Windows.Forms.DockStyle.Right;
+            this.llCheckAll.Location = new System.Drawing.Point(318, 48);
+            this.llCheckAll.Name = "llCheckAll";
+            this.llCheckAll.Size = new System.Drawing.Size(117, 13);
+            this.llCheckAll.TabIndex = 22;
+            this.llCheckAll.TabStop = true;
+            this.llCheckAll.Text = "Activate/Deactivate All";
+            this.llCheckAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llCheckAll_LinkClicked);
+            // 
             // SkyrimSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -697,5 +695,6 @@
         private System.Windows.Forms.RadioButton rbDalleth;
         private System.Windows.Forms.CheckBox chkReadScroll;
         private System.Windows.Forms.FlowLayoutPanel flp_AnyPercentSplits;
+        private System.Windows.Forms.LinkLabel llCheckAll;
     }
 }

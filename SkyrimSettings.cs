@@ -242,5 +242,48 @@ namespace LiveSplit.Skyrim
         {
             UpdateTemplate();
         }
+
+        private void llCheckAll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (!AreAllEnabledCheckboxChecked(flp_AnyPercentSplits.Controls))
+            {
+                checkAll(flp_AnyPercentSplits.Controls);
+            }
+            else
+            {
+                checkAll(flp_AnyPercentSplits.Controls, false);
+            }
+        }
+
+        private bool AreAllEnabledCheckboxChecked(ControlCollection collection, bool state = true)
+        {
+            foreach (Control c in collection)
+            {
+                if (c.GetType().Equals(typeof(CheckBox)))
+                {
+                    CheckBox checkBox = (CheckBox)c;
+                    if (checkBox.Checked != state && checkBox.Enabled)
+	                {
+                        return false;
+	                }
+                }
+            }
+            return true;
+        }
+
+        private void checkAll(ControlCollection collection, bool state = true)
+        {
+            foreach (Control c in collection)
+            {
+                if (c.GetType().Equals(typeof(CheckBox)))
+                {
+                    CheckBox checkBox = (CheckBox)c;
+                    if (checkBox.Checked != state && checkBox.Enabled)
+                    {
+                        checkBox.Checked = state;
+                    }
+                }
+            }
+        }
     }
 }
