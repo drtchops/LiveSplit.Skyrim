@@ -150,7 +150,7 @@ namespace LiveSplit.Skyrim
 
         void gameMemory_OnSplitCompleted(object sender, GameMemory.SplitArea split, uint frame)
         {
-            Debug.WriteLineIf(split != GameMemory.SplitArea.None, String.Format("[NoLoads] Trying to split {0}, State: {1} - {2}", split, _gameMemory.splitStates[(int)split], frame));
+            Debug.WriteLineIf(split != GameMemory.SplitArea.None, String.Format("[NoLoads] Trying to split {0} with {1} preset, State: {2} - {3}", split, this.Settings.AnyPercentPreset, _gameMemory.splitStates[(int)split], frame));
             if (_state.CurrentPhase == TimerPhase.Running && !_gameMemory.splitStates[(int)split] &&
                 ((split == GameMemory.SplitArea.Helgen && this.Settings.Helgen) ||
                 (split == GameMemory.SplitArea.Whiterun && this.Settings.Whiterun) ||
