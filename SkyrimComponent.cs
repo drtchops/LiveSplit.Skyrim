@@ -50,7 +50,7 @@ namespace LiveSplit.Skyrim
             // _gameMemory.OnLoadScreenStarted += gameMemory_OnLoadScreenStarted;
             // _gameMemory.OnLoadScreenFinished += gameMemory_OnLoadScreenFinished;
             _gameMemory.OnSplitCompleted += gameMemory_OnSplitCompleted;
-            state.OnReset += state_OnReset;
+            state.OnStart += State_OnStart;
             _gameMemory.StartMonitoring();
         }
 
@@ -58,15 +58,16 @@ namespace LiveSplit.Skyrim
         {
             this.Disposed = true;
 
-            _state.OnReset -= state_OnReset;
+            _state.OnStart -= State_OnStart;
 
             if (_gameMemory != null)
             {
                 _gameMemory.Stop();
             }
+            
         }
 
-        void state_OnReset(object sender, TimerPhase e)
+        void State_OnStart(object sender, EventArgs e)
         {
             _gameMemory.resetSplitStates();
         }
@@ -161,6 +162,9 @@ namespace LiveSplit.Skyrim
                 (split == GameMemory.SplitArea.Septimus && this.Settings.Septimus) ||
                 (split == GameMemory.SplitArea.MzarkTower && this.Settings.MzarkTower) ||
                 (split == GameMemory.SplitArea.ClearSky && this.Settings.ClearSky) ||
+                (split == GameMemory.SplitArea.HorseClimb && this.Settings.HorseClimb) ||
+                (split == GameMemory.SplitArea.CutsceneEnd && this.Settings.CutsceneEnd) ||
+                (split == GameMemory.SplitArea.CutsceneStart && this.Settings.CutsceneStart) ||
                 (split == GameMemory.SplitArea.Alduin1 && this.Settings.Alduin1) ||
                 (split == GameMemory.SplitArea.HighHrothgar && this.Settings.HighHrothgar) ||
                 (split == GameMemory.SplitArea.Solitude && this.Settings.Solitude) ||

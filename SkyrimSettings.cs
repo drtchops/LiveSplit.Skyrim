@@ -19,6 +19,9 @@ namespace LiveSplit.Skyrim
         public bool Septimus { get; set; }
         public bool MzarkTower { get; set; }
         public bool ClearSky { get; set; }
+        public bool HorseClimb { get; set; }
+        public bool CutsceneStart { get; set; }
+        public bool CutsceneEnd { get; set; }
         public bool Alduin1 { get; set; }
         public bool HighHrothgar{ get; set; }
         public bool Solitude { get; set; }
@@ -34,6 +37,7 @@ namespace LiveSplit.Skyrim
 
         public const string TEMPLATE_MRWALRUS = "MrWalrus";
         public const string TEMPLATE_DRTCHOPS = "DrTChops";
+        public const string TEMPLATE_GR3YSCALE = "gr3yscale";
         public const string TEMPLATE_DALLETH = "Dalleth";
 
         private const bool DEFAULT_DRAWWITHOUTLOADS = true;
@@ -48,6 +52,9 @@ namespace LiveSplit.Skyrim
         private const bool DEFAULT_SEPTIMUS = false;
         private const bool DEFAULT_MZARKTOWER = false;
         private const bool DEFAULT_CLEARSKY = false;
+        private const bool DEFAULT_HORSECLIMB = false;
+        private const bool DEFAULT_CUTSCENESTART = false;
+        private const bool DEFAULT_CUTSCENEEND = false;
         private const bool DEFAULT_ALDUIN1 = false;
         private const bool DEFAULT_HIGHHROTHGAR = false;
         private const bool DEFAULT_SOLITUDE = false;
@@ -59,7 +66,7 @@ namespace LiveSplit.Skyrim
         private const bool DEFAULT_COMPANIONS = false;
         private const bool DEFAULT_THIEVESGUILD = false;
         private const bool DEFAULT_COLLEGEOFWINTERHOLD = false;
-        private const string DEFAULT_ANYPERCENTTEMPLATE = "MrWalrus";
+        private const string DEFAULT_ANYPERCENTTEMPLATE = TEMPLATE_MRWALRUS;
 
         public SkyrimSettings()
         {
@@ -77,6 +84,9 @@ namespace LiveSplit.Skyrim
             this.chkSeptimus.DataBindings.Add("Checked", this, "Septimus", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkMzarkTower.DataBindings.Add("Checked", this, "MzarkTower", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkClearSky.DataBindings.Add("Checked", this, "ClearSky", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkHorseClimb.DataBindings.Add("Checked", this, "HorseClimb", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkCutsceneStart.DataBindings.Add("Checked", this, "CutsceneStart", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkCutsceneEnd.DataBindings.Add("Checked", this, "CutsceneEnd", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkAlduin1.DataBindings.Add("Checked", this, "Alduin1", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkHighHrothgar.DataBindings.Add("Checked", this, "HighHrothgar", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkSolitude.DataBindings.Add("Checked", this, "Solitude", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -102,6 +112,9 @@ namespace LiveSplit.Skyrim
             this.Septimus = DEFAULT_SEPTIMUS;
             this.MzarkTower = DEFAULT_MZARKTOWER;
             this.ClearSky = DEFAULT_CLEARSKY;
+            this.HorseClimb = DEFAULT_HORSECLIMB;
+            this.CutsceneStart = DEFAULT_CUTSCENESTART;
+            this.CutsceneEnd = DEFAULT_CUTSCENEEND;
             this.Alduin1 = DEFAULT_ALDUIN1;
             this.HighHrothgar = DEFAULT_HIGHHROTHGAR;
             this.Solitude = DEFAULT_SOLITUDE;
@@ -134,6 +147,9 @@ namespace LiveSplit.Skyrim
             settingsNode.AppendChild(ToElement(doc, "Septimus", this.Septimus));
             settingsNode.AppendChild(ToElement(doc, "MzarkTower", this.MzarkTower));
             settingsNode.AppendChild(ToElement(doc, "ClearSky", this.ClearSky));
+            settingsNode.AppendChild(ToElement(doc, "HorseClimb", this.HorseClimb));
+            settingsNode.AppendChild(ToElement(doc, "CutsceneStart", this.CutsceneStart));
+            settingsNode.AppendChild(ToElement(doc, "CutsceneEnd", this.CutsceneEnd));
             settingsNode.AppendChild(ToElement(doc, "Alduin1", this.Alduin1));
             settingsNode.AppendChild(ToElement(doc, "HighHrothgar", this.HighHrothgar));
             settingsNode.AppendChild(ToElement(doc, "Solitude", this.Solitude));
@@ -166,6 +182,9 @@ namespace LiveSplit.Skyrim
             this.Septimus = ParseBool(settings, "Septimus", DEFAULT_SEPTIMUS);
             this.MzarkTower = ParseBool(settings, "MzarkTower", DEFAULT_RIVERWOOD);
             this.ClearSky = ParseBool(settings, "ClearSky", DEFAULT_CLEARSKY);
+            this.HorseClimb = ParseBool(settings, "HorseClimb", DEFAULT_HORSECLIMB);
+            this.CutsceneStart = ParseBool(settings, "CutsceneStart", DEFAULT_CUTSCENESTART);
+            this.CutsceneEnd = ParseBool(settings, "CutsceneEnd", DEFAULT_CUTSCENEEND);
             this.Alduin1 = ParseBool(settings, "Alduin1", DEFAULT_ALDUIN1);
             this.HighHrothgar = ParseBool(settings, "HighHrothgar", DEFAULT_HIGHHROTHGAR);
             this.Solitude = ParseBool(settings, "Solitude", DEFAULT_SOLITUDE);
@@ -180,8 +199,8 @@ namespace LiveSplit.Skyrim
 
             if (element["AnyPercentTemplate"] != null)
             {
-                this.AnyPercentTemplate = element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_MRWALRUS) ||
-                    element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_DRTCHOPS) || element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_DALLETH)
+                this.AnyPercentTemplate = element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_MRWALRUS) || element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_DRTCHOPS) ||
+                    element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_GR3YSCALE)  || element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_DALLETH)
                         ? element["AnyPercentTemplate"].InnerText
                         : DEFAULT_ANYPERCENTTEMPLATE;
             }
@@ -190,8 +209,9 @@ namespace LiveSplit.Skyrim
                 this.AnyPercentTemplate = DEFAULT_ANYPERCENTTEMPLATE;
             }
 
-                this.rbMrwalrus.Checked = this.AnyPercentTemplate == TEMPLATE_MRWALRUS;
+            this.rbMrwalrus.Checked = this.AnyPercentTemplate == TEMPLATE_MRWALRUS;
             this.rbDrtchops.Checked = this.AnyPercentTemplate == TEMPLATE_DRTCHOPS;
+            this.rbGr3yscale.Checked = this.AnyPercentTemplate == TEMPLATE_GR3YSCALE;
             this.rbDalleth.Checked = this.AnyPercentTemplate == TEMPLATE_DALLETH;
             UpdateTemplate();
         }
@@ -225,20 +245,16 @@ namespace LiveSplit.Skyrim
             {
                 this.AnyPercentTemplate = TEMPLATE_DALLETH;
             }
-            this.chkReadScroll.Enabled = this.AnyPercentTemplate == TEMPLATE_DRTCHOPS;
+            else if (rbGr3yscale.Checked)
+            {
+                this.AnyPercentTemplate = TEMPLATE_GR3YSCALE;
+            }
+            this.chkHorseClimb.Enabled = this.AnyPercentTemplate == TEMPLATE_GR3YSCALE;
+            this.chkCutsceneStart.Enabled = (this.AnyPercentTemplate == TEMPLATE_DRTCHOPS || this.AnyPercentTemplate == TEMPLATE_DALLETH);
+            this.chkCutsceneEnd.Enabled = (this.AnyPercentTemplate == TEMPLATE_GR3YSCALE || this.AnyPercentTemplate == TEMPLATE_DALLETH);
         }
 
-        private void rbDrtchops_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateTemplate();
-        }
-
-        private void rbMrwalrus_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateTemplate();
-        }
-
-        private void rbDalleth_CheckedChanged(object sender, EventArgs e)
+        private void templateRadioButtonChanged(object sender, EventArgs e)
         {
             UpdateTemplate();
         }
