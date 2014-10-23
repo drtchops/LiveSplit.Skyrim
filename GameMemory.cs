@@ -459,13 +459,6 @@ namespace LiveSplit.Skyrim
 
                             // if loadscreen starts while in front of the door of Thalmor Embassy and doesn't end inside the Embassy
                             if (loadScreenStartLocationID == (int)Locations.Tamriel && loadScreenStartWorld_X == -20 && loadScreenStartWorld_Y == 28 &&
-                                locationID == (int)Locations.Tamriel &&
-                                    (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
-                            {
-                                Split(SplitArea.ThalmorEmbassy, frameCounter);
-                            }
-                            // if loadscreen starts while in front of the door of Thalmor Embassy and doesn't end inside the Embassy
-                            else if (loadScreenStartLocationID == (int)Locations.Tamriel && loadScreenStartWorld_X == -20 && loadScreenStartWorld_Y == 28 &&
                                 locationID != (int)Locations.ThalmorEmbassy02 &&
                                     (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
                             {
@@ -519,7 +512,8 @@ namespace LiveSplit.Skyrim
 
                             // if loadscreen starts in dragonsreach and ends in whiterun
                             if (loadScreenStartLocationID == (int)Locations.WhiterunDragonsreach &&
-                                locationID == (int)Locations.WhiterunWorld && world_X == 6 && world_Y == 0 && _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE)
+                                locationID == (int)Locations.WhiterunWorld && world_X == 6 && world_Y == 0 &&
+                                _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE)
                             {
                                 Split(SplitArea.Whiterun, frameCounter);
                             }
