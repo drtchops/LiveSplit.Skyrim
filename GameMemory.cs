@@ -523,6 +523,13 @@ namespace LiveSplit.Skyrim
                             {
                                 Split(SplitArea.Whiterun, frameCounter);
                             }
+                            // if loadscreen starts in whiterun and doesn't end in dragonsreach
+                            else if (loadScreenStartLocationID == (int)Locations.WhiterunWorld && loadScreenStartWorld_X == 6 && loadScreenStartWorld_Y == 0 &&
+                                locationID != (int)Locations.WhiterunDragonsreach &&
+                                (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
+                            {
+                                Split(SplitArea.Whiterun, frameCounter);
+                            }
                             // if loadscreen starts Thalmor Embassy and ends in front of its door
                             else if (loadScreenStartLocationID == (int)Locations.ThalmorEmbassy02 &&
                                 locationID == (int)Locations.Tamriel && world_X == -20 && world_Y == 28 &&
