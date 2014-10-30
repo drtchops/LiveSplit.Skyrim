@@ -641,7 +641,7 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        if (arePlayerControlsDisabled != prevArePlayerControlsDisabled)
+                        if (arePlayerControlsDisabled != prevArePlayerControlsDisabled && !isInEscapeMenu)
                         {
                             if (arePlayerControlsDisabled)
                             {
