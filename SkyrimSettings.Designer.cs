@@ -61,6 +61,7 @@
             this.chkClearSky = new System.Windows.Forms.CheckBox();
             this.chkHorseClimb = new System.Windows.Forms.CheckBox();
             this.chkCutsceneStart = new System.Windows.Forms.CheckBox();
+            this.chkCutsceneEnd = new System.Windows.Forms.CheckBox();
             this.chkAlduin1 = new System.Windows.Forms.CheckBox();
             this.chkHighHrothgar = new System.Windows.Forms.CheckBox();
             this.chkSolitude = new System.Windows.Forms.CheckBox();
@@ -70,7 +71,6 @@
             this.chkEnterSovngarde = new System.Windows.Forms.CheckBox();
             this.chkAlduinDefeated = new System.Windows.Forms.CheckBox();
             this.llCheckAll = new System.Windows.Forms.LinkLabel();
-            this.chkCutsceneEnd = new System.Windows.Forms.CheckBox();
             this.tlpMain.SuspendLayout();
             this.gbStartSplits.SuspendLayout();
             this.tlpStartSplits.SuspendLayout();
@@ -345,10 +345,12 @@
             // rbMrwalrus
             // 
             this.rbMrwalrus.AutoSize = true;
+            this.rbMrwalrus.Checked = true;
             this.rbMrwalrus.Location = new System.Drawing.Point(3, 3);
             this.rbMrwalrus.Name = "rbMrwalrus";
             this.rbMrwalrus.Size = new System.Drawing.Size(70, 17);
             this.rbMrwalrus.TabIndex = 0;
+            this.rbMrwalrus.TabStop = true;
             this.rbMrwalrus.Text = "MrWalrus";
             this.rbMrwalrus.UseVisualStyleBackColor = true;
             this.rbMrwalrus.CheckedChanged += new System.EventHandler(this.templateRadioButtonChanged);
@@ -382,7 +384,6 @@
             this.rbGr3yscale.Name = "rbGr3yscale";
             this.rbGr3yscale.Size = new System.Drawing.Size(70, 17);
             this.rbGr3yscale.TabIndex = 3;
-            this.rbGr3yscale.TabStop = true;
             this.rbGr3yscale.Text = "gr3yscale";
             this.rbGr3yscale.UseVisualStyleBackColor = true;
             this.rbGr3yscale.CheckedChanged += new System.EventHandler(this.templateRadioButtonChanged);
@@ -536,6 +537,16 @@
             this.chkCutsceneStart.Text = "Cutscene Start";
             this.chkCutsceneStart.UseVisualStyleBackColor = true;
             // 
+            // chkCutsceneEnd
+            // 
+            this.chkCutsceneEnd.AutoSize = true;
+            this.chkCutsceneEnd.Location = new System.Drawing.Point(165, 72);
+            this.chkCutsceneEnd.Name = "chkCutsceneEnd";
+            this.chkCutsceneEnd.Size = new System.Drawing.Size(93, 17);
+            this.chkCutsceneEnd.TabIndex = 22;
+            this.chkCutsceneEnd.Text = "Cutscene End";
+            this.chkCutsceneEnd.UseVisualStyleBackColor = true;
+            // 
             // chkAlduin1
             // 
             this.chkAlduin1.AutoSize = true;
@@ -645,16 +656,6 @@
             this.llCheckAll.TabStop = true;
             this.llCheckAll.Text = "Activate/Deactivate All";
             this.llCheckAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llCheckAll_LinkClicked);
-            // 
-            // chkCutsceneEnd
-            // 
-            this.chkCutsceneEnd.AutoSize = true;
-            this.chkCutsceneEnd.Location = new System.Drawing.Point(165, 72);
-            this.chkCutsceneEnd.Name = "chkCutsceneEnd";
-            this.chkCutsceneEnd.Size = new System.Drawing.Size(93, 17);
-            this.chkCutsceneEnd.TabIndex = 22;
-            this.chkCutsceneEnd.Text = "Cutscene End";
-            this.chkCutsceneEnd.UseVisualStyleBackColor = true;
             // 
             // SkyrimSettings
             // 
