@@ -40,16 +40,11 @@
             this.chkCompanions = new System.Windows.Forms.CheckBox();
             this.chkThievesGuild = new System.Windows.Forms.CheckBox();
             this.chkDarkBrotherhood = new System.Windows.Forms.CheckBox();
-            this.gbDisplayAlternateTiming = new System.Windows.Forms.GroupBox();
-            this.tlpDisplayAlternateTiming = new System.Windows.Forms.TableLayoutPanel();
-            this.chkDisplayWithoutLoads = new System.Windows.Forms.CheckBox();
             this.tlpMain.SuspendLayout();
             this.gbStartSplits.SuspendLayout();
             this.tlpStartSplits.SuspendLayout();
             this.gbEndSplits.SuspendLayout();
             this.tlpEndSplits.SuspendLayout();
-            this.gbDisplayAlternateTiming.SuspendLayout();
-            this.tlpDisplayAlternateTiming.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpMain
@@ -58,12 +53,10 @@
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.Controls.Add(this.gbStartSplits, 0, 0);
             this.tlpMain.Controls.Add(this.gbEndSplits, 0, 1);
-            this.tlpMain.Controls.Add(this.gbDisplayAlternateTiming, 0, 2);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpMain.Location = new System.Drawing.Point(0, 0);
             this.tlpMain.Name = "tlpMain";
-            this.tlpMain.RowCount = 3;
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpMain.RowCount = 2;
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -208,45 +201,6 @@
             this.chkDarkBrotherhood.Text = "[EXPERIMENTAL] Dark Brotherhood questline completion";
             this.chkDarkBrotherhood.UseVisualStyleBackColor = true;
             // 
-            // gbDisplayAlternateTiming
-            // 
-            this.gbDisplayAlternateTiming.AutoSize = true;
-            this.gbDisplayAlternateTiming.Controls.Add(this.tlpDisplayAlternateTiming);
-            this.gbDisplayAlternateTiming.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbDisplayAlternateTiming.Location = new System.Drawing.Point(3, 214);
-            this.gbDisplayAlternateTiming.Name = "gbDisplayAlternateTiming";
-            this.gbDisplayAlternateTiming.Size = new System.Drawing.Size(470, 42);
-            this.gbDisplayAlternateTiming.TabIndex = 9;
-            this.gbDisplayAlternateTiming.TabStop = false;
-            this.gbDisplayAlternateTiming.Text = "Show Alternate Timing Method";
-            // 
-            // tlpDisplayAlternateTiming
-            // 
-            this.tlpDisplayAlternateTiming.AutoSize = true;
-            this.tlpDisplayAlternateTiming.ColumnCount = 1;
-            this.tlpDisplayAlternateTiming.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpDisplayAlternateTiming.Controls.Add(this.chkDisplayWithoutLoads, 0, 0);
-            this.tlpDisplayAlternateTiming.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpDisplayAlternateTiming.Location = new System.Drawing.Point(3, 16);
-            this.tlpDisplayAlternateTiming.Name = "tlpDisplayAlternateTiming";
-            this.tlpDisplayAlternateTiming.RowCount = 1;
-            this.tlpDisplayAlternateTiming.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpDisplayAlternateTiming.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpDisplayAlternateTiming.Size = new System.Drawing.Size(464, 23);
-            this.tlpDisplayAlternateTiming.TabIndex = 0;
-            // 
-            // chkDisplayWithoutLoads
-            // 
-            this.chkDisplayWithoutLoads.AutoSize = true;
-            this.chkDisplayWithoutLoads.Checked = true;
-            this.chkDisplayWithoutLoads.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDisplayWithoutLoads.Location = new System.Drawing.Point(3, 3);
-            this.chkDisplayWithoutLoads.Name = "chkDisplayWithoutLoads";
-            this.chkDisplayWithoutLoads.Size = new System.Drawing.Size(59, 17);
-            this.chkDisplayWithoutLoads.TabIndex = 0;
-            this.chkDisplayWithoutLoads.Text = "Enable";
-            this.chkDisplayWithoutLoads.UseVisualStyleBackColor = true;
-            // 
             // SkyrimSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,10 +218,6 @@
             this.gbEndSplits.PerformLayout();
             this.tlpEndSplits.ResumeLayout(false);
             this.tlpEndSplits.PerformLayout();
-            this.gbDisplayAlternateTiming.ResumeLayout(false);
-            this.gbDisplayAlternateTiming.PerformLayout();
-            this.tlpDisplayAlternateTiming.ResumeLayout(false);
-            this.tlpDisplayAlternateTiming.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -284,10 +234,7 @@
         private System.Windows.Forms.CheckBox chkAutoStart;
         private System.Windows.Forms.CheckBox chkDarkBrotherhood;
         private System.Windows.Forms.CheckBox chkCompanions;
-        private System.Windows.Forms.CheckBox chkDisplayWithoutLoads;
         private System.Windows.Forms.CheckBox chkThievesGuild;
         private System.Windows.Forms.CheckBox chkCollege;
-        private System.Windows.Forms.GroupBox gbDisplayAlternateTiming;
-        private System.Windows.Forms.TableLayoutPanel tlpDisplayAlternateTiming;
     }
 }

@@ -11,15 +11,13 @@ using System.Diagnostics;
 
 namespace LiveSplit.Skyrim
 {
-    class SkyrimComponent : IComponent
+    class SkyrimComponent : LogicComponent
     {
-        public string ComponentName
+        public override string ComponentName
         {
             get { return "Skyrim"; }
         }
 
-        public IDictionary<string, Action> ContextMenuControls { get; protected set; }
-        protected InfoTimeComponent InternalComponent { get; set; }
         public SkyrimSettings Settings { get; set; }
 
         public bool Disposed { get; private set; }
@@ -28,7 +26,6 @@ namespace LiveSplit.Skyrim
         private TimerModel _timer;
         private GameMemory _gameMemory;
         private LiveSplitState _state;
-        private GraphicsCache _cache;
 
         public SkyrimComponent(LiveSplitState state, bool isLayoutComponent)
         {
@@ -36,11 +33,8 @@ namespace LiveSplit.Skyrim
             this.IsLayoutComponent = isLayoutComponent;
 
             this.Settings = new SkyrimSettings();
-            this.ContextMenuControls = new Dictionary<String, Action>();
-            this.InternalComponent = new InfoTimeComponent(null, null, new RegularTimeFormatter(TimeAccuracy.Hundredths));
 
-            _cache = new GraphicsCache();
-            _timer = new TimerModel { CurrentState = state };
+           _timer = new TimerModel { CurrentState = state };
 
             _gameMemory = new GameMemory();
             _gameMemory.OnFirstLevelLoading += gameMemory_OnFirstLevelLoading;
@@ -54,7 +48,7 @@ namespace LiveSplit.Skyrim
             _gameMemory.StartMonitoring();
         }
 
-        public void Dispose()
+        public override void Dispose()
         {
             this.Disposed = true;
 
@@ -69,47 +63,6 @@ namespace LiveSplit.Skyrim
         void state_OnReset(object sender, TimerPhase e)
         {
             _gameMemory.resetSplitStates();
-        }
-
-        public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
-        {
-            if (!this.Settings.DrawWithoutLoads)
-            {
-                return;
-            }
-
-            this.InternalComponent.TimeValue =
-                state.CurrentTime[state.CurrentTimingMethod == TimingMethod.GameTime
-                    ? TimingMethod.RealTime : TimingMethod.GameTime];
-            this.InternalComponent.InformationName = state.CurrentTimingMethod == TimingMethod.GameTime
-                ? "Real Time" : "Without Loads";
-
-            _cache.Restart();
-            _cache["TimeValue"] = this.InternalComponent.ValueLabel.Text;
-            _cache["TimingMethod"] = state.CurrentTimingMethod;
-            if (invalidator != null && _cache.HasChanged)
-            {
-                invalidator.Invalidate(0f, 0f, width, height);
-            }
-        }
-
-        public void DrawVertical(Graphics g, LiveSplitState state, float width, Region region)
-        {
-            this.PrepareDraw(state);
-            this.InternalComponent.DrawVertical(g, state, width, region);
-        }
-
-        public void DrawHorizontal(Graphics g, LiveSplitState state, float height, Region region)
-        {
-            this.PrepareDraw(state);
-            this.InternalComponent.DrawHorizontal(g, state, height, region);
-        }
-
-        void PrepareDraw(LiveSplitState state)
-        {
-            this.InternalComponent.NameLabel.ForeColor = state.LayoutSettings.TextColor;
-            this.InternalComponent.ValueLabel.ForeColor = state.LayoutSettings.TextColor;
-            this.InternalComponent.NameLabel.HasShadow = this.InternalComponent.ValueLabel.HasShadow = state.LayoutSettings.DropShadows;
         }
 
         void gameMemory_OnFirstLevelLoading(object sender, EventArgs e)
@@ -164,29 +117,22 @@ namespace LiveSplit.Skyrim
             }
         }
 
-        public XmlNode GetSettings(XmlDocument document)
+        public override XmlNode GetSettings(XmlDocument document)
         {
             return this.Settings.GetSettings(document);
         }
 
-        public Control GetSettingsControl(LayoutMode mode)
+        public override Control GetSettingsControl(LayoutMode mode)
         {
             return this.Settings;
         }
 
-        public void SetSettings(XmlNode settings)
+        public override void SetSettings(XmlNode settings)
         {
             this.Settings.SetSettings(settings);
         }
 
-        public float VerticalHeight { get { return this.Settings.DrawWithoutLoads ? this.InternalComponent.VerticalHeight : 0; } }
-        public float HorizontalWidth { get { return this.Settings.DrawWithoutLoads ? this.InternalComponent.HorizontalWidth : 0; } }
-        public float MinimumWidth { get { return this.InternalComponent.MinimumWidth; } }
-        public float MinimumHeight { get { return this.InternalComponent.MinimumHeight; } }
-        public float PaddingLeft { get { return this.Settings.DrawWithoutLoads ? this.InternalComponent.PaddingLeft : 0; } }
-        public float PaddingRight { get { return this.Settings.DrawWithoutLoads ? this.InternalComponent.PaddingRight : 0; } }
-        public float PaddingTop { get { return this.Settings.DrawWithoutLoads ? this.InternalComponent.PaddingTop : 0; } }
-        public float PaddingBottom { get { return this.Settings.DrawWithoutLoads ? this.InternalComponent.PaddingBottom : 0; } }
-        public void RenameComparison(string oldName, string newName) { }
+        public override void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode) { }
+        public override void RenameComparison(string oldName, string newName) { }
     }
 }
