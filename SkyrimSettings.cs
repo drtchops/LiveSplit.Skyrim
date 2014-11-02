@@ -7,7 +7,6 @@ namespace LiveSplit.Skyrim
 {
     public partial class SkyrimSettings : UserControl
     {
-        public bool DrawWithoutLoads { get; set; }
         public bool AutoStart { get; set; }
         public bool AlduinDefeated { get; set; }
         public bool Helgen { get; set; }
@@ -29,10 +28,10 @@ namespace LiveSplit.Skyrim
         public bool Council { get; set; }
         public bool Odahviing { get; set; }
         public bool EnterSovngarde{ get; set; }
-        public bool DarkBrotherhood { get; set; }
-        public bool Companions { get; set; }
-        public bool ThievesGuild { get; set; }
         public bool CollegeOfWinterhold { get; set; }
+        public bool Companions { get; set; }
+        public bool DarkBrotherhood { get; set; }
+        public bool ThievesGuild { get; set; }
         public string AnyPercentTemplate { get; set; }
 
         public const string TEMPLATE_MRWALRUS = "MrWalrus";
@@ -62,17 +61,16 @@ namespace LiveSplit.Skyrim
         private const bool DEFAULT_COUNCIL = false;
         private const bool DEFAULT_ODAHVIING = false;
         private const bool DEFAULT_ENTERSOVNGARDE = false;
-        private const bool DEFAULT_DARKBROTHERHOOD = false;
-        private const bool DEFAULT_COMPANIONS = false;
-        private const bool DEFAULT_THIEVESGUILD = false;
         private const bool DEFAULT_COLLEGEOFWINTERHOLD = false;
+        private const bool DEFAULT_COMPANIONS = false;
+        private const bool DEFAULT_DARKBROTHERHOOD = false;
+        private const bool DEFAULT_THIEVESGUILD = false;
         private const string DEFAULT_ANYPERCENTTEMPLATE = TEMPLATE_MRWALRUS;
 
         public SkyrimSettings()
         {
             InitializeComponent();
 
-            this.chkDisplayWithoutLoads.DataBindings.Add("Checked", this, "DrawWithoutLoads", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkAutoStart.DataBindings.Add("Checked", this, "AutoStart", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkAlduinDefeated.DataBindings.Add("Checked", this, "AlduinDefeated", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkHelgen.DataBindings.Add("Checked", this, "Helgen", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -94,13 +92,12 @@ namespace LiveSplit.Skyrim
             this.chkCouncil.DataBindings.Add("Checked", this, "Council", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkOdahviing.DataBindings.Add("Checked", this, "Odahviing", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkEnterSovngarde.DataBindings.Add("Checked", this, "EnterSovngarde", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.chkDarkBrotherhood.DataBindings.Add("Checked", this, "DarkBrotherhood", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkCollegeOfWinterhold.DataBindings.Add("Checked", this, "CollegeOfWinterhold", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkCompanions.DataBindings.Add("Checked", this, "Companions", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkDarkBrotherhood.DataBindings.Add("Checked", this, "DarkBrotherhood", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkThievesGuild.DataBindings.Add("Checked", this, "ThievesGuild", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.chkCollege.DataBindings.Add("Checked", this, "CollegeOfWinterhold", false, DataSourceUpdateMode.OnPropertyChanged);
 
             // defaults
-            this.DrawWithoutLoads = DEFAULT_DRAWWITHOUTLOADS;
             this.AutoStart = DEFAULT_AUTOSTART;
             this.AlduinDefeated = DEFAULT_ALDUINDEFEATED;
             this.Helgen = DEFAULT_HELGEN;
@@ -122,9 +119,9 @@ namespace LiveSplit.Skyrim
             this.Council = DEFAULT_COUNCIL;
             this.Odahviing = DEFAULT_ODAHVIING;
             this.EnterSovngarde = DEFAULT_ENTERSOVNGARDE;
-            this.DarkBrotherhood = DEFAULT_DARKBROTHERHOOD;
-            this.Companions = DEFAULT_COMPANIONS;
             this.CollegeOfWinterhold = DEFAULT_COLLEGEOFWINTERHOLD;
+            this.Companions = DEFAULT_COMPANIONS;
+            this.DarkBrotherhood = DEFAULT_DARKBROTHERHOOD;
             this.ThievesGuild = DEFAULT_THIEVESGUILD;
             this.AnyPercentTemplate = DEFAULT_ANYPERCENTTEMPLATE;
         }
@@ -135,7 +132,6 @@ namespace LiveSplit.Skyrim
 
             settingsNode.AppendChild(ToElement(doc, "Version", Assembly.GetExecutingAssembly().GetName().Version.ToString(3)));
 
-            settingsNode.AppendChild(ToElement(doc, "DrawWithoutLoads", this.DrawWithoutLoads));
             settingsNode.AppendChild(ToElement(doc, "AutoStart", this.AutoStart));
             settingsNode.AppendChild(ToElement(doc, "AlduinDefeated", this.AlduinDefeated));
             settingsNode.AppendChild(ToElement(doc, "Helgen", this.Helgen));
@@ -157,10 +153,10 @@ namespace LiveSplit.Skyrim
             settingsNode.AppendChild(ToElement(doc, "Council", this.Council));
             settingsNode.AppendChild(ToElement(doc, "Odahviing", this.Odahviing));
             settingsNode.AppendChild(ToElement(doc, "EnterSovngarde", this.EnterSovngarde));
-            settingsNode.AppendChild(ToElement(doc, "DarkBrotherhood", this.DarkBrotherhood));
-            settingsNode.AppendChild(ToElement(doc, "Companions", this.Companions));
-            settingsNode.AppendChild(ToElement(doc, "ThievesGuild", this.ThievesGuild));
             settingsNode.AppendChild(ToElement(doc, "CollegeOfWinterhold", this.CollegeOfWinterhold));
+            settingsNode.AppendChild(ToElement(doc, "Companions", this.Companions));
+            settingsNode.AppendChild(ToElement(doc, "DarkBrotherhood", this.DarkBrotherhood));
+            settingsNode.AppendChild(ToElement(doc, "ThievesGuild", this.ThievesGuild));
             settingsNode.AppendChild(ToElement(doc, "AnyPercentTemplate", this.AnyPercentTemplate));
 
             return settingsNode;
@@ -192,10 +188,10 @@ namespace LiveSplit.Skyrim
             this.Council = ParseBool(settings, "Council", DEFAULT_COUNCIL);
             this.Odahviing = ParseBool(settings, "Odahviing", DEFAULT_ODAHVIING);
             this.EnterSovngarde = ParseBool(settings, "EnterSovngarde", DEFAULT_ENTERSOVNGARDE);
-            this.DarkBrotherhood = ParseBool(settings, "DarkBrotherhood", DEFAULT_DARKBROTHERHOOD);
-            this.Companions = ParseBool(settings, "Companions", DEFAULT_COMPANIONS);
-            this.ThievesGuild = ParseBool(settings, "ThievesGuild", DEFAULT_THIEVESGUILD);
             this.CollegeOfWinterhold = ParseBool(settings, "CollegeOfWinterhold", DEFAULT_COLLEGEOFWINTERHOLD);
+            this.Companions = ParseBool(settings, "Companions", DEFAULT_COMPANIONS);
+            this.DarkBrotherhood = ParseBool(settings, "DarkBrotherhood", DEFAULT_DARKBROTHERHOOD);
+            this.ThievesGuild = ParseBool(settings, "ThievesGuild", DEFAULT_THIEVESGUILD);
 
             if (element["AnyPercentTemplate"] != null)
             {

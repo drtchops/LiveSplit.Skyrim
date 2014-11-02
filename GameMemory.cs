@@ -32,10 +32,10 @@ namespace LiveSplit.Skyrim
             Council,
             Odahviing,
             EnterSovngarde,
-            DarkBrotherhoodQuestlineCompleted,
+            CollegeOfWinterholdQuestlineCompleted,
             CompanionsQuestlineCompleted,
+            DarkBrotherhoodQuestlineCompleted,
             ThievesGuildQuestlineCompleted,
-            CollegeQuestlineCompleted,
             AlduinDefeated
         }
 
@@ -62,8 +62,8 @@ namespace LiveSplit.Skyrim
         private DeepPointer _world_YPtr;
         private DeepPointer _isAlduinDefeatedPtr;
         private DeepPointer _questlinesCompleted;
+        private DeepPointer _collegeOfWinterholdQuestsCompletedPtr;
         private DeepPointer _companionsQuestsCompletedPtr;
-        private DeepPointer _collegeQuestsCompletedPtr;
         private DeepPointer _darkBrotherhoodQuestsCompletedPtr;
         private DeepPointer _thievesGuildQuestsCompletedPtr;
         private DeepPointer _isInEscapeMenuPtr;
@@ -138,10 +138,10 @@ namespace LiveSplit.Skyrim
             // Game state
             _isAlduinDefeatedPtr = new DeepPointer(0x1711608); // == 1 when last blow is struck on alduin
             _questlinesCompleted = new DeepPointer(0x00EE6C34, 0x3F0); // number of questlines completed (from ingame stats)
+            _collegeOfWinterholdQuestsCompletedPtr = new DeepPointer(0x00EE6C34, 0x38c); // number of college of winterhold quests completed (from ingame stats)
             _companionsQuestsCompletedPtr = new DeepPointer(0x00EE6C34, 0x378); // number of companions quests completed (from ingame stats)
-            _collegeQuestsCompletedPtr = new DeepPointer(0x00EE6C34, 0x38c); // number of college of winterhold quests completed (from ingame stats)
             _darkBrotherhoodQuestsCompletedPtr = new DeepPointer(0x00EE6C34, 0x3b4); // number of dark brotherhood quests completed (from ingame stats)
-            _thievesGuildQuestsCompletedPtr = new DeepPointer(0x00EE6C34, 0x3a0); // number of thieves' guild quests completed (from ingame stats)
+            _thievesGuildQuestsCompletedPtr = new DeepPointer(0x00EE6C34, 0x3a0); // number of thieves guild quests completed (from ingame stats)
             _isInEscapeMenuPtr = new DeepPointer(0x172E85E); // == 1 when in the pause menu or level up menu
             _mainQuestsCompletedPtr = new DeepPointer(0x00EE6C34, 0x350); // number of main quests completed (from ingame stats)
             _wordsOfPowerLearnedPtr = new DeepPointer(0x00EE6C34, 0x558); // "Words Of Power Learned" from ingame stats
@@ -210,8 +210,8 @@ namespace LiveSplit.Skyrim
                     bool prevIsInFadeOut = false;
                     bool prevIsAlduin2Defeated = false;
                     int prevQuestlinesCompleted = 0;
+                    int prevCollegeOfWinterholdQuestsCompleted = 0;
                     int prevCompanionsQuestsCompleted = 0;
-                    int prevCollegeQuestsCompleted = 0;
                     int prevDarkBrotherhoodQuestsCompleted = 0;
                     int prevThievesGuildQuestsCompleted = 0;
                     bool prevIsInEscapeMenu = false;
@@ -266,11 +266,11 @@ namespace LiveSplit.Skyrim
                         int questlinesCompleted;
                         _questlinesCompleted.Deref(game, out questlinesCompleted);
 
+                        int collegeOfWinterholdQuestsCompleted;
+                        _collegeOfWinterholdQuestsCompletedPtr.Deref(game, out collegeOfWinterholdQuestsCompleted);
+
                         int companionsQuestsCompleted;
                         _companionsQuestsCompletedPtr.Deref(game, out companionsQuestsCompleted);
-
-                        int collegeQuestsCompleted;
-                        _collegeQuestsCompletedPtr.Deref(game, out collegeQuestsCompleted);
 
                         int darkBrotherhoodQuestsCompleted;
                         _darkBrotherhoodQuestsCompletedPtr.Deref(game, out darkBrotherhoodQuestsCompleted);
@@ -326,7 +326,7 @@ namespace LiveSplit.Skyrim
                                         {
                                             Split(SplitArea.ClearSky, frameCounter);
                                         }
-                                    }   
+                                    }
 
                                     // unpause game timer
                                     _uiThread.Post(d =>
@@ -355,7 +355,7 @@ namespace LiveSplit.Skyrim
                                 {
                                     loadScreenFadeoutStarted = true;
                                 }
-                                
+
                                 if (isInEscapeMenu)
                                 {
                                     isLoadingSaveFromMenu = true;
@@ -487,7 +487,7 @@ namespace LiveSplit.Skyrim
                             }
                             // if loadscreen starts in High Hrothgar's whereabouts and doesn't end inside
                             else if (loadScreenStartLocationID == (int)Locations.Tamriel && loadScreenStartWorld_X == 13 &&
-                                (loadScreenStartWorld_Y == -9 || loadScreenStartWorld_Y == -10) && 
+                                (loadScreenStartWorld_Y == -9 || loadScreenStartWorld_Y == -10) &&
                                     locationID != (int)Locations.HighHrothgar)
                             {
                                 if (!splitStates[(int)SplitArea.HighHrothgar])
@@ -564,7 +564,7 @@ namespace LiveSplit.Skyrim
                                 Split(SplitArea.TheWall, frameCounter);
                             }
                             // if loadscreen starts inside Septimus' Outpost and ends in front of its door
-                            else if (loadScreenStartLocationID == (int)Locations.SeptimusSignusOutpost && 
+                            else if (loadScreenStartLocationID == (int)Locations.SeptimusSignusOutpost &&
                                 locationID == (int)Locations.Tamriel && world_X == 28 && world_Y == 34 &&
                                     _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE)
                             {
@@ -599,7 +599,7 @@ namespace LiveSplit.Skyrim
                                 Split(SplitArea.Solitude, frameCounter);
                             }
                             // if loadscreen starts in Solitude Castle Dour and ends outside in front of its door
-                            else if (loadScreenStartLocationID == (int)Locations.SolitudeCastleDour && 
+                            else if (loadScreenStartLocationID == (int)Locations.SolitudeCastleDour &&
                                 locationID == (int)Locations.SolitudeWorld && world_X == -16 && world_Y == 26 &&
                                 _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE)
                             {
@@ -665,7 +665,7 @@ namespace LiveSplit.Skyrim
                         {
                             Debug.WriteLine(String.Format("[NoLoads] Alduin 1 has been defeated. HP: {1} - {0}", frameCounter, alduin1Health));
                             isAlduin1Defeated = true;
-                            
+
                             if (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS)
                             {
                                 Split(SplitArea.Alduin1, frameCounter);
@@ -676,7 +676,7 @@ namespace LiveSplit.Skyrim
                         if (mainquestsCompleted  == prevMainQuestsCompleted + 1 && locationID == (int)Locations.HighHrothgar)
                         {
                             isCouncilDone = true;
-                            
+
                             if (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS)
                             {
                                 Split(SplitArea.Council, frameCounter);
@@ -696,7 +696,19 @@ namespace LiveSplit.Skyrim
                             lastQuestCompleted = SplitArea.None;
                         }
 
-                        if (darkBrotherhoodQuestsCompleted > prevDarkBrotherhoodQuestsCompleted)
+                        if (collegeOfWinterholdQuestsCompleted > prevCollegeOfWinterholdQuestsCompleted)
+                        {
+                            Debug.WriteLine(String.Format("[NoLoads] A College of Winterhold quest has been completed - {0}", frameCounter));
+                            lastQuestCompleted = SplitArea.CollegeOfWinterholdQuestlineCompleted;
+                            lastQuestframeCounter = frameCounter;
+                        }
+                        else if (companionsQuestsCompleted > prevCompanionsQuestsCompleted)
+                        {
+                            Debug.WriteLine(String.Format("[NoLoads] A Companions quest has been completed - {0}", frameCounter));
+                            lastQuestCompleted = SplitArea.CompanionsQuestlineCompleted;
+                            lastQuestframeCounter = frameCounter;
+                        }
+                        else if (darkBrotherhoodQuestsCompleted > prevDarkBrotherhoodQuestsCompleted)
                         {
                             Debug.WriteLine(String.Format("[NoLoads] A Dark Brotherhood quest has been completed - {0}", frameCounter));
                             lastQuestCompleted = SplitArea.DarkBrotherhoodQuestlineCompleted;
@@ -708,24 +720,12 @@ namespace LiveSplit.Skyrim
                             lastQuestCompleted = SplitArea.ThievesGuildQuestlineCompleted;
                             lastQuestframeCounter = frameCounter;
                         }
-                        else if (companionsQuestsCompleted > prevCompanionsQuestsCompleted)
-                        {
-                            Debug.WriteLine(String.Format("[NoLoads] A Companions quest has been completed - {0}", frameCounter));
-                            lastQuestCompleted = SplitArea.CompanionsQuestlineCompleted;
-                            lastQuestframeCounter = frameCounter;
-                        }
-                        else if (collegeQuestsCompleted > prevCollegeQuestsCompleted)
-                        {
-                            Debug.WriteLine(String.Format("[NoLoads] A College of Winterhold quest has been completed - {0}", frameCounter));
-                            lastQuestCompleted = SplitArea.CollegeQuestlineCompleted;
-                            lastQuestframeCounter = frameCounter;
-                        }
 
                         // if a questline is completed
                         if (questlinesCompleted > prevQuestlinesCompleted)
                         {
                             Debug.WriteLineIf(lastQuestCompleted == SplitArea.None, String.Format("[NoLoads] A questline has been completed. - {0}", frameCounter));
-                            Split(lastQuestCompleted, frameCounter);    
+                            Split(lastQuestCompleted, frameCounter);
                         }
 
 
@@ -738,8 +738,8 @@ namespace LiveSplit.Skyrim
                         prevIsInFadeOut = isInFadeOut;
                         prevIsAlduin2Defeated = isAlduin2Defeated;
                         prevQuestlinesCompleted = questlinesCompleted;
+                        prevCollegeOfWinterholdQuestsCompleted = collegeOfWinterholdQuestsCompleted;
                         prevCompanionsQuestsCompleted = companionsQuestsCompleted;
-                        prevCollegeQuestsCompleted = collegeQuestsCompleted;
                         prevDarkBrotherhoodQuestsCompleted = darkBrotherhoodQuestsCompleted;
                         prevThievesGuildQuestsCompleted = thievesGuildQuestsCompleted;
                         prevIsInEscapeMenu = isInEscapeMenu;
