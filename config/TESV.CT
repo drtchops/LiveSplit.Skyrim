@@ -2,14 +2,6 @@
 <CheatTable CheatEngineTableVersion="18">
   <CheatEntries>
     <CheatEntry>
-      <ID>0</ID>
-      <Description>"isPaused"</Description>
-      <LastState Value="??" Activated="0" RealAddress="01B2E85F"/>
-      <Color>80000008</Color>
-      <VariableType>Byte</VariableType>
-      <Address>"TESV.exe"+172E85F</Address>
-    </CheatEntry>
-    <CheatEntry>
       <ID>1</ID>
       <Description>"isLoading"</Description>
       <LastState Value="??" Activated="0" RealAddress="01B337CC"/>
@@ -24,6 +16,22 @@
       <Color>80000008</Color>
       <VariableType>Byte</VariableType>
       <Address>"TESV.exe"+EE3561</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>0</ID>
+      <Description>"isPaused"</Description>
+      <LastState Value="??" Activated="0" RealAddress="01B2E85F"/>
+      <Color>80000008</Color>
+      <VariableType>Byte</VariableType>
+      <Address>"TESV.exe"+172E85F</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>27</ID>
+      <Description>"isInEscapeMenu"</Description>
+      <LastState Value="??" Activated="0" RealAddress="01B2E85E"/>
+      <Color>80000008</Color>
+      <VariableType>Byte</VariableType>
+      <Address>TESV.exe+172E85E</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>5</ID>
@@ -45,11 +53,26 @@
     </CheatEntry>
     <CheatEntry>
       <ID>12</ID>
-      <Description>"IsAlduinDead?"</Description>
+      <Description>"IsAlduinDead"</Description>
       <LastState Value="??" Activated="0" RealAddress="01B11608"/>
       <Color>80000008</Color>
       <VariableType>Byte</VariableType>
       <Address>TESV.exe+1711608</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26</ID>
+      <Description>"Location ID"</Description>
+      <LastState Value="??" Activated="0" RealAddress="00000000"/>
+      <ShowAsHex>1</ShowAsHex>
+      <Color>80000008</Color>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"TESV.exe"+01738308</Address>
+      <Offsets>
+        <Offset>EC</Offset>
+        <Offset>670</Offset>
+        <Offset>78</Offset>
+        <Offset>4</Offset>
+      </Offsets>
     </CheatEntry>
     <CheatEntry>
       <ID>9</ID>
@@ -93,27 +116,15 @@
       </Offsets>
     </CheatEntry>
     <CheatEntry>
-      <ID>26</ID>
-      <Description>"Location ID"</Description>
+      <ID>29</ID>
+      <Description>"collegeOfWinterholdQuestsCompleted"</Description>
       <LastState Value="??" Activated="0" RealAddress="00000000"/>
-      <ShowAsHex>1</ShowAsHex>
       <Color>80000008</Color>
       <VariableType>4 Bytes</VariableType>
-      <Address>"TESV.exe"+01738308</Address>
+      <Address>"TESV.exe"+00EE6C34</Address>
       <Offsets>
-        <Offset>EC</Offset>
-        <Offset>670</Offset>
-        <Offset>78</Offset>
-        <Offset>4</Offset>
+        <Offset>38C</Offset>
       </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>27</ID>
-      <Description>"isInEscapeMenu"</Description>
-      <LastState Value="??" Activated="0" RealAddress="01B2E85E"/>
-      <Color>80000008</Color>
-      <VariableType>Byte</VariableType>
-      <Address>TESV.exe+172E85E</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>28</ID>
@@ -124,17 +135,6 @@
       <Address>"TESV.exe"+00EE6C34</Address>
       <Offsets>
         <Offset>378</Offset>
-      </Offsets>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>29</ID>
-      <Description>"collegeQuestsCompleted"</Description>
-      <LastState Value="??" Activated="0" RealAddress="00000000"/>
-      <Color>80000008</Color>
-      <VariableType>4 Bytes</VariableType>
-      <Address>"TESV.exe"+00EE6C34</Address>
-      <Offsets>
-        <Offset>38C</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
