@@ -41,8 +41,6 @@ namespace LiveSplit.Skyrim
             _gameMemory.OnPlayerGainedControl += gameMemory_OnPlayerGainedControl;
             _gameMemory.OnLoadStarted += gameMemory_OnLoadStarted;
             _gameMemory.OnLoadFinished += gameMemory_OnLoadFinished;
-            // _gameMemory.OnLoadScreenStarted += gameMemory_OnLoadScreenStarted;
-            // _gameMemory.OnLoadScreenFinished += gameMemory_OnLoadScreenFinished;
             _gameMemory.OnSplitCompleted += gameMemory_OnSplitCompleted;
             state.OnReset += state_OnReset;
             _gameMemory.StartMonitoring();
@@ -91,24 +89,14 @@ namespace LiveSplit.Skyrim
             _state.IsGameTimePaused = false;
         }
 
-        // void gameMemory_OnLoadScreenStarted(object sender, EventArgs e)
-        // {
-        //     // Nothing to do
-        // }
-
-        // void gameMemory_OnLoadScreenFinished(object sender, EventArgs e)
-        // {
-        //     // Nothing to do
-        // }
-
         void gameMemory_OnSplitCompleted(object sender, GameMemory.SplitArea split, uint frame)
         {
             Trace.WriteLineIf(split != GameMemory.SplitArea.None, String.Format("[NoLoads] {0} Split - {1}", split, frame));
             if (!_gameMemory.splitStates[(int)split] &&
                 ((split == GameMemory.SplitArea.Helgen && this.Settings.Helgen) ||
-                (split == GameMemory.SplitArea.DarkBrotherhoodQuestlineCompleted && this.Settings.DarkBrotherhood) ||
+                (split == GameMemory.SplitArea.CollegeOfWinterholdQuestlineCompleted && this.Settings.CollegeOfWinterhold) ||
                 (split == GameMemory.SplitArea.CompanionsQuestlineCompleted && this.Settings.Companions) ||
-                (split == GameMemory.SplitArea.CollegeQuestlineCompleted && this.Settings.CollegeOfWinterhold) ||
+                (split == GameMemory.SplitArea.DarkBrotherhoodQuestlineCompleted && this.Settings.DarkBrotherhood) ||
                 (split == GameMemory.SplitArea.ThievesGuildQuestlineCompleted && this.Settings.ThievesGuild) ||
                 (split == GameMemory.SplitArea.AlduinDefeated && this.Settings.AlduinDefeated)))
             {

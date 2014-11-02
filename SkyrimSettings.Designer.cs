@@ -36,19 +36,19 @@
             this.gbEndSplits = new System.Windows.Forms.GroupBox();
             this.tlpEndSplits = new System.Windows.Forms.TableLayoutPanel();
             this.chkAlduinDefeated = new System.Windows.Forms.CheckBox();
-            this.chkCollege = new System.Windows.Forms.CheckBox();
+            this.chkCollegeOfWinterhold = new System.Windows.Forms.CheckBox();
             this.chkCompanions = new System.Windows.Forms.CheckBox();
-            this.chkThievesGuild = new System.Windows.Forms.CheckBox();
             this.chkDarkBrotherhood = new System.Windows.Forms.CheckBox();
+            this.chkThievesGuild = new System.Windows.Forms.CheckBox();
             this.tlpMain.SuspendLayout();
             this.gbStartSplits.SuspendLayout();
             this.tlpStartSplits.SuspendLayout();
             this.gbEndSplits.SuspendLayout();
             this.tlpEndSplits.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // tlpMain
-            // 
+            //
             this.tlpMain.ColumnCount = 1;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.Controls.Add(this.gbStartSplits, 0, 0);
@@ -62,9 +62,9 @@
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpMain.Size = new System.Drawing.Size(476, 365);
             this.tlpMain.TabIndex = 0;
-            // 
+            //
             // gbStartSplits
-            // 
+            //
             this.gbStartSplits.AutoSize = true;
             this.gbStartSplits.Controls.Add(this.tlpStartSplits);
             this.gbStartSplits.Dock = System.Windows.Forms.DockStyle.Top;
@@ -74,9 +74,9 @@
             this.gbStartSplits.TabIndex = 5;
             this.gbStartSplits.TabStop = false;
             this.gbStartSplits.Text = "Start Auto-splits";
-            // 
+            //
             // tlpStartSplits
-            // 
+            //
             this.tlpStartSplits.AutoSize = true;
             this.tlpStartSplits.BackColor = System.Drawing.Color.Transparent;
             this.tlpStartSplits.ColumnCount = 1;
@@ -91,9 +91,9 @@
             this.tlpStartSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpStartSplits.Size = new System.Drawing.Size(464, 46);
             this.tlpStartSplits.TabIndex = 4;
-            // 
+            //
             // chkHelgen
-            // 
+            //
             this.chkHelgen.AutoSize = true;
             this.chkHelgen.Location = new System.Drawing.Point(3, 26);
             this.chkHelgen.Name = "chkHelgen";
@@ -101,9 +101,9 @@
             this.chkHelgen.TabIndex = 7;
             this.chkHelgen.Text = "Helgen";
             this.chkHelgen.UseVisualStyleBackColor = true;
-            // 
+            //
             // chkAutoStart
-            // 
+            //
             this.chkAutoStart.AutoSize = true;
             this.chkAutoStart.Checked = true;
             this.chkAutoStart.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -113,9 +113,9 @@
             this.chkAutoStart.TabIndex = 4;
             this.chkAutoStart.Text = "Start / Reset";
             this.chkAutoStart.UseVisualStyleBackColor = true;
-            // 
+            //
             // gbEndSplits
-            // 
+            //
             this.gbEndSplits.AutoSize = true;
             this.gbEndSplits.Controls.Add(this.tlpEndSplits);
             this.gbEndSplits.Dock = System.Windows.Forms.DockStyle.Top;
@@ -125,15 +125,15 @@
             this.gbEndSplits.TabIndex = 7;
             this.gbEndSplits.TabStop = false;
             this.gbEndSplits.Text = "End Auto-splits";
-            // 
+            //
             // tlpEndSplits
-            // 
+            //
             this.tlpEndSplits.AutoSize = true;
             this.tlpEndSplits.BackColor = System.Drawing.Color.Transparent;
             this.tlpEndSplits.ColumnCount = 1;
             this.tlpEndSplits.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpEndSplits.Controls.Add(this.chkAlduinDefeated, 0, 0);
-            this.tlpEndSplits.Controls.Add(this.chkCollege, 0, 1);
+            this.tlpEndSplits.Controls.Add(this.chkCollegeOfWinterhold, 0, 1);
             this.tlpEndSplits.Controls.Add(this.chkCompanions, 0, 2);
             this.tlpEndSplits.Controls.Add(this.chkThievesGuild, 0, 4);
             this.tlpEndSplits.Controls.Add(this.chkDarkBrotherhood, 0, 3);
@@ -148,9 +148,9 @@
             this.tlpEndSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpEndSplits.Size = new System.Drawing.Size(464, 115);
             this.tlpEndSplits.TabIndex = 4;
-            // 
+            //
             // chkAlduinDefeated
-            // 
+            //
             this.chkAlduinDefeated.AutoSize = true;
             this.chkAlduinDefeated.Checked = true;
             this.chkAlduinDefeated.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -160,49 +160,49 @@
             this.chkAlduinDefeated.TabIndex = 5;
             this.chkAlduinDefeated.Text = "Alduin\'s Defeat (Main Quest)";
             this.chkAlduinDefeated.UseVisualStyleBackColor = true;
-            // 
-            // chkCollege
-            // 
-            this.chkCollege.AutoSize = true;
-            this.chkCollege.Location = new System.Drawing.Point(3, 26);
-            this.chkCollege.Name = "chkCollege";
-            this.chkCollege.Size = new System.Drawing.Size(318, 17);
-            this.chkCollege.TabIndex = 10;
-            this.chkCollege.Text = "[EXPERIMENTAL] College of Winterhold questline completion";
-            this.chkCollege.UseVisualStyleBackColor = true;
-            // 
+            //
+            // chkCollegeOfWinterhold
+            //
+            this.chkCollegeOfWinterhold.AutoSize = true;
+            this.chkCollegeOfWinterhold.Location = new System.Drawing.Point(3, 26);
+            this.chkCollegeOfWinterhold.Name = "chkCollegeOfWinterhold";
+            this.chkCollegeOfWinterhold.Size = new System.Drawing.Size(318, 17);
+            this.chkCollegeOfWinterhold.TabIndex = 10;
+            this.chkCollegeOfWinterhold.Text = "College of Winterhold questline completion";
+            this.chkCollegeOfWinterhold.UseVisualStyleBackColor = true;
+            //
             // chkCompanions
-            // 
+            //
             this.chkCompanions.AutoSize = true;
             this.chkCompanions.Location = new System.Drawing.Point(3, 49);
             this.chkCompanions.Name = "chkCompanions";
             this.chkCompanions.Size = new System.Drawing.Size(275, 17);
             this.chkCompanions.TabIndex = 8;
-            this.chkCompanions.Text = "[EXPERIMENTAL] Companions questline completion";
+            this.chkCompanions.Text = "Companions questline completion";
             this.chkCompanions.UseVisualStyleBackColor = true;
-            // 
-            // chkThievesGuild
-            // 
-            this.chkThievesGuild.AutoSize = true;
-            this.chkThievesGuild.Location = new System.Drawing.Point(3, 95);
-            this.chkThievesGuild.Name = "chkThievesGuild";
-            this.chkThievesGuild.Size = new System.Drawing.Size(284, 17);
-            this.chkThievesGuild.TabIndex = 9;
-            this.chkThievesGuild.Text = "[EXPERIMENTAL] Thieves\' Guild questline completion";
-            this.chkThievesGuild.UseVisualStyleBackColor = true;
-            // 
+            //
             // chkDarkBrotherhood
-            // 
+            //
             this.chkDarkBrotherhood.AutoSize = true;
             this.chkDarkBrotherhood.Location = new System.Drawing.Point(3, 72);
             this.chkDarkBrotherhood.Name = "chkDarkBrotherhood";
             this.chkDarkBrotherhood.Size = new System.Drawing.Size(301, 17);
             this.chkDarkBrotherhood.TabIndex = 7;
-            this.chkDarkBrotherhood.Text = "[EXPERIMENTAL] Dark Brotherhood questline completion";
+            this.chkDarkBrotherhood.Text = "Dark Brotherhood questline completion";
             this.chkDarkBrotherhood.UseVisualStyleBackColor = true;
-            // 
+            //
+            // chkThievesGuild
+            //
+            this.chkThievesGuild.AutoSize = true;
+            this.chkThievesGuild.Location = new System.Drawing.Point(3, 95);
+            this.chkThievesGuild.Name = "chkThievesGuild";
+            this.chkThievesGuild.Size = new System.Drawing.Size(284, 17);
+            this.chkThievesGuild.TabIndex = 9;
+            this.chkThievesGuild.Text = "Thieves Guild questline completion";
+            this.chkThievesGuild.UseVisualStyleBackColor = true;
+            //
             // SkyrimSettings
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tlpMain);
@@ -232,9 +232,9 @@
         private System.Windows.Forms.TableLayoutPanel tlpStartSplits;
         private System.Windows.Forms.CheckBox chkHelgen;
         private System.Windows.Forms.CheckBox chkAutoStart;
-        private System.Windows.Forms.CheckBox chkDarkBrotherhood;
+        private System.Windows.Forms.CheckBox chkCollegeOfWinterhold;
         private System.Windows.Forms.CheckBox chkCompanions;
+        private System.Windows.Forms.CheckBox chkDarkBrotherhood;
         private System.Windows.Forms.CheckBox chkThievesGuild;
-        private System.Windows.Forms.CheckBox chkCollege;
     }
 }
