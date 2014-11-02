@@ -354,7 +354,7 @@ namespace LiveSplit.Skyrim
                         if (collegeOfWinterholdQuestsCompleted > prevCollegeOfWinterholdQuestsCompleted)
                         {
                             Debug.WriteLine(String.Format("[NoLoads] A College of Winterhold quest has been completed - {0}", frameCounter));
-                            lastQuestCompleted = SplitArea.CollegeQuestlineCompleted;
+                            lastQuestCompleted = SplitArea.CollegeOfWinterholdQuestlineCompleted;
                             lastQuestframeCounter = frameCounter;
                         }
                         else if (companionsQuestsCompleted > prevCompanionsQuestsCompleted)
