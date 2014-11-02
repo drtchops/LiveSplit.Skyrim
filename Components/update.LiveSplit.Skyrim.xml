@@ -1,4 +1,20 @@
 <updates>
+    <update version="2.0.0">
+        <files>
+            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+        </files>
+        <changelog>
+            <change>
+                Added autosplits for every split in any%.
+            </change>
+            <change>
+                Removed the Alternate Timing layout component. It's now its own component and works for all games.
+            </change>
+            <change>
+                Redesigned settings.
+            </change>
+        </changelog>
+    </update>
     <update version="1.4.2">
         <files>
             <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
