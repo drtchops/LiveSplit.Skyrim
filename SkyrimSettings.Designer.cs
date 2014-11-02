@@ -39,9 +39,6 @@
             this.chkCompanions = new System.Windows.Forms.CheckBox();
             this.chkDarkBrotherhood = new System.Windows.Forms.CheckBox();
             this.chkThievesGuild = new System.Windows.Forms.CheckBox();
-            this.gbDisplayAlternateTiming = new System.Windows.Forms.GroupBox();
-            this.tlpDisplayAlternateTiming = new System.Windows.Forms.TableLayoutPanel();
-            this.chkDisplayWithoutLoads = new System.Windows.Forms.CheckBox();
             this.gb_AnyPercentSplits = new System.Windows.Forms.GroupBox();
             this.tlpAnyPercentSplits = new System.Windows.Forms.TableLayoutPanel();
             this.gbAnyPercentTemplate = new System.Windows.Forms.GroupBox();
@@ -76,8 +73,6 @@
             this.tlpStartSplits.SuspendLayout();
             this.gbGuildsSplits.SuspendLayout();
             this.tlpGuildsSplits.SuspendLayout();
-            this.gbDisplayAlternateTiming.SuspendLayout();
-            this.tlpDisplayAlternateTiming.SuspendLayout();
             this.gb_AnyPercentSplits.SuspendLayout();
             this.tlpAnyPercentSplits.SuspendLayout();
             this.gbAnyPercentTemplate.SuspendLayout();
@@ -93,7 +88,6 @@
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpMain.Controls.Add(this.gbStartSplits, 0, 0);
             this.tlpMain.Controls.Add(this.gbGuildsSplits, 0, 2);
-            this.tlpMain.Controls.Add(this.gbDisplayAlternateTiming, 0, 3);
             this.tlpMain.Controls.Add(this.gb_AnyPercentSplits, 0, 1);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpMain.Location = new System.Drawing.Point(0, 0);
@@ -202,7 +196,7 @@
             this.chkCollegeOfWinterhold.Name = "chkCollegeOfWinterhold";
             this.chkCollegeOfWinterhold.Size = new System.Drawing.Size(318, 17);
             this.chkCollegeOfWinterhold.TabIndex = 10;
-            this.chkCollegeOfWinterhold.Text = "[EXPERIMENTAL] College of Winterhold questline completion";
+            this.chkCollegeOfWinterhold.Text = "College of Winterhold questline completion";
             this.chkCollegeOfWinterhold.UseVisualStyleBackColor = true;
             //
             // chkCompanions
@@ -232,49 +226,8 @@
             this.chkThievesGuild.Name = "chkThievesGuild";
             this.chkThievesGuild.Size = new System.Drawing.Size(284, 17);
             this.chkThievesGuild.TabIndex = 9;
-            this.chkThievesGuild.Text = "[EXPERIMENTAL] Thieves\' Guild questline completion";
+            this.chkThievesGuild.Text = "Thieves Guild questline completion";
             this.chkThievesGuild.UseVisualStyleBackColor = true;
-            //
-            // gbDisplayAlternateTiming
-            //
-            this.gbDisplayAlternateTiming.AutoSize = true;
-            this.gbDisplayAlternateTiming.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gbDisplayAlternateTiming.Controls.Add(this.tlpDisplayAlternateTiming);
-            this.gbDisplayAlternateTiming.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbDisplayAlternateTiming.Location = new System.Drawing.Point(3, 444);
-            this.gbDisplayAlternateTiming.Name = "gbDisplayAlternateTiming";
-            this.gbDisplayAlternateTiming.Size = new System.Drawing.Size(444, 42);
-            this.gbDisplayAlternateTiming.TabIndex = 9;
-            this.gbDisplayAlternateTiming.TabStop = false;
-            this.gbDisplayAlternateTiming.Text = "Show Alternate Timing Method";
-            //
-            // tlpDisplayAlternateTiming
-            //
-            this.tlpDisplayAlternateTiming.AutoSize = true;
-            this.tlpDisplayAlternateTiming.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpDisplayAlternateTiming.ColumnCount = 1;
-            this.tlpDisplayAlternateTiming.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpDisplayAlternateTiming.Controls.Add(this.chkDisplayWithoutLoads, 0, 0);
-            this.tlpDisplayAlternateTiming.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpDisplayAlternateTiming.Location = new System.Drawing.Point(3, 16);
-            this.tlpDisplayAlternateTiming.Name = "tlpDisplayAlternateTiming";
-            this.tlpDisplayAlternateTiming.RowCount = 1;
-            this.tlpDisplayAlternateTiming.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpDisplayAlternateTiming.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tlpDisplayAlternateTiming.Size = new System.Drawing.Size(438, 23);
-            this.tlpDisplayAlternateTiming.TabIndex = 0;
-            //
-            // chkDisplayWithoutLoads
-            //
-            this.chkDisplayWithoutLoads.AutoSize = true;
-            this.chkDisplayWithoutLoads.Checked = true;
-            this.chkDisplayWithoutLoads.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDisplayWithoutLoads.Location = new System.Drawing.Point(3, 3);
-            this.chkDisplayWithoutLoads.Name = "chkDisplayWithoutLoads";
-            this.chkDisplayWithoutLoads.Size = new System.Drawing.Size(59, 17);
-            this.chkDisplayWithoutLoads.TabIndex = 0;
-            this.chkDisplayWithoutLoads.Text = "Enable";
-            this.chkDisplayWithoutLoads.UseVisualStyleBackColor = true;
             //
             // gb_AnyPercentSplits
             //
@@ -674,10 +627,6 @@
             this.gbGuildsSplits.PerformLayout();
             this.tlpGuildsSplits.ResumeLayout(false);
             this.tlpGuildsSplits.PerformLayout();
-            this.gbDisplayAlternateTiming.ResumeLayout(false);
-            this.gbDisplayAlternateTiming.PerformLayout();
-            this.tlpDisplayAlternateTiming.ResumeLayout(false);
-            this.tlpDisplayAlternateTiming.PerformLayout();
             this.gb_AnyPercentSplits.ResumeLayout(false);
             this.gb_AnyPercentSplits.PerformLayout();
             this.tlpAnyPercentSplits.ResumeLayout(false);
@@ -707,8 +656,6 @@
         private System.Windows.Forms.CheckBox chkCompanions;
         private System.Windows.Forms.CheckBox chkDarkBrotherhood;
         private System.Windows.Forms.CheckBox chkThievesGuild;
-        private System.Windows.Forms.GroupBox gbDisplayAlternateTiming;
-        private System.Windows.Forms.TableLayoutPanel tlpDisplayAlternateTiming;
         private System.Windows.Forms.GroupBox gb_AnyPercentSplits;
         private System.Windows.Forms.TableLayoutPanel tlpAnyPercentSplits;
         private System.Windows.Forms.CheckBox chkWhiterun;

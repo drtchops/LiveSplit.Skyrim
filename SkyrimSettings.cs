@@ -39,7 +39,6 @@ namespace LiveSplit.Skyrim
         public const string TEMPLATE_GR3YSCALE = "gr3yscale";
         public const string TEMPLATE_DALLETH = "Dalleth";
 
-        private const bool DEFAULT_DRAWWITHOUTLOADS = true;
         private const bool DEFAULT_AUTOSTART = true;
         private const bool DEFAULT_ALDUINDEFEATED = true;
         private const bool DEFAULT_HELGEN = false;
@@ -166,7 +165,6 @@ namespace LiveSplit.Skyrim
         {
             var element = (XmlElement)settings;
 
-            this.DrawWithoutLoads = ParseBool(settings, "DrawWithoutLoads", DEFAULT_DRAWWITHOUTLOADS);
             this.AutoStart = ParseBool(settings, "AutoStart", DEFAULT_AUTOSTART);
             this.AlduinDefeated = ParseBool(settings, "AlduinDefeated", DEFAULT_ALDUINDEFEATED);
             this.Helgen = ParseBool(settings, "Helgen", DEFAULT_HELGEN);
