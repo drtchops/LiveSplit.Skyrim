@@ -385,14 +385,6 @@ namespace LiveSplit.Skyrim
                                     {
                                         Split(SplitArea.TheWall, frameCounter);
                                     }
-                                    // if loadscreen starts in Paarthurnax' mountain whereabouts
-                                    else if (isAlduin1Defeated && loadScreenStartLocationID == (int)Locations.Tamriel && ((loadScreenStartWorld_X == 14 && loadScreenStartWorld_Y == -12) ||
-                                        (loadScreenStartWorld_X == 14 && loadScreenStartWorld_Y == -13) || (loadScreenStartWorld_X == 13 && loadScreenStartWorld_Y == -12) ||
-                                            (loadScreenStartWorld_X == 13 && loadScreenStartWorld_Y == -13)) &&
-                                                (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
-                                    {
-                                        Split(SplitArea.Alduin1, frameCounter);
-                                    }
                                 }
                                 else
                                 {
@@ -484,6 +476,15 @@ namespace LiveSplit.Skyrim
                                     (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
                             {
                                 Split(SplitArea.MzarkTower, frameCounter);
+                            }
+                            // if loadscreen starts in Paarthurnax' mountain whereabouts, ends in front of DragonsReach (fast travel) and Alduin1 was defeated
+                            else if (isAlduin1Defeated && loadScreenStartLocationID == (int)Locations.Tamriel && ((loadScreenStartWorld_X == 14 && loadScreenStartWorld_Y == -12) ||
+                                (loadScreenStartWorld_X == 14 && loadScreenStartWorld_Y == -13) || (loadScreenStartWorld_X == 13 && loadScreenStartWorld_Y == -12) ||
+                                    (loadScreenStartWorld_X == 13 && loadScreenStartWorld_Y == -13)) &&
+                                        world_X == 6 && world_Y == -1 && locationID == (int)Locations.Tamriel &&
+                                            (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
+                            {
+                                Split(SplitArea.Alduin1, frameCounter);
                             }
                             // if loadscreen starts in High Hrothgar's whereabouts and doesn't end inside
                             else if (loadScreenStartLocationID == (int)Locations.Tamriel && loadScreenStartWorld_X == 13 &&
