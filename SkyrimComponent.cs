@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Xml;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace LiveSplit.Skyrim
 {
@@ -29,6 +30,11 @@ namespace LiveSplit.Skyrim
 
         public SkyrimComponent(LiveSplitState state, bool isLayoutComponent)
         {
+            bool debug = false;
+            #if DEBUG
+                debug = true;
+            #endif
+            Trace.WriteLine("[NoLoads] Using LiveSplit.Skyrim component version " + Assembly.GetExecutingAssembly().GetName().Version + " " + ((debug) ? "Debug" : "Release") + " build");
             _state = state;
             this.IsLayoutComponent = isLayoutComponent;
 

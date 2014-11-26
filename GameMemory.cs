@@ -394,7 +394,7 @@ namespace LiveSplit.Skyrim
                             }
                             else
                             {
-                                Trace.WriteLine(String.Format("[NoLoads] LoadScreen End - {0}", frameCounter));
+                                Trace.WriteLine(String.Format("[NoLoads] LoadScreen End at {0} X: {1} Y: {2} - {3}", locationID.ToString("X8"), world_X, world_Y, frameCounter));
 
                                 if (loadingScreenStarted)
                                 {
