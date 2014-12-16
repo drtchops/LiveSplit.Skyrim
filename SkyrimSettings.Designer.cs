@@ -37,8 +37,8 @@
             this.tlpGuildsSplits = new System.Windows.Forms.TableLayoutPanel();
             this.chkCollegeOfWinterhold = new System.Windows.Forms.CheckBox();
             this.chkCompanions = new System.Windows.Forms.CheckBox();
-            this.chkDarkBrotherhood = new System.Windows.Forms.CheckBox();
             this.chkThievesGuild = new System.Windows.Forms.CheckBox();
+            this.chkDarkBrotherhood = new System.Windows.Forms.CheckBox();
             this.gb_AnyPercentSplits = new System.Windows.Forms.GroupBox();
             this.tlpAnyPercentSplits = new System.Windows.Forms.TableLayoutPanel();
             this.gbAnyPercentTemplate = new System.Windows.Forms.GroupBox();
@@ -79,9 +79,9 @@
             this.tlpAnyPercentTemplate.SuspendLayout();
             this.flp_AnyPercentSplits.SuspendLayout();
             this.SuspendLayout();
-            //
+            // 
             // tlpMain
-            //
+            // 
             this.tlpMain.AutoSize = true;
             this.tlpMain.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tlpMain.ColumnCount = 1;
@@ -97,11 +97,11 @@
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpMain.Size = new System.Drawing.Size(450, 489);
+            this.tlpMain.Size = new System.Drawing.Size(450, 441);
             this.tlpMain.TabIndex = 0;
-            //
+            // 
             // gbStartSplits
-            //
+            // 
             this.gbStartSplits.AutoSize = true;
             this.gbStartSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gbStartSplits.Controls.Add(this.tlpStartSplits);
@@ -112,9 +112,9 @@
             this.gbStartSplits.TabIndex = 5;
             this.gbStartSplits.TabStop = false;
             this.gbStartSplits.Text = "Start Auto-splits";
-            //
+            // 
             // tlpStartSplits
-            //
+            // 
             this.tlpStartSplits.AutoSize = true;
             this.tlpStartSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tlpStartSplits.BackColor = System.Drawing.Color.Transparent;
@@ -130,9 +130,9 @@
             this.tlpStartSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpStartSplits.Size = new System.Drawing.Size(438, 46);
             this.tlpStartSplits.TabIndex = 4;
-            //
+            // 
             // chkHelgen
-            //
+            // 
             this.chkHelgen.AutoSize = true;
             this.chkHelgen.Location = new System.Drawing.Point(3, 26);
             this.chkHelgen.Name = "chkHelgen";
@@ -140,9 +140,9 @@
             this.chkHelgen.TabIndex = 7;
             this.chkHelgen.Text = "Helgen";
             this.chkHelgen.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkAutoStart
-            //
+            // 
             this.chkAutoStart.AutoSize = true;
             this.chkAutoStart.Checked = true;
             this.chkAutoStart.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -152,9 +152,9 @@
             this.chkAutoStart.TabIndex = 4;
             this.chkAutoStart.Text = "Start / Reset";
             this.chkAutoStart.UseVisualStyleBackColor = true;
-            //
+            // 
             // gbGuildsSplits
-            //
+            // 
             this.gbGuildsSplits.AutoSize = true;
             this.gbGuildsSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gbGuildsSplits.Controls.Add(this.tlpGuildsSplits);
@@ -165,9 +165,9 @@
             this.gbGuildsSplits.TabIndex = 7;
             this.gbGuildsSplits.TabStop = false;
             this.gbGuildsSplits.Text = "Guilds Auto-splits";
-            //
+            // 
             // tlpGuildsSplits
-            //
+            // 
             this.tlpGuildsSplits.AutoSize = true;
             this.tlpGuildsSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tlpGuildsSplits.BackColor = System.Drawing.Color.Transparent;
@@ -188,49 +188,49 @@
             this.tlpGuildsSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpGuildsSplits.Size = new System.Drawing.Size(438, 92);
             this.tlpGuildsSplits.TabIndex = 4;
-            //
+            // 
             // chkCollegeOfWinterhold
-            //
+            // 
             this.chkCollegeOfWinterhold.AutoSize = true;
             this.chkCollegeOfWinterhold.Location = new System.Drawing.Point(3, 3);
             this.chkCollegeOfWinterhold.Name = "chkCollegeOfWinterhold";
-            this.chkCollegeOfWinterhold.Size = new System.Drawing.Size(318, 17);
+            this.chkCollegeOfWinterhold.Size = new System.Drawing.Size(226, 17);
             this.chkCollegeOfWinterhold.TabIndex = 10;
             this.chkCollegeOfWinterhold.Text = "College of Winterhold questline completion";
             this.chkCollegeOfWinterhold.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkCompanions
-            //
+            // 
             this.chkCompanions.AutoSize = true;
             this.chkCompanions.Location = new System.Drawing.Point(3, 26);
             this.chkCompanions.Name = "chkCompanions";
-            this.chkCompanions.Size = new System.Drawing.Size(275, 17);
+            this.chkCompanions.Size = new System.Drawing.Size(183, 17);
             this.chkCompanions.TabIndex = 8;
             this.chkCompanions.Text = "Companions questline completion";
             this.chkCompanions.UseVisualStyleBackColor = true;
-            //
-            // chkDarkBrotherhood
-            //
-            this.chkDarkBrotherhood.AutoSize = true;
-            this.chkDarkBrotherhood.Location = new System.Drawing.Point(3, 49);
-            this.chkDarkBrotherhood.Name = "chkDarkBrotherhood";
-            this.chkDarkBrotherhood.Size = new System.Drawing.Size(301, 17);
-            this.chkDarkBrotherhood.TabIndex = 7;
-            this.chkDarkBrotherhood.Text = "Dark Brotherhood questline completion";
-            this.chkDarkBrotherhood.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkThievesGuild
-            //
+            // 
             this.chkThievesGuild.AutoSize = true;
             this.chkThievesGuild.Location = new System.Drawing.Point(3, 72);
             this.chkThievesGuild.Name = "chkThievesGuild";
-            this.chkThievesGuild.Size = new System.Drawing.Size(284, 17);
+            this.chkThievesGuild.Size = new System.Drawing.Size(190, 17);
             this.chkThievesGuild.TabIndex = 9;
             this.chkThievesGuild.Text = "Thieves Guild questline completion";
             this.chkThievesGuild.UseVisualStyleBackColor = true;
-            //
+            // 
+            // chkDarkBrotherhood
+            // 
+            this.chkDarkBrotherhood.AutoSize = true;
+            this.chkDarkBrotherhood.Location = new System.Drawing.Point(3, 49);
+            this.chkDarkBrotherhood.Name = "chkDarkBrotherhood";
+            this.chkDarkBrotherhood.Size = new System.Drawing.Size(209, 17);
+            this.chkDarkBrotherhood.TabIndex = 7;
+            this.chkDarkBrotherhood.Text = "Dark Brotherhood questline completion";
+            this.chkDarkBrotherhood.UseVisualStyleBackColor = true;
+            // 
             // gb_AnyPercentSplits
-            //
+            // 
             this.gb_AnyPercentSplits.AutoSize = true;
             this.gb_AnyPercentSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gb_AnyPercentSplits.Controls.Add(this.tlpAnyPercentSplits);
@@ -241,9 +241,9 @@
             this.gb_AnyPercentSplits.TabIndex = 10;
             this.gb_AnyPercentSplits.TabStop = false;
             this.gb_AnyPercentSplits.Text = "Any% Auto-splits";
-            //
+            // 
             // tlpAnyPercentSplits
-            //
+            // 
             this.tlpAnyPercentSplits.AutoSize = true;
             this.tlpAnyPercentSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tlpAnyPercentSplits.ColumnCount = 1;
@@ -260,29 +260,30 @@
             this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpAnyPercentSplits.Size = new System.Drawing.Size(438, 228);
             this.tlpAnyPercentSplits.TabIndex = 0;
-            //
+            // 
             // gbAnyPercentTemplate
-            //
+            // 
             this.gbAnyPercentTemplate.AutoSize = true;
             this.gbAnyPercentTemplate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gbAnyPercentTemplate.Controls.Add(this.tlpAnyPercentTemplate);
             this.gbAnyPercentTemplate.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbAnyPercentTemplate.Location = new System.Drawing.Point(3, 3);
+            this.gbAnyPercentTemplate.MaximumSize = new System.Drawing.Size(435, 0);
             this.gbAnyPercentTemplate.Name = "gbAnyPercentTemplate";
             this.gbAnyPercentTemplate.Size = new System.Drawing.Size(432, 42);
             this.gbAnyPercentTemplate.TabIndex = 19;
             this.gbAnyPercentTemplate.TabStop = false;
             this.gbAnyPercentTemplate.Text = "Split Template";
-            //
+            // 
             // tlpAnyPercentTemplate
-            //
+            // 
             this.tlpAnyPercentTemplate.AutoSize = true;
             this.tlpAnyPercentTemplate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tlpAnyPercentTemplate.ColumnCount = 4;
-            this.tlpAnyPercentTemplate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
-            this.tlpAnyPercentTemplate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
-            this.tlpAnyPercentTemplate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
-            this.tlpAnyPercentTemplate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.99813F));
+            this.tlpAnyPercentTemplate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tlpAnyPercentTemplate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
+            this.tlpAnyPercentTemplate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
+            this.tlpAnyPercentTemplate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
             this.tlpAnyPercentTemplate.Controls.Add(this.rbMrwalrus, 0, 0);
             this.tlpAnyPercentTemplate.Controls.Add(this.rbDrtchops, 1, 0);
             this.tlpAnyPercentTemplate.Controls.Add(this.rbDalleth, 3, 0);
@@ -294,55 +295,55 @@
             this.tlpAnyPercentTemplate.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpAnyPercentTemplate.Size = new System.Drawing.Size(426, 23);
             this.tlpAnyPercentTemplate.TabIndex = 0;
-            //
+            // 
             // rbMrwalrus
-            //
+            // 
             this.rbMrwalrus.AutoSize = true;
             this.rbMrwalrus.Checked = true;
             this.rbMrwalrus.Location = new System.Drawing.Point(3, 3);
             this.rbMrwalrus.Name = "rbMrwalrus";
-            this.rbMrwalrus.Size = new System.Drawing.Size(70, 17);
+            this.rbMrwalrus.Size = new System.Drawing.Size(120, 17);
             this.rbMrwalrus.TabIndex = 0;
             this.rbMrwalrus.TabStop = true;
-            this.rbMrwalrus.Text = "MrWalrus";
+            this.rbMrwalrus.Text = "MrWalrus / Wymorn";
             this.rbMrwalrus.UseVisualStyleBackColor = true;
             this.rbMrwalrus.CheckedChanged += new System.EventHandler(this.templateRadioButtonChanged);
-            //
+            // 
             // rbDrtchops
-            //
+            // 
             this.rbDrtchops.AutoSize = true;
-            this.rbDrtchops.Location = new System.Drawing.Point(109, 3);
+            this.rbDrtchops.Location = new System.Drawing.Point(145, 3);
             this.rbDrtchops.Name = "rbDrtchops";
             this.rbDrtchops.Size = new System.Drawing.Size(73, 17);
             this.rbDrtchops.TabIndex = 1;
             this.rbDrtchops.Text = "DrTChops";
             this.rbDrtchops.UseVisualStyleBackColor = true;
             this.rbDrtchops.CheckedChanged += new System.EventHandler(this.templateRadioButtonChanged);
-            //
+            // 
             // rbDalleth
-            //
+            // 
             this.rbDalleth.AutoSize = true;
-            this.rbDalleth.Location = new System.Drawing.Point(321, 3);
+            this.rbDalleth.Location = new System.Drawing.Point(333, 3);
             this.rbDalleth.Name = "rbDalleth";
             this.rbDalleth.Size = new System.Drawing.Size(58, 17);
             this.rbDalleth.TabIndex = 2;
             this.rbDalleth.Text = "Dalleth";
             this.rbDalleth.UseVisualStyleBackColor = true;
             this.rbDalleth.CheckedChanged += new System.EventHandler(this.templateRadioButtonChanged);
-            //
+            // 
             // rbGr3yscale
-            //
+            // 
             this.rbGr3yscale.AutoSize = true;
-            this.rbGr3yscale.Location = new System.Drawing.Point(215, 3);
+            this.rbGr3yscale.Location = new System.Drawing.Point(239, 3);
             this.rbGr3yscale.Name = "rbGr3yscale";
             this.rbGr3yscale.Size = new System.Drawing.Size(70, 17);
             this.rbGr3yscale.TabIndex = 3;
             this.rbGr3yscale.Text = "gr3yscale";
             this.rbGr3yscale.UseVisualStyleBackColor = true;
             this.rbGr3yscale.CheckedChanged += new System.EventHandler(this.templateRadioButtonChanged);
-            //
+            // 
             // flp_AnyPercentSplits
-            //
+            // 
             this.flp_AnyPercentSplits.AutoSize = true;
             this.flp_AnyPercentSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flp_AnyPercentSplits.Controls.Add(this.chkWhiterun);
@@ -371,9 +372,9 @@
             this.flp_AnyPercentSplits.Name = "flp_AnyPercentSplits";
             this.flp_AnyPercentSplits.Size = new System.Drawing.Size(432, 161);
             this.flp_AnyPercentSplits.TabIndex = 21;
-            //
+            // 
             // chkWhiterun
-            //
+            // 
             this.chkWhiterun.AutoSize = true;
             this.chkWhiterun.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkWhiterun.Location = new System.Drawing.Point(3, 3);
@@ -383,9 +384,9 @@
             this.chkWhiterun.TabIndex = 0;
             this.chkWhiterun.Text = "Whiterun";
             this.chkWhiterun.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkThalmorEmbassy
-            //
+            // 
             this.chkThalmorEmbassy.AutoSize = true;
             this.chkThalmorEmbassy.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkThalmorEmbassy.Location = new System.Drawing.Point(3, 26);
@@ -395,9 +396,9 @@
             this.chkThalmorEmbassy.TabIndex = 1;
             this.chkThalmorEmbassy.Text = "Thalmor Embassy";
             this.chkThalmorEmbassy.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkEsbern
-            //
+            // 
             this.chkEsbern.AutoSize = true;
             this.chkEsbern.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkEsbern.Location = new System.Drawing.Point(3, 49);
@@ -407,9 +408,9 @@
             this.chkEsbern.TabIndex = 6;
             this.chkEsbern.Text = "Esbern in Riften";
             this.chkEsbern.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkRiverwood
-            //
+            // 
             this.chkRiverwood.AutoSize = true;
             this.chkRiverwood.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkRiverwood.Location = new System.Drawing.Point(3, 72);
@@ -419,9 +420,9 @@
             this.chkRiverwood.TabIndex = 7;
             this.chkRiverwood.Text = "Riverwood";
             this.chkRiverwood.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkTheWall
-            //
+            // 
             this.chkTheWall.AutoSize = true;
             this.chkTheWall.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkTheWall.Location = new System.Drawing.Point(3, 95);
@@ -431,9 +432,9 @@
             this.chkTheWall.TabIndex = 8;
             this.chkTheWall.Text = "The Wall";
             this.chkTheWall.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkSeptimus
-            //
+            // 
             this.chkSeptimus.AutoSize = true;
             this.chkSeptimus.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkSeptimus.Location = new System.Drawing.Point(3, 118);
@@ -443,9 +444,9 @@
             this.chkSeptimus.TabIndex = 9;
             this.chkSeptimus.Text = "Septimus";
             this.chkSeptimus.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkMzarkTower
-            //
+            // 
             this.chkMzarkTower.AutoSize = true;
             this.chkMzarkTower.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkMzarkTower.Location = new System.Drawing.Point(3, 141);
@@ -455,9 +456,9 @@
             this.chkMzarkTower.TabIndex = 10;
             this.chkMzarkTower.Text = "Mzark Tower";
             this.chkMzarkTower.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkClearSky
-            //
+            // 
             this.chkClearSky.AutoSize = true;
             this.chkClearSky.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkClearSky.Location = new System.Drawing.Point(165, 3);
@@ -467,9 +468,9 @@
             this.chkClearSky.TabIndex = 11;
             this.chkClearSky.Text = "Clear Sky";
             this.chkClearSky.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkHorseClimb
-            //
+            // 
             this.chkHorseClimb.AutoSize = true;
             this.chkHorseClimb.Location = new System.Drawing.Point(165, 26);
             this.chkHorseClimb.Name = "chkHorseClimb";
@@ -477,9 +478,9 @@
             this.chkHorseClimb.TabIndex = 21;
             this.chkHorseClimb.Text = "HorseClimb";
             this.chkHorseClimb.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkCutsceneStart
-            //
+            // 
             this.chkCutsceneStart.AutoSize = true;
             this.chkCutsceneStart.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkCutsceneStart.Location = new System.Drawing.Point(165, 49);
@@ -489,9 +490,9 @@
             this.chkCutsceneStart.TabIndex = 20;
             this.chkCutsceneStart.Text = "Cutscene Start";
             this.chkCutsceneStart.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkCutsceneEnd
-            //
+            // 
             this.chkCutsceneEnd.AutoSize = true;
             this.chkCutsceneEnd.Location = new System.Drawing.Point(165, 72);
             this.chkCutsceneEnd.Name = "chkCutsceneEnd";
@@ -499,9 +500,9 @@
             this.chkCutsceneEnd.TabIndex = 22;
             this.chkCutsceneEnd.Text = "Cutscene End";
             this.chkCutsceneEnd.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkAlduin1
-            //
+            // 
             this.chkAlduin1.AutoSize = true;
             this.chkAlduin1.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkAlduin1.Location = new System.Drawing.Point(165, 95);
@@ -511,9 +512,9 @@
             this.chkAlduin1.TabIndex = 18;
             this.chkAlduin1.Text = "Alduin 1";
             this.chkAlduin1.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkHighHrothgar
-            //
+            // 
             this.chkHighHrothgar.AutoSize = true;
             this.chkHighHrothgar.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkHighHrothgar.Location = new System.Drawing.Point(165, 118);
@@ -523,9 +524,9 @@
             this.chkHighHrothgar.TabIndex = 12;
             this.chkHighHrothgar.Text = "High Hrothgar";
             this.chkHighHrothgar.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkSolitude
-            //
+            // 
             this.chkSolitude.AutoSize = true;
             this.chkSolitude.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkSolitude.Location = new System.Drawing.Point(165, 141);
@@ -535,9 +536,9 @@
             this.chkSolitude.TabIndex = 13;
             this.chkSolitude.Text = "Solitude";
             this.chkSolitude.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkWindhelm
-            //
+            // 
             this.chkWindhelm.AutoSize = true;
             this.chkWindhelm.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkWindhelm.Location = new System.Drawing.Point(314, 3);
@@ -547,9 +548,9 @@
             this.chkWindhelm.TabIndex = 14;
             this.chkWindhelm.Text = "Windhelm";
             this.chkWindhelm.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkCouncil
-            //
+            // 
             this.chkCouncil.AutoSize = true;
             this.chkCouncil.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkCouncil.Location = new System.Drawing.Point(314, 26);
@@ -559,9 +560,9 @@
             this.chkCouncil.TabIndex = 15;
             this.chkCouncil.Text = "Council";
             this.chkCouncil.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkOdahviing
-            //
+            // 
             this.chkOdahviing.AutoSize = true;
             this.chkOdahviing.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkOdahviing.Location = new System.Drawing.Point(314, 49);
@@ -571,9 +572,9 @@
             this.chkOdahviing.TabIndex = 16;
             this.chkOdahviing.Text = "Odahviing";
             this.chkOdahviing.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkEnterSovngarde
-            //
+            // 
             this.chkEnterSovngarde.AutoSize = true;
             this.chkEnterSovngarde.Dock = System.Windows.Forms.DockStyle.Top;
             this.chkEnterSovngarde.Location = new System.Drawing.Point(314, 72);
@@ -583,9 +584,9 @@
             this.chkEnterSovngarde.TabIndex = 17;
             this.chkEnterSovngarde.Text = "Enter Sovngarde";
             this.chkEnterSovngarde.UseVisualStyleBackColor = true;
-            //
+            // 
             // chkAlduinDefeated
-            //
+            // 
             this.chkAlduinDefeated.AutoSize = true;
             this.chkAlduinDefeated.Checked = true;
             this.chkAlduinDefeated.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -597,9 +598,9 @@
             this.chkAlduinDefeated.TabIndex = 5;
             this.chkAlduinDefeated.Text = "Alduin\'s Defeat";
             this.chkAlduinDefeated.UseVisualStyleBackColor = true;
-            //
+            // 
             // llCheckAll
-            //
+            // 
             this.llCheckAll.AutoSize = true;
             this.llCheckAll.Dock = System.Windows.Forms.DockStyle.Right;
             this.llCheckAll.Location = new System.Drawing.Point(318, 48);
@@ -609,9 +610,9 @@
             this.llCheckAll.TabStop = true;
             this.llCheckAll.Text = "Activate/Deactivate All";
             this.llCheckAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llCheckAll_LinkClicked);
-            //
+            // 
             // SkyrimSettings
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tlpMain);
