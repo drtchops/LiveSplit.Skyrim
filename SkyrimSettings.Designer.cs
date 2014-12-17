@@ -68,6 +68,7 @@
             this.chkEnterSovngarde = new System.Windows.Forms.CheckBox();
             this.chkAlduinDefeated = new System.Windows.Forms.CheckBox();
             this.llCheckAll = new System.Windows.Forms.LinkLabel();
+            this.chkAutoReset = new System.Windows.Forms.CheckBox();
             this.tlpMain.SuspendLayout();
             this.gbStartSplits.SuspendLayout();
             this.tlpStartSplits.SuspendLayout();
@@ -97,7 +98,7 @@
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpMain.Size = new System.Drawing.Size(450, 441);
+            this.tlpMain.Size = new System.Drawing.Size(450, 464);
             this.tlpMain.TabIndex = 0;
             // 
             // gbStartSplits
@@ -108,7 +109,7 @@
             this.gbStartSplits.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbStartSplits.Location = new System.Drawing.Point(3, 3);
             this.gbStartSplits.Name = "gbStartSplits";
-            this.gbStartSplits.Size = new System.Drawing.Size(444, 65);
+            this.gbStartSplits.Size = new System.Drawing.Size(444, 88);
             this.gbStartSplits.TabIndex = 5;
             this.gbStartSplits.TabStop = false;
             this.gbStartSplits.Text = "Start Auto-splits";
@@ -120,21 +121,23 @@
             this.tlpStartSplits.BackColor = System.Drawing.Color.Transparent;
             this.tlpStartSplits.ColumnCount = 1;
             this.tlpStartSplits.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpStartSplits.Controls.Add(this.chkHelgen, 0, 1);
+            this.tlpStartSplits.Controls.Add(this.chkHelgen, 0, 2);
             this.tlpStartSplits.Controls.Add(this.chkAutoStart, 0, 0);
+            this.tlpStartSplits.Controls.Add(this.chkAutoReset, 0, 1);
             this.tlpStartSplits.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpStartSplits.Location = new System.Drawing.Point(3, 16);
             this.tlpStartSplits.Name = "tlpStartSplits";
-            this.tlpStartSplits.RowCount = 2;
+            this.tlpStartSplits.RowCount = 3;
             this.tlpStartSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpStartSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpStartSplits.Size = new System.Drawing.Size(438, 46);
+            this.tlpStartSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpStartSplits.Size = new System.Drawing.Size(438, 69);
             this.tlpStartSplits.TabIndex = 4;
             // 
             // chkHelgen
             // 
             this.chkHelgen.AutoSize = true;
-            this.chkHelgen.Location = new System.Drawing.Point(3, 26);
+            this.chkHelgen.Location = new System.Drawing.Point(3, 49);
             this.chkHelgen.Name = "chkHelgen";
             this.chkHelgen.Size = new System.Drawing.Size(60, 17);
             this.chkHelgen.TabIndex = 7;
@@ -148,9 +151,9 @@
             this.chkAutoStart.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkAutoStart.Location = new System.Drawing.Point(3, 3);
             this.chkAutoStart.Name = "chkAutoStart";
-            this.chkAutoStart.Size = new System.Drawing.Size(87, 17);
+            this.chkAutoStart.Size = new System.Drawing.Size(48, 17);
             this.chkAutoStart.TabIndex = 4;
-            this.chkAutoStart.Text = "Start / Reset";
+            this.chkAutoStart.Text = "Start";
             this.chkAutoStart.UseVisualStyleBackColor = true;
             // 
             // gbGuildsSplits
@@ -159,7 +162,7 @@
             this.gbGuildsSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gbGuildsSplits.Controls.Add(this.tlpGuildsSplits);
             this.gbGuildsSplits.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbGuildsSplits.Location = new System.Drawing.Point(3, 327);
+            this.gbGuildsSplits.Location = new System.Drawing.Point(3, 350);
             this.gbGuildsSplits.Name = "gbGuildsSplits";
             this.gbGuildsSplits.Size = new System.Drawing.Size(444, 111);
             this.gbGuildsSplits.TabIndex = 7;
@@ -235,7 +238,7 @@
             this.gb_AnyPercentSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gb_AnyPercentSplits.Controls.Add(this.tlpAnyPercentSplits);
             this.gb_AnyPercentSplits.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gb_AnyPercentSplits.Location = new System.Drawing.Point(3, 74);
+            this.gb_AnyPercentSplits.Location = new System.Drawing.Point(3, 97);
             this.gb_AnyPercentSplits.Name = "gb_AnyPercentSplits";
             this.gb_AnyPercentSplits.Size = new System.Drawing.Size(444, 247);
             this.gb_AnyPercentSplits.TabIndex = 10;
@@ -611,6 +614,16 @@
             this.llCheckAll.Text = "Activate/Deactivate All";
             this.llCheckAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llCheckAll_LinkClicked);
             // 
+            // chkAutoReset
+            // 
+            this.chkAutoReset.AutoSize = true;
+            this.chkAutoReset.Location = new System.Drawing.Point(3, 26);
+            this.chkAutoReset.Name = "chkAutoReset";
+            this.chkAutoReset.Size = new System.Drawing.Size(54, 17);
+            this.chkAutoReset.TabIndex = 8;
+            this.chkAutoReset.Text = "Reset";
+            this.chkAutoReset.UseVisualStyleBackColor = true;
+            // 
             // SkyrimSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -685,5 +698,6 @@
         private System.Windows.Forms.RadioButton rbGr3yscale;
         private System.Windows.Forms.CheckBox chkHorseClimb;
         private System.Windows.Forms.CheckBox chkCutsceneEnd;
+        private System.Windows.Forms.CheckBox chkAutoReset;
     }
 }

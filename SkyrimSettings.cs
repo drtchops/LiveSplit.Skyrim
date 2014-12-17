@@ -8,6 +8,7 @@ namespace LiveSplit.Skyrim
     public partial class SkyrimSettings : UserControl
     {
         public bool AutoStart { get; set; }
+        public bool AutoReset { get; set; }
         public bool AlduinDefeated { get; set; }
         public bool Helgen { get; set; }
         public bool Whiterun { get; set; }
@@ -40,6 +41,7 @@ namespace LiveSplit.Skyrim
         public const string TEMPLATE_DALLETH = "Dalleth";
 
         private const bool DEFAULT_AUTOSTART = true;
+        private const bool DEFAULT_AUTORESET = true;
         private const bool DEFAULT_ALDUINDEFEATED = true;
         private const bool DEFAULT_HELGEN = false;
         private const bool DEFAULT_WHITERUN = false;
@@ -71,6 +73,7 @@ namespace LiveSplit.Skyrim
             InitializeComponent();
 
             this.chkAutoStart.DataBindings.Add("Checked", this, "AutoStart", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkAutoReset.DataBindings.Add("Checked", this, "AutoReset", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkAlduinDefeated.DataBindings.Add("Checked", this, "AlduinDefeated", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkHelgen.DataBindings.Add("Checked", this, "Helgen", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkWhiterun.DataBindings.Add("Checked", this, "Whiterun", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -98,6 +101,7 @@ namespace LiveSplit.Skyrim
 
             // defaults
             this.AutoStart = DEFAULT_AUTOSTART;
+            this.AutoReset = DEFAULT_AUTORESET;
             this.AlduinDefeated = DEFAULT_ALDUINDEFEATED;
             this.Helgen = DEFAULT_HELGEN;
             this.Whiterun = DEFAULT_WHITERUN;
@@ -132,6 +136,7 @@ namespace LiveSplit.Skyrim
             settingsNode.AppendChild(ToElement(doc, "Version", Assembly.GetExecutingAssembly().GetName().Version.ToString(3)));
 
             settingsNode.AppendChild(ToElement(doc, "AutoStart", this.AutoStart));
+            settingsNode.AppendChild(ToElement(doc, "AutoReset", this.AutoReset));
             settingsNode.AppendChild(ToElement(doc, "AlduinDefeated", this.AlduinDefeated));
             settingsNode.AppendChild(ToElement(doc, "Helgen", this.Helgen));
             settingsNode.AppendChild(ToElement(doc, "Whiterun", this.Whiterun));
@@ -166,6 +171,7 @@ namespace LiveSplit.Skyrim
             var element = (XmlElement)settings;
 
             this.AutoStart = ParseBool(settings, "AutoStart", DEFAULT_AUTOSTART);
+            this.AutoReset = ParseBool(settings, "AutoReset", DEFAULT_AUTORESET);
             this.AlduinDefeated = ParseBool(settings, "AlduinDefeated", DEFAULT_ALDUINDEFEATED);
             this.Helgen = ParseBool(settings, "Helgen", DEFAULT_HELGEN);
             this.Whiterun = ParseBool(settings, "Whiterun", DEFAULT_WHITERUN);
