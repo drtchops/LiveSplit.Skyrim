@@ -33,6 +33,7 @@
             this.tlpStartSplits = new System.Windows.Forms.TableLayoutPanel();
             this.chkHelgen = new System.Windows.Forms.CheckBox();
             this.chkAutoStart = new System.Windows.Forms.CheckBox();
+            this.chkAutoReset = new System.Windows.Forms.CheckBox();
             this.gbGuildsSplits = new System.Windows.Forms.GroupBox();
             this.tlpGuildsSplits = new System.Windows.Forms.TableLayoutPanel();
             this.chkCollegeOfWinterhold = new System.Windows.Forms.CheckBox();
@@ -68,7 +69,6 @@
             this.chkEnterSovngarde = new System.Windows.Forms.CheckBox();
             this.chkAlduinDefeated = new System.Windows.Forms.CheckBox();
             this.llCheckAll = new System.Windows.Forms.LinkLabel();
-            this.chkAutoReset = new System.Windows.Forms.CheckBox();
             this.tlpMain.SuspendLayout();
             this.gbStartSplits.SuspendLayout();
             this.tlpStartSplits.SuspendLayout();
@@ -91,14 +91,14 @@
             this.tlpMain.Controls.Add(this.gbGuildsSplits, 0, 2);
             this.tlpMain.Controls.Add(this.gb_AnyPercentSplits, 0, 1);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tlpMain.Location = new System.Drawing.Point(0, 0);
+            this.tlpMain.Location = new System.Drawing.Point(7, 7);
             this.tlpMain.Name = "tlpMain";
             this.tlpMain.RowCount = 4;
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpMain.Size = new System.Drawing.Size(450, 464);
+            this.tlpMain.Size = new System.Drawing.Size(462, 464);
             this.tlpMain.TabIndex = 0;
             // 
             // gbStartSplits
@@ -109,7 +109,7 @@
             this.gbStartSplits.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbStartSplits.Location = new System.Drawing.Point(3, 3);
             this.gbStartSplits.Name = "gbStartSplits";
-            this.gbStartSplits.Size = new System.Drawing.Size(444, 88);
+            this.gbStartSplits.Size = new System.Drawing.Size(456, 88);
             this.gbStartSplits.TabIndex = 5;
             this.gbStartSplits.TabStop = false;
             this.gbStartSplits.Text = "Start Auto-splits";
@@ -131,7 +131,7 @@
             this.tlpStartSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpStartSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpStartSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpStartSplits.Size = new System.Drawing.Size(438, 69);
+            this.tlpStartSplits.Size = new System.Drawing.Size(450, 69);
             this.tlpStartSplits.TabIndex = 4;
             // 
             // chkHelgen
@@ -156,6 +156,16 @@
             this.chkAutoStart.Text = "Start";
             this.chkAutoStart.UseVisualStyleBackColor = true;
             // 
+            // chkAutoReset
+            // 
+            this.chkAutoReset.AutoSize = true;
+            this.chkAutoReset.Location = new System.Drawing.Point(3, 26);
+            this.chkAutoReset.Name = "chkAutoReset";
+            this.chkAutoReset.Size = new System.Drawing.Size(54, 17);
+            this.chkAutoReset.TabIndex = 8;
+            this.chkAutoReset.Text = "Reset";
+            this.chkAutoReset.UseVisualStyleBackColor = true;
+            // 
             // gbGuildsSplits
             // 
             this.gbGuildsSplits.AutoSize = true;
@@ -164,7 +174,7 @@
             this.gbGuildsSplits.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbGuildsSplits.Location = new System.Drawing.Point(3, 350);
             this.gbGuildsSplits.Name = "gbGuildsSplits";
-            this.gbGuildsSplits.Size = new System.Drawing.Size(444, 111);
+            this.gbGuildsSplits.Size = new System.Drawing.Size(456, 111);
             this.gbGuildsSplits.TabIndex = 7;
             this.gbGuildsSplits.TabStop = false;
             this.gbGuildsSplits.Text = "Guilds Auto-splits";
@@ -189,7 +199,7 @@
             this.tlpGuildsSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpGuildsSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpGuildsSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpGuildsSplits.Size = new System.Drawing.Size(438, 92);
+            this.tlpGuildsSplits.Size = new System.Drawing.Size(450, 92);
             this.tlpGuildsSplits.TabIndex = 4;
             // 
             // chkCollegeOfWinterhold
@@ -240,7 +250,7 @@
             this.gb_AnyPercentSplits.Dock = System.Windows.Forms.DockStyle.Top;
             this.gb_AnyPercentSplits.Location = new System.Drawing.Point(3, 97);
             this.gb_AnyPercentSplits.Name = "gb_AnyPercentSplits";
-            this.gb_AnyPercentSplits.Size = new System.Drawing.Size(444, 247);
+            this.gb_AnyPercentSplits.Size = new System.Drawing.Size(456, 247);
             this.gb_AnyPercentSplits.TabIndex = 10;
             this.gb_AnyPercentSplits.TabStop = false;
             this.gb_AnyPercentSplits.Text = "Any% Auto-splits";
@@ -261,7 +271,7 @@
             this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpAnyPercentSplits.Size = new System.Drawing.Size(438, 228);
+            this.tlpAnyPercentSplits.Size = new System.Drawing.Size(450, 228);
             this.tlpAnyPercentSplits.TabIndex = 0;
             // 
             // gbAnyPercentTemplate
@@ -273,7 +283,7 @@
             this.gbAnyPercentTemplate.Location = new System.Drawing.Point(3, 3);
             this.gbAnyPercentTemplate.MaximumSize = new System.Drawing.Size(435, 0);
             this.gbAnyPercentTemplate.Name = "gbAnyPercentTemplate";
-            this.gbAnyPercentTemplate.Size = new System.Drawing.Size(432, 42);
+            this.gbAnyPercentTemplate.Size = new System.Drawing.Size(435, 42);
             this.gbAnyPercentTemplate.TabIndex = 19;
             this.gbAnyPercentTemplate.TabStop = false;
             this.gbAnyPercentTemplate.Text = "Split Template";
@@ -296,7 +306,7 @@
             this.tlpAnyPercentTemplate.Name = "tlpAnyPercentTemplate";
             this.tlpAnyPercentTemplate.RowCount = 1;
             this.tlpAnyPercentTemplate.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpAnyPercentTemplate.Size = new System.Drawing.Size(426, 23);
+            this.tlpAnyPercentTemplate.Size = new System.Drawing.Size(429, 23);
             this.tlpAnyPercentTemplate.TabIndex = 0;
             // 
             // rbMrwalrus
@@ -315,7 +325,7 @@
             // rbDrtchops
             // 
             this.rbDrtchops.AutoSize = true;
-            this.rbDrtchops.Location = new System.Drawing.Point(145, 3);
+            this.rbDrtchops.Location = new System.Drawing.Point(146, 3);
             this.rbDrtchops.Name = "rbDrtchops";
             this.rbDrtchops.Size = new System.Drawing.Size(73, 17);
             this.rbDrtchops.TabIndex = 1;
@@ -326,7 +336,7 @@
             // rbDalleth
             // 
             this.rbDalleth.AutoSize = true;
-            this.rbDalleth.Location = new System.Drawing.Point(333, 3);
+            this.rbDalleth.Location = new System.Drawing.Point(336, 3);
             this.rbDalleth.Name = "rbDalleth";
             this.rbDalleth.Size = new System.Drawing.Size(58, 17);
             this.rbDalleth.TabIndex = 2;
@@ -337,7 +347,7 @@
             // rbGr3yscale
             // 
             this.rbGr3yscale.AutoSize = true;
-            this.rbGr3yscale.Location = new System.Drawing.Point(239, 3);
+            this.rbGr3yscale.Location = new System.Drawing.Point(241, 3);
             this.rbGr3yscale.Name = "rbGr3yscale";
             this.rbGr3yscale.Size = new System.Drawing.Size(70, 17);
             this.rbGr3yscale.TabIndex = 3;
@@ -606,7 +616,7 @@
             // 
             this.llCheckAll.AutoSize = true;
             this.llCheckAll.Dock = System.Windows.Forms.DockStyle.Right;
-            this.llCheckAll.Location = new System.Drawing.Point(318, 48);
+            this.llCheckAll.Location = new System.Drawing.Point(330, 48);
             this.llCheckAll.Name = "llCheckAll";
             this.llCheckAll.Size = new System.Drawing.Size(117, 13);
             this.llCheckAll.TabIndex = 22;
@@ -614,23 +624,14 @@
             this.llCheckAll.Text = "Activate/Deactivate All";
             this.llCheckAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llCheckAll_LinkClicked);
             // 
-            // chkAutoReset
-            // 
-            this.chkAutoReset.AutoSize = true;
-            this.chkAutoReset.Location = new System.Drawing.Point(3, 26);
-            this.chkAutoReset.Name = "chkAutoReset";
-            this.chkAutoReset.Size = new System.Drawing.Size(54, 17);
-            this.chkAutoReset.TabIndex = 8;
-            this.chkAutoReset.Text = "Reset";
-            this.chkAutoReset.UseVisualStyleBackColor = true;
-            // 
             // SkyrimSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tlpMain);
             this.Name = "SkyrimSettings";
-            this.Size = new System.Drawing.Size(450, 487);
+            this.Padding = new System.Windows.Forms.Padding(7);
+            this.Size = new System.Drawing.Size(476, 487);
             this.tlpMain.ResumeLayout(false);
             this.tlpMain.PerformLayout();
             this.gbStartSplits.ResumeLayout(false);
