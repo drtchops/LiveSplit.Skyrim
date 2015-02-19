@@ -21,14 +21,11 @@ namespace LiveSplit.Skyrim
 
         public SkyrimSettings Settings { get; set; }
 
-        public bool Disposed { get; private set; }
-        public bool IsLayoutComponent { get; private set; }
-
         private TimerModel _timer;
         private GameMemory _gameMemory;
         private LiveSplitState _state;
 
-        public SkyrimComponent(LiveSplitState state, bool isLayoutComponent)
+        public SkyrimComponent(LiveSplitState state)
         {
             bool debug = false;
             #if DEBUG
@@ -36,7 +33,6 @@ namespace LiveSplit.Skyrim
             #endif
             Trace.WriteLine("[NoLoads] Using LiveSplit.Skyrim component version " + Assembly.GetExecutingAssembly().GetName().Version + " " + ((debug) ? "Debug" : "Release") + " build");
             _state = state;
-            this.IsLayoutComponent = isLayoutComponent;
 
             this.Settings = new SkyrimSettings();
 
@@ -54,15 +50,12 @@ namespace LiveSplit.Skyrim
 
         public override void Dispose()
         {
-            this.Disposed = true;
-
             _state.OnStart -= State_OnStart;
 
             if (_gameMemory != null)
             {
                 _gameMemory.Stop();
             }
-
         }
 
         void State_OnStart(object sender, EventArgs e)
