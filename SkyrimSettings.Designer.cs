@@ -29,25 +29,11 @@
         private void InitializeComponent()
         {
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
-            this.gbStartSplits = new System.Windows.Forms.GroupBox();
-            this.tlpStartSplits = new System.Windows.Forms.TableLayoutPanel();
-            this.chkHelgen = new System.Windows.Forms.CheckBox();
-            this.chkAutoStart = new System.Windows.Forms.CheckBox();
-            this.chkAutoReset = new System.Windows.Forms.CheckBox();
-            this.gbGuildsSplits = new System.Windows.Forms.GroupBox();
-            this.tlpGuildsSplits = new System.Windows.Forms.TableLayoutPanel();
-            this.chkCollegeOfWinterhold = new System.Windows.Forms.CheckBox();
-            this.chkCompanions = new System.Windows.Forms.CheckBox();
-            this.chkThievesGuild = new System.Windows.Forms.CheckBox();
-            this.chkDarkBrotherhood = new System.Windows.Forms.CheckBox();
+            this.tabsSplits = new System.Windows.Forms.TabControl();
+            this.tabAnyPercent = new System.Windows.Forms.TabPage();
+            this.tlpAnyPercent = new System.Windows.Forms.TableLayoutPanel();
             this.gb_AnyPercentSplits = new System.Windows.Forms.GroupBox();
             this.tlpAnyPercentSplits = new System.Windows.Forms.TableLayoutPanel();
-            this.gbAnyPercentTemplate = new System.Windows.Forms.GroupBox();
-            this.tlpAnyPercentTemplate = new System.Windows.Forms.TableLayoutPanel();
-            this.rbMrwalrus = new System.Windows.Forms.RadioButton();
-            this.rbDrtchops = new System.Windows.Forms.RadioButton();
-            this.rbDalleth = new System.Windows.Forms.RadioButton();
-            this.rbGr3yscale = new System.Windows.Forms.RadioButton();
             this.flp_AnyPercentSplits = new System.Windows.Forms.FlowLayoutPanel();
             this.chkWhiterun = new System.Windows.Forms.CheckBox();
             this.chkThalmorEmbassy = new System.Windows.Forms.CheckBox();
@@ -68,17 +54,57 @@
             this.chkOdahviing = new System.Windows.Forms.CheckBox();
             this.chkEnterSovngarde = new System.Windows.Forms.CheckBox();
             this.chkAlduinDefeated = new System.Windows.Forms.CheckBox();
+            this.gbAnyPercentTemplate = new System.Windows.Forms.GroupBox();
+            this.tlpAnyPercentTemplate = new System.Windows.Forms.TableLayoutPanel();
+            this.rbMrwalrus = new System.Windows.Forms.RadioButton();
+            this.rbDrtchops = new System.Windows.Forms.RadioButton();
+            this.rbDalleth = new System.Windows.Forms.RadioButton();
+            this.rbGr3yscale = new System.Windows.Forms.RadioButton();
             this.llCheckAll = new System.Windows.Forms.LinkLabel();
+            this.lWarningNbrAutoSplit = new System.Windows.Forms.Label();
+            this.tabGuilds = new System.Windows.Forms.TabPage();
+            this.tlpGuilds = new System.Windows.Forms.TableLayoutPanel();
+            this.gbGuildsSplits = new System.Windows.Forms.GroupBox();
+            this.tlpGuildsSplits = new System.Windows.Forms.TableLayoutPanel();
+            this.chkCollegeOfWinterhold = new System.Windows.Forms.CheckBox();
+            this.chkCompanions = new System.Windows.Forms.CheckBox();
+            this.chkThievesGuild = new System.Windows.Forms.CheckBox();
+            this.chkDarkBrotherhood = new System.Windows.Forms.CheckBox();
+            this.tabBearCart = new System.Windows.Forms.TabPage();
+            this.tlpBearCart = new System.Windows.Forms.TableLayoutPanel();
+            this.chkBearCartPBNotification = new System.Windows.Forms.CheckBox();
+            this.gbBearCartSound = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.chkPlayBearCartSound = new System.Windows.Forms.CheckBox();
+            this.btnBrowseBearCartSound = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnBearCartSoundTest = new System.Windows.Forms.Button();
+            this.txtBearCartSoundPath = new System.Windows.Forms.TextBox();
+            this.lBearCartPB = new System.Windows.Forms.Label();
+            this.gbStartSplits = new System.Windows.Forms.GroupBox();
+            this.flp = new System.Windows.Forms.FlowLayoutPanel();
+            this.chkAutoStart = new System.Windows.Forms.CheckBox();
+            this.chkAutoReset = new System.Windows.Forms.CheckBox();
+            this.chkHelgen = new System.Windows.Forms.CheckBox();
             this.tlpMain.SuspendLayout();
-            this.gbStartSplits.SuspendLayout();
-            this.tlpStartSplits.SuspendLayout();
-            this.gbGuildsSplits.SuspendLayout();
-            this.tlpGuildsSplits.SuspendLayout();
+            this.tabsSplits.SuspendLayout();
+            this.tabAnyPercent.SuspendLayout();
+            this.tlpAnyPercent.SuspendLayout();
             this.gb_AnyPercentSplits.SuspendLayout();
             this.tlpAnyPercentSplits.SuspendLayout();
+            this.flp_AnyPercentSplits.SuspendLayout();
             this.gbAnyPercentTemplate.SuspendLayout();
             this.tlpAnyPercentTemplate.SuspendLayout();
-            this.flp_AnyPercentSplits.SuspendLayout();
+            this.tabGuilds.SuspendLayout();
+            this.tlpGuilds.SuspendLayout();
+            this.gbGuildsSplits.SuspendLayout();
+            this.tlpGuildsSplits.SuspendLayout();
+            this.tabBearCart.SuspendLayout();
+            this.tlpBearCart.SuspendLayout();
+            this.gbBearCartSound.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.gbStartSplits.SuspendLayout();
+            this.flp.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpMain
@@ -87,160 +113,57 @@
             this.tlpMain.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tlpMain.ColumnCount = 1;
             this.tlpMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpMain.Controls.Add(this.tabsSplits, 0, 1);
             this.tlpMain.Controls.Add(this.gbStartSplits, 0, 0);
-            this.tlpMain.Controls.Add(this.gbGuildsSplits, 0, 2);
-            this.tlpMain.Controls.Add(this.gb_AnyPercentSplits, 0, 1);
             this.tlpMain.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpMain.Location = new System.Drawing.Point(7, 7);
             this.tlpMain.Name = "tlpMain";
-            this.tlpMain.RowCount = 4;
+            this.tlpMain.RowCount = 2;
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpMain.Size = new System.Drawing.Size(462, 464);
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpMain.Size = new System.Drawing.Size(470, 496);
             this.tlpMain.TabIndex = 0;
             // 
-            // gbStartSplits
+            // tabsSplits
             // 
-            this.gbStartSplits.AutoSize = true;
-            this.gbStartSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gbStartSplits.Controls.Add(this.tlpStartSplits);
-            this.gbStartSplits.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbStartSplits.Location = new System.Drawing.Point(3, 3);
-            this.gbStartSplits.Name = "gbStartSplits";
-            this.gbStartSplits.Size = new System.Drawing.Size(456, 88);
-            this.gbStartSplits.TabIndex = 5;
-            this.gbStartSplits.TabStop = false;
-            this.gbStartSplits.Text = "Start Auto-splits";
+            this.tabsSplits.Controls.Add(this.tabAnyPercent);
+            this.tabsSplits.Controls.Add(this.tabGuilds);
+            this.tabsSplits.Controls.Add(this.tabBearCart);
+            this.tabsSplits.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabsSplits.Location = new System.Drawing.Point(3, 97);
+            this.tabsSplits.Name = "tabsSplits";
+            this.tabsSplits.SelectedIndex = 0;
+            this.tabsSplits.Size = new System.Drawing.Size(464, 396);
+            this.tabsSplits.TabIndex = 1;
             // 
-            // tlpStartSplits
+            // tabAnyPercent
             // 
-            this.tlpStartSplits.AutoSize = true;
-            this.tlpStartSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpStartSplits.BackColor = System.Drawing.Color.Transparent;
-            this.tlpStartSplits.ColumnCount = 1;
-            this.tlpStartSplits.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpStartSplits.Controls.Add(this.chkHelgen, 0, 2);
-            this.tlpStartSplits.Controls.Add(this.chkAutoStart, 0, 0);
-            this.tlpStartSplits.Controls.Add(this.chkAutoReset, 0, 1);
-            this.tlpStartSplits.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpStartSplits.Location = new System.Drawing.Point(3, 16);
-            this.tlpStartSplits.Name = "tlpStartSplits";
-            this.tlpStartSplits.RowCount = 3;
-            this.tlpStartSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpStartSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpStartSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpStartSplits.Size = new System.Drawing.Size(450, 69);
-            this.tlpStartSplits.TabIndex = 4;
+            this.tabAnyPercent.BackColor = System.Drawing.SystemColors.Control;
+            this.tabAnyPercent.Controls.Add(this.tlpAnyPercent);
+            this.tabAnyPercent.Location = new System.Drawing.Point(4, 22);
+            this.tabAnyPercent.Name = "tabAnyPercent";
+            this.tabAnyPercent.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAnyPercent.Size = new System.Drawing.Size(456, 370);
+            this.tabAnyPercent.TabIndex = 0;
+            this.tabAnyPercent.Text = "Any%";
             // 
-            // chkHelgen
+            // tlpAnyPercent
             // 
-            this.chkHelgen.AutoSize = true;
-            this.chkHelgen.Location = new System.Drawing.Point(3, 49);
-            this.chkHelgen.Name = "chkHelgen";
-            this.chkHelgen.Size = new System.Drawing.Size(60, 17);
-            this.chkHelgen.TabIndex = 7;
-            this.chkHelgen.Text = "Helgen";
-            this.chkHelgen.UseVisualStyleBackColor = true;
-            // 
-            // chkAutoStart
-            // 
-            this.chkAutoStart.AutoSize = true;
-            this.chkAutoStart.Checked = true;
-            this.chkAutoStart.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAutoStart.Location = new System.Drawing.Point(3, 3);
-            this.chkAutoStart.Name = "chkAutoStart";
-            this.chkAutoStart.Size = new System.Drawing.Size(48, 17);
-            this.chkAutoStart.TabIndex = 4;
-            this.chkAutoStart.Text = "Start";
-            this.chkAutoStart.UseVisualStyleBackColor = true;
-            // 
-            // chkAutoReset
-            // 
-            this.chkAutoReset.AutoSize = true;
-            this.chkAutoReset.Location = new System.Drawing.Point(3, 26);
-            this.chkAutoReset.Name = "chkAutoReset";
-            this.chkAutoReset.Size = new System.Drawing.Size(54, 17);
-            this.chkAutoReset.TabIndex = 8;
-            this.chkAutoReset.Text = "Reset";
-            this.chkAutoReset.UseVisualStyleBackColor = true;
-            // 
-            // gbGuildsSplits
-            // 
-            this.gbGuildsSplits.AutoSize = true;
-            this.gbGuildsSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gbGuildsSplits.Controls.Add(this.tlpGuildsSplits);
-            this.gbGuildsSplits.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbGuildsSplits.Location = new System.Drawing.Point(3, 350);
-            this.gbGuildsSplits.Name = "gbGuildsSplits";
-            this.gbGuildsSplits.Size = new System.Drawing.Size(456, 111);
-            this.gbGuildsSplits.TabIndex = 7;
-            this.gbGuildsSplits.TabStop = false;
-            this.gbGuildsSplits.Text = "Guilds Auto-splits";
-            // 
-            // tlpGuildsSplits
-            // 
-            this.tlpGuildsSplits.AutoSize = true;
-            this.tlpGuildsSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpGuildsSplits.BackColor = System.Drawing.Color.Transparent;
-            this.tlpGuildsSplits.ColumnCount = 1;
-            this.tlpGuildsSplits.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpGuildsSplits.Controls.Add(this.chkCollegeOfWinterhold, 0, 0);
-            this.tlpGuildsSplits.Controls.Add(this.chkCompanions, 0, 1);
-            this.tlpGuildsSplits.Controls.Add(this.chkThievesGuild, 0, 3);
-            this.tlpGuildsSplits.Controls.Add(this.chkDarkBrotherhood, 0, 2);
-            this.tlpGuildsSplits.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpGuildsSplits.Location = new System.Drawing.Point(3, 16);
-            this.tlpGuildsSplits.Name = "tlpGuildsSplits";
-            this.tlpGuildsSplits.RowCount = 4;
-            this.tlpGuildsSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpGuildsSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpGuildsSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpGuildsSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpGuildsSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpGuildsSplits.Size = new System.Drawing.Size(450, 92);
-            this.tlpGuildsSplits.TabIndex = 4;
-            // 
-            // chkCollegeOfWinterhold
-            // 
-            this.chkCollegeOfWinterhold.AutoSize = true;
-            this.chkCollegeOfWinterhold.Location = new System.Drawing.Point(3, 3);
-            this.chkCollegeOfWinterhold.Name = "chkCollegeOfWinterhold";
-            this.chkCollegeOfWinterhold.Size = new System.Drawing.Size(226, 17);
-            this.chkCollegeOfWinterhold.TabIndex = 10;
-            this.chkCollegeOfWinterhold.Text = "College of Winterhold questline completion";
-            this.chkCollegeOfWinterhold.UseVisualStyleBackColor = true;
-            // 
-            // chkCompanions
-            // 
-            this.chkCompanions.AutoSize = true;
-            this.chkCompanions.Location = new System.Drawing.Point(3, 26);
-            this.chkCompanions.Name = "chkCompanions";
-            this.chkCompanions.Size = new System.Drawing.Size(183, 17);
-            this.chkCompanions.TabIndex = 8;
-            this.chkCompanions.Text = "Companions questline completion";
-            this.chkCompanions.UseVisualStyleBackColor = true;
-            // 
-            // chkThievesGuild
-            // 
-            this.chkThievesGuild.AutoSize = true;
-            this.chkThievesGuild.Location = new System.Drawing.Point(3, 72);
-            this.chkThievesGuild.Name = "chkThievesGuild";
-            this.chkThievesGuild.Size = new System.Drawing.Size(190, 17);
-            this.chkThievesGuild.TabIndex = 9;
-            this.chkThievesGuild.Text = "Thieves Guild questline completion";
-            this.chkThievesGuild.UseVisualStyleBackColor = true;
-            // 
-            // chkDarkBrotherhood
-            // 
-            this.chkDarkBrotherhood.AutoSize = true;
-            this.chkDarkBrotherhood.Location = new System.Drawing.Point(3, 49);
-            this.chkDarkBrotherhood.Name = "chkDarkBrotherhood";
-            this.chkDarkBrotherhood.Size = new System.Drawing.Size(209, 17);
-            this.chkDarkBrotherhood.TabIndex = 7;
-            this.chkDarkBrotherhood.Text = "Dark Brotherhood questline completion";
-            this.chkDarkBrotherhood.UseVisualStyleBackColor = true;
+            this.tlpAnyPercent.AutoSize = true;
+            this.tlpAnyPercent.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tlpAnyPercent.ColumnCount = 1;
+            this.tlpAnyPercent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpAnyPercent.Controls.Add(this.gb_AnyPercentSplits, 0, 0);
+            this.tlpAnyPercent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpAnyPercent.Location = new System.Drawing.Point(3, 3);
+            this.tlpAnyPercent.Name = "tlpAnyPercent";
+            this.tlpAnyPercent.RowCount = 2;
+            this.tlpAnyPercent.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpAnyPercent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tlpAnyPercent.Size = new System.Drawing.Size(450, 364);
+            this.tlpAnyPercent.TabIndex = 0;
             // 
             // gb_AnyPercentSplits
             // 
@@ -248,112 +171,33 @@
             this.gb_AnyPercentSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gb_AnyPercentSplits.Controls.Add(this.tlpAnyPercentSplits);
             this.gb_AnyPercentSplits.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gb_AnyPercentSplits.Location = new System.Drawing.Point(3, 97);
+            this.gb_AnyPercentSplits.Location = new System.Drawing.Point(3, 3);
             this.gb_AnyPercentSplits.Name = "gb_AnyPercentSplits";
-            this.gb_AnyPercentSplits.Size = new System.Drawing.Size(456, 247);
+            this.gb_AnyPercentSplits.Size = new System.Drawing.Size(444, 267);
             this.gb_AnyPercentSplits.TabIndex = 10;
             this.gb_AnyPercentSplits.TabStop = false;
-            this.gb_AnyPercentSplits.Text = "Any% Auto-splits";
+            this.gb_AnyPercentSplits.Text = "Auto-splits";
             // 
             // tlpAnyPercentSplits
             // 
             this.tlpAnyPercentSplits.AutoSize = true;
             this.tlpAnyPercentSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tlpAnyPercentSplits.ColumnCount = 1;
-            this.tlpAnyPercentSplits.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpAnyPercentSplits.Controls.Add(this.gbAnyPercentTemplate, 0, 0);
+            this.tlpAnyPercentSplits.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpAnyPercentSplits.Controls.Add(this.flp_AnyPercentSplits, 0, 2);
+            this.tlpAnyPercentSplits.Controls.Add(this.gbAnyPercentTemplate, 0, 0);
             this.tlpAnyPercentSplits.Controls.Add(this.llCheckAll, 0, 1);
-            this.tlpAnyPercentSplits.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tlpAnyPercentSplits.Controls.Add(this.lWarningNbrAutoSplit, 0, 3);
+            this.tlpAnyPercentSplits.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpAnyPercentSplits.Location = new System.Drawing.Point(3, 16);
             this.tlpAnyPercentSplits.Name = "tlpAnyPercentSplits";
-            this.tlpAnyPercentSplits.RowCount = 3;
+            this.tlpAnyPercentSplits.RowCount = 4;
             this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpAnyPercentSplits.Size = new System.Drawing.Size(450, 228);
+            this.tlpAnyPercentSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpAnyPercentSplits.Size = new System.Drawing.Size(438, 248);
             this.tlpAnyPercentSplits.TabIndex = 0;
-            // 
-            // gbAnyPercentTemplate
-            // 
-            this.gbAnyPercentTemplate.AutoSize = true;
-            this.gbAnyPercentTemplate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gbAnyPercentTemplate.Controls.Add(this.tlpAnyPercentTemplate);
-            this.gbAnyPercentTemplate.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbAnyPercentTemplate.Location = new System.Drawing.Point(3, 3);
-            this.gbAnyPercentTemplate.MaximumSize = new System.Drawing.Size(435, 0);
-            this.gbAnyPercentTemplate.Name = "gbAnyPercentTemplate";
-            this.gbAnyPercentTemplate.Size = new System.Drawing.Size(435, 42);
-            this.gbAnyPercentTemplate.TabIndex = 19;
-            this.gbAnyPercentTemplate.TabStop = false;
-            this.gbAnyPercentTemplate.Text = "Split Template";
-            // 
-            // tlpAnyPercentTemplate
-            // 
-            this.tlpAnyPercentTemplate.AutoSize = true;
-            this.tlpAnyPercentTemplate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tlpAnyPercentTemplate.ColumnCount = 4;
-            this.tlpAnyPercentTemplate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tlpAnyPercentTemplate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
-            this.tlpAnyPercentTemplate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
-            this.tlpAnyPercentTemplate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.22222F));
-            this.tlpAnyPercentTemplate.Controls.Add(this.rbMrwalrus, 0, 0);
-            this.tlpAnyPercentTemplate.Controls.Add(this.rbDrtchops, 1, 0);
-            this.tlpAnyPercentTemplate.Controls.Add(this.rbDalleth, 3, 0);
-            this.tlpAnyPercentTemplate.Controls.Add(this.rbGr3yscale, 2, 0);
-            this.tlpAnyPercentTemplate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpAnyPercentTemplate.Location = new System.Drawing.Point(3, 16);
-            this.tlpAnyPercentTemplate.Name = "tlpAnyPercentTemplate";
-            this.tlpAnyPercentTemplate.RowCount = 1;
-            this.tlpAnyPercentTemplate.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpAnyPercentTemplate.Size = new System.Drawing.Size(429, 23);
-            this.tlpAnyPercentTemplate.TabIndex = 0;
-            // 
-            // rbMrwalrus
-            // 
-            this.rbMrwalrus.AutoSize = true;
-            this.rbMrwalrus.Checked = true;
-            this.rbMrwalrus.Location = new System.Drawing.Point(3, 3);
-            this.rbMrwalrus.Name = "rbMrwalrus";
-            this.rbMrwalrus.Size = new System.Drawing.Size(120, 17);
-            this.rbMrwalrus.TabIndex = 0;
-            this.rbMrwalrus.TabStop = true;
-            this.rbMrwalrus.Text = "MrWalrus / Wymorn";
-            this.rbMrwalrus.UseVisualStyleBackColor = true;
-            this.rbMrwalrus.CheckedChanged += new System.EventHandler(this.templateRadioButtonChanged);
-            // 
-            // rbDrtchops
-            // 
-            this.rbDrtchops.AutoSize = true;
-            this.rbDrtchops.Location = new System.Drawing.Point(146, 3);
-            this.rbDrtchops.Name = "rbDrtchops";
-            this.rbDrtchops.Size = new System.Drawing.Size(73, 17);
-            this.rbDrtchops.TabIndex = 1;
-            this.rbDrtchops.Text = "DrTChops";
-            this.rbDrtchops.UseVisualStyleBackColor = true;
-            this.rbDrtchops.CheckedChanged += new System.EventHandler(this.templateRadioButtonChanged);
-            // 
-            // rbDalleth
-            // 
-            this.rbDalleth.AutoSize = true;
-            this.rbDalleth.Location = new System.Drawing.Point(336, 3);
-            this.rbDalleth.Name = "rbDalleth";
-            this.rbDalleth.Size = new System.Drawing.Size(58, 17);
-            this.rbDalleth.TabIndex = 2;
-            this.rbDalleth.Text = "Dalleth";
-            this.rbDalleth.UseVisualStyleBackColor = true;
-            this.rbDalleth.CheckedChanged += new System.EventHandler(this.templateRadioButtonChanged);
-            // 
-            // rbGr3yscale
-            // 
-            this.rbGr3yscale.AutoSize = true;
-            this.rbGr3yscale.Location = new System.Drawing.Point(241, 3);
-            this.rbGr3yscale.Name = "rbGr3yscale";
-            this.rbGr3yscale.Size = new System.Drawing.Size(70, 17);
-            this.rbGr3yscale.TabIndex = 3;
-            this.rbGr3yscale.Text = "gr3yscale";
-            this.rbGr3yscale.UseVisualStyleBackColor = true;
-            this.rbGr3yscale.CheckedChanged += new System.EventHandler(this.templateRadioButtonChanged);
             // 
             // flp_AnyPercentSplits
             // 
@@ -378,12 +222,13 @@
             this.flp_AnyPercentSplits.Controls.Add(this.chkOdahviing);
             this.flp_AnyPercentSplits.Controls.Add(this.chkEnterSovngarde);
             this.flp_AnyPercentSplits.Controls.Add(this.chkAlduinDefeated);
-            this.flp_AnyPercentSplits.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flp_AnyPercentSplits.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flp_AnyPercentSplits.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flp_AnyPercentSplits.Location = new System.Drawing.Point(3, 64);
-            this.flp_AnyPercentSplits.MaximumSize = new System.Drawing.Size(432, 170);
+            this.flp_AnyPercentSplits.Location = new System.Drawing.Point(0, 61);
+            this.flp_AnyPercentSplits.Margin = new System.Windows.Forms.Padding(0);
+            this.flp_AnyPercentSplits.MaximumSize = new System.Drawing.Size(0, 170);
             this.flp_AnyPercentSplits.Name = "flp_AnyPercentSplits";
-            this.flp_AnyPercentSplits.Size = new System.Drawing.Size(432, 161);
+            this.flp_AnyPercentSplits.Size = new System.Drawing.Size(438, 161);
             this.flp_AnyPercentSplits.TabIndex = 21;
             // 
             // chkWhiterun
@@ -612,17 +457,425 @@
             this.chkAlduinDefeated.Text = "Alduin\'s Defeat";
             this.chkAlduinDefeated.UseVisualStyleBackColor = true;
             // 
+            // gbAnyPercentTemplate
+            // 
+            this.gbAnyPercentTemplate.AutoSize = true;
+            this.gbAnyPercentTemplate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbAnyPercentTemplate.Controls.Add(this.tlpAnyPercentTemplate);
+            this.gbAnyPercentTemplate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbAnyPercentTemplate.Location = new System.Drawing.Point(3, 3);
+            this.gbAnyPercentTemplate.Name = "gbAnyPercentTemplate";
+            this.gbAnyPercentTemplate.Size = new System.Drawing.Size(432, 42);
+            this.gbAnyPercentTemplate.TabIndex = 19;
+            this.gbAnyPercentTemplate.TabStop = false;
+            this.gbAnyPercentTemplate.Text = "Split Template";
+            // 
+            // tlpAnyPercentTemplate
+            // 
+            this.tlpAnyPercentTemplate.AutoSize = true;
+            this.tlpAnyPercentTemplate.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tlpAnyPercentTemplate.ColumnCount = 4;
+            this.tlpAnyPercentTemplate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpAnyPercentTemplate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlpAnyPercentTemplate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlpAnyPercentTemplate.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlpAnyPercentTemplate.Controls.Add(this.rbMrwalrus, 0, 0);
+            this.tlpAnyPercentTemplate.Controls.Add(this.rbDrtchops, 1, 0);
+            this.tlpAnyPercentTemplate.Controls.Add(this.rbDalleth, 3, 0);
+            this.tlpAnyPercentTemplate.Controls.Add(this.rbGr3yscale, 2, 0);
+            this.tlpAnyPercentTemplate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpAnyPercentTemplate.Location = new System.Drawing.Point(3, 16);
+            this.tlpAnyPercentTemplate.Name = "tlpAnyPercentTemplate";
+            this.tlpAnyPercentTemplate.RowCount = 1;
+            this.tlpAnyPercentTemplate.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpAnyPercentTemplate.Size = new System.Drawing.Size(426, 23);
+            this.tlpAnyPercentTemplate.TabIndex = 0;
+            // 
+            // rbMrwalrus
+            // 
+            this.rbMrwalrus.AutoSize = true;
+            this.rbMrwalrus.Checked = true;
+            this.rbMrwalrus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rbMrwalrus.Location = new System.Drawing.Point(20, 3);
+            this.rbMrwalrus.Margin = new System.Windows.Forms.Padding(20, 3, 10, 3);
+            this.rbMrwalrus.Name = "rbMrwalrus";
+            this.rbMrwalrus.Size = new System.Drawing.Size(120, 17);
+            this.rbMrwalrus.TabIndex = 0;
+            this.rbMrwalrus.TabStop = true;
+            this.rbMrwalrus.Text = "MrWalrus / Wymorn";
+            this.rbMrwalrus.UseVisualStyleBackColor = true;
+            this.rbMrwalrus.CheckedChanged += new System.EventHandler(this.templateRadioButtonChanged);
+            // 
+            // rbDrtchops
+            // 
+            this.rbDrtchops.AutoSize = true;
+            this.rbDrtchops.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rbDrtchops.Location = new System.Drawing.Point(153, 3);
+            this.rbDrtchops.Name = "rbDrtchops";
+            this.rbDrtchops.Size = new System.Drawing.Size(86, 17);
+            this.rbDrtchops.TabIndex = 1;
+            this.rbDrtchops.Text = "DrTChops";
+            this.rbDrtchops.UseVisualStyleBackColor = true;
+            this.rbDrtchops.CheckedChanged += new System.EventHandler(this.templateRadioButtonChanged);
+            // 
+            // rbDalleth
+            // 
+            this.rbDalleth.AutoSize = true;
+            this.rbDalleth.Location = new System.Drawing.Point(337, 3);
+            this.rbDalleth.Name = "rbDalleth";
+            this.rbDalleth.Size = new System.Drawing.Size(58, 17);
+            this.rbDalleth.TabIndex = 2;
+            this.rbDalleth.Text = "Dalleth";
+            this.rbDalleth.UseVisualStyleBackColor = true;
+            this.rbDalleth.CheckedChanged += new System.EventHandler(this.templateRadioButtonChanged);
+            // 
+            // rbGr3yscale
+            // 
+            this.rbGr3yscale.AutoSize = true;
+            this.rbGr3yscale.Location = new System.Drawing.Point(245, 3);
+            this.rbGr3yscale.Name = "rbGr3yscale";
+            this.rbGr3yscale.Size = new System.Drawing.Size(70, 17);
+            this.rbGr3yscale.TabIndex = 3;
+            this.rbGr3yscale.Text = "gr3yscale";
+            this.rbGr3yscale.UseVisualStyleBackColor = true;
+            this.rbGr3yscale.CheckedChanged += new System.EventHandler(this.templateRadioButtonChanged);
+            // 
             // llCheckAll
             // 
+            this.llCheckAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.llCheckAll.AutoSize = true;
-            this.llCheckAll.Dock = System.Windows.Forms.DockStyle.Right;
-            this.llCheckAll.Location = new System.Drawing.Point(330, 48);
+            this.llCheckAll.Location = new System.Drawing.Point(318, 48);
             this.llCheckAll.Name = "llCheckAll";
             this.llCheckAll.Size = new System.Drawing.Size(117, 13);
             this.llCheckAll.TabIndex = 22;
             this.llCheckAll.TabStop = true;
             this.llCheckAll.Text = "Activate/Deactivate All";
             this.llCheckAll.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llCheckAll_LinkClicked);
+            // 
+            // lWarningNbrAutoSplit
+            // 
+            this.lWarningNbrAutoSplit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lWarningNbrAutoSplit.AutoSize = true;
+            this.lWarningNbrAutoSplit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lWarningNbrAutoSplit.ForeColor = System.Drawing.Color.Red;
+            this.lWarningNbrAutoSplit.Location = new System.Drawing.Point(81, 222);
+            this.lWarningNbrAutoSplit.Name = "lWarningNbrAutoSplit";
+            this.lWarningNbrAutoSplit.Size = new System.Drawing.Size(354, 26);
+            this.lWarningNbrAutoSplit.TabIndex = 23;
+            this.lWarningNbrAutoSplit.Text = "The number of enabled autosplits and segments in your splits don\'t match!\r\nSegmen" +
+    "ts: 5 AutoSplits: 4";
+            this.lWarningNbrAutoSplit.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // tabGuilds
+            // 
+            this.tabGuilds.BackColor = System.Drawing.SystemColors.Control;
+            this.tabGuilds.Controls.Add(this.tlpGuilds);
+            this.tabGuilds.Location = new System.Drawing.Point(4, 22);
+            this.tabGuilds.Name = "tabGuilds";
+            this.tabGuilds.Padding = new System.Windows.Forms.Padding(3);
+            this.tabGuilds.Size = new System.Drawing.Size(456, 370);
+            this.tabGuilds.TabIndex = 1;
+            this.tabGuilds.Text = "Guilds";
+            // 
+            // tlpGuilds
+            // 
+            this.tlpGuilds.AutoSize = true;
+            this.tlpGuilds.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tlpGuilds.ColumnCount = 1;
+            this.tlpGuilds.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpGuilds.Controls.Add(this.gbGuildsSplits, 0, 0);
+            this.tlpGuilds.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpGuilds.Location = new System.Drawing.Point(3, 3);
+            this.tlpGuilds.Name = "tlpGuilds";
+            this.tlpGuilds.RowCount = 1;
+            this.tlpGuilds.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpGuilds.Size = new System.Drawing.Size(450, 364);
+            this.tlpGuilds.TabIndex = 0;
+            // 
+            // gbGuildsSplits
+            // 
+            this.gbGuildsSplits.AutoSize = true;
+            this.gbGuildsSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbGuildsSplits.Controls.Add(this.tlpGuildsSplits);
+            this.gbGuildsSplits.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbGuildsSplits.Location = new System.Drawing.Point(3, 3);
+            this.gbGuildsSplits.Name = "gbGuildsSplits";
+            this.gbGuildsSplits.Size = new System.Drawing.Size(444, 111);
+            this.gbGuildsSplits.TabIndex = 7;
+            this.gbGuildsSplits.TabStop = false;
+            this.gbGuildsSplits.Text = "Auto-splits";
+            // 
+            // tlpGuildsSplits
+            // 
+            this.tlpGuildsSplits.AutoSize = true;
+            this.tlpGuildsSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tlpGuildsSplits.BackColor = System.Drawing.Color.Transparent;
+            this.tlpGuildsSplits.ColumnCount = 1;
+            this.tlpGuildsSplits.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpGuildsSplits.Controls.Add(this.chkCollegeOfWinterhold, 0, 0);
+            this.tlpGuildsSplits.Controls.Add(this.chkCompanions, 0, 1);
+            this.tlpGuildsSplits.Controls.Add(this.chkThievesGuild, 0, 3);
+            this.tlpGuildsSplits.Controls.Add(this.chkDarkBrotherhood, 0, 2);
+            this.tlpGuildsSplits.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tlpGuildsSplits.Location = new System.Drawing.Point(3, 16);
+            this.tlpGuildsSplits.Name = "tlpGuildsSplits";
+            this.tlpGuildsSplits.RowCount = 4;
+            this.tlpGuildsSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpGuildsSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpGuildsSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpGuildsSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpGuildsSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpGuildsSplits.Size = new System.Drawing.Size(438, 92);
+            this.tlpGuildsSplits.TabIndex = 4;
+            // 
+            // chkCollegeOfWinterhold
+            // 
+            this.chkCollegeOfWinterhold.AutoSize = true;
+            this.chkCollegeOfWinterhold.Location = new System.Drawing.Point(3, 3);
+            this.chkCollegeOfWinterhold.Name = "chkCollegeOfWinterhold";
+            this.chkCollegeOfWinterhold.Size = new System.Drawing.Size(226, 17);
+            this.chkCollegeOfWinterhold.TabIndex = 10;
+            this.chkCollegeOfWinterhold.Text = "College of Winterhold questline completion";
+            this.chkCollegeOfWinterhold.UseVisualStyleBackColor = true;
+            // 
+            // chkCompanions
+            // 
+            this.chkCompanions.AutoSize = true;
+            this.chkCompanions.Location = new System.Drawing.Point(3, 26);
+            this.chkCompanions.Name = "chkCompanions";
+            this.chkCompanions.Size = new System.Drawing.Size(183, 17);
+            this.chkCompanions.TabIndex = 8;
+            this.chkCompanions.Text = "Companions questline completion";
+            this.chkCompanions.UseVisualStyleBackColor = true;
+            // 
+            // chkThievesGuild
+            // 
+            this.chkThievesGuild.AutoSize = true;
+            this.chkThievesGuild.Location = new System.Drawing.Point(3, 72);
+            this.chkThievesGuild.Name = "chkThievesGuild";
+            this.chkThievesGuild.Size = new System.Drawing.Size(190, 17);
+            this.chkThievesGuild.TabIndex = 9;
+            this.chkThievesGuild.Text = "Thieves Guild questline completion";
+            this.chkThievesGuild.UseVisualStyleBackColor = true;
+            // 
+            // chkDarkBrotherhood
+            // 
+            this.chkDarkBrotherhood.AutoSize = true;
+            this.chkDarkBrotherhood.Location = new System.Drawing.Point(3, 49);
+            this.chkDarkBrotherhood.Name = "chkDarkBrotherhood";
+            this.chkDarkBrotherhood.Size = new System.Drawing.Size(209, 17);
+            this.chkDarkBrotherhood.TabIndex = 7;
+            this.chkDarkBrotherhood.Text = "Dark Brotherhood questline completion";
+            this.chkDarkBrotherhood.UseVisualStyleBackColor = true;
+            // 
+            // tabBearCart
+            // 
+            this.tabBearCart.BackColor = System.Drawing.SystemColors.Control;
+            this.tabBearCart.Controls.Add(this.tlpBearCart);
+            this.tabBearCart.Location = new System.Drawing.Point(4, 22);
+            this.tabBearCart.Name = "tabBearCart";
+            this.tabBearCart.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBearCart.Size = new System.Drawing.Size(456, 370);
+            this.tabBearCart.TabIndex = 2;
+            this.tabBearCart.Text = "Bear Cart";
+            // 
+            // tlpBearCart
+            // 
+            this.tlpBearCart.AutoSize = true;
+            this.tlpBearCart.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tlpBearCart.ColumnCount = 1;
+            this.tlpBearCart.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 450F));
+            this.tlpBearCart.Controls.Add(this.chkBearCartPBNotification, 0, 1);
+            this.tlpBearCart.Controls.Add(this.gbBearCartSound, 0, 2);
+            this.tlpBearCart.Controls.Add(this.lBearCartPB, 0, 0);
+            this.tlpBearCart.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tlpBearCart.Location = new System.Drawing.Point(3, 3);
+            this.tlpBearCart.Name = "tlpBearCart";
+            this.tlpBearCart.RowCount = 3;
+            this.tlpBearCart.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpBearCart.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tlpBearCart.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpBearCart.Size = new System.Drawing.Size(450, 138);
+            this.tlpBearCart.TabIndex = 0;
+            // 
+            // chkBearCartPBNotification
+            // 
+            this.chkBearCartPBNotification.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkBearCartPBNotification.AutoSize = true;
+            this.chkBearCartPBNotification.Checked = true;
+            this.chkBearCartPBNotification.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkBearCartPBNotification.Location = new System.Drawing.Point(3, 32);
+            this.chkBearCartPBNotification.Name = "chkBearCartPBNotification";
+            this.chkBearCartPBNotification.Size = new System.Drawing.Size(444, 17);
+            this.chkBearCartPBNotification.TabIndex = 0;
+            this.chkBearCartPBNotification.Text = "Warn about new Personal Best when resetting";
+            this.chkBearCartPBNotification.UseVisualStyleBackColor = true;
+            // 
+            // gbBearCartSound
+            // 
+            this.gbBearCartSound.AutoSize = true;
+            this.gbBearCartSound.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbBearCartSound.Controls.Add(this.tableLayoutPanel1);
+            this.gbBearCartSound.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbBearCartSound.Location = new System.Drawing.Point(3, 58);
+            this.gbBearCartSound.Name = "gbBearCartSound";
+            this.gbBearCartSound.Size = new System.Drawing.Size(444, 77);
+            this.gbBearCartSound.TabIndex = 6;
+            this.gbBearCartSound.TabStop = false;
+            this.gbBearCartSound.Text = "Sound";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.chkPlayBearCartSound, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnBrowseBearCartSound, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnBearCartSoundTest, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtBearCartSoundPath, 1, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(438, 58);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // chkPlayBearCartSound
+            // 
+            this.chkPlayBearCartSound.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkPlayBearCartSound.AutoSize = true;
+            this.chkPlayBearCartSound.Checked = true;
+            this.chkPlayBearCartSound.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tableLayoutPanel1.SetColumnSpan(this.chkPlayBearCartSound, 2);
+            this.chkPlayBearCartSound.Location = new System.Drawing.Point(3, 6);
+            this.chkPlayBearCartSound.Name = "chkPlayBearCartSound";
+            this.chkPlayBearCartSound.Size = new System.Drawing.Size(354, 17);
+            this.chkPlayBearCartSound.TabIndex = 1;
+            this.chkPlayBearCartSound.Text = "Play sound when getting Bear Cart";
+            this.chkPlayBearCartSound.UseVisualStyleBackColor = true;
+            this.chkPlayBearCartSound.CheckedChanged += new System.EventHandler(this.chkPlayBearCartSound_CheckedChanged);
+            // 
+            // btnBrowseBearCartSound
+            // 
+            this.btnBrowseBearCartSound.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBrowseBearCartSound.AutoSize = true;
+            this.btnBrowseBearCartSound.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnBrowseBearCartSound.Location = new System.Drawing.Point(363, 32);
+            this.btnBrowseBearCartSound.Name = "btnBrowseBearCartSound";
+            this.btnBrowseBearCartSound.Size = new System.Drawing.Size(72, 23);
+            this.btnBrowseBearCartSound.TabIndex = 4;
+            this.btnBrowseBearCartSound.Text = "Browse...";
+            this.btnBrowseBearCartSound.UseVisualStyleBackColor = true;
+            this.btnBrowseBearCartSound.Click += new System.EventHandler(this.btnBrowseBearCartSound_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Sound:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnBearCartSoundTest
+            // 
+            this.btnBearCartSoundTest.AutoSize = true;
+            this.btnBearCartSoundTest.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnBearCartSoundTest.Location = new System.Drawing.Point(363, 3);
+            this.btnBearCartSoundTest.Name = "btnBearCartSoundTest";
+            this.btnBearCartSoundTest.Size = new System.Drawing.Size(72, 23);
+            this.btnBearCartSoundTest.TabIndex = 2;
+            this.btnBearCartSoundTest.Text = "Sound Test";
+            this.btnBearCartSoundTest.UseVisualStyleBackColor = true;
+            this.btnBearCartSoundTest.Click += new System.EventHandler(this.chkBearCartSoundTest_Click);
+            // 
+            // txtBearCartSoundPath
+            // 
+            this.txtBearCartSoundPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBearCartSoundPath.Location = new System.Drawing.Point(123, 33);
+            this.txtBearCartSoundPath.Name = "txtBearCartSoundPath";
+            this.txtBearCartSoundPath.Size = new System.Drawing.Size(234, 20);
+            this.txtBearCartSoundPath.TabIndex = 5;
+            // 
+            // lBearCartPB
+            // 
+            this.lBearCartPB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lBearCartPB.AutoSize = true;
+            this.lBearCartPB.Location = new System.Drawing.Point(3, 0);
+            this.lBearCartPB.Name = "lBearCartPB";
+            this.lBearCartPB.Size = new System.Drawing.Size(444, 26);
+            this.lBearCartPB.TabIndex = 7;
+            this.lBearCartPB.Text = "Personal Best:\r\nGame Time: 00:42.00, Real Time: 01:23.456";
+            this.lBearCartPB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gbStartSplits
+            // 
+            this.gbStartSplits.AutoSize = true;
+            this.gbStartSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbStartSplits.Controls.Add(this.flp);
+            this.gbStartSplits.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbStartSplits.Location = new System.Drawing.Point(3, 3);
+            this.gbStartSplits.Name = "gbStartSplits";
+            this.gbStartSplits.Size = new System.Drawing.Size(464, 88);
+            this.gbStartSplits.TabIndex = 5;
+            this.gbStartSplits.TabStop = false;
+            this.gbStartSplits.Text = "Common Auto-splits";
+            // 
+            // flp
+            // 
+            this.flp.AutoSize = true;
+            this.flp.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flp.Controls.Add(this.chkAutoStart);
+            this.flp.Controls.Add(this.chkAutoReset);
+            this.flp.Controls.Add(this.chkHelgen);
+            this.flp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flp.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flp.Location = new System.Drawing.Point(3, 16);
+            this.flp.Name = "flp";
+            this.flp.Size = new System.Drawing.Size(458, 69);
+            this.flp.TabIndex = 9;
+            // 
+            // chkAutoStart
+            // 
+            this.chkAutoStart.AutoSize = true;
+            this.chkAutoStart.Checked = true;
+            this.chkAutoStart.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAutoStart.Location = new System.Drawing.Point(3, 3);
+            this.chkAutoStart.Name = "chkAutoStart";
+            this.chkAutoStart.Size = new System.Drawing.Size(48, 17);
+            this.chkAutoStart.TabIndex = 4;
+            this.chkAutoStart.Text = "Start";
+            this.chkAutoStart.UseVisualStyleBackColor = true;
+            // 
+            // chkAutoReset
+            // 
+            this.chkAutoReset.AutoSize = true;
+            this.chkAutoReset.Checked = true;
+            this.chkAutoReset.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAutoReset.Location = new System.Drawing.Point(3, 26);
+            this.chkAutoReset.Name = "chkAutoReset";
+            this.chkAutoReset.Size = new System.Drawing.Size(54, 17);
+            this.chkAutoReset.TabIndex = 8;
+            this.chkAutoReset.Text = "Reset";
+            this.chkAutoReset.UseVisualStyleBackColor = true;
+            // 
+            // chkHelgen
+            // 
+            this.chkHelgen.AutoSize = true;
+            this.chkHelgen.Location = new System.Drawing.Point(3, 49);
+            this.chkHelgen.Name = "chkHelgen";
+            this.chkHelgen.Size = new System.Drawing.Size(60, 17);
+            this.chkHelgen.TabIndex = 7;
+            this.chkHelgen.Text = "Helgen";
+            this.chkHelgen.UseVisualStyleBackColor = true;
             // 
             // SkyrimSettings
             // 
@@ -631,27 +884,44 @@
             this.Controls.Add(this.tlpMain);
             this.Name = "SkyrimSettings";
             this.Padding = new System.Windows.Forms.Padding(7);
-            this.Size = new System.Drawing.Size(476, 487);
+            this.Size = new System.Drawing.Size(484, 510);
             this.tlpMain.ResumeLayout(false);
             this.tlpMain.PerformLayout();
-            this.gbStartSplits.ResumeLayout(false);
-            this.gbStartSplits.PerformLayout();
-            this.tlpStartSplits.ResumeLayout(false);
-            this.tlpStartSplits.PerformLayout();
-            this.gbGuildsSplits.ResumeLayout(false);
-            this.gbGuildsSplits.PerformLayout();
-            this.tlpGuildsSplits.ResumeLayout(false);
-            this.tlpGuildsSplits.PerformLayout();
+            this.tabsSplits.ResumeLayout(false);
+            this.tabAnyPercent.ResumeLayout(false);
+            this.tabAnyPercent.PerformLayout();
+            this.tlpAnyPercent.ResumeLayout(false);
+            this.tlpAnyPercent.PerformLayout();
             this.gb_AnyPercentSplits.ResumeLayout(false);
             this.gb_AnyPercentSplits.PerformLayout();
             this.tlpAnyPercentSplits.ResumeLayout(false);
             this.tlpAnyPercentSplits.PerformLayout();
+            this.flp_AnyPercentSplits.ResumeLayout(false);
+            this.flp_AnyPercentSplits.PerformLayout();
             this.gbAnyPercentTemplate.ResumeLayout(false);
             this.gbAnyPercentTemplate.PerformLayout();
             this.tlpAnyPercentTemplate.ResumeLayout(false);
             this.tlpAnyPercentTemplate.PerformLayout();
-            this.flp_AnyPercentSplits.ResumeLayout(false);
-            this.flp_AnyPercentSplits.PerformLayout();
+            this.tabGuilds.ResumeLayout(false);
+            this.tabGuilds.PerformLayout();
+            this.tlpGuilds.ResumeLayout(false);
+            this.tlpGuilds.PerformLayout();
+            this.gbGuildsSplits.ResumeLayout(false);
+            this.gbGuildsSplits.PerformLayout();
+            this.tlpGuildsSplits.ResumeLayout(false);
+            this.tlpGuildsSplits.PerformLayout();
+            this.tabBearCart.ResumeLayout(false);
+            this.tabBearCart.PerformLayout();
+            this.tlpBearCart.ResumeLayout(false);
+            this.tlpBearCart.PerformLayout();
+            this.gbBearCartSound.ResumeLayout(false);
+            this.gbBearCartSound.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            this.gbStartSplits.ResumeLayout(false);
+            this.gbStartSplits.PerformLayout();
+            this.flp.ResumeLayout(false);
+            this.flp.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -661,18 +931,30 @@
 
         private System.Windows.Forms.TableLayoutPanel tlpMain;
         private System.Windows.Forms.GroupBox gbStartSplits;
-        private System.Windows.Forms.GroupBox gbGuildsSplits;
-        private System.Windows.Forms.TableLayoutPanel tlpGuildsSplits;
-        private System.Windows.Forms.CheckBox chkAlduinDefeated;
-        private System.Windows.Forms.TableLayoutPanel tlpStartSplits;
         private System.Windows.Forms.CheckBox chkHelgen;
         private System.Windows.Forms.CheckBox chkAutoStart;
-        private System.Windows.Forms.CheckBox chkCollegeOfWinterhold;
-        private System.Windows.Forms.CheckBox chkCompanions;
-        private System.Windows.Forms.CheckBox chkDarkBrotherhood;
-        private System.Windows.Forms.CheckBox chkThievesGuild;
+        private System.Windows.Forms.CheckBox chkAutoReset;
+        private System.Windows.Forms.TabControl tabsSplits;
+        private System.Windows.Forms.TabPage tabAnyPercent;
+        private System.Windows.Forms.TableLayoutPanel tlpAnyPercent;
         private System.Windows.Forms.GroupBox gb_AnyPercentSplits;
         private System.Windows.Forms.TableLayoutPanel tlpAnyPercentSplits;
+        private System.Windows.Forms.GroupBox gbAnyPercentTemplate;
+        private System.Windows.Forms.TableLayoutPanel tlpAnyPercentTemplate;
+        private System.Windows.Forms.RadioButton rbMrwalrus;
+        private System.Windows.Forms.RadioButton rbDrtchops;
+        private System.Windows.Forms.RadioButton rbDalleth;
+        private System.Windows.Forms.RadioButton rbGr3yscale;
+        private System.Windows.Forms.TabPage tabGuilds;
+        private System.Windows.Forms.TableLayoutPanel tlpGuilds;
+        private System.Windows.Forms.GroupBox gbGuildsSplits;
+        private System.Windows.Forms.TableLayoutPanel tlpGuildsSplits;
+        private System.Windows.Forms.CheckBox chkCollegeOfWinterhold;
+        private System.Windows.Forms.CheckBox chkCompanions;
+        private System.Windows.Forms.CheckBox chkThievesGuild;
+        private System.Windows.Forms.CheckBox chkDarkBrotherhood;
+        private System.Windows.Forms.TabPage tabBearCart;
+        private System.Windows.Forms.FlowLayoutPanel flp_AnyPercentSplits;
         private System.Windows.Forms.CheckBox chkWhiterun;
         private System.Windows.Forms.CheckBox chkThalmorEmbassy;
         private System.Windows.Forms.CheckBox chkEsbern;
@@ -681,24 +963,29 @@
         private System.Windows.Forms.CheckBox chkSeptimus;
         private System.Windows.Forms.CheckBox chkMzarkTower;
         private System.Windows.Forms.CheckBox chkClearSky;
+        private System.Windows.Forms.CheckBox chkHorseClimb;
+        private System.Windows.Forms.CheckBox chkCutsceneStart;
+        private System.Windows.Forms.CheckBox chkCutsceneEnd;
+        private System.Windows.Forms.CheckBox chkAlduin1;
         private System.Windows.Forms.CheckBox chkHighHrothgar;
         private System.Windows.Forms.CheckBox chkSolitude;
+        private System.Windows.Forms.LinkLabel llCheckAll;
         private System.Windows.Forms.CheckBox chkWindhelm;
         private System.Windows.Forms.CheckBox chkCouncil;
         private System.Windows.Forms.CheckBox chkOdahviing;
         private System.Windows.Forms.CheckBox chkEnterSovngarde;
-        private System.Windows.Forms.CheckBox chkAlduin1;
-        private System.Windows.Forms.RadioButton rbMrwalrus;
-        private System.Windows.Forms.RadioButton rbDrtchops;
-        private System.Windows.Forms.GroupBox gbAnyPercentTemplate;
-        private System.Windows.Forms.TableLayoutPanel tlpAnyPercentTemplate;
-        private System.Windows.Forms.RadioButton rbDalleth;
-        private System.Windows.Forms.CheckBox chkCutsceneStart;
-        private System.Windows.Forms.FlowLayoutPanel flp_AnyPercentSplits;
-        private System.Windows.Forms.LinkLabel llCheckAll;
-        private System.Windows.Forms.RadioButton rbGr3yscale;
-        private System.Windows.Forms.CheckBox chkHorseClimb;
-        private System.Windows.Forms.CheckBox chkCutsceneEnd;
-        private System.Windows.Forms.CheckBox chkAutoReset;
+        private System.Windows.Forms.CheckBox chkAlduinDefeated;
+        private System.Windows.Forms.TableLayoutPanel tlpBearCart;
+        private System.Windows.Forms.FlowLayoutPanel flp;
+        private System.Windows.Forms.CheckBox chkBearCartPBNotification;
+        private System.Windows.Forms.Label lWarningNbrAutoSplit;
+        private System.Windows.Forms.GroupBox gbBearCartSound;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.CheckBox chkPlayBearCartSound;
+        private System.Windows.Forms.Button btnBrowseBearCartSound;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnBearCartSoundTest;
+        private System.Windows.Forms.TextBox txtBearCartSoundPath;
+        private System.Windows.Forms.Label lBearCartPB;
     }
 }
