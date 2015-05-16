@@ -166,14 +166,22 @@ namespace LiveSplit.Skyrim
                 Settings.IsBearCartSecret = false;
                 Settings.SaveBearCartConfig();
 
-                if (SoundComponent != null && (Settings.IsBearCartSecret || Settings.PlayBearCartSound))
+                if (SoundComponent != null && (Settings.IsBearCartSecret || Settings.PlayBearCartSound)) //force play if it isn't unlocked in case the splits were shared
                 {
-                    if (String.IsNullOrEmpty(Settings.BearCartSoundPath))
-                        ((SoundComponent)SoundComponent).PlaySound(BearCartDefaultSoundPath);
-                    else
-                        ((SoundComponent)SoundComponent).PlaySound(Settings.BearCartSoundPath);
+                    if (Settings.IsBearCartSecret || !Settings.PlayBearCartSoundOnlyOnPB || IsBearCartPB(BearCartSplit))
+                    {
+                        if (String.IsNullOrEmpty(Settings.BearCartSoundPath))
+                            ((SoundComponent)SoundComponent).PlaySound(BearCartDefaultSoundPath);
+                        else
+                            ((SoundComponent)SoundComponent).PlaySound(Settings.BearCartSoundPath);
+                    }
                 }
             }
+        }
+
+        bool IsBearCartPB(Time time)
+        {
+            return (time.GameTime < Settings.BearCartPB.GameTime || Settings.BearCartPB.GameTime == new TimeSpan(0));
         }
 
         void UpdateBearCartPB(bool silent = false)
@@ -181,7 +189,7 @@ namespace LiveSplit.Skyrim
             if (BearCartSplit.RealTime == null)
                 return;
 
-            if (BearCartSplit.GameTime < Settings.BearCartPB.GameTime || Settings.BearCartPB.GameTime == new TimeSpan(0))
+            if (IsBearCartPB(BearCartSplit))
             {
                 DialogResult result = DialogResult.Yes;
                 if (Settings.BearCartPBNotification && !silent)

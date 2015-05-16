@@ -42,6 +42,7 @@ namespace LiveSplit.Skyrim
         public bool PlayBearCartSound { get; set; }
         public string BearCartSoundPath { get; set; }
         public bool IsBearCartSecret { get; set; }
+        public bool PlayBearCartSoundOnlyOnPB { get; set; }
 
         public const string TEMPLATE_MRWALRUS = "MrWalrus";
         public const string TEMPLATE_DRTCHOPS = "DrTChops";
@@ -77,6 +78,7 @@ namespace LiveSplit.Skyrim
         private const string DEFAULT_ANYPERCENTTEMPLATE = TEMPLATE_MRWALRUS;
         private const bool DEFAULT_BEARCARTPBNOTIFICATION = true;
         private const bool DEFAULT_PLAYBEARCARTSOUND = true;
+        private const bool DEFAULT_PLAYBEARCARTSOUNDONLYONPB = false;
 
         private SkyrimComponent _component;
         private LiveSplitState _state;
@@ -119,6 +121,7 @@ namespace LiveSplit.Skyrim
             this.chkBearCartPBNotification.DataBindings.Add("Checked", this, "BearCartPBNotification", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkPlayBearCartSound.DataBindings.Add("Checked", this, "PlayBearCartSound", false, DataSourceUpdateMode.OnPropertyChanged);
             this.txtBearCartSoundPath.DataBindings.Add("Text", this, "BearCartSoundPath");
+            this.chkPlayBearCartSoundOnlyOnPB.DataBindings.Add("Checked", this, "PlayBearCartSoundOnlyOnPB", false, DataSourceUpdateMode.OnPropertyChanged);
 
             // defaults
             this.AutoStart = DEFAULT_AUTOSTART;
@@ -152,6 +155,7 @@ namespace LiveSplit.Skyrim
             this.PlayBearCartSound = DEFAULT_PLAYBEARCARTSOUND;
             this.BearCartSoundPath = String.Empty;
             this.IsBearCartSecret = true;
+            this.PlayBearCartSoundOnlyOnPB = DEFAULT_PLAYBEARCARTSOUNDONLYONPB;
             LoadBearCartConfig();
 
             UpdateTemplate(); //thanks twitch.tv/hurimaru
@@ -226,6 +230,7 @@ namespace LiveSplit.Skyrim
             settingsNode.AppendChild(ToElement(doc, "BearCartPBNotification", this.BearCartPBNotification));
             settingsNode.AppendChild(ToElement(doc, "PlayBearCartSound", this.PlayBearCartSound));
             settingsNode.AppendChild(ToElement(doc, "BearCartSoundPath", this.BearCartSoundPath));
+            settingsNode.AppendChild(ToElement(doc, "PlayBearCartSoundOnlyOnPB", this.PlayBearCartSoundOnlyOnPB));
 
             return settingsNode;
         }
@@ -281,6 +286,7 @@ namespace LiveSplit.Skyrim
             this.BearCartPBNotification = ParseBool(settings, "BearCartPBNotification", DEFAULT_BEARCARTPBNOTIFICATION);
             this.PlayBearCartSound = ParseBool(settings, "PlayBearCartSound", DEFAULT_PLAYBEARCARTSOUND);
             this.BearCartSoundPath = settings["BearCartSoundPath"] != null ? settings["BearCartSoundPath"].InnerText : String.Empty;
+            this.PlayBearCartSoundOnlyOnPB = ParseBool(settings, "PlayBearCartSoundOnlyOnPB", DEFAULT_PLAYBEARCARTSOUNDONLYONPB);
 
             if (element["AnyPercentTemplate"] != null)
             {
@@ -498,6 +504,7 @@ namespace LiveSplit.Skyrim
             this.btnBrowseBearCartSound.Enabled = enable;
             this.txtBearCartSoundPath.Enabled = enable;
             this.btnBearCartSoundTest.Enabled = enable;
+            this.chkPlayBearCartSoundOnlyOnPB.Enabled = enable;
 
             if (_component.SoundComponent != null && !enable)
                 ((SoundComponent)_component.SoundComponent).Player.Stop();
