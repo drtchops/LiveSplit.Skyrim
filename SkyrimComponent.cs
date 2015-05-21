@@ -8,33 +8,56 @@ using System.Drawing;
 using System.Xml;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace LiveSplit.Skyrim
 {
-    class SkyrimComponent : LogicComponent
+    public class SkyrimComponent : LogicComponent
     {
         public override string ComponentName
         {
             get { return "Skyrim"; }
         }
 
+        public IComponent SoundComponent { get; set; }
         public SkyrimSettings Settings { get; set; }
+        public Time BearCartSplit { get; private set; }
 
-        public bool Disposed { get; private set; }
-        public bool IsLayoutComponent { get; private set; }
+        public string BearCartDefaultSoundPath { get; private set; }
 
         private TimerModel _timer;
         private GameMemory _gameMemory;
         private LiveSplitState _state;
+        private TimerPhase _prevPhase;
 
-        public SkyrimComponent(LiveSplitState state, bool isLayoutComponent)
+        public SkyrimComponent(LiveSplitState state)
         {
+            bool debug = false;
+#if DEBUG
+            debug = true;
+#endif
+            Trace.WriteLine("[NoLoads] Using LiveSplit.Skyrim component version " + Assembly.GetExecutingAssembly().GetName().Version + " " + ((debug) ? "Debug" : "Release") + " build");
             _state = state;
-            this.IsLayoutComponent = isLayoutComponent;
 
-            this.Settings = new SkyrimSettings();
+            this.Settings = new SkyrimSettings(this, state);
 
-           _timer = new TimerModel { CurrentState = state };
+            _timer = new TimerModel { CurrentState = state };
+
+            this.BearCartSplit = new Time();
+            IComponentFactory soundFactory;
+            if (ComponentManager.ComponentFactories.TryGetValue("LiveSplit.Sound.dll", out soundFactory))
+            {
+                SoundComponent = soundFactory.Create(_state) as SoundComponent;
+
+                this.BearCartDefaultSoundPath = System.IO.Path.GetTempPath() + @"LiveSplit.Skyrim\bearcart.mp3";
+                //extract embedded sound to temp folder
+                try
+                {
+                    System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(BearCartDefaultSoundPath));
+                    System.IO.File.WriteAllBytes(BearCartDefaultSoundPath, Properties.Resources.bearcart_short);
+                }
+                catch (System.IO.IOException) { Trace.WriteLine("[NoLoads] Error when extracting bear cart sound to temp folder."); }
+            }
 
             _gameMemory = new GameMemory(this.Settings);
             _gameMemory.OnFirstLevelLoading += gameMemory_OnFirstLevelLoading;
@@ -42,32 +65,42 @@ namespace LiveSplit.Skyrim
             _gameMemory.OnLoadStarted += gameMemory_OnLoadStarted;
             _gameMemory.OnLoadFinished += gameMemory_OnLoadFinished;
             _gameMemory.OnSplitCompleted += gameMemory_OnSplitCompleted;
+            _gameMemory.OnBearCart += gameMemory_OnBearCart;
             state.OnStart += State_OnStart;
+            state.OnReset += State_OnReset;
             _gameMemory.StartMonitoring();
         }
 
         public override void Dispose()
         {
-            this.Disposed = true;
-
             _state.OnStart -= State_OnStart;
+            _state.OnReset -= State_OnReset;
 
             if (_gameMemory != null)
             {
                 _gameMemory.Stop();
             }
 
+            if (SoundComponent != null)
+                SoundComponent.Dispose();
         }
 
         void State_OnStart(object sender, EventArgs e)
         {
             _gameMemory.resetSplitStates();
+            BearCartSplit = new Time();
+        }
+
+        void State_OnReset(object sender, TimerPhase e)
+        {
+            UpdateBearCartPB();
         }
 
         void gameMemory_OnFirstLevelLoading(object sender, EventArgs e)
         {
-            if (this.Settings.AutoStart)
+            if (this.Settings.AutoReset)
             {
+                UpdateBearCartPB(true);
                 _timer.Reset();
             }
         }
@@ -125,6 +158,65 @@ namespace LiveSplit.Skyrim
             }
         }
 
+        void gameMemory_OnBearCart(object sender, EventArgs e)
+        {
+            if (BearCartSplit.RealTime == null && _state.CurrentPhase != TimerPhase.NotRunning)
+            {
+                BearCartSplit = _state.CurrentTime;
+                Settings.IsBearCartSecret = false;
+                Settings.SaveBearCartConfig();
+
+                if (SoundComponent != null && (Settings.IsBearCartSecret || Settings.PlayBearCartSound)) //force play if it isn't unlocked in case the splits were shared
+                {
+                    if (Settings.IsBearCartSecret || !Settings.PlayBearCartSoundOnlyOnPB || IsBearCartPB(BearCartSplit))
+                    {
+                        if (String.IsNullOrEmpty(Settings.BearCartSoundPath))
+                            ((SoundComponent)SoundComponent).PlaySound(BearCartDefaultSoundPath);
+                        else
+                            ((SoundComponent)SoundComponent).PlaySound(Settings.BearCartSoundPath);
+                    }
+                }
+            }
+        }
+
+        bool IsBearCartPB(Time time)
+        {
+            return (time.GameTime < Settings.BearCartPB.GameTime || Settings.BearCartPB.GameTime == new TimeSpan(0));
+        }
+
+        void UpdateBearCartPB(bool silent = false)
+        {
+            if (BearCartSplit.RealTime == null)
+                return;
+
+            if (IsBearCartPB(BearCartSplit))
+            {
+                DialogResult result = DialogResult.Yes;
+                if (Settings.BearCartPBNotification && !silent)
+                {
+                    string newTime = String.Format("New time: Game Time: {0}, Real Time: {1}\n", BearCartSplit.GameTime.Value.ToString(@"mm\:ss\.fff"), BearCartSplit.RealTime.Value.ToString(@"mm\:ss\.fff"));
+                    string oldTime = String.Empty;
+
+                    if (Settings.BearCartPB.GameTime.Value != new TimeSpan(0))
+                        oldTime = String.Format("Previous time: Game Time: {0}, Real Time: {1}\n", Settings.BearCartPB.GameTime.Value.ToString(@"mm\:ss\.fff"), Settings.BearCartPB.RealTime.Value.ToString(@"mm\:ss\.fff"));
+
+                    result = MessageBox.Show(_state.Form, newTime + oldTime + "\nDo you want to save your new Bear Cart Personal Best?",
+                        "New Bear Cart Personal Best", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                }
+                if (result == DialogResult.Yes)
+                {
+                    Settings.BearCartPB = new Time(BearCartSplit.RealTime, BearCartSplit.GameTime); // give new pb to settings so it can be saved
+                    Settings.SaveBearCartConfig();
+                }
+
+            }
+
+            if (SoundComponent != null && !silent)
+                ((SoundComponent)SoundComponent).Player.Stop();
+
+            BearCartSplit = new Time();
+        }
+
         public override XmlNode GetSettings(XmlDocument document)
         {
             return this.Settings.GetSettings(document);
@@ -140,7 +232,14 @@ namespace LiveSplit.Skyrim
             this.Settings.SetSettings(settings);
         }
 
-        public override void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode) { }
-        public override void RenameComparison(string oldName, string newName) { }
+        public override void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
+        {
+            if (state.CurrentPhase != _prevPhase && state.CurrentPhase == TimerPhase.Ended)
+            {
+                UpdateBearCartPB(true);
+            }
+
+            _prevPhase = state.CurrentPhase;
+        }
     }
 }

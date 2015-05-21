@@ -1,4 +1,17 @@
 <updates>
+    <update version="2.1.0">
+        <files>
+            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+        </files>
+        <changelog>
+            <change>
+                New settings interface. It now tells you if you don't have enough enabled autosplits to fully autosplit your run.
+            </change>
+            <change>
+                No more Alduin1 autosplit when traveling elsewhere than to Dragonsreach.
+            </change>
+        </changelog>
+    </update>
     <update version="2.0.0">
         <files>
             <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>

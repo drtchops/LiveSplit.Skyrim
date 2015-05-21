@@ -47,6 +47,7 @@ namespace LiveSplit.Skyrim
         // public event EventHandler OnLoadScreenFinished;
         public delegate void SplitCompletedEventHandler(object sender, SplitArea type, uint frame);
         public event SplitCompletedEventHandler OnSplitCompleted;
+        public event EventHandler OnBearCart;
 
         private Task _thread;
         private CancellationTokenSource _cancelSource;
@@ -72,6 +73,7 @@ namespace LiveSplit.Skyrim
         private DeepPointer _Alduin1HealthPtr;
         private DeepPointer _locationsDiscoveredPtr;
         private DeepPointer _arePlayerControlsDisablePtr;
+        private DeepPointer _bearCartHealthPtr;
 
         private enum Locations
         {
@@ -148,6 +150,7 @@ namespace LiveSplit.Skyrim
             _Alduin1HealthPtr = new DeepPointer(0x00F41764, 0x74, 0x30, 0x30, 0x1c); // Alduin 1's health (if it's at 0 it's 99% of the time because it can't be found)
             _locationsDiscoveredPtr = new DeepPointer(0x00EE6C34, 0x170); // number of locations discovered (from ingame stats)
             _arePlayerControlsDisablePtr = new DeepPointer(0x172EF30, 0xf); // == 1 when player controls have been disabled (not necessarily all controls)
+            _bearCartHealthPtr = new DeepPointer(0x00F354DC, 0x74, 0x30, 0x30, 0x1C);
 
             resetSplitStates();
 
@@ -221,6 +224,7 @@ namespace LiveSplit.Skyrim
                     int prevMainQuestsCompleted = 0;
                     int prevLocationsDiscovered = 0;
                     bool prevArePlayerControlsDisabled = false;
+                    float prevBearCartHealth = -1;
 
                     bool loadingStarted = false;
                     bool loadingScreenStarted = false;
@@ -295,6 +299,9 @@ namespace LiveSplit.Skyrim
 
                         bool arePlayerControlsDisabled;
                         _arePlayerControlsDisablePtr.Deref(game, out arePlayerControlsDisabled);
+
+                        float bearCartHealth;
+                        _bearCartHealthPtr.Deref(game, out bearCartHealth);
 
                         if (isLoading != prevIsLoading)
                         {
@@ -385,14 +392,6 @@ namespace LiveSplit.Skyrim
                                     {
                                         Split(SplitArea.TheWall, frameCounter);
                                     }
-                                    // if loadscreen starts in Paarthurnax' mountain whereabouts
-                                    else if (isAlduin1Defeated && loadScreenStartLocationID == (int)Locations.Tamriel && ((loadScreenStartWorld_X == 14 && loadScreenStartWorld_Y == -12) ||
-                                        (loadScreenStartWorld_X == 14 && loadScreenStartWorld_Y == -13) || (loadScreenStartWorld_X == 13 && loadScreenStartWorld_Y == -12) ||
-                                            (loadScreenStartWorld_X == 13 && loadScreenStartWorld_Y == -13)) &&
-                                                (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
-                                    {
-                                        Split(SplitArea.Alduin1, frameCounter);
-                                    }
                                 }
                                 else
                                 {
@@ -402,7 +401,7 @@ namespace LiveSplit.Skyrim
                             }
                             else
                             {
-                                Trace.WriteLine(String.Format("[NoLoads] LoadScreen End - {0}", frameCounter));
+                                Trace.WriteLine(String.Format("[NoLoads] LoadScreen End at {0} X: {1} Y: {2} - {3}", locationID.ToString("X8"), world_X, world_Y, frameCounter));
 
                                 if (loadingScreenStarted)
                                 {
@@ -577,6 +576,15 @@ namespace LiveSplit.Skyrim
                             {
                                 Split(SplitArea.MzarkTower, frameCounter);
                             }
+                            // if Alduin1 has been defeated once and loadscreen starts in Paarthurnax' mountain whereabouts and ends in front of dragonsreach (fast travel)
+                            else if (isAlduin1Defeated && loadScreenStartLocationID == (int)Locations.Tamriel && ((loadScreenStartWorld_X == 14 && loadScreenStartWorld_Y == -12) ||
+                                (loadScreenStartWorld_X == 14 && loadScreenStartWorld_Y == -13) || (loadScreenStartWorld_X == 13 && loadScreenStartWorld_Y == -12) ||
+                                    (loadScreenStartWorld_X == 13 && loadScreenStartWorld_Y == -13)) &&
+                                        locationID == (int)Locations.WhiterunWorld && world_X == 6 && world_Y == -1 &&
+                                            (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
+                            {
+                                Split(SplitArea.Alduin1, frameCounter);
+                            }
                             // if loadscreen starts in high hrothgar and ends in front of one of its doors
                             else if (loadScreenStartLocationID == (int)Locations.HighHrothgar &&
                                 locationID == (int)Locations.Tamriel && world_X == 13 && (world_Y == -9 || world_Y == -10) &&
@@ -672,6 +680,19 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
+                        if (locationID == (int)Locations.HelgenKeep01 && bearCartHealth < 0 && prevBearCartHealth >= 0)
+                        {
+                            Debug.WriteLine(String.Format("[NoLoads] BEAR CART! HP: {1} - {0}", frameCounter, bearCartHealth));
+
+                            _uiThread.Post(d =>
+                            {
+                                if (this.OnBearCart != null)
+                                {
+                                    this.OnBearCart(this, EventArgs.Empty);
+                                }
+                            }, null);
+                        }
+
                         // the only mainquest you can complete here is the council so when a quest completes, walrus' council split
                         if (mainquestsCompleted  == prevMainQuestsCompleted + 1 && locationID == (int)Locations.HighHrothgar)
                         {
@@ -749,6 +770,7 @@ namespace LiveSplit.Skyrim
                         prevMainQuestsCompleted = mainquestsCompleted;
                         prevLocationsDiscovered = locationsDiscovered;
                         prevArePlayerControlsDisabled = arePlayerControlsDisabled;
+                        prevBearCartHealth = bearCartHealth;
                         frameCounter++;
 
                         Thread.Sleep(15);
