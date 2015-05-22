@@ -209,7 +209,6 @@ namespace LiveSplit.Skyrim
                     uint frameCounter = 0;
                     SkyrimData data = new SkyrimData(game);
 
-                    bool loadingStarted = false;
                     bool loadingScreenStarted = false;
                     bool loadScreenFadeoutStarted = false;
                     bool isLoadingSaveFromMenu = false;
@@ -250,14 +249,12 @@ namespace LiveSplit.Skyrim
                         data.ArePlayerControlsDisabled.SetValue(_arePlayerControlsDisablePtr);
                         data.BearCartHealth.SetValue(_bearCartHealthPtr);
 
-
                         if (data.IsLoading.HasChanged)
                         {
                             if (data.IsLoading.Current)
                             {
                                 Trace.WriteLine(String.Format("[NoLoads] Load Start - {0}", frameCounter));
 
-                                loadingStarted = true;
                                 // pause game timer
                                 _uiThread.Post(d =>
                                 {
@@ -271,29 +268,22 @@ namespace LiveSplit.Skyrim
                             {
                                 Trace.WriteLine(String.Format("[NoLoads] Load End - {0}", frameCounter));
 
-                                if (loadingStarted)
+                                if (!loadScreenFadeoutStarted)
                                 {
-                                    loadingStarted = false;
-
-                                    if (!loadScreenFadeoutStarted)
+                                    if (data.LocationID.Current == (int)Locations.Tamriel && data.WorldX.Current == 13 && (data.WorldY.Current == -10 || data.WorldY.Current == -9) && data.WordsOfPowerLearned.Current == 3)
                                     {
-                                        if (data.LocationID.Current == (int)Locations.Tamriel && data.WorldX.Current == 13 && (data.WorldY.Current == -10 || data.WorldY.Current == -9) && data.WordsOfPowerLearned.Current == 3)
-                                        {
-                                            Split(SplitArea.ClearSky, frameCounter);
-                                        }
+                                        Split(SplitArea.ClearSky, frameCounter);
                                     }
-
-                                    // unpause game timer
-                                    _uiThread.Post(d =>
-                                    {
-                                        if (this.OnLoadFinished != null)
-                                        {
-                                            this.OnLoadFinished(this, EventArgs.Empty);
-                                        }
-                                    }, null);
                                 }
-                                else
-                                    Trace.WriteLine("what the fuck this should never be hit");
+
+                                // unpause game timer
+                                _uiThread.Post(d =>
+                                {
+                                    if (this.OnLoadFinished != null)
+                                    {
+                                        this.OnLoadFinished(this, EventArgs.Empty);
+                                    }
+                                }, null);
                             }
                         }
 
