@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameDataItem.cs" />
     <Compile Include="DeepPointer.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -58,6 +59,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SkyrimComponent.cs" />
+    <Compile Include="SkyrimData.cs" />
     <Compile Include="SkyrimFactory.cs" />
     <Compile Include="SkyrimSettings.cs">
       <SubType>UserControl</SubType>

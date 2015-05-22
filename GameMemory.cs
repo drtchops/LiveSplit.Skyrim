@@ -58,11 +58,11 @@ namespace LiveSplit.Skyrim
         private DeepPointer _isLoadingPtr;
         private DeepPointer _isLoadingScreenPtr;
         private DeepPointer _isInFadeOutPtr;
-        private DeepPointer _locationID;
+        private DeepPointer _locationIDPtr;
         private DeepPointer _world_XPtr;
         private DeepPointer _world_YPtr;
-        private DeepPointer _isAlduinDefeatedPtr;
-        private DeepPointer _questlinesCompleted;
+        private DeepPointer _isAlduin2DefeatedPtr;
+        private DeepPointer _questlinesCompletedPtr;
         private DeepPointer _collegeOfWinterholdQuestsCompletedPtr;
         private DeepPointer _companionsQuestsCompletedPtr;
         private DeepPointer _darkBrotherhoodQuestsCompletedPtr;
@@ -133,13 +133,13 @@ namespace LiveSplit.Skyrim
             _isInFadeOutPtr = new DeepPointer(0x172EE2E); // == 1 when in a fadeout, it goes back to 0 once control is gained
 
             // Position
-            _locationID = new DeepPointer(0x01738308, 0x4, 0x78, 0x670, 0xEC); // ID of the current location (see http://steamcommunity.com/sharedfiles/filedetails/?id=148834641 or http://www.skyrimsearch.com/cells.php)
+            _locationIDPtr = new DeepPointer(0x01738308, 0x4, 0x78, 0x670, 0xEC); // ID of the current location (see http://steamcommunity.com/sharedfiles/filedetails/?id=148834641 or http://www.skyrimsearch.com/cells.php)
             _world_XPtr = new DeepPointer(0x0172E864, 0x64); // X world position (cell)
             _world_YPtr = new DeepPointer(0x0172E864, 0x68); // Y world position (cell)
 
             // Game state
-            _isAlduinDefeatedPtr = new DeepPointer(0x1711608); // == 1 when last blow is struck on alduin
-            _questlinesCompleted = new DeepPointer(0x00EE6C34, 0x3F0); // number of questlines completed (from ingame stats)
+            _isAlduin2DefeatedPtr = new DeepPointer(0x1711608); // == 1 when last blow is struck on alduin
+            _questlinesCompletedPtr = new DeepPointer(0x00EE6C34, 0x3F0); // number of questlines completed (from ingame stats)
             _collegeOfWinterholdQuestsCompletedPtr = new DeepPointer(0x00EE6C34, 0x38c); // number of college of winterhold quests completed (from ingame stats)
             _companionsQuestsCompletedPtr = new DeepPointer(0x00EE6C34, 0x378); // number of companions quests completed (from ingame stats)
             _darkBrotherhoodQuestsCompletedPtr = new DeepPointer(0x00EE6C34, 0x3b4); // number of dark brotherhood quests completed (from ingame stats)
@@ -207,24 +207,7 @@ namespace LiveSplit.Skyrim
                     Trace.WriteLine("[NoLoads] Got TESV.exe!");
 
                     uint frameCounter = 0;
-
-                    bool prevIsLoading = false;
-                    bool prevIsLoadingScreen = false;
-                    bool prevIsInFadeOut = false;
-                    bool prevIsAlduin2Defeated = false;
-                    int prevQuestlinesCompleted = 0;
-                    int prevCollegeOfWinterholdQuestsCompleted = 0;
-                    int prevCompanionsQuestsCompleted = 0;
-                    int prevDarkBrotherhoodQuestsCompleted = 0;
-                    int prevThievesGuildQuestsCompleted = 0;
-                    bool prevIsInEscapeMenu = false;
-                    int prevLocationID = 0;
-                    int prevWorld_X = 0;
-                    int prevWorld_Y = 0;
-                    int prevMainQuestsCompleted = 0;
-                    int prevLocationsDiscovered = 0;
-                    bool prevArePlayerControlsDisabled = false;
-                    float prevBearCartHealth = -1;
+                    SkyrimData data = new SkyrimData(game);
 
                     bool loadingStarted = false;
                     bool loadingScreenStarted = false;
@@ -241,71 +224,36 @@ namespace LiveSplit.Skyrim
 
                     while (!game.HasExited)
                     {
-                        bool isLoading;
-                        _isLoadingPtr.Deref(game, out isLoading);
+                        data.IsLoadingScreen.SetValue(_isLoadingScreenPtr);
 
-                        bool isLoadingScreen;
-                        _isLoadingScreenPtr.Deref(game, out isLoadingScreen);
+                        //need to avoid doing more than one SetValue in the same iteration to not make the previous value invalid
+                        if (data.IsLoadingScreen.Current)
+                            data.IsLoading.SetValue(true);
+                        else
+                            data.IsLoading.SetValue(_isLoadingPtr);
 
-                        if (isLoadingScreen)
+                        data.IsInFadeOut.SetValue(_isInFadeOutPtr);
+                        data.LocationID.SetValue(_locationIDPtr);
+                        data.WorldX.SetValue(_world_XPtr);
+                        data.WorldY.SetValue(_world_YPtr);
+                        data.IsAlduin2Defeated.SetValue(_isAlduin2DefeatedPtr);
+                        data.QuestlinesCompleted.SetValue(_questlinesCompletedPtr);
+                        data.CollegeOfWinterholdQuestsCompleted.SetValue(_collegeOfWinterholdQuestsCompletedPtr);
+                        data.CompanionsQuestsCompleted.SetValue(_companionsQuestsCompletedPtr);
+                        data.DarkBrotherhoodQuestsCompleted.SetValue(_darkBrotherhoodQuestsCompletedPtr);
+                        data.ThievesGuildQuestsCompleted.SetValue(_thievesGuildQuestsCompletedPtr);
+                        data.IsInEscapeMenu.SetValue(_isInEscapeMenuPtr);
+                        data.MainQuestsCompleted.SetValue(_mainQuestsCompletedPtr);
+                        data.WordsOfPowerLearned.SetValue(_wordsOfPowerLearnedPtr);
+                        data.Alduin1Health.SetValue(_Alduin1HealthPtr);
+                        data.LocationsDiscovered.SetValue(_locationsDiscoveredPtr);
+                        data.ArePlayerControlsDisabled.SetValue(_arePlayerControlsDisablePtr);
+                        data.BearCartHealth.SetValue(_bearCartHealthPtr);
+
+
+                        if (data.IsLoading.HasChanged)
                         {
-                            isLoading = true;
-                        }
-
-                        bool isInFadeOut;
-                        _isInFadeOutPtr.Deref(game, out isInFadeOut);
-
-                        int locationID;
-                        _locationID.Deref(game, out locationID);
-
-                        int world_X;
-                        _world_XPtr.Deref(game, out world_X);
-
-                        int world_Y;
-                        _world_YPtr.Deref(game, out world_Y);
-
-                        bool isAlduin2Defeated;
-                        _isAlduinDefeatedPtr.Deref(game, out isAlduin2Defeated);
-
-                        int questlinesCompleted;
-                        _questlinesCompleted.Deref(game, out questlinesCompleted);
-
-                        int collegeOfWinterholdQuestsCompleted;
-                        _collegeOfWinterholdQuestsCompletedPtr.Deref(game, out collegeOfWinterholdQuestsCompleted);
-
-                        int companionsQuestsCompleted;
-                        _companionsQuestsCompletedPtr.Deref(game, out companionsQuestsCompleted);
-
-                        int darkBrotherhoodQuestsCompleted;
-                        _darkBrotherhoodQuestsCompletedPtr.Deref(game, out darkBrotherhoodQuestsCompleted);
-
-                        int thievesGuildQuestsCompleted;
-                        _thievesGuildQuestsCompletedPtr.Deref(game, out thievesGuildQuestsCompleted);
-
-                        bool isInEscapeMenu;
-                        _isInEscapeMenuPtr.Deref(game, out isInEscapeMenu);
-
-                        int mainquestsCompleted;
-                        _mainQuestsCompletedPtr.Deref(game, out mainquestsCompleted);
-
-                        int wordsOfPowerLearned;
-                        _wordsOfPowerLearnedPtr.Deref(game, out wordsOfPowerLearned);
-
-                        float alduin1Health;
-                        _Alduin1HealthPtr.Deref(game, out alduin1Health);
-
-                        int locationsDiscovered;
-                        _locationsDiscoveredPtr.Deref(game, out locationsDiscovered);
-
-                        bool arePlayerControlsDisabled;
-                        _arePlayerControlsDisablePtr.Deref(game, out arePlayerControlsDisabled);
-
-                        float bearCartHealth;
-                        _bearCartHealthPtr.Deref(game, out bearCartHealth);
-
-                        if (isLoading != prevIsLoading)
-                        {
-                            if (isLoading)
+                            if (data.IsLoading.Current)
                             {
                                 Trace.WriteLine(String.Format("[NoLoads] Load Start - {0}", frameCounter));
 
@@ -329,7 +277,7 @@ namespace LiveSplit.Skyrim
 
                                     if (!loadScreenFadeoutStarted)
                                     {
-                                        if (locationID == (int)Locations.Tamriel && world_X == 13 && (world_Y == -10 || world_Y == -9) && wordsOfPowerLearned == 3)
+                                        if (data.LocationID.Current == (int)Locations.Tamriel && data.WorldX.Current == 13 && (data.WorldY.Current == -10 || data.WorldY.Current == -9) && data.WordsOfPowerLearned.Current == 3)
                                         {
                                             Split(SplitArea.ClearSky, frameCounter);
                                         }
@@ -344,26 +292,28 @@ namespace LiveSplit.Skyrim
                                         }
                                     }, null);
                                 }
+                                else
+                                    Trace.WriteLine("what the fuck this should never be hit");
                             }
                         }
 
-                        if (isLoadingScreen != prevIsLoadingScreen)
+                        if (data.IsLoadingScreen.HasChanged)
                         {
-                            if (isLoadingScreen)
+                            if (data.IsLoadingScreen.Current)
                             {
-                                Trace.WriteLine(String.Format("[NoLoads] LoadScreen Start at {0} X: {1} Y: {2} - {3}", locationID.ToString("X8"), world_X, world_Y, frameCounter));
+                                Trace.WriteLine(String.Format("[NoLoads] LoadScreen Start at {0} X: {1} Y: {2} - {3}", data.LocationID.Current.ToString("X8"), data.WorldX.Current, data.WorldY.Current, frameCounter));
 
                                 loadingScreenStarted = true;
-                                loadScreenStartLocationID = locationID;
-                                loadScreenStartWorld_X = world_X;
-                                loadScreenStartWorld_Y = world_Y;
+                                loadScreenStartLocationID = data.LocationID.Current;
+                                loadScreenStartWorld_X = data.WorldX.Current;
+                                loadScreenStartWorld_Y = data.WorldY.Current;
 
-                                if (isInFadeOut)
+                                if (data.IsInFadeOut.Current)
                                 {
                                     loadScreenFadeoutStarted = true;
                                 }
 
-                                if (isInEscapeMenu)
+                                if (data.IsInEscapeMenu.Current)
                                 {
                                     isLoadingSaveFromMenu = true;
                                 }
@@ -401,7 +351,7 @@ namespace LiveSplit.Skyrim
                             }
                             else
                             {
-                                Trace.WriteLine(String.Format("[NoLoads] LoadScreen End at {0} X: {1} Y: {2} - {3}", locationID.ToString("X8"), world_X, world_Y, frameCounter));
+                                Trace.WriteLine(String.Format("[NoLoads] LoadScreen End at {0} X: {1} Y: {2} - {3}", data.LocationID.Current.ToString("X8"), data.WorldX.Current, data.WorldY.Current, frameCounter));
 
                                 if (loadingScreenStarted)
                                 {
@@ -411,12 +361,12 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        if (isInFadeOut != prevIsInFadeOut)
+                        if (data.IsInFadeOut.HasChanged)
                         {
-                            if (isInFadeOut)
+                            if (data.IsInFadeOut.Current)
                             {
                                 Debug.WriteLine(String.Format("[NoLoads] Fadeout started - {0}", frameCounter));
-                                if (isLoadingScreen)
+                                if (data.IsLoadingScreen.Current)
                                 {
                                     loadScreenFadeoutStarted = true;
                                 }
@@ -425,8 +375,8 @@ namespace LiveSplit.Skyrim
                             {
                                 Debug.WriteLine(String.Format("[NoLoads] Fadeout ended - {0}", frameCounter));
                                 // if loadscreen fadeout finishes in helgen
-                                if (prevIsInFadeOut && loadScreenFadeoutStarted &&
-                                    locationID == (int)Locations.Tamriel && world_X == 3 && world_Y == -20)
+                                if (data.IsInFadeOut.Previous && loadScreenFadeoutStarted &&
+                                    data.LocationID.Current == (int)Locations.Tamriel && data.WorldX.Current == 3 && data.WorldY.Current == -20)
                                 {
                                     // reset
                                     Trace.WriteLine(String.Format("[NoLoads] Reset - {0}", frameCounter));
@@ -452,34 +402,34 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        if ((locationID != prevLocationID || world_X != prevWorld_X || world_Y != prevWorld_Y) && isWaitingLocationOrCoordsUpdate)
+                        if ((data.LocationID.HasChanged || data.WorldX.HasChanged || data.WorldY.HasChanged) && isWaitingLocationOrCoordsUpdate)
                         {
                             isWaitingLocationOrCoordsUpdate = false;
 
                             // if loadscreen starts while in front of the door of Thalmor Embassy and doesn't end inside the Embassy
                             if (loadScreenStartLocationID == (int)Locations.Tamriel && loadScreenStartWorld_X == -20 && loadScreenStartWorld_Y == 28 &&
-                                locationID != (int)Locations.ThalmorEmbassy02 &&
+                                data.LocationID.Current != (int)Locations.ThalmorEmbassy02 &&
                                     (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
                             {
                                 Split(SplitArea.ThalmorEmbassy, frameCounter);
                             }
                             // if loadscreen starts while in front of the Sleeping Giant Inn and doesn't end inside it
                             else if (loadScreenStartLocationID == (int)Locations.Tamriel && loadScreenStartWorld_X == 5 && loadScreenStartWorld_Y == -11 &&
-                                locationID != (int)Locations.RiverwoodSleepingGiantInn &&
+                                data.LocationID.Current != (int)Locations.RiverwoodSleepingGiantInn &&
                                 (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
                             {
                                 Split(SplitArea.Riverwood, frameCounter);
                             }
                             // if loadscreen starts outside Septimus' Outpost and doesn't end inside it
                             else if (loadScreenStartLocationID == (int)Locations.Tamriel && loadScreenStartWorld_X == 28 && loadScreenStartWorld_Y == 34 &&
-                                locationID != (int)Locations.SeptimusSignusOutpost &&
+                                data.LocationID.Current != (int)Locations.SeptimusSignusOutpost &&
                                     (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
                             {
                                 Split(SplitArea.Septimus, frameCounter);
                             }
                             // if loadscreen starts outside Mzark Tower and doesn't end inside it
                             else if (loadScreenStartLocationID == (int)Locations.Tamriel && loadScreenStartWorld_X == 6 && loadScreenStartWorld_Y == 11 &&
-                                locationID != (int)Locations.TowerOfMzark &&
+                                data.LocationID.Current != (int)Locations.TowerOfMzark &&
                                     (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
                             {
                                 Split(SplitArea.MzarkTower, frameCounter);
@@ -487,7 +437,7 @@ namespace LiveSplit.Skyrim
                             // if loadscreen starts in High Hrothgar's whereabouts and doesn't end inside
                             else if (loadScreenStartLocationID == (int)Locations.Tamriel && loadScreenStartWorld_X == 13 &&
                                 (loadScreenStartWorld_Y == -9 || loadScreenStartWorld_Y == -10) &&
-                                    locationID != (int)Locations.HighHrothgar)
+                                    data.LocationID.Current != (int)Locations.HighHrothgar)
                             {
                                 if (!splitStates[(int)SplitArea.HighHrothgar])
                                 {
@@ -500,53 +450,53 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        if (locationID != prevLocationID && isWaitingLocationIDUpdate)
+                        if (data.LocationID.HasChanged && isWaitingLocationIDUpdate)
                         {
                             isWaitingLocationIDUpdate = false;
 
-                            if (locationID == (int)Locations.SkyHavenTemple)
+                            if (data.LocationID.Current == (int)Locations.SkyHavenTemple)
                             {
                                 isSkyHavenTempleVisited = true;
                             }
 
                             // if loadscreen starts in dragonsreach and ends in whiterun
                             if (loadScreenStartLocationID == (int)Locations.WhiterunDragonsreach &&
-                                locationID == (int)Locations.WhiterunWorld && world_X == 6 && world_Y == 0 &&
+                                data.LocationID.Current == (int)Locations.WhiterunWorld && data.WorldX.Current == 6 && data.WorldY.Current == 0 &&
                                 _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE)
                             {
                                 Split(SplitArea.Whiterun, frameCounter);
                             }
                             // if loadscreen starts in whiterun and doesn't end in dragonsreach
                             else if (loadScreenStartLocationID == (int)Locations.WhiterunWorld && loadScreenStartWorld_X == 6 && loadScreenStartWorld_Y == 0 &&
-                                locationID != (int)Locations.WhiterunDragonsreach &&
+                                data.LocationID.Current != (int)Locations.WhiterunDragonsreach &&
                                 (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
                             {
                                 Split(SplitArea.Whiterun, frameCounter);
                             }
                             // if loadscreen starts Thalmor Embassy and ends in front of its door
                             else if (loadScreenStartLocationID == (int)Locations.ThalmorEmbassy02 &&
-                                locationID == (int)Locations.Tamriel && world_X == -20 && world_Y == 28 &&
+                                data.LocationID.Current == (int)Locations.Tamriel && data.WorldX.Current == -20 && data.WorldY.Current == 28 &&
                                     _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE)
                             {
                                 Split(SplitArea.ThalmorEmbassy, frameCounter);
                             }
                             // if loadscreen starts while in front of the ratway door and doesn't end inside it
                             else if (loadScreenStartLocationID == (int)Locations.RiftenWorld && loadScreenStartWorld_X == 42 && loadScreenStartWorld_Y == -24 &&
-                                locationID != (int)Locations.RiftenRatway01 &&
+                                data.LocationID.Current != (int)Locations.RiftenRatway01 &&
                                     (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
                             {
                                 Split(SplitArea.Esbern, frameCounter);
                             }
                             // if loadscreen starts inside the ratway and ends in front of its door
                             else if (loadScreenStartLocationID == (int)Locations.RiftenRatway01 &&
-                                locationID == (int)Locations.RiftenWorld && world_X == 42 && world_Y == -24 &&
+                                data.LocationID.Current == (int)Locations.RiftenWorld && data.WorldX.Current == 42 && data.WorldY.Current == -24 &&
                                     _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE)
                             {
                                 Split(SplitArea.Esbern, frameCounter);
                             }
                             // if loadscreen starts while leaving the Sleeping Giant Inn and ends in front of its door
                             else if (loadScreenStartLocationID == (int)Locations.RiverwoodSleepingGiantInn &&
-                                locationID == (int)Locations.Tamriel && world_X == 5 && world_Y == -11 &&
+                                data.LocationID.Current == (int)Locations.Tamriel && data.WorldX.Current == 5 && data.WorldY.Current == -11 &&
                                 _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE)
                             {
                                 leaveSleepingGiantInnCounter++;
@@ -557,21 +507,21 @@ namespace LiveSplit.Skyrim
                             }
                             // if loadingscren starts in Sky Haven Temple and ends in Karthspire
                             else if (loadScreenStartLocationID == (int)Locations.SkyHavenTemple &&
-                                locationID == (int)Locations.KarthspireRedoubtWorld &&
+                                data.LocationID.Current == (int)Locations.KarthspireRedoubtWorld &&
                                     _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE)
                             {
                                 Split(SplitArea.TheWall, frameCounter);
                             }
                             // if loadscreen starts inside Septimus' Outpost and ends in front of its door
                             else if (loadScreenStartLocationID == (int)Locations.SeptimusSignusOutpost &&
-                                locationID == (int)Locations.Tamriel && world_X == 28 && world_Y == 34 &&
+                                data.LocationID.Current == (int)Locations.Tamriel && data.WorldX.Current == 28 && data.WorldY.Current == 34 &&
                                     _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE)
                             {
                                 Split(SplitArea.Septimus, frameCounter);
                             }
                             // if loadscreen starts inside Mzark Tower and ends outside of it
                             else if (loadScreenStartLocationID == (int)Locations.TowerOfMzark &&
-                                locationID == (int)Locations.Tamriel && world_X == 6 && world_Y == 11 &&
+                                data.LocationID.Current == (int)Locations.Tamriel && data.WorldX.Current == 6 && data.WorldY.Current == 11 &&
                                     _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE)
                             {
                                 Split(SplitArea.MzarkTower, frameCounter);
@@ -580,14 +530,14 @@ namespace LiveSplit.Skyrim
                             else if (isAlduin1Defeated && loadScreenStartLocationID == (int)Locations.Tamriel && ((loadScreenStartWorld_X == 14 && loadScreenStartWorld_Y == -12) ||
                                 (loadScreenStartWorld_X == 14 && loadScreenStartWorld_Y == -13) || (loadScreenStartWorld_X == 13 && loadScreenStartWorld_Y == -12) ||
                                     (loadScreenStartWorld_X == 13 && loadScreenStartWorld_Y == -13)) &&
-                                        locationID == (int)Locations.WhiterunWorld && world_X == 6 && world_Y == -1 &&
+                                        data.LocationID.Current == (int)Locations.WhiterunWorld && data.WorldX.Current == 6 && data.WorldY.Current == -1 &&
                                             (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
                             {
                                 Split(SplitArea.Alduin1, frameCounter);
                             }
                             // if loadscreen starts in high hrothgar and ends in front of one of its doors
                             else if (loadScreenStartLocationID == (int)Locations.HighHrothgar &&
-                                locationID == (int)Locations.Tamriel && world_X == 13 && (world_Y == -9 || world_Y == -10) &&
+                                data.LocationID.Current == (int)Locations.Tamriel && data.WorldX.Current == 13 && (data.WorldY.Current == -9 || data.WorldY.Current == -10) &&
                                     (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE))
                             {
                                 if (!isCouncilDone)
@@ -601,59 +551,59 @@ namespace LiveSplit.Skyrim
                             }
                             // if loadscreen starts in Solitude in front of the door of Castle Dour and doesn't end inside it
                             else if (loadScreenStartLocationID == (int)Locations.SolitudeWorld && loadScreenStartWorld_X == -16 && loadScreenStartWorld_Y == 26 &&
-                                locationID != (int)Locations.SolitudeCastleDour &&
+                                data.LocationID.Current != (int)Locations.SolitudeCastleDour &&
                                 (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
                             {
                                 Split(SplitArea.Solitude, frameCounter);
                             }
                             // if loadscreen starts in Solitude Castle Dour and ends outside in front of its door
                             else if (loadScreenStartLocationID == (int)Locations.SolitudeCastleDour &&
-                                locationID == (int)Locations.SolitudeWorld && world_X == -16 && world_Y == 26 &&
+                                data.LocationID.Current == (int)Locations.SolitudeWorld && data.WorldX.Current == -16 && data.WorldY.Current == 26 &&
                                 _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE)
                             {
                                 Split(SplitArea.Solitude, frameCounter);
                             }
                             // if loadscreen starts in Windhelm and doesn't end inside
                             else if (loadScreenStartLocationID == (int)Locations.WindhelmWorld && loadScreenStartWorld_X == 32 && loadScreenStartWorld_Y == 10 &&
-                                locationID != (int)Locations.WindhelmPalaceoftheKings &&
+                                data.LocationID.Current != (int)Locations.WindhelmPalaceoftheKings &&
                                 (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
                             {
                                 Split(SplitArea.Windhelm, frameCounter);
                             }
                             // if loadscreen starts in Windhelm's Palace of the Kings and ends outside
                             else if (loadScreenStartLocationID == (int)Locations.WindhelmPalaceoftheKings &&
-                                locationID == (int)Locations.WindhelmWorld && world_X == 32 && world_Y == 10 &&
+                                data.LocationID.Current == (int)Locations.WindhelmWorld && data.WorldX.Current == 32 && data.WorldY.Current == 10 &&
                                 _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE)
                             {
                                 Split(SplitArea.Windhelm, frameCounter);
                             }
                             // if loadscreen ends in Skuldafn.
-                            else if (locationID == (int)Locations.SkuldafnWorld)
+                            else if (data.LocationID.Current == (int)Locations.SkuldafnWorld)
                             {
                                 Split(SplitArea.Odahviing, frameCounter);
                             }
                             // if loadscreen ends in Sovngarde
-                            else if (locationID == (int)Locations.Sovngarde)
+                            else if (data.LocationID.Current == (int)Locations.Sovngarde)
                             {
                                 Split(SplitArea.EnterSovngarde, frameCounter);
                             }
                         }
 
-                        if (locationsDiscovered != prevLocationsDiscovered)
+                        if (data.LocationsDiscovered.HasChanged)
                         {
-                            if (locationID == (int)Locations.Tamriel && ((world_X == 14 && world_Y == -12) || (world_X == 14 && world_Y == -13) || (world_X == 13 && world_Y == -12) ||
-                                (world_X == 13 && world_Y == -13)) &&
+                            if (data.LocationID.Current == (int)Locations.Tamriel && ((data.WorldX.Current == 14 && data.WorldY.Current == -12) || (data.WorldX.Current == 14 && data.WorldY.Current == -13) || (data.WorldX.Current == 13 && data.WorldY.Current == -12) ||
+                                (data.WorldX.Current == 13 && data.WorldY.Current == -13)) &&
                                 _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE)
                             {
                                 Split(SplitArea.HorseClimb, frameCounter);
                             }
                         }
 
-                        if (arePlayerControlsDisabled != prevArePlayerControlsDisabled && !isInEscapeMenu)
+                        if (data.ArePlayerControlsDisabled.HasChanged && !data.IsInEscapeMenu.Current)
                         {
-                            if (arePlayerControlsDisabled)
+                            if (data.ArePlayerControlsDisabled.Current)
                             {
-                                if (locationID == (int)Locations.Tamriel && world_X == 13 && world_Y == -12 &&
+                                if (data.LocationID.Current == (int)Locations.Tamriel && data.WorldX.Current == 13 && data.WorldY.Current == -12 &&
                                     (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DRTCHOPS || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
                                 {
                                     Split(SplitArea.CutsceneStart, frameCounter);
@@ -661,7 +611,7 @@ namespace LiveSplit.Skyrim
                             }
                             else
                             {
-                                if (locationID == (int)Locations.Tamriel && world_X == 13 && world_Y == -12 &&
+                                if (data.LocationID.Current == (int)Locations.Tamriel && data.WorldX.Current == 13 && data.WorldY.Current == -12 &&
                                     (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_GR3YSCALE || _settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_DALLETH))
                                 {
                                     Split(SplitArea.CutsceneEnd, frameCounter);
@@ -669,9 +619,9 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        if (alduin1Health < 0 && !isAlduin1Defeated)
+                        if (data.Alduin1Health.Current < 0 && !isAlduin1Defeated)
                         {
-                            Debug.WriteLine(String.Format("[NoLoads] Alduin 1 has been defeated. HP: {1} - {0}", frameCounter, alduin1Health));
+                            Debug.WriteLine(String.Format("[NoLoads] Alduin 1 has been defeated. HP: {1} - {0}", frameCounter, data.Alduin1Health.Current));
                             isAlduin1Defeated = true;
 
                             if (_settings.AnyPercentTemplate == SkyrimSettings.TEMPLATE_MRWALRUS)
@@ -680,9 +630,9 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        if (locationID == (int)Locations.HelgenKeep01 && bearCartHealth < 0 && prevBearCartHealth >= 0)
+                        if (data.LocationID.Current == (int)Locations.HelgenKeep01 && data.BearCartHealth.Current < 0 && data.BearCartHealth.Previous >= 0 && data.BearCartHealth.PrevDerefSuccess)
                         {
-                            Debug.WriteLine(String.Format("[NoLoads] BEAR CART! HP: {1} - {0}", frameCounter, bearCartHealth));
+                            Debug.WriteLine(String.Format("[NoLoads] BEAR CART! HP: {1} - {0}", frameCounter, data.BearCartHealth.Current));
 
                             _uiThread.Post(d =>
                             {
@@ -694,7 +644,7 @@ namespace LiveSplit.Skyrim
                         }
 
                         // the only mainquest you can complete here is the council so when a quest completes, walrus' council split
-                        if (mainquestsCompleted  == prevMainQuestsCompleted + 1 && locationID == (int)Locations.HighHrothgar)
+                        if (data.MainQuestsCompleted.Current == data.MainQuestsCompleted.Previous + 1 && data.LocationID.Current == (int)Locations.HighHrothgar)
                         {
                             isCouncilDone = true;
 
@@ -705,7 +655,7 @@ namespace LiveSplit.Skyrim
                         }
 
                         // if alduin is defeated in sovngarde
-                        if (isAlduin2Defeated != prevIsAlduin2Defeated && isAlduin2Defeated && locationID == (int)Locations.Sovngarde)
+                        if (data.IsAlduin2Defeated.HasChanged && data.IsAlduin2Defeated.Current && data.LocationID.Current == (int)Locations.Sovngarde)
                         {
                             // AlduinDefeated split
                             Split(SplitArea.AlduinDefeated, frameCounter);
@@ -717,25 +667,25 @@ namespace LiveSplit.Skyrim
                             lastQuestCompleted = SplitArea.None;
                         }
 
-                        if (collegeOfWinterholdQuestsCompleted > prevCollegeOfWinterholdQuestsCompleted)
+                        if (data.CollegeOfWinterholdQuestsCompleted.Current > data.CollegeOfWinterholdQuestsCompleted.Previous)
                         {
                             Debug.WriteLine(String.Format("[NoLoads] A College of Winterhold quest has been completed - {0}", frameCounter));
                             lastQuestCompleted = SplitArea.CollegeOfWinterholdQuestlineCompleted;
                             lastQuestframeCounter = frameCounter;
                         }
-                        else if (companionsQuestsCompleted > prevCompanionsQuestsCompleted)
+                        else if (data.CompanionsQuestsCompleted.Current > data.CompanionsQuestsCompleted.Previous)
                         {
                             Debug.WriteLine(String.Format("[NoLoads] A Companions quest has been completed - {0}", frameCounter));
                             lastQuestCompleted = SplitArea.CompanionsQuestlineCompleted;
                             lastQuestframeCounter = frameCounter;
                         }
-                        else if (darkBrotherhoodQuestsCompleted > prevDarkBrotherhoodQuestsCompleted)
+                        else if (data.DarkBrotherhoodQuestsCompleted.Current > data.DarkBrotherhoodQuestsCompleted.Previous)
                         {
                             Debug.WriteLine(String.Format("[NoLoads] A Dark Brotherhood quest has been completed - {0}", frameCounter));
                             lastQuestCompleted = SplitArea.DarkBrotherhoodQuestlineCompleted;
                             lastQuestframeCounter = frameCounter;
                         }
-                        else if (thievesGuildQuestsCompleted > prevThievesGuildQuestsCompleted)
+                        else if (data.ThievesGuildQuestsCompleted.Current > data.ThievesGuildQuestsCompleted.Previous)
                         {
                             Debug.WriteLine(String.Format("[NoLoads] A Thieves' Guild quest has been completed - {0}", frameCounter));
                             lastQuestCompleted = SplitArea.ThievesGuildQuestlineCompleted;
@@ -743,34 +693,17 @@ namespace LiveSplit.Skyrim
                         }
 
                         // if a questline is completed
-                        if (questlinesCompleted > prevQuestlinesCompleted)
+                        if (data.QuestlinesCompleted.Current > data.QuestlinesCompleted.Previous)
                         {
                             Debug.WriteLineIf(lastQuestCompleted == SplitArea.None, String.Format("[NoLoads] A questline has been completed. - {0}", frameCounter));
                             Split(lastQuestCompleted, frameCounter);
                         }
 
 
-                        Debug.WriteLineIf(locationID != prevLocationID, String.Format("[NoLoads] Location changed to {0} - {1}", locationID.ToString("X8"), frameCounter));
-                        Debug.WriteLineIf(world_X != prevWorld_X || world_Y != prevWorld_Y, String.Format("[NoLoads] Coords changed to X: {0} Y: {1} - {2}", world_X, world_Y, frameCounter));
-                        Debug.WriteLineIf(isInEscapeMenu != prevIsInEscapeMenu, String.Format("[NoLoads] isInEscapeMenu changed to {0} - {1}", isInEscapeMenu, frameCounter));
+                        Debug.WriteLineIf(data.LocationID.HasChanged, String.Format("[NoLoads] Location changed to {0} - {1}", data.LocationID.Current.ToString("X8"), frameCounter));
+                        Debug.WriteLineIf(data.WorldX.HasChanged || data.WorldY.HasChanged, String.Format("[NoLoads] Coords changed to X: {0} Y: {1} - {2}", data.WorldX.Current, data.WorldY.Current, frameCounter));
+                        Debug.WriteLineIf(data.IsInEscapeMenu.HasChanged, String.Format("[NoLoads] isInEscapeMenu changed to {0} - {1}", data.IsInEscapeMenu.Current, frameCounter));
 
-                        prevIsLoading = isLoading;
-                        prevIsLoadingScreen = isLoadingScreen;
-                        prevIsInFadeOut = isInFadeOut;
-                        prevIsAlduin2Defeated = isAlduin2Defeated;
-                        prevQuestlinesCompleted = questlinesCompleted;
-                        prevCollegeOfWinterholdQuestsCompleted = collegeOfWinterholdQuestsCompleted;
-                        prevCompanionsQuestsCompleted = companionsQuestsCompleted;
-                        prevDarkBrotherhoodQuestsCompleted = darkBrotherhoodQuestsCompleted;
-                        prevThievesGuildQuestsCompleted = thievesGuildQuestsCompleted;
-                        prevIsInEscapeMenu = isInEscapeMenu;
-                        prevLocationID = locationID;
-                        prevWorld_X = world_X;
-                        prevWorld_Y = world_Y;
-                        prevMainQuestsCompleted = mainquestsCompleted;
-                        prevLocationsDiscovered = locationsDiscovered;
-                        prevArePlayerControlsDisabled = arePlayerControlsDisabled;
-                        prevBearCartHealth = bearCartHealth;
                         frameCounter++;
 
                         Thread.Sleep(15);

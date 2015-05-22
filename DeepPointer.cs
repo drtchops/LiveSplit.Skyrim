@@ -8,7 +8,7 @@ using System.Text;
 
 namespace LiveSplit.Skyrim
 {
-    class DeepPointer
+    public class DeepPointer
     {
         private List<int> _offsets;
         private int _base;
