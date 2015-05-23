@@ -123,34 +123,34 @@ namespace LiveSplit.Skyrim
             _state.IsGameTimePaused = false;
         }
 
-        void gameMemory_OnSplitCompleted(object sender, GameMemory.SplitArea split, uint frame)
+        void gameMemory_OnSplitCompleted(object sender, SplitArea split, uint frame)
         {
-            Debug.WriteLineIf(split != GameMemory.SplitArea.None, String.Format("[NoLoads] Trying to split {0} with {1} template, State: {2} - {3}", split, this.Settings.AnyPercentTemplate, _gameMemory.splitStates[(int)split], frame));
+            Debug.WriteLineIf(split != SplitArea.None, String.Format("[NoLoads] Trying to split {0} with {1} template, State: {2} - {3}", split, this.Settings.AnyPercentTemplate, _gameMemory.splitStates[(int)split], frame));
             if (_state.CurrentPhase == TimerPhase.Running && !_gameMemory.splitStates[(int)split] &&
-                ((split == GameMemory.SplitArea.Helgen && this.Settings.Helgen) ||
-                (split == GameMemory.SplitArea.Whiterun && this.Settings.Whiterun) ||
-                (split == GameMemory.SplitArea.ThalmorEmbassy && this.Settings.ThalmorEmbassy) ||
-                (split == GameMemory.SplitArea.Esbern && this.Settings.Esbern) ||
-                (split == GameMemory.SplitArea.Riverwood && this.Settings.Riverwood) ||
-                (split == GameMemory.SplitArea.TheWall && this.Settings.TheWall) ||
-                (split == GameMemory.SplitArea.Septimus && this.Settings.Septimus) ||
-                (split == GameMemory.SplitArea.MzarkTower && this.Settings.MzarkTower) ||
-                (split == GameMemory.SplitArea.ClearSky && this.Settings.ClearSky) ||
-                (split == GameMemory.SplitArea.HorseClimb && this.Settings.HorseClimb) ||
-                (split == GameMemory.SplitArea.CutsceneEnd && this.Settings.CutsceneEnd) ||
-                (split == GameMemory.SplitArea.CutsceneStart && this.Settings.CutsceneStart) ||
-                (split == GameMemory.SplitArea.Alduin1 && this.Settings.Alduin1) ||
-                (split == GameMemory.SplitArea.HighHrothgar && this.Settings.HighHrothgar) ||
-                (split == GameMemory.SplitArea.Solitude && this.Settings.Solitude) ||
-                (split == GameMemory.SplitArea.Windhelm && this.Settings.Windhelm) ||
-                (split == GameMemory.SplitArea.Council && this.Settings.Council) ||
-                (split == GameMemory.SplitArea.Odahviing && this.Settings.Odahviing) ||
-                (split == GameMemory.SplitArea.EnterSovngarde && this.Settings.EnterSovngarde) ||
-                (split == GameMemory.SplitArea.CollegeOfWinterholdQuestlineCompleted && this.Settings.CollegeOfWinterhold) ||
-                (split == GameMemory.SplitArea.CompanionsQuestlineCompleted && this.Settings.Companions) ||
-                (split == GameMemory.SplitArea.DarkBrotherhoodQuestlineCompleted && this.Settings.DarkBrotherhood) ||
-                (split == GameMemory.SplitArea.ThievesGuildQuestlineCompleted && this.Settings.ThievesGuild) ||
-                (split == GameMemory.SplitArea.AlduinDefeated && this.Settings.AlduinDefeated)))
+                ((split == SplitArea.Helgen && this.Settings.Helgen) ||
+                (split == SplitArea.Whiterun && this.Settings.Whiterun) ||
+                (split == SplitArea.ThalmorEmbassy && this.Settings.ThalmorEmbassy) ||
+                (split == SplitArea.Esbern && this.Settings.Esbern) ||
+                (split == SplitArea.Riverwood && this.Settings.Riverwood) ||
+                (split == SplitArea.TheWall && this.Settings.TheWall) ||
+                (split == SplitArea.Septimus && this.Settings.Septimus) ||
+                (split == SplitArea.MzarkTower && this.Settings.MzarkTower) ||
+                (split == SplitArea.ClearSky && this.Settings.ClearSky) ||
+                (split == SplitArea.HorseClimb && this.Settings.HorseClimb) ||
+                (split == SplitArea.CutsceneEnd && this.Settings.CutsceneEnd) ||
+                (split == SplitArea.CutsceneStart && this.Settings.CutsceneStart) ||
+                (split == SplitArea.Alduin1 && this.Settings.Alduin1) ||
+                (split == SplitArea.HighHrothgar && this.Settings.HighHrothgar) ||
+                (split == SplitArea.Solitude && this.Settings.Solitude) ||
+                (split == SplitArea.Windhelm && this.Settings.Windhelm) ||
+                (split == SplitArea.Council && this.Settings.Council) ||
+                (split == SplitArea.Odahviing && this.Settings.Odahviing) ||
+                (split == SplitArea.EnterSovngarde && this.Settings.EnterSovngarde) ||
+                (split == SplitArea.CollegeOfWinterholdQuestlineCompleted && this.Settings.CollegeOfWinterhold) ||
+                (split == SplitArea.CompanionsQuestlineCompleted && this.Settings.Companions) ||
+                (split == SplitArea.DarkBrotherhoodQuestlineCompleted && this.Settings.DarkBrotherhood) ||
+                (split == SplitArea.ThievesGuildQuestlineCompleted && this.Settings.ThievesGuild) ||
+                (split == SplitArea.AlduinDefeated && this.Settings.AlduinDefeated)))
             {
                 Trace.WriteLine(String.Format("[NoLoads] {0} Split with {2} template - {1}", split, frame, this.Settings.AnyPercentTemplate));
                 _timer.Split();
