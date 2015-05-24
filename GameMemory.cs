@@ -554,10 +554,7 @@ namespace LiveSplit.Skyrim
 
                         if (data.LocationsDiscovered.HasChanged)
                         {
-                            if ((data.Location == new Location(Locations.Tamriel, 14, -12)
-                                    || data.Location == new Location(Locations.Tamriel, 14, -13)
-                                    || data.Location == new Location(Locations.Tamriel, 13, -12)
-                                    || data.Location == new Location(Locations.Tamriel, 13, -13)))
+                            if (data.Location == Location.ThroatOfTheWorld)
                             {
                                 Split(SplitArea.HorseClimb, new string[] { SkyrimSettings.TEMPLATE_GR3YSCALE }, frameCounter);
                             }
