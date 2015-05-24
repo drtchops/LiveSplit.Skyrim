@@ -343,8 +343,9 @@ namespace LiveSplit.Skyrim
                                 };
                                 Split(SplitArea.ThalmorEmbassy, templates, frameCounter);
                             }
-                            // if loadscreen starts while in front of the Sleeping Giant Inn and doesn't end inside it
-                            else if (data.loadScreenStartLocation == new Location(Locations.Tamriel, 5, -11) && data.LocationID.Current != (int)Locations.RiverwoodSleepingGiantInn)
+                            // if loadscreen starts while in front of the Sleeping Giant Inn and doesn't end inside it or in riften
+                            else if (data.loadScreenStartLocation == new Location(Locations.Tamriel, 5, -11)
+                                && data.LocationID.Current != (int)Locations.RiverwoodSleepingGiantInn && data.LocationID.Current != (int)Locations.RiftenWorld)
                             {
                                 string[] templates = new string[]
                                 {
@@ -552,12 +553,9 @@ namespace LiveSplit.Skyrim
                             }
                         }
 
-                        if (data.LocationsDiscovered.HasChanged)
+                        if (data.LocationsDiscovered.Current == data.LocationsDiscovered.Previous + 1 && data.Location == Location.ThroatOfTheWorld)
                         {
-                            if (data.Location == Location.ThroatOfTheWorld)
-                            {
                                 Split(SplitArea.HorseClimb, new string[]{ SkyrimSettings.TEMPLATE_GR3YSCALE }, frameCounter);
-                            }
                         }
 
                         if (data.ArePlayerControlsDisabled.HasChanged && !data.IsInEscapeMenu.Current)
