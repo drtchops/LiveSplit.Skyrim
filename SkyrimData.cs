@@ -64,6 +64,14 @@ namespace LiveSplit.Skyrim
         public readonly int? worldX;
         public readonly int? worldY;
 
+        public static readonly Location[] ThroatOfTheWorld = new Location[]
+        {
+            new Location(Locations.Tamriel, 14, -12),
+            new Location(Locations.Tamriel, 14, -13),
+            new Location(Locations.Tamriel, 13, -12),
+            new Location(Locations.Tamriel, 13, -13)
+        };
+
         public Location(int? locationID, int? cellX = null, int? cellY = null)
         {
             ID = locationID;
@@ -105,6 +113,21 @@ namespace LiveSplit.Skyrim
             return true;
         }
 
+        public static bool operator ==(Location x, Location[] array)
+        {
+            foreach (var location in array)
+            {
+                if (location == x)
+                    return true;
+            }
+            return false;
+        }
+
+        public static bool  operator ==(Location[] array, Location x)
+        {
+            return x == array;
+        }
+
         public override bool Equals(Object obj)
         {
             return obj is Location && this == (Location)obj;
@@ -113,6 +136,16 @@ namespace LiveSplit.Skyrim
         public static bool operator !=(Location x, Location y)
         {
             return !(x == y);
+        }
+        
+        public static bool operator !=(Location x, Location[] array)
+        {
+            return !(x == array);
+        }
+
+        public static bool operator !=(Location[] array, Location x)
+        {
+            return !(x == array);
         }
 
         public override int GetHashCode()

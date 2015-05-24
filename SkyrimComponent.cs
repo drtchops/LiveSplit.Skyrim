@@ -59,7 +59,7 @@ namespace LiveSplit.Skyrim
                 catch (System.IO.IOException) { Trace.WriteLine("[NoLoads] Error when extracting bear cart sound to temp folder."); }
             }
 
-            _gameMemory = new GameMemory(this.Settings);
+            _gameMemory = new GameMemory();
             _gameMemory.OnFirstLevelLoading += gameMemory_OnFirstLevelLoading;
             _gameMemory.OnPlayerGainedControl += gameMemory_OnPlayerGainedControl;
             _gameMemory.OnLoadStarted += gameMemory_OnLoadStarted;
@@ -123,10 +123,26 @@ namespace LiveSplit.Skyrim
             _state.IsGameTimePaused = false;
         }
 
-        void gameMemory_OnSplitCompleted(object sender, SplitArea split, uint frame)
+        void gameMemory_OnSplitCompleted(object sender, SplitArea split, string[] templates, uint frame)
         {
-            Debug.WriteLineIf(split != SplitArea.None, String.Format("[NoLoads] Trying to split {0} with {1} template, State: {2} - {3}", split, this.Settings.AnyPercentTemplate, _gameMemory.splitStates[(int)split], frame));
-            if (_state.CurrentPhase == TimerPhase.Running && !_gameMemory.splitStates[(int)split] &&
+            string templatesDbgStr = String.Empty;
+            if (templates != null)
+            {
+                uint i = 0;
+                foreach (string template in templates)
+                {
+                    templatesDbgStr += i > 0 ? " " : "";
+                    templatesDbgStr += "\"" + template + "\"";
+                    templatesDbgStr += i + 1 != templates.Length ? "," : "";
+                    i++;
+                }
+            }
+            else
+                templatesDbgStr = "Any";
+
+            Debug.WriteLineIf(split != SplitArea.None, String.Format("[NoLoads] Trying to split {0} with {1} templates, State: {2} - {3}", split, templatesDbgStr, _gameMemory.splitStates[(int)split], frame));
+            
+            if (_state.CurrentPhase == TimerPhase.Running && !_gameMemory.splitStates[(int)split] && (templates == null || Array.IndexOf(templates, Settings.AnyPercentTemplate) >= 0) &&
                 ((split == SplitArea.Helgen && this.Settings.Helgen) ||
                 (split == SplitArea.Whiterun && this.Settings.Whiterun) ||
                 (split == SplitArea.ThalmorEmbassy && this.Settings.ThalmorEmbassy) ||
@@ -152,7 +168,7 @@ namespace LiveSplit.Skyrim
                 (split == SplitArea.ThievesGuildQuestlineCompleted && this.Settings.ThievesGuild) ||
                 (split == SplitArea.AlduinDefeated && this.Settings.AlduinDefeated)))
             {
-                Trace.WriteLine(String.Format("[NoLoads] {0} Split with {2} template - {1}", split, frame, this.Settings.AnyPercentTemplate));
+                Trace.WriteLine(String.Format("[NoLoads] {0} Split with {2} templates - {1}", split, frame, templatesDbgStr));
                 _timer.Split();
                 _gameMemory.splitStates[(int)split] = true;
             }
