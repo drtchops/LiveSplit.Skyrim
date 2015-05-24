@@ -224,7 +224,6 @@ namespace LiveSplit.Skyrim
                     Settings.BearCartPB = new Time(BearCartSplit.RealTime, BearCartSplit.GameTime); // give new pb to settings so it can be saved
                     Settings.SaveBearCartConfig();
                 }
-
             }
 
             if (SoundComponent != null && !silent)
