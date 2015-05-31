@@ -14,8 +14,6 @@ namespace LiveSplit.Skyrim
         public event EventHandler OnPlayerGainedControl;
         public event EventHandler OnLoadStarted;
         public event EventHandler OnLoadFinished;
-        // public event EventHandler OnLoadScreenStarted;
-        // public event EventHandler OnLoadScreenFinished;
         public delegate void SplitCompletedEventHandler(object sender, SplitArea type, string[] template, uint frame);
         public event SplitCompletedEventHandler OnSplitCompleted;
         public event EventHandler OnBearCart;
