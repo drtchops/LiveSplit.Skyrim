@@ -48,7 +48,7 @@ namespace LiveSplit.Skyrim
         public bool loadScreenFadeoutStarted = false;
         public bool isLoadingSaveFromMenu = false;
         public Location loadScreenStartLocation;
-        public bool isWaitingLocationOrCoordsUpdate = false;
+        public bool isWaitingLocationUpdate = false;
         public bool isWaitingLocationIDUpdate = false;
         public SplitArea lastQuestCompleted = SplitArea.None;
         public uint lastQuestframeCounter = 0;

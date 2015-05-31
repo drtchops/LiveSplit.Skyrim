@@ -44,11 +44,6 @@ namespace LiveSplit.Skyrim
         public bool IsBearCartSecret { get; set; }
         public bool PlayBearCartSoundOnlyOnPB { get; set; }
 
-        public const string TEMPLATE_MRWALRUS = "MrWalrus";
-        public const string TEMPLATE_DRTCHOPS = "DrTChops";
-        public const string TEMPLATE_GR3YSCALE = "gr3yscale";
-        public const string TEMPLATE_DALLETH = "Dalleth";
-
         private const bool DEFAULT_AUTOSTART = true;
         private const bool DEFAULT_AUTORESET = true;
         private const bool DEFAULT_ALDUINDEFEATED = true;
@@ -75,7 +70,7 @@ namespace LiveSplit.Skyrim
         private const bool DEFAULT_COMPANIONS = false;
         private const bool DEFAULT_DARKBROTHERHOOD = false;
         private const bool DEFAULT_THIEVESGUILD = false;
-        private const string DEFAULT_ANYPERCENTTEMPLATE = TEMPLATE_MRWALRUS;
+        private const string DEFAULT_ANYPERCENTTEMPLATE = SplitTemplates.MRWALRUS;
         private const bool DEFAULT_BEARCARTPBNOTIFICATION = true;
         private const bool DEFAULT_PLAYBEARCARTSOUND = true;
         private const bool DEFAULT_PLAYBEARCARTSOUNDONLYONPB = false;
@@ -290,20 +285,19 @@ namespace LiveSplit.Skyrim
 
             if (element["AnyPercentTemplate"] != null)
             {
-                this.AnyPercentTemplate = element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_MRWALRUS) || element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_DRTCHOPS) ||
-                    element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_GR3YSCALE) || element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_DALLETH)
-                        ? element["AnyPercentTemplate"].InnerText
-                        : DEFAULT_ANYPERCENTTEMPLATE;
+                this.AnyPercentTemplate = SplitTemplates.Exists(element["AnyPercentTemplate"].InnerText)
+                    ? element["AnyPercentTemplate"].InnerText
+                    : DEFAULT_ANYPERCENTTEMPLATE;
             }
             else
             {
                 this.AnyPercentTemplate = DEFAULT_ANYPERCENTTEMPLATE;
             }
 
-            this.rbMrwalrus.Checked = this.AnyPercentTemplate == TEMPLATE_MRWALRUS;
-            this.rbDrtchops.Checked = this.AnyPercentTemplate == TEMPLATE_DRTCHOPS;
-            this.rbGr3yscale.Checked = this.AnyPercentTemplate == TEMPLATE_GR3YSCALE;
-            this.rbDalleth.Checked = this.AnyPercentTemplate == TEMPLATE_DALLETH;
+            this.rbMrwalrus.Checked = this.AnyPercentTemplate == SplitTemplates.MRWALRUS;
+            this.rbDrtchops.Checked = this.AnyPercentTemplate == SplitTemplates.DRTCHOPS;
+            this.rbGr3yscale.Checked = this.AnyPercentTemplate == SplitTemplates.GR3YSCALE;
+            this.rbDalleth.Checked = this.AnyPercentTemplate == SplitTemplates.DALLETH;
             UpdateTemplate();
 
             this.disableNbrSplitCheck = false;
@@ -355,23 +349,23 @@ namespace LiveSplit.Skyrim
         {
             if (rbMrwalrus.Checked)
             {
-                this.AnyPercentTemplate = TEMPLATE_MRWALRUS;
+                this.AnyPercentTemplate = SplitTemplates.MRWALRUS;
             }
             else if (rbDrtchops.Checked)
             {
-                this.AnyPercentTemplate = TEMPLATE_DRTCHOPS;
+                this.AnyPercentTemplate = SplitTemplates.DRTCHOPS;
             }
             else if (rbDalleth.Checked)
             {
-                this.AnyPercentTemplate = TEMPLATE_DALLETH;
+                this.AnyPercentTemplate = SplitTemplates.DALLETH;
             }
             else if (rbGr3yscale.Checked)
             {
-                this.AnyPercentTemplate = TEMPLATE_GR3YSCALE;
+                this.AnyPercentTemplate = SplitTemplates.GR3YSCALE;
             }
-            this.chkHorseClimb.Enabled = this.AnyPercentTemplate == TEMPLATE_GR3YSCALE;
-            this.chkCutsceneStart.Enabled = (this.AnyPercentTemplate == TEMPLATE_DRTCHOPS || this.AnyPercentTemplate == TEMPLATE_DALLETH);
-            this.chkCutsceneEnd.Enabled = (this.AnyPercentTemplate == TEMPLATE_GR3YSCALE || this.AnyPercentTemplate == TEMPLATE_DALLETH);
+            this.chkHorseClimb.Enabled = this.AnyPercentTemplate == SplitTemplates.GR3YSCALE;
+            this.chkCutsceneStart.Enabled = (this.AnyPercentTemplate == SplitTemplates.DRTCHOPS || this.AnyPercentTemplate == SplitTemplates.DALLETH);
+            this.chkCutsceneEnd.Enabled = (this.AnyPercentTemplate == SplitTemplates.GR3YSCALE || this.AnyPercentTemplate == SplitTemplates.DALLETH);
 
             CheckNbrAutoSplits();
         }
@@ -508,6 +502,25 @@ namespace LiveSplit.Skyrim
 
             if (_component.SoundComponent != null && !enable)
                 ((SoundComponent)_component.SoundComponent).Player.Stop();
+        }
+    }
+
+    public static class SplitTemplates
+    {
+        public const string MRWALRUS = "MrWalrus";
+        public const string DRTCHOPS = "DrTChops";
+        public const string GR3YSCALE = "gr3yscale";
+        public const string DALLETH = "Dalleth";
+
+        public static bool Exists(string template)
+        {
+            foreach (var fieldInfo in typeof(SplitTemplates).GetFields())
+            {
+                if (fieldInfo.IsStatic && fieldInfo.FieldType == typeof(string) && fieldInfo.GetValue(null) as string == template)
+                    return true;
+            }
+
+            return false;
         }
     }
 }
