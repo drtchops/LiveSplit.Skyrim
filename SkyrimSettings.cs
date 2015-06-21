@@ -1,4 +1,5 @@
 ﻿using LiveSplit.Model;
+using LiveSplit.UI;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -197,44 +198,44 @@ namespace LiveSplit.Skyrim
         {
             XmlElement settingsNode = doc.CreateElement("Settings");
 
-            settingsNode.AppendChild(ToElement(doc, "Version", Assembly.GetExecutingAssembly().GetName().Version.ToString(3)));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Version", Assembly.GetExecutingAssembly().GetName().Version.ToString(3)));
 
-            settingsNode.AppendChild(ToElement(doc, "AutoStart", this.AutoStart));
-            settingsNode.AppendChild(ToElement(doc, "AutoReset", this.AutoReset));
-            settingsNode.AppendChild(ToElement(doc, "AlduinDefeated", this.AlduinDefeated));
-            settingsNode.AppendChild(ToElement(doc, "Helgen", this.Helgen));
-            settingsNode.AppendChild(ToElement(doc, "Whiterun", this.Whiterun));
-            settingsNode.AppendChild(ToElement(doc, "ThalmorEmbassy", this.ThalmorEmbassy));
-            settingsNode.AppendChild(ToElement(doc, "Esbern", this.Esbern));
-            settingsNode.AppendChild(ToElement(doc, "Riverwood", this.Riverwood));
-            settingsNode.AppendChild(ToElement(doc, "Karthspire", this.Karthspire));
-            settingsNode.AppendChild(ToElement(doc, "Septimus", this.Septimus));
-            settingsNode.AppendChild(ToElement(doc, "TheWall", this.TheWall));
-            settingsNode.AppendChild(ToElement(doc, "MzarkTower", this.MzarkTower));
-            settingsNode.AppendChild(ToElement(doc, "ClearSky", this.ClearSky));
-            settingsNode.AppendChild(ToElement(doc, "HorseClimb", this.HorseClimb));
-            settingsNode.AppendChild(ToElement(doc, "CutsceneStart", this.CutsceneStart));
-            settingsNode.AppendChild(ToElement(doc, "CutsceneEnd", this.CutsceneEnd));
-            settingsNode.AppendChild(ToElement(doc, "Alduin1", this.Alduin1));
-            settingsNode.AppendChild(ToElement(doc, "HighHrothgar", this.HighHrothgar));
-            settingsNode.AppendChild(ToElement(doc, "Solitude", this.Solitude));
-            settingsNode.AppendChild(ToElement(doc, "Windhelm", this.Windhelm));
-            settingsNode.AppendChild(ToElement(doc, "Council", this.Council));
-            settingsNode.AppendChild(ToElement(doc, "Odahviing", this.Odahviing));
-            settingsNode.AppendChild(ToElement(doc, "EnterSovngarde", this.EnterSovngarde));
-            settingsNode.AppendChild(ToElement(doc, "CollegeOfWinterhold", this.CollegeOfWinterhold));
-            settingsNode.AppendChild(ToElement(doc, "Companions", this.Companions));
-            settingsNode.AppendChild(ToElement(doc, "DarkBrotherhood", this.DarkBrotherhood));
-            settingsNode.AppendChild(ToElement(doc, "ThievesGuild", this.ThievesGuild));
-            settingsNode.AppendChild(ToElement(doc, "AnyPercentTemplate", this.AnyPercentTemplate));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "AutoStart", this.AutoStart));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "AutoReset", this.AutoReset));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "AlduinDefeated", this.AlduinDefeated));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Helgen", this.Helgen));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Whiterun", this.Whiterun));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "ThalmorEmbassy", this.ThalmorEmbassy));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Esbern", this.Esbern));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Riverwood", this.Riverwood));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Karthspire", this.Karthspire));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Septimus", this.Septimus));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "TheWall", this.TheWall));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "MzarkTower", this.MzarkTower));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "ClearSky", this.ClearSky));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "HorseClimb", this.HorseClimb));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "CutsceneStart", this.CutsceneStart));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "CutsceneEnd", this.CutsceneEnd));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Alduin1", this.Alduin1));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "HighHrothgar", this.HighHrothgar));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Solitude", this.Solitude));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Windhelm", this.Windhelm));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Council", this.Council));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Odahviing", this.Odahviing));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "EnterSovngarde", this.EnterSovngarde));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "CollegeOfWinterhold", this.CollegeOfWinterhold));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Companions", this.Companions));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "DarkBrotherhood", this.DarkBrotherhood));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "ThievesGuild", this.ThievesGuild));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "AnyPercentTemplate", this.AnyPercentTemplate));
 
             SaveBearCartConfig();
-            settingsNode.AppendChild(ToElement(doc, "BearCartPBNotification", this.BearCartPBNotification));
-            settingsNode.AppendChild(ToElement(doc, "PlayBearCartSound", this.PlayBearCartSound));
-            settingsNode.AppendChild(ToElement(doc, "BearCartSoundPath", this.BearCartSoundPath));
-            settingsNode.AppendChild(ToElement(doc, "PlayBearCartSoundOnlyOnPB", this.PlayBearCartSoundOnlyOnPB));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "BearCartPBNotification", this.BearCartPBNotification));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "PlayBearCartSound", this.PlayBearCartSound));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "BearCartSoundPath", this.BearCartSoundPath));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "PlayBearCartSoundOnlyOnPB", this.PlayBearCartSoundOnlyOnPB));
             if (_component.MediaPlayer != null)
-                settingsNode.AppendChild(ToElement(doc, "Volume", _component.MediaPlayer.GeneralVolume));
+                settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Volume", _component.MediaPlayer.GeneralVolume));
 
             return settingsNode;
         }
@@ -246,9 +247,9 @@ namespace LiveSplit.Skyrim
             var realTimePB = new TimeSpan(0);
             var gameTimePB = new TimeSpan(0);
 
-            rootNode.AppendChild(ToElement(doc, "Secret", this.IsBearCartSecret));
-            rootNode.AppendChild(ToElement(doc, "RealTime", this.BearCartPB.RealTime.Value));
-            rootNode.AppendChild(ToElement(doc, "GameTime", this.BearCartPB.GameTime.Value));
+            rootNode.AppendChild(SettingsHelper.ToElement(doc, "Secret", this.IsBearCartSecret));
+            rootNode.AppendChild(SettingsHelper.ToElement(doc, "RealTime", this.BearCartPB.RealTime.Value));
+            rootNode.AppendChild(SettingsHelper.ToElement(doc, "GameTime", this.BearCartPB.GameTime.Value));
 
             doc.Save(BEAR_CART_CFG_FILE);
         }
@@ -259,52 +260,45 @@ namespace LiveSplit.Skyrim
 
             this.disableNbrSplitCheck = true;
 
-            this.AutoStart = ParseBool(settings, "AutoStart", DEFAULT_AUTOSTART);
-            this.AutoReset = ParseBool(settings, "AutoReset", DEFAULT_AUTORESET);
-            this.AlduinDefeated = ParseBool(settings, "AlduinDefeated", DEFAULT_ALDUINDEFEATED);
-            this.Helgen = ParseBool(settings, "Helgen", DEFAULT_HELGEN);
-            this.Whiterun = ParseBool(settings, "Whiterun", DEFAULT_WHITERUN);
-            this.ThalmorEmbassy = ParseBool(settings, "ThalmorEmbassy", DEFAULT_THALMOREMBASSY);
-            this.Esbern = ParseBool(settings, "Esbern", DEFAULT_ESBERN);
-            this.Riverwood = ParseBool(settings, "Riverwood", DEFAULT_RIVERWOOD);
-            this.Karthspire = ParseBool(settings, "Karthspire", DEFAULT_KARTHSPIRE);
-            this.Septimus = ParseBool(settings, "Septimus", DEFAULT_SEPTIMUS);
-            this.TheWall = ParseBool(settings, "TheWall", DEFAULT_THEWALL);
-            this.MzarkTower = ParseBool(settings, "MzarkTower", DEFAULT_RIVERWOOD);
-            this.ClearSky = ParseBool(settings, "ClearSky", DEFAULT_CLEARSKY);
-            this.HorseClimb = ParseBool(settings, "HorseClimb", DEFAULT_HORSECLIMB);
-            this.CutsceneStart = ParseBool(settings, "CutsceneStart", DEFAULT_CUTSCENESTART);
-            this.CutsceneEnd = ParseBool(settings, "CutsceneEnd", DEFAULT_CUTSCENEEND);
-            this.Alduin1 = ParseBool(settings, "Alduin1", DEFAULT_ALDUIN1);
-            this.HighHrothgar = ParseBool(settings, "HighHrothgar", DEFAULT_HIGHHROTHGAR);
-            this.Solitude = ParseBool(settings, "Solitude", DEFAULT_SOLITUDE);
-            this.Windhelm = ParseBool(settings, "Windhelm", DEFAULT_WINDHELM);
-            this.Council = ParseBool(settings, "Council", DEFAULT_COUNCIL);
-            this.Odahviing = ParseBool(settings, "Odahviing", DEFAULT_ODAHVIING);
-            this.EnterSovngarde = ParseBool(settings, "EnterSovngarde", DEFAULT_ENTERSOVNGARDE);
-            this.CollegeOfWinterhold = ParseBool(settings, "CollegeOfWinterhold", DEFAULT_COLLEGEOFWINTERHOLD);
-            this.Companions = ParseBool(settings, "Companions", DEFAULT_COMPANIONS);
-            this.DarkBrotherhood = ParseBool(settings, "DarkBrotherhood", DEFAULT_DARKBROTHERHOOD);
-            this.ThievesGuild = ParseBool(settings, "ThievesGuild", DEFAULT_THIEVESGUILD);
+            this.AutoStart = SettingsHelper.ParseBool(settings["AutoStart"], DEFAULT_AUTOSTART);
+            this.AutoReset = SettingsHelper.ParseBool(settings["AutoReset"], DEFAULT_AUTORESET);
+            this.AlduinDefeated = SettingsHelper.ParseBool(settings["AlduinDefeated"], DEFAULT_ALDUINDEFEATED);
+            this.Helgen = SettingsHelper.ParseBool(settings["Helgen"], DEFAULT_HELGEN);
+            this.Whiterun = SettingsHelper.ParseBool(settings["Whiterun"], DEFAULT_WHITERUN);
+            this.ThalmorEmbassy = SettingsHelper.ParseBool(settings["ThalmorEmbassy"], DEFAULT_THALMOREMBASSY);
+            this.Esbern = SettingsHelper.ParseBool(settings["Esbern"], DEFAULT_ESBERN);
+            this.Riverwood = SettingsHelper.ParseBool(settings["Riverwood"], DEFAULT_RIVERWOOD);
+            this.Karthspire = SettingsHelper.ParseBool(settings["Karthspire"], DEFAULT_KARTHSPIRE);
+            this.Septimus = SettingsHelper.ParseBool(settings["Septimus"], DEFAULT_SEPTIMUS);
+            this.TheWall = SettingsHelper.ParseBool(settings["TheWall"], DEFAULT_THEWALL);
+            this.MzarkTower = SettingsHelper.ParseBool(settings["MzarkTower"], DEFAULT_RIVERWOOD);
+            this.ClearSky = SettingsHelper.ParseBool(settings["ClearSky"], DEFAULT_CLEARSKY);
+            this.HorseClimb = SettingsHelper.ParseBool(settings["HorseClimb"], DEFAULT_HORSECLIMB);
+            this.CutsceneStart = SettingsHelper.ParseBool(settings["CutsceneStart"], DEFAULT_CUTSCENESTART);
+            this.CutsceneEnd = SettingsHelper.ParseBool(settings["CutsceneEnd"], DEFAULT_CUTSCENEEND);
+            this.Alduin1 = SettingsHelper.ParseBool(settings["Alduin1"], DEFAULT_ALDUIN1);
+            this.HighHrothgar = SettingsHelper.ParseBool(settings["HighHrothgar"], DEFAULT_HIGHHROTHGAR);
+            this.Solitude = SettingsHelper.ParseBool(settings["Solitude"], DEFAULT_SOLITUDE);
+            this.Windhelm = SettingsHelper.ParseBool(settings["Windhelm"], DEFAULT_WINDHELM);
+            this.Council = SettingsHelper.ParseBool(settings["Council"], DEFAULT_COUNCIL);
+            this.Odahviing = SettingsHelper.ParseBool(settings["Odahviing"], DEFAULT_ODAHVIING);
+            this.EnterSovngarde = SettingsHelper.ParseBool(settings["EnterSovngarde"], DEFAULT_ENTERSOVNGARDE);
+            this.CollegeOfWinterhold = SettingsHelper.ParseBool(settings["CollegeOfWinterhold"], DEFAULT_COLLEGEOFWINTERHOLD);
+            this.Companions = SettingsHelper.ParseBool(settings["Companions"], DEFAULT_COMPANIONS);
+            this.DarkBrotherhood = SettingsHelper.ParseBool(settings["DarkBrotherhood"], DEFAULT_DARKBROTHERHOOD);
+            this.ThievesGuild = SettingsHelper.ParseBool(settings["ThievesGuild"], DEFAULT_THIEVESGUILD);
 
             LoadBearCartConfig();
-            this.BearCartPBNotification = ParseBool(settings, "BearCartPBNotification", DEFAULT_BEARCARTPBNOTIFICATION);
-            this.PlayBearCartSound = ParseBool(settings, "PlayBearCartSound", DEFAULT_PLAYBEARCARTSOUND);
-            this.BearCartSoundPath = settings["BearCartSoundPath"]?.InnerText ?? String.Empty;
-            this.PlayBearCartSoundOnlyOnPB = ParseBool(settings, "PlayBearCartSoundOnlyOnPB", DEFAULT_PLAYBEARCARTSOUNDONLYONPB);
+            this.BearCartPBNotification = SettingsHelper.ParseBool(settings["BearCartPBNotification"], DEFAULT_BEARCARTPBNOTIFICATION);
+            this.PlayBearCartSound = SettingsHelper.ParseBool(settings["PlayBearCartSound"], DEFAULT_PLAYBEARCARTSOUND);
+            this.BearCartSoundPath = SettingsHelper.ParseString(settings["BearCartSoundPath"], String.Empty);
+            this.PlayBearCartSoundOnlyOnPB = SettingsHelper.ParseBool(settings["PlayBearCartSoundOnlyOnPB"], DEFAULT_PLAYBEARCARTSOUNDONLYONPB);
             if (_component.MediaPlayer != null)
-                _component.MediaPlayer.GeneralVolume = ParseInt(settings["Volume"], 100);
+                _component.MediaPlayer.GeneralVolume = SettingsHelper.ParseInt(settings["Volume"], 100);
 
-            if (element["AnyPercentTemplate"] != null)
-            {
-                this.AnyPercentTemplate = SplitTemplates.Exists(element["AnyPercentTemplate"].InnerText)
-                    ? element["AnyPercentTemplate"].InnerText
-                    : DEFAULT_ANYPERCENTTEMPLATE;
-            }
-            else
-            {
+            this.AnyPercentTemplate = SettingsHelper.ParseString(element["AnyPercentTemplate"], DEFAULT_ANYPERCENTTEMPLATE);
+            if (!SplitTemplates.Exists(this.AnyPercentTemplate))
                 this.AnyPercentTemplate = DEFAULT_ANYPERCENTTEMPLATE;
-            }
 
             this.rbMrwalrus.Checked = this.AnyPercentTemplate == SplitTemplates.MRWALRUS;
             this.rbDrtchops.Checked = this.AnyPercentTemplate == SplitTemplates.DRTCHOPS;
@@ -335,31 +329,11 @@ namespace LiveSplit.Skyrim
                     else
                         this.BearCartPB = new Time(new TimeSpan(0), new TimeSpan(0));
 
-                    this.IsBearCartSecret = ParseBool(pbFile["BearCart"], "Secret", true);
+                    this.IsBearCartSecret = SettingsHelper.ParseBool(pbFile["BearCart"]["Secret"], true);
                 }
             }
 
             this.BearCartPB = new Time(realTime, gameTime);
-        }
-
-        static bool ParseBool(XmlNode settings, string setting, bool default_ = false)
-        {
-            bool val;
-            return settings[setting] != null ?
-                (Boolean.TryParse(settings[setting].InnerText, out val) ? val : default_)
-                : default_;
-        }
-
-        public static int ParseInt(XmlElement intElement, int defaultInt = 0)
-        {
-            return intElement != null ? Int32.Parse(intElement.InnerText) : defaultInt;
-        }
-
-        static XmlElement ToElement<T>(XmlDocument document, string name, T value)
-        {
-            XmlElement str = document.CreateElement(name);
-            str.InnerText = value.ToString();
-            return str;
         }
 
         private void UpdateTemplate()
@@ -385,7 +359,7 @@ namespace LiveSplit.Skyrim
 
             var csStartT = new string[]{ SplitTemplates.DRTCHOPS, SplitTemplates.DALLETH };
             this.chkCutsceneStart.Enabled = Array.IndexOf(csStartT, this.AnyPercentTemplate) >= 0;
-            
+
             var csEndT = new string[]{ SplitTemplates.GR3YSCALE, SplitTemplates.DALLETH, SplitTemplates.DRTCHOPS };
             this.chkCutsceneEnd.Enabled = Array.IndexOf(csEndT, this.AnyPercentTemplate) >= 0;
 
