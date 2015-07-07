@@ -253,7 +253,12 @@ namespace LiveSplit.Skyrim
                                     // if loadscreen starts in around the carriage of Whiterun Stables
                                     else if (data.loadScreenStartLocation == new Location[]{ new Location(Locations.Tamriel, 4, -3), new Location(Locations.Tamriel, 4, -4) })
                                     {
-                                        Split(SplitArea.Whiterun, new string[]{ SplitTemplates.DRTCHOPS }, frameCounter);
+                                        string[] templates = new string[]
+                                        {
+                                            SplitTemplates.DRTCHOPS,
+                                            SplitTemplates.GR3YSCALE
+                                        };
+                                        Split(SplitArea.Whiterun, templates, frameCounter);
                                     }
                                     // if loadscreen starts in Karthspire and Sky Haven Temple has been entered at least once
                                     else if (data.loadScreenStartLocation.ID == (int)Locations.KarthspireRedoubtWorld && data.isSkyHavenTempleVisited)
@@ -404,14 +409,8 @@ namespace LiveSplit.Skyrim
                                 data.isSkyHavenTempleVisited = true;
                             }
 
-                            // if loadscreen starts in dragonsreach and ends in whiterun
-                            if (data.loadScreenStartLocation.ID == (int)Locations.WhiterunDragonsreach
-                                && data.Location == new Location(Locations.WhiterunWorld, 6, 0))
-                            {
-                                Split(SplitArea.Whiterun, new string[]{ SplitTemplates.GR3YSCALE }, frameCounter);
-                            }
                             // if loadscreen starts in whiterun and doesn't end in dragonsreach
-                            else if (data.loadScreenStartLocation == new Location(Locations.WhiterunWorld, 6, 0)
+                            if (data.loadScreenStartLocation == new Location(Locations.WhiterunWorld, 6, 0)
                                 && data.LocationID.Current != (int)Locations.WhiterunDragonsreach)
                             {
                                 string[] templates = new string[]
