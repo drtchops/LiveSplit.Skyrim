@@ -205,7 +205,7 @@ namespace LiveSplit.Skyrim
                                 {
                                     if (data.Location == new Location[]{ new Location(Locations.Tamriel, 13, -10), new Location(Locations.Tamriel, 13, -9) } && data.WordsOfPowerLearned.Current == 3)
                                     {
-                                        Split(SplitArea.ClearSky, null, frameCounter);
+                                        Split(SplitArea.ClearSky, new string[]{ SplitTemplates.MRWALRUS }, frameCounter);
                                     }
                                 }
 
@@ -548,6 +548,11 @@ namespace LiveSplit.Skyrim
                             {
                                 Split(SplitArea.EnterSovngarde, null, frameCounter);
                             }
+                        }
+
+                        if (data.WordsOfPowerLearned.HasChanged && data.WordsOfPowerLearned.Current == 3 && data.Location == new Location(Locations.Tamriel, 13, -10))
+                        {
+                            Split(SplitArea.ClearSky, new string[]{ SplitTemplates.DALLETH }, frameCounter);
                         }
 
                         if (data.LocationsDiscovered.Current == data.LocationsDiscovered.Previous + 1 && data.Location == Location.ThroatOfTheWorld)
