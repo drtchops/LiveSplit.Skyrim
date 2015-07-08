@@ -674,6 +674,15 @@ namespace LiveSplit.Skyrim
                             return;
                         }
                     }
+
+                    //pause time when game crashes or closes
+                    _uiThread.Post(d =>
+                    {
+                        if (this.OnLoadStarted != null)
+                        {
+                            this.OnLoadStarted(this, EventArgs.Empty);
+                        }
+                    }, null);
                 }
                 catch (Exception ex)
                 {
