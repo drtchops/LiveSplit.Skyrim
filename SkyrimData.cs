@@ -182,6 +182,7 @@ namespace LiveSplit.Skyrim
         ThievesGuildQuestlineCompleted,
         AlduinDefeated
     }
+
     public enum Locations
     {
         Tamriel = 0x0000003C,

@@ -384,7 +384,7 @@ namespace LiveSplit.Skyrim
                             else if (data.loadScreenStartLocation == new Location[] { new Location(Locations.Tamriel, 13, -9), new Location(Locations.Tamriel, 13, -10) }
                                 && data.LocationID.Current != (int)Locations.HighHrothgar)
                             {
-                                if (!splitStates[(int)SplitArea.HighHrothgar])
+                                if (!data.isCouncilDone)
                                 {
                                     Split(SplitArea.HighHrothgar, null, frameCounter);
                                 }
