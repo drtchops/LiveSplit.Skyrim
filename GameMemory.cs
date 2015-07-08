@@ -526,8 +526,8 @@ namespace LiveSplit.Skyrim
                             {
                                 string[] templates = new string[]
                                 {
+                                    SplitTemplates.MRWALRUS,
                                     SplitTemplates.DRTCHOPS,
-                                    SplitTemplates.GR3YSCALE,
                                     SplitTemplates.DALLETH
                                 };
                                 Split(SplitArea.Windhelm, templates, frameCounter);
