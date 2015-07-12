@@ -18,8 +18,9 @@ namespace LiveSplit.Skyrim
         public bool ThalmorEmbassy { get; set; }
         public bool Esbern { get; set; }
         public bool Riverwood { get; set; }
-        public bool TheWall { get; set; }
+        public bool Karthspire { get; set; }
         public bool Septimus { get; set; }
+        public bool TheWall { get; set; }
         public bool MzarkTower { get; set; }
         public bool ClearSky { get; set; }
         public bool HorseClimb { get; set; }
@@ -52,8 +53,9 @@ namespace LiveSplit.Skyrim
         private const bool DEFAULT_THALMOREMBASSY = false;
         private const bool DEFAULT_ESBERN = false;
         private const bool DEFAULT_RIVERWOOD = false;
-        private const bool DEFAULT_THEWALL = false;
+        private const bool DEFAULT_KARTHSPIRE = false;
         private const bool DEFAULT_SEPTIMUS = false;
+        private const bool DEFAULT_THEWALL = false;
         private const bool DEFAULT_MZARKTOWER = false;
         private const bool DEFAULT_CLEARSKY = false;
         private const bool DEFAULT_HORSECLIMB = false;
@@ -95,8 +97,9 @@ namespace LiveSplit.Skyrim
             this.chkThalmorEmbassy.DataBindings.Add("Checked", this, "ThalmorEmbassy", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkEsbern.DataBindings.Add("Checked", this, "Esbern", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkRiverwood.DataBindings.Add("Checked", this, "Riverwood", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.chkTheWall.DataBindings.Add("Checked", this, "TheWall", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkKarthspire.DataBindings.Add("Checked", this, "Karthspire", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkSeptimus.DataBindings.Add("Checked", this, "Septimus", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkTheWall.DataBindings.Add("Checked", this, "TheWall", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkMzarkTower.DataBindings.Add("Checked", this, "MzarkTower", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkClearSky.DataBindings.Add("Checked", this, "ClearSky", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkHorseClimb.DataBindings.Add("Checked", this, "HorseClimb", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -127,8 +130,9 @@ namespace LiveSplit.Skyrim
             this.ThalmorEmbassy = DEFAULT_THALMOREMBASSY;
             this.Esbern = DEFAULT_ESBERN;
             this.Riverwood = DEFAULT_RIVERWOOD;
-            this.TheWall = DEFAULT_THEWALL;
+            this.Karthspire = DEFAULT_KARTHSPIRE;
             this.Septimus = DEFAULT_SEPTIMUS;
+            this.TheWall = DEFAULT_THEWALL;
             this.MzarkTower = DEFAULT_MZARKTOWER;
             this.ClearSky = DEFAULT_CLEARSKY;
             this.HorseClimb = DEFAULT_HORSECLIMB;
@@ -201,8 +205,9 @@ namespace LiveSplit.Skyrim
             settingsNode.AppendChild(ToElement(doc, "ThalmorEmbassy", this.ThalmorEmbassy));
             settingsNode.AppendChild(ToElement(doc, "Esbern", this.Esbern));
             settingsNode.AppendChild(ToElement(doc, "Riverwood", this.Riverwood));
-            settingsNode.AppendChild(ToElement(doc, "TheWall", this.TheWall));
+            settingsNode.AppendChild(ToElement(doc, "Karthspire", this.Karthspire));
             settingsNode.AppendChild(ToElement(doc, "Septimus", this.Septimus));
+            settingsNode.AppendChild(ToElement(doc, "TheWall", this.TheWall));
             settingsNode.AppendChild(ToElement(doc, "MzarkTower", this.MzarkTower));
             settingsNode.AppendChild(ToElement(doc, "ClearSky", this.ClearSky));
             settingsNode.AppendChild(ToElement(doc, "HorseClimb", this.HorseClimb));
@@ -258,8 +263,9 @@ namespace LiveSplit.Skyrim
             this.ThalmorEmbassy = ParseBool(settings, "ThalmorEmbassy", DEFAULT_THALMOREMBASSY);
             this.Esbern = ParseBool(settings, "Esbern", DEFAULT_ESBERN);
             this.Riverwood = ParseBool(settings, "Riverwood", DEFAULT_RIVERWOOD);
-            this.TheWall = ParseBool(settings, "TheWall", DEFAULT_THEWALL);
+            this.Karthspire = ParseBool(settings, "Karthspire", DEFAULT_KARTHSPIRE);
             this.Septimus = ParseBool(settings, "Septimus", DEFAULT_SEPTIMUS);
+            this.TheWall = ParseBool(settings, "TheWall", DEFAULT_THEWALL);
             this.MzarkTower = ParseBool(settings, "MzarkTower", DEFAULT_RIVERWOOD);
             this.ClearSky = ParseBool(settings, "ClearSky", DEFAULT_CLEARSKY);
             this.HorseClimb = ParseBool(settings, "HorseClimb", DEFAULT_HORSECLIMB);

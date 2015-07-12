@@ -260,6 +260,11 @@ namespace LiveSplit.Skyrim
                                         };
                                         Split(SplitArea.Whiterun, templates, frameCounter);
                                     }
+                                    // if loadscreen starts at Markarth stables
+                                    else if (data.loadScreenStartLocation == new Location(Locations.Tamriel, -42, 1))
+                                    {
+                                        Split(SplitArea.Karthspire, new string[]{ SplitTemplates.GR3YSCALE }, frameCounter);
+                                    }
                                     // if loadscreen starts in Karthspire and Sky Haven Temple has been entered at least once
                                     else if (data.loadScreenStartLocation.ID == (int)Locations.KarthspireRedoubtWorld && data.isSkyHavenTempleVisited)
                                     {
@@ -454,17 +459,29 @@ namespace LiveSplit.Skyrim
                                     Split(SplitArea.Riverwood, new string[]{ SplitTemplates.GR3YSCALE }, frameCounter);
                                 }
                             }
-                            // if loadingscren starts in Sky Haven Temple and ends in Karthspire
-                            else if (data.loadScreenStartLocation.ID == (int)Locations.SkyHavenTemple
-                                && data.LocationID.Current == (int)Locations.KarthspireRedoubtWorld)
+                            // if loadingscren starts in Karthspire and ends at Markarth Stables
+                            else if (data.loadScreenStartLocation.ID == (int)Locations.KarthspireRedoubtWorld
+                                && data.Location == new Location(Locations.Tamriel, -42, 1))
                             {
-                                Split(SplitArea.TheWall, new string[]{ SplitTemplates.GR3YSCALE }, frameCounter);
+                                string[] templates = new string[]
+                                {
+                                    SplitTemplates.MRWALRUS,
+                                    SplitTemplates.DRTCHOPS,
+                                    SplitTemplates.DALLETH
+                                };
+                                Split(SplitArea.Karthspire, templates, frameCounter);
                             }
                             // if loadscreen starts inside Septimus' Outpost and ends in front of its door
                             else if (data.loadScreenStartLocation.ID == (int)Locations.SeptimusSignusOutpost
                                 && data.Location == new Location(Locations.Tamriel, 28, 34))
                             {
                                 Split(SplitArea.Septimus, new string[]{ SplitTemplates.GR3YSCALE }, frameCounter);
+                            }
+                            // if loadingscren starts in Sky Haven Temple and ends in Karthspire
+                            else if (data.loadScreenStartLocation.ID == (int)Locations.SkyHavenTemple
+                                && data.LocationID.Current == (int)Locations.KarthspireRedoubtWorld)
+                            {
+                                Split(SplitArea.TheWall, new string[]{ SplitTemplates.GR3YSCALE }, frameCounter);
                             }
                             // if loadscreen starts inside Mzark Tower and ends outside of it
                             else if (data.loadScreenStartLocation.ID == (int)Locations.TowerOfMzark

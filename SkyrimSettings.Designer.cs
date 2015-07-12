@@ -39,6 +39,7 @@
             this.chkThalmorEmbassy = new System.Windows.Forms.CheckBox();
             this.chkEsbern = new System.Windows.Forms.CheckBox();
             this.chkRiverwood = new System.Windows.Forms.CheckBox();
+            this.chkKarthspire = new System.Windows.Forms.CheckBox();
             this.chkTheWall = new System.Windows.Forms.CheckBox();
             this.chkSeptimus = new System.Windows.Forms.CheckBox();
             this.chkMzarkTower = new System.Windows.Forms.CheckBox();
@@ -208,8 +209,9 @@
             this.flp_AnyPercentSplits.Controls.Add(this.chkThalmorEmbassy);
             this.flp_AnyPercentSplits.Controls.Add(this.chkEsbern);
             this.flp_AnyPercentSplits.Controls.Add(this.chkRiverwood);
-            this.flp_AnyPercentSplits.Controls.Add(this.chkTheWall);
+            this.flp_AnyPercentSplits.Controls.Add(this.chkKarthspire);
             this.flp_AnyPercentSplits.Controls.Add(this.chkSeptimus);
+            this.flp_AnyPercentSplits.Controls.Add(this.chkTheWall);
             this.flp_AnyPercentSplits.Controls.Add(this.chkMzarkTower);
             this.flp_AnyPercentSplits.Controls.Add(this.chkClearSky);
             this.flp_AnyPercentSplits.Controls.Add(this.chkHorseClimb);
@@ -280,11 +282,21 @@
             this.chkRiverwood.Text = "Riverwood";
             this.chkRiverwood.UseVisualStyleBackColor = true;
             // 
+            // chkKarthspire
+            // 
+            this.chkKarthspire.AutoSize = true;
+            this.chkKarthspire.Location = new System.Drawing.Point(3, 95);
+            this.chkKarthspire.Name = "chkKarthspire";
+            this.chkKarthspire.Size = new System.Drawing.Size(73, 17);
+            this.chkKarthspire.TabIndex = 23;
+            this.chkKarthspire.Text = "Karthspire";
+            this.chkKarthspire.UseVisualStyleBackColor = true;
+            // 
             // chkTheWall
             // 
             this.chkTheWall.AutoSize = true;
             this.chkTheWall.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkTheWall.Location = new System.Drawing.Point(3, 95);
+            this.chkTheWall.Location = new System.Drawing.Point(3, 118);
             this.chkTheWall.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
             this.chkTheWall.Name = "chkTheWall";
             this.chkTheWall.Size = new System.Drawing.Size(109, 17);
@@ -296,7 +308,7 @@
             // 
             this.chkSeptimus.AutoSize = true;
             this.chkSeptimus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkSeptimus.Location = new System.Drawing.Point(3, 118);
+            this.chkSeptimus.Location = new System.Drawing.Point(3, 141);
             this.chkSeptimus.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
             this.chkSeptimus.Name = "chkSeptimus";
             this.chkSeptimus.Size = new System.Drawing.Size(109, 17);
@@ -308,10 +320,10 @@
             // 
             this.chkMzarkTower.AutoSize = true;
             this.chkMzarkTower.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkMzarkTower.Location = new System.Drawing.Point(3, 141);
+            this.chkMzarkTower.Location = new System.Drawing.Point(165, 3);
             this.chkMzarkTower.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
             this.chkMzarkTower.Name = "chkMzarkTower";
-            this.chkMzarkTower.Size = new System.Drawing.Size(109, 17);
+            this.chkMzarkTower.Size = new System.Drawing.Size(96, 17);
             this.chkMzarkTower.TabIndex = 10;
             this.chkMzarkTower.Text = "Mzark Tower";
             this.chkMzarkTower.UseVisualStyleBackColor = true;
@@ -320,7 +332,7 @@
             // 
             this.chkClearSky.AutoSize = true;
             this.chkClearSky.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkClearSky.Location = new System.Drawing.Point(165, 3);
+            this.chkClearSky.Location = new System.Drawing.Point(165, 26);
             this.chkClearSky.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
             this.chkClearSky.Name = "chkClearSky";
             this.chkClearSky.Size = new System.Drawing.Size(96, 17);
@@ -331,7 +343,7 @@
             // chkHorseClimb
             // 
             this.chkHorseClimb.AutoSize = true;
-            this.chkHorseClimb.Location = new System.Drawing.Point(165, 26);
+            this.chkHorseClimb.Location = new System.Drawing.Point(165, 49);
             this.chkHorseClimb.Name = "chkHorseClimb";
             this.chkHorseClimb.Size = new System.Drawing.Size(79, 17);
             this.chkHorseClimb.TabIndex = 21;
@@ -342,7 +354,7 @@
             // 
             this.chkCutsceneStart.AutoSize = true;
             this.chkCutsceneStart.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkCutsceneStart.Location = new System.Drawing.Point(165, 49);
+            this.chkCutsceneStart.Location = new System.Drawing.Point(165, 72);
             this.chkCutsceneStart.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
             this.chkCutsceneStart.Name = "chkCutsceneStart";
             this.chkCutsceneStart.Size = new System.Drawing.Size(96, 17);
@@ -353,7 +365,7 @@
             // chkCutsceneEnd
             // 
             this.chkCutsceneEnd.AutoSize = true;
-            this.chkCutsceneEnd.Location = new System.Drawing.Point(165, 72);
+            this.chkCutsceneEnd.Location = new System.Drawing.Point(165, 95);
             this.chkCutsceneEnd.Name = "chkCutsceneEnd";
             this.chkCutsceneEnd.Size = new System.Drawing.Size(93, 17);
             this.chkCutsceneEnd.TabIndex = 22;
@@ -364,7 +376,7 @@
             // 
             this.chkAlduin1.AutoSize = true;
             this.chkAlduin1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkAlduin1.Location = new System.Drawing.Point(165, 95);
+            this.chkAlduin1.Location = new System.Drawing.Point(165, 118);
             this.chkAlduin1.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
             this.chkAlduin1.Name = "chkAlduin1";
             this.chkAlduin1.Size = new System.Drawing.Size(96, 17);
@@ -376,7 +388,7 @@
             // 
             this.chkHighHrothgar.AutoSize = true;
             this.chkHighHrothgar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkHighHrothgar.Location = new System.Drawing.Point(165, 118);
+            this.chkHighHrothgar.Location = new System.Drawing.Point(165, 141);
             this.chkHighHrothgar.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
             this.chkHighHrothgar.Name = "chkHighHrothgar";
             this.chkHighHrothgar.Size = new System.Drawing.Size(96, 17);
@@ -388,10 +400,10 @@
             // 
             this.chkSolitude.AutoSize = true;
             this.chkSolitude.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkSolitude.Location = new System.Drawing.Point(165, 141);
+            this.chkSolitude.Location = new System.Drawing.Point(314, 3);
             this.chkSolitude.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
             this.chkSolitude.Name = "chkSolitude";
-            this.chkSolitude.Size = new System.Drawing.Size(96, 17);
+            this.chkSolitude.Size = new System.Drawing.Size(106, 17);
             this.chkSolitude.TabIndex = 13;
             this.chkSolitude.Text = "Solitude";
             this.chkSolitude.UseVisualStyleBackColor = true;
@@ -400,7 +412,7 @@
             // 
             this.chkWindhelm.AutoSize = true;
             this.chkWindhelm.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkWindhelm.Location = new System.Drawing.Point(314, 3);
+            this.chkWindhelm.Location = new System.Drawing.Point(314, 26);
             this.chkWindhelm.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
             this.chkWindhelm.Name = "chkWindhelm";
             this.chkWindhelm.Size = new System.Drawing.Size(106, 17);
@@ -412,7 +424,7 @@
             // 
             this.chkCouncil.AutoSize = true;
             this.chkCouncil.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkCouncil.Location = new System.Drawing.Point(314, 26);
+            this.chkCouncil.Location = new System.Drawing.Point(314, 49);
             this.chkCouncil.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
             this.chkCouncil.Name = "chkCouncil";
             this.chkCouncil.Size = new System.Drawing.Size(106, 17);
@@ -424,7 +436,7 @@
             // 
             this.chkOdahviing.AutoSize = true;
             this.chkOdahviing.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkOdahviing.Location = new System.Drawing.Point(314, 49);
+            this.chkOdahviing.Location = new System.Drawing.Point(314, 72);
             this.chkOdahviing.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
             this.chkOdahviing.Name = "chkOdahviing";
             this.chkOdahviing.Size = new System.Drawing.Size(106, 17);
@@ -436,7 +448,7 @@
             // 
             this.chkEnterSovngarde.AutoSize = true;
             this.chkEnterSovngarde.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkEnterSovngarde.Location = new System.Drawing.Point(314, 72);
+            this.chkEnterSovngarde.Location = new System.Drawing.Point(314, 95);
             this.chkEnterSovngarde.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
             this.chkEnterSovngarde.Name = "chkEnterSovngarde";
             this.chkEnterSovngarde.Size = new System.Drawing.Size(106, 17);
@@ -450,7 +462,7 @@
             this.chkAlduinDefeated.Checked = true;
             this.chkAlduinDefeated.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkAlduinDefeated.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkAlduinDefeated.Location = new System.Drawing.Point(314, 95);
+            this.chkAlduinDefeated.Location = new System.Drawing.Point(314, 118);
             this.chkAlduinDefeated.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
             this.chkAlduinDefeated.Name = "chkAlduinDefeated";
             this.chkAlduinDefeated.Size = new System.Drawing.Size(106, 17);
@@ -1003,5 +1015,6 @@
         private System.Windows.Forms.TextBox txtBearCartSoundPath;
         private System.Windows.Forms.Label lBearCartPB;
         private System.Windows.Forms.CheckBox chkPlayBearCartSoundOnlyOnPB;
+        private System.Windows.Forms.CheckBox chkKarthspire;
     }
 }

@@ -141,15 +141,16 @@ namespace LiveSplit.Skyrim
                 templatesDbgStr = "Any";
 
             Debug.WriteLineIf(split != SplitArea.None, String.Format("[NoLoads] Trying to split {0} with {1} templates, State: {2} - {3}", split, templatesDbgStr, _gameMemory.splitStates[(int)split], frame));
-            
+
             if (_state.CurrentPhase == TimerPhase.Running && !_gameMemory.splitStates[(int)split] && (templates == null || Array.IndexOf(templates, Settings.AnyPercentTemplate) >= 0) &&
                 ((split == SplitArea.Helgen && this.Settings.Helgen) ||
                 (split == SplitArea.Whiterun && this.Settings.Whiterun) ||
                 (split == SplitArea.ThalmorEmbassy && this.Settings.ThalmorEmbassy) ||
                 (split == SplitArea.Esbern && this.Settings.Esbern) ||
                 (split == SplitArea.Riverwood && this.Settings.Riverwood) ||
-                (split == SplitArea.TheWall && this.Settings.TheWall) ||
+                (split == SplitArea.Karthspire && this.Settings.Karthspire) ||
                 (split == SplitArea.Septimus && this.Settings.Septimus) ||
+                (split == SplitArea.TheWall && this.Settings.TheWall) ||
                 (split == SplitArea.MzarkTower && this.Settings.MzarkTower) ||
                 (split == SplitArea.ClearSky && this.Settings.ClearSky) ||
                 (split == SplitArea.HorseClimb && this.Settings.HorseClimb) ||
