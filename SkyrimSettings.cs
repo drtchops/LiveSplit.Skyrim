@@ -369,9 +369,14 @@ namespace LiveSplit.Skyrim
             {
                 this.AnyPercentTemplate = SplitTemplates.GR3YSCALE;
             }
+
             this.chkHorseClimb.Enabled = this.AnyPercentTemplate == SplitTemplates.GR3YSCALE;
-            this.chkCutsceneStart.Enabled = (this.AnyPercentTemplate == SplitTemplates.DRTCHOPS || this.AnyPercentTemplate == SplitTemplates.DALLETH);
-            this.chkCutsceneEnd.Enabled = (this.AnyPercentTemplate == SplitTemplates.GR3YSCALE || this.AnyPercentTemplate == SplitTemplates.DALLETH);
+
+            var csStartT = new string[]{ SplitTemplates.DRTCHOPS, SplitTemplates.DALLETH };
+            this.chkCutsceneStart.Enabled = Array.IndexOf(csStartT, this.AnyPercentTemplate) >= 0;
+            
+            var csEndT = new string[]{ SplitTemplates.GR3YSCALE, SplitTemplates.DALLETH, SplitTemplates.DRTCHOPS };
+            this.chkCutsceneEnd.Enabled = Array.IndexOf(csEndT, this.AnyPercentTemplate) >= 0;
 
             CheckNbrAutoSplits();
         }

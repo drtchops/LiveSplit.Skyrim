@@ -598,7 +598,8 @@ namespace LiveSplit.Skyrim
                                     string[] templates = new string[]
                                     {
                                         SplitTemplates.GR3YSCALE,
-                                        SplitTemplates.DALLETH
+                                        SplitTemplates.DALLETH,
+                                        SplitTemplates.DRTCHOPS
                                     };
                                     Split(SplitArea.CutsceneEnd, templates, frameCounter);
                                 }
