@@ -18,8 +18,9 @@ namespace LiveSplit.Skyrim
         public bool ThalmorEmbassy { get; set; }
         public bool Esbern { get; set; }
         public bool Riverwood { get; set; }
-        public bool TheWall { get; set; }
+        public bool Karthspire { get; set; }
         public bool Septimus { get; set; }
+        public bool TheWall { get; set; }
         public bool MzarkTower { get; set; }
         public bool ClearSky { get; set; }
         public bool HorseClimb { get; set; }
@@ -44,11 +45,6 @@ namespace LiveSplit.Skyrim
         public bool IsBearCartSecret { get; set; }
         public bool PlayBearCartSoundOnlyOnPB { get; set; }
 
-        public const string TEMPLATE_MRWALRUS = "MrWalrus";
-        public const string TEMPLATE_DRTCHOPS = "DrTChops";
-        public const string TEMPLATE_GR3YSCALE = "gr3yscale";
-        public const string TEMPLATE_DALLETH = "Dalleth";
-
         private const bool DEFAULT_AUTOSTART = true;
         private const bool DEFAULT_AUTORESET = true;
         private const bool DEFAULT_ALDUINDEFEATED = true;
@@ -57,8 +53,9 @@ namespace LiveSplit.Skyrim
         private const bool DEFAULT_THALMOREMBASSY = false;
         private const bool DEFAULT_ESBERN = false;
         private const bool DEFAULT_RIVERWOOD = false;
-        private const bool DEFAULT_THEWALL = false;
+        private const bool DEFAULT_KARTHSPIRE = false;
         private const bool DEFAULT_SEPTIMUS = false;
+        private const bool DEFAULT_THEWALL = false;
         private const bool DEFAULT_MZARKTOWER = false;
         private const bool DEFAULT_CLEARSKY = false;
         private const bool DEFAULT_HORSECLIMB = false;
@@ -75,7 +72,7 @@ namespace LiveSplit.Skyrim
         private const bool DEFAULT_COMPANIONS = false;
         private const bool DEFAULT_DARKBROTHERHOOD = false;
         private const bool DEFAULT_THIEVESGUILD = false;
-        private const string DEFAULT_ANYPERCENTTEMPLATE = TEMPLATE_MRWALRUS;
+        private const string DEFAULT_ANYPERCENTTEMPLATE = SplitTemplates.MRWALRUS;
         private const bool DEFAULT_BEARCARTPBNOTIFICATION = true;
         private const bool DEFAULT_PLAYBEARCARTSOUND = true;
         private const bool DEFAULT_PLAYBEARCARTSOUNDONLYONPB = false;
@@ -100,8 +97,9 @@ namespace LiveSplit.Skyrim
             this.chkThalmorEmbassy.DataBindings.Add("Checked", this, "ThalmorEmbassy", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkEsbern.DataBindings.Add("Checked", this, "Esbern", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkRiverwood.DataBindings.Add("Checked", this, "Riverwood", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.chkTheWall.DataBindings.Add("Checked", this, "TheWall", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkKarthspire.DataBindings.Add("Checked", this, "Karthspire", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkSeptimus.DataBindings.Add("Checked", this, "Septimus", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkTheWall.DataBindings.Add("Checked", this, "TheWall", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkMzarkTower.DataBindings.Add("Checked", this, "MzarkTower", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkClearSky.DataBindings.Add("Checked", this, "ClearSky", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkHorseClimb.DataBindings.Add("Checked", this, "HorseClimb", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -132,8 +130,9 @@ namespace LiveSplit.Skyrim
             this.ThalmorEmbassy = DEFAULT_THALMOREMBASSY;
             this.Esbern = DEFAULT_ESBERN;
             this.Riverwood = DEFAULT_RIVERWOOD;
-            this.TheWall = DEFAULT_THEWALL;
+            this.Karthspire = DEFAULT_KARTHSPIRE;
             this.Septimus = DEFAULT_SEPTIMUS;
+            this.TheWall = DEFAULT_THEWALL;
             this.MzarkTower = DEFAULT_MZARKTOWER;
             this.ClearSky = DEFAULT_CLEARSKY;
             this.HorseClimb = DEFAULT_HORSECLIMB;
@@ -206,8 +205,9 @@ namespace LiveSplit.Skyrim
             settingsNode.AppendChild(ToElement(doc, "ThalmorEmbassy", this.ThalmorEmbassy));
             settingsNode.AppendChild(ToElement(doc, "Esbern", this.Esbern));
             settingsNode.AppendChild(ToElement(doc, "Riverwood", this.Riverwood));
-            settingsNode.AppendChild(ToElement(doc, "TheWall", this.TheWall));
+            settingsNode.AppendChild(ToElement(doc, "Karthspire", this.Karthspire));
             settingsNode.AppendChild(ToElement(doc, "Septimus", this.Septimus));
+            settingsNode.AppendChild(ToElement(doc, "TheWall", this.TheWall));
             settingsNode.AppendChild(ToElement(doc, "MzarkTower", this.MzarkTower));
             settingsNode.AppendChild(ToElement(doc, "ClearSky", this.ClearSky));
             settingsNode.AppendChild(ToElement(doc, "HorseClimb", this.HorseClimb));
@@ -263,8 +263,9 @@ namespace LiveSplit.Skyrim
             this.ThalmorEmbassy = ParseBool(settings, "ThalmorEmbassy", DEFAULT_THALMOREMBASSY);
             this.Esbern = ParseBool(settings, "Esbern", DEFAULT_ESBERN);
             this.Riverwood = ParseBool(settings, "Riverwood", DEFAULT_RIVERWOOD);
-            this.TheWall = ParseBool(settings, "TheWall", DEFAULT_THEWALL);
+            this.Karthspire = ParseBool(settings, "Karthspire", DEFAULT_KARTHSPIRE);
             this.Septimus = ParseBool(settings, "Septimus", DEFAULT_SEPTIMUS);
+            this.TheWall = ParseBool(settings, "TheWall", DEFAULT_THEWALL);
             this.MzarkTower = ParseBool(settings, "MzarkTower", DEFAULT_RIVERWOOD);
             this.ClearSky = ParseBool(settings, "ClearSky", DEFAULT_CLEARSKY);
             this.HorseClimb = ParseBool(settings, "HorseClimb", DEFAULT_HORSECLIMB);
@@ -290,20 +291,19 @@ namespace LiveSplit.Skyrim
 
             if (element["AnyPercentTemplate"] != null)
             {
-                this.AnyPercentTemplate = element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_MRWALRUS) || element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_DRTCHOPS) ||
-                    element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_GR3YSCALE) || element["AnyPercentTemplate"].InnerText.Equals(TEMPLATE_DALLETH)
-                        ? element["AnyPercentTemplate"].InnerText
-                        : DEFAULT_ANYPERCENTTEMPLATE;
+                this.AnyPercentTemplate = SplitTemplates.Exists(element["AnyPercentTemplate"].InnerText)
+                    ? element["AnyPercentTemplate"].InnerText
+                    : DEFAULT_ANYPERCENTTEMPLATE;
             }
             else
             {
                 this.AnyPercentTemplate = DEFAULT_ANYPERCENTTEMPLATE;
             }
 
-            this.rbMrwalrus.Checked = this.AnyPercentTemplate == TEMPLATE_MRWALRUS;
-            this.rbDrtchops.Checked = this.AnyPercentTemplate == TEMPLATE_DRTCHOPS;
-            this.rbGr3yscale.Checked = this.AnyPercentTemplate == TEMPLATE_GR3YSCALE;
-            this.rbDalleth.Checked = this.AnyPercentTemplate == TEMPLATE_DALLETH;
+            this.rbMrwalrus.Checked = this.AnyPercentTemplate == SplitTemplates.MRWALRUS;
+            this.rbDrtchops.Checked = this.AnyPercentTemplate == SplitTemplates.DRTCHOPS;
+            this.rbGr3yscale.Checked = this.AnyPercentTemplate == SplitTemplates.GR3YSCALE;
+            this.rbDalleth.Checked = this.AnyPercentTemplate == SplitTemplates.DALLETH;
             UpdateTemplate();
 
             this.disableNbrSplitCheck = false;
@@ -355,23 +355,28 @@ namespace LiveSplit.Skyrim
         {
             if (rbMrwalrus.Checked)
             {
-                this.AnyPercentTemplate = TEMPLATE_MRWALRUS;
+                this.AnyPercentTemplate = SplitTemplates.MRWALRUS;
             }
             else if (rbDrtchops.Checked)
             {
-                this.AnyPercentTemplate = TEMPLATE_DRTCHOPS;
+                this.AnyPercentTemplate = SplitTemplates.DRTCHOPS;
             }
             else if (rbDalleth.Checked)
             {
-                this.AnyPercentTemplate = TEMPLATE_DALLETH;
+                this.AnyPercentTemplate = SplitTemplates.DALLETH;
             }
             else if (rbGr3yscale.Checked)
             {
-                this.AnyPercentTemplate = TEMPLATE_GR3YSCALE;
+                this.AnyPercentTemplate = SplitTemplates.GR3YSCALE;
             }
-            this.chkHorseClimb.Enabled = this.AnyPercentTemplate == TEMPLATE_GR3YSCALE;
-            this.chkCutsceneStart.Enabled = (this.AnyPercentTemplate == TEMPLATE_DRTCHOPS || this.AnyPercentTemplate == TEMPLATE_DALLETH);
-            this.chkCutsceneEnd.Enabled = (this.AnyPercentTemplate == TEMPLATE_GR3YSCALE || this.AnyPercentTemplate == TEMPLATE_DALLETH);
+
+            this.chkHorseClimb.Enabled = this.AnyPercentTemplate == SplitTemplates.GR3YSCALE;
+
+            var csStartT = new string[]{ SplitTemplates.DRTCHOPS, SplitTemplates.DALLETH };
+            this.chkCutsceneStart.Enabled = Array.IndexOf(csStartT, this.AnyPercentTemplate) >= 0;
+            
+            var csEndT = new string[]{ SplitTemplates.GR3YSCALE, SplitTemplates.DALLETH, SplitTemplates.DRTCHOPS };
+            this.chkCutsceneEnd.Enabled = Array.IndexOf(csEndT, this.AnyPercentTemplate) >= 0;
 
             CheckNbrAutoSplits();
         }
@@ -508,6 +513,25 @@ namespace LiveSplit.Skyrim
 
             if (_component.SoundComponent != null && !enable)
                 ((SoundComponent)_component.SoundComponent).Player.Stop();
+        }
+    }
+
+    public static class SplitTemplates
+    {
+        public const string MRWALRUS = "MrWalrus";
+        public const string DRTCHOPS = "DrTChops";
+        public const string GR3YSCALE = "gr3yscale";
+        public const string DALLETH = "Dalleth";
+
+        public static bool Exists(string template)
+        {
+            foreach (var fieldInfo in typeof(SplitTemplates).GetFields())
+            {
+                if (fieldInfo.IsStatic && fieldInfo.FieldType == typeof(string) && fieldInfo.GetValue(null) as string == template)
+                    return true;
+            }
+
+            return false;
         }
     }
 }

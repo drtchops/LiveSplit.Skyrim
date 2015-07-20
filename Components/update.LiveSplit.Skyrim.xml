@@ -1,4 +1,17 @@
 <updates>
+    <update version="2.2.0">
+        <files>
+            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+        </files>
+        <changelog>
+            <change>
+                Updated autosplits for the new route and added in the Karthspire split.
+            </change>
+            <change>
+                Various fixes and cleanup.
+            </change>
+        </changelog>
+    </update>
     <update version="2.1.0">
         <files>
             <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
