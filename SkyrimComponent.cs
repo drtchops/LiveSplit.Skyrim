@@ -60,8 +60,7 @@ namespace LiveSplit.Skyrim
             }
 
             _gameMemory = new GameMemory();
-            _gameMemory.OnFirstLevelLoading += gameMemory_OnFirstLevelLoading;
-            _gameMemory.OnPlayerGainedControl += gameMemory_OnPlayerGainedControl;
+            _gameMemory.OnStartSaveLoad += gameMemory_OnStartSaveLoad;
             _gameMemory.OnLoadStarted += gameMemory_OnLoadStarted;
             _gameMemory.OnLoadFinished += gameMemory_OnLoadFinished;
             _gameMemory.OnSplitCompleted += gameMemory_OnSplitCompleted;
@@ -96,22 +95,31 @@ namespace LiveSplit.Skyrim
             UpdateBearCartPB();
         }
 
-        void gameMemory_OnFirstLevelLoading(object sender, EventArgs e)
+        void gameMemory_OnStartSaveLoad(object sender, EventArgs e)
         {
+            Stopwatch s = Stopwatch.StartNew();
+
             if (this.Settings.AutoReset)
             {
                 UpdateBearCartPB(true);
                 _timer.Reset();
             }
-        }
 
-        void gameMemory_OnPlayerGainedControl(object sender, EventArgs e)
-        {
             if (this.Settings.AutoStart)
             {
-                _timer.Start();
+                StartTimer(s.Elapsed);
             }
         }
+
+        void StartTimer(TimeSpan time)
+        {
+            TimeSpan originalOffset = _state.Run.Offset;
+            _state.Run.Offset = time;
+            _timer.Start();
+            _state.Run.Offset = originalOffset;
+            Trace.WriteLine(String.Format("[NoLoads] Started timer at {0}", time));
+        }
+        void StartTimer() => StartTimer(TimeSpan.Zero);
 
         void gameMemory_OnLoadStarted(object sender, EventArgs e)
         {

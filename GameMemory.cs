@@ -10,8 +10,7 @@ namespace LiveSplit.Skyrim
 {
     class GameMemory
     {
-        public event EventHandler OnFirstLevelLoading;
-        public event EventHandler OnPlayerGainedControl;
+        public event EventHandler OnStartSaveLoad;
         public event EventHandler OnLoadStarted;
         public event EventHandler OnLoadFinished;
         public delegate void SplitCompletedEventHandler(object sender, SplitArea type, string[] template, uint frame);
@@ -312,23 +311,14 @@ namespace LiveSplit.Skyrim
                                 if (data.IsInFadeOut.Previous && data.loadScreenFadeoutStarted &&
                                     data.Location == new Location(Locations.Tamriel, 3, -20))
                                 {
-                                    // reset
-                                    Trace.WriteLine(String.Format("[NoLoads] Reset - {0}", frameCounter));
-                                    _uiThread.Post(d =>
-                                    {
-                                        if (this.OnFirstLevelLoading != null)
-                                        {
-                                            this.OnFirstLevelLoading(this, EventArgs.Empty);
-                                        }
-                                    }, null);
 
-                                    // start
-                                    Trace.WriteLine(String.Format("[NoLoads] Start - {0}", frameCounter));
+                                    // start and reset
+                                    Trace.WriteLine(String.Format("[NoLoads] Reset and Start - {0}", frameCounter));
                                     _uiThread.Post(d =>
                                     {
-                                        if (this.OnPlayerGainedControl != null)
+                                        if (this.OnStartSaveLoad != null)
                                         {
-                                            this.OnPlayerGainedControl(this, EventArgs.Empty);
+                                            this.OnStartSaveLoad(this, EventArgs.Empty);
                                         }
                                     }, null);
                                 }
