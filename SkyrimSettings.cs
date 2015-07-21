@@ -286,7 +286,7 @@ namespace LiveSplit.Skyrim
             LoadBearCartConfig();
             this.BearCartPBNotification = ParseBool(settings, "BearCartPBNotification", DEFAULT_BEARCARTPBNOTIFICATION);
             this.PlayBearCartSound = ParseBool(settings, "PlayBearCartSound", DEFAULT_PLAYBEARCARTSOUND);
-            this.BearCartSoundPath = settings["BearCartSoundPath"] != null ? settings["BearCartSoundPath"].InnerText : String.Empty;
+            this.BearCartSoundPath = settings["BearCartSoundPath"]?.InnerText ?? String.Empty;
             this.PlayBearCartSoundOnlyOnPB = ParseBool(settings, "PlayBearCartSoundOnlyOnPB", DEFAULT_PLAYBEARCARTSOUNDONLYONPB);
 
             if (element["AnyPercentTemplate"] != null)

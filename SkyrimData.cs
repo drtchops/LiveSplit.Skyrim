@@ -22,14 +22,8 @@ namespace LiveSplit.Skyrim
         public GameDataItem<int> LocationID { get; private set; }
         public GameDataItem<int> WorldX { get; private set; }
         public GameDataItem<int> WorldY { get; private set; }
-        public Location Location
-        {
-            get { return new Location(LocationID.Current, WorldX.Current, WorldY.Current); }
-        }
-        public Location PreviousLocation
-        {
-            get { return new Location(LocationID.Previous, WorldX.Previous, WorldY.Previous); }
-        }
+        public Location Location => new Location(LocationID.Current, WorldX.Current, WorldY.Current);
+        public Location PreviousLocation => new Location(LocationID.Previous, WorldX.Previous, WorldY.Previous);
         public GameDataItem<bool> IsAlduin2Defeated { get; private set; }
         public GameDataItem<int> QuestlinesCompleted { get; private set; }
         public GameDataItem<int> CollegeOfWinterholdQuestsCompleted { get; private set; }
