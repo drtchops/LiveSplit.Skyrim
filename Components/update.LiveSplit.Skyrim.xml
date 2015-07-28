@@ -1,4 +1,14 @@
 <updates>
+    <update version="2.2.1">
+        <files>
+            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+        </files>
+        <changelog>
+            <change>
+                The delay between a reset and the timer start is now compensated. Make sure to reset your helgen gold.
+            </change>
+        </changelog>
+    </update>
     <update version="2.2.0">
         <files>
             <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
