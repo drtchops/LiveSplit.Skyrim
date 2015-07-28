@@ -10,8 +10,7 @@ namespace LiveSplit.Skyrim
 {
     class GameMemory
     {
-        public event EventHandler OnFirstLevelLoading;
-        public event EventHandler OnPlayerGainedControl;
+        public event EventHandler OnStartSaveLoad;
         public event EventHandler OnLoadStarted;
         public event EventHandler OnLoadFinished;
         public delegate void SplitCompletedEventHandler(object sender, SplitArea type, string[] template, uint frame);
@@ -186,20 +185,14 @@ namespace LiveSplit.Skyrim
                         {
                             if (data.IsLoading.Current)
                             {
-                                Trace.WriteLine(String.Format("[NoLoads] Load Start - {0}", frameCounter));
+                                Trace.WriteLine($"[NoLoads] Load Start - {frameCounter}");
 
                                 // pause game timer
-                                _uiThread.Post(d =>
-                                {
-                                    if (this.OnLoadStarted != null)
-                                    {
-                                        this.OnLoadStarted(this, EventArgs.Empty);
-                                    }
-                                }, null);
+                                FireEvent(OnLoadStarted);
                             }
                             else
                             {
-                                Trace.WriteLine(String.Format("[NoLoads] Load End - {0}", frameCounter));
+                                Trace.WriteLine($"[NoLoads] Load End - {frameCounter}");
 
                                 if (!data.loadScreenFadeoutStarted)
                                 {
@@ -210,13 +203,7 @@ namespace LiveSplit.Skyrim
                                 }
 
                                 // unpause game timer
-                                _uiThread.Post(d =>
-                                {
-                                    if (this.OnLoadFinished != null)
-                                    {
-                                        this.OnLoadFinished(this, EventArgs.Empty);
-                                    }
-                                }, null);
+                                FireEvent(OnLoadFinished);
                             }
                         }
 
@@ -224,7 +211,7 @@ namespace LiveSplit.Skyrim
                         {
                             if (data.IsLoadingScreen.Current)
                             {
-                                Trace.WriteLine(String.Format("[NoLoads] LoadScreen Start at {0} X: {1} Y: {2} - {3}", data.LocationID.Current.ToString("X8"), data.WorldX.Current, data.WorldY.Current, frameCounter));
+                                Trace.WriteLine($"[NoLoads] LoadScreen Start at {data.LocationID.Current.ToString("X8")} X: {data.WorldY.Current} Y: {data.WorldY.Current} - {frameCounter}");
 
                                 data.loadingScreenStarted = true;
                                 data.loadScreenStartLocation = data.Location;
@@ -285,7 +272,7 @@ namespace LiveSplit.Skyrim
                             }
                             else
                             {
-                                Trace.WriteLine(String.Format("[NoLoads] LoadScreen End at {0} X: {1} Y: {2} - {3}", data.LocationID.Current.ToString("X8"), data.WorldX.Current, data.WorldY.Current, frameCounter));
+                                Trace.WriteLine($"[NoLoads] LoadScreen End at {data.LocationID.Current.ToString("X8")} X: {data.WorldX.Current} Y: {data.WorldY.Current} - {frameCounter}");
 
                                 if (data.loadingScreenStarted)
                                 {
@@ -299,7 +286,7 @@ namespace LiveSplit.Skyrim
                         {
                             if (data.IsInFadeOut.Current)
                             {
-                                Debug.WriteLine(String.Format("[NoLoads] Fadeout started - {0}", frameCounter));
+                                Debug.WriteLine($"[NoLoads] Fadeout started - {frameCounter}");
                                 if (data.IsLoadingScreen.Current)
                                 {
                                     data.loadScreenFadeoutStarted = true;
@@ -307,30 +294,14 @@ namespace LiveSplit.Skyrim
                             }
                             else
                             {
-                                Debug.WriteLine(String.Format("[NoLoads] Fadeout ended - {0}", frameCounter));
+                                Debug.WriteLine($"[NoLoads] Fadeout ended - {frameCounter}");
                                 // if loadscreen fadeout finishes in helgen
                                 if (data.IsInFadeOut.Previous && data.loadScreenFadeoutStarted &&
                                     data.Location == new Location(Locations.Tamriel, 3, -20))
                                 {
-                                    // reset
-                                    Trace.WriteLine(String.Format("[NoLoads] Reset - {0}", frameCounter));
-                                    _uiThread.Post(d =>
-                                    {
-                                        if (this.OnFirstLevelLoading != null)
-                                        {
-                                            this.OnFirstLevelLoading(this, EventArgs.Empty);
-                                        }
-                                    }, null);
-
-                                    // start
-                                    Trace.WriteLine(String.Format("[NoLoads] Start - {0}", frameCounter));
-                                    _uiThread.Post(d =>
-                                    {
-                                        if (this.OnPlayerGainedControl != null)
-                                        {
-                                            this.OnPlayerGainedControl(this, EventArgs.Empty);
-                                        }
-                                    }, null);
+                                    // start and reset
+                                    Trace.WriteLine($"[NoLoads] Reset and Start - {frameCounter}");
+                                    FireEvent(OnStartSaveLoad);
                                 }
                                 data.loadScreenFadeoutStarted = false;
                             }
@@ -608,7 +579,7 @@ namespace LiveSplit.Skyrim
 
                         if (data.Alduin1Health.Current < 0 && !data.isAlduin1Defeated)
                         {
-                            Debug.WriteLine(String.Format("[NoLoads] Alduin 1 has been defeated. HP: {1} - {0}", frameCounter, data.Alduin1Health.Current));
+                            Debug.WriteLine($"[NoLoads] Alduin 1 has been defeated. HP: {data.Alduin1Health.Current} - {frameCounter}");
                             data.isAlduin1Defeated = true;
 
                             Split(SplitArea.Alduin1, new string[]{ SplitTemplates.MRWALRUS }, frameCounter);
@@ -616,15 +587,8 @@ namespace LiveSplit.Skyrim
 
                         if (data.LocationID.Current == (int)Locations.HelgenKeep01 && data.BearCartHealth.Current < 0 && data.BearCartHealth.Previous >= 0 && data.BearCartHealth.PrevDerefSuccess)
                         {
-                            Debug.WriteLine(String.Format("[NoLoads] BEAR CART! HP: {1} - {0}", frameCounter, data.BearCartHealth.Current));
-
-                            _uiThread.Post(d =>
-                            {
-                                if (this.OnBearCart != null)
-                                {
-                                    this.OnBearCart(this, EventArgs.Empty);
-                                }
-                            }, null);
+                            Debug.WriteLine($"[NoLoads] BEAR CART! HP: {data.BearCartHealth.Current} - {frameCounter}");
+                            FireEvent(OnBearCart);
                         }
 
                         // the only mainquest you can complete here is the council so when a quest completes, walrus' council split
@@ -649,25 +613,25 @@ namespace LiveSplit.Skyrim
 
                         if (data.CollegeOfWinterholdQuestsCompleted.Current > data.CollegeOfWinterholdQuestsCompleted.Previous)
                         {
-                            Debug.WriteLine(String.Format("[NoLoads] A College of Winterhold quest has been completed - {0}", frameCounter));
+                            Debug.WriteLine($"[NoLoads] A College of Winterhold quest has been completed - {frameCounter}");
                             data.lastQuestCompleted = SplitArea.CollegeOfWinterholdQuestlineCompleted;
                             data.lastQuestframeCounter = frameCounter;
                         }
                         else if (data.CompanionsQuestsCompleted.Current > data.CompanionsQuestsCompleted.Previous)
                         {
-                            Debug.WriteLine(String.Format("[NoLoads] A Companions quest has been completed - {0}", frameCounter));
+                            Debug.WriteLine($"[NoLoads] A Companions quest has been completed - {frameCounter}");
                             data.lastQuestCompleted = SplitArea.CompanionsQuestlineCompleted;
                             data.lastQuestframeCounter = frameCounter;
                         }
                         else if (data.DarkBrotherhoodQuestsCompleted.Current > data.DarkBrotherhoodQuestsCompleted.Previous)
                         {
-                            Debug.WriteLine(String.Format("[NoLoads] A Dark Brotherhood quest has been completed - {0}", frameCounter));
+                            Debug.WriteLine($"[NoLoads] A Dark Brotherhood quest has been completed - {frameCounter}");
                             data.lastQuestCompleted = SplitArea.DarkBrotherhoodQuestlineCompleted;
                             data.lastQuestframeCounter = frameCounter;
                         }
                         else if (data.ThievesGuildQuestsCompleted.Current > data.ThievesGuildQuestsCompleted.Previous)
                         {
-                            Debug.WriteLine(String.Format("[NoLoads] A Thieves' Guild quest has been completed - {0}", frameCounter));
+                            Debug.WriteLine($"[NoLoads] A Thieves' Guild quest has been completed - {frameCounter}");
                             data.lastQuestCompleted = SplitArea.ThievesGuildQuestlineCompleted;
                             data.lastQuestframeCounter = frameCounter;
                         }
@@ -675,13 +639,13 @@ namespace LiveSplit.Skyrim
                         // if a questline is completed
                         if (data.QuestlinesCompleted.Current > data.QuestlinesCompleted.Previous)
                         {
-                            Debug.WriteLineIf(data.lastQuestCompleted == SplitArea.None, String.Format("[NoLoads] A questline has been completed. - {0}", frameCounter));
+                            Debug.WriteLineIf(data.lastQuestCompleted == SplitArea.None, $"[NoLoads] A questline has been completed. - {frameCounter}");
                             Split(data.lastQuestCompleted, null, frameCounter);
                         }
 
-                        Debug.WriteLineIf(data.LocationID.HasChanged, String.Format("[NoLoads] Location changed to {0} - {1}", data.LocationID.Current.ToString("X8"), frameCounter));
-                        Debug.WriteLineIf(data.WorldX.HasChanged || data.WorldY.HasChanged, String.Format("[NoLoads] Coords changed to X: {0} Y: {1} - {2}", data.WorldX.Current, data.WorldY.Current, frameCounter));
-                        Debug.WriteLineIf(data.IsInEscapeMenu.HasChanged, String.Format("[NoLoads] isInEscapeMenu changed to {0} - {1}", data.IsInEscapeMenu.Current, frameCounter));
+                        Debug.WriteLineIf(data.LocationID.HasChanged, $"[NoLoads] Location changed to {data.LocationID.Current.ToString("X8")} - {frameCounter}");
+                        Debug.WriteLineIf(data.WorldX.HasChanged || data.WorldY.HasChanged, $"[NoLoads] Coords changed to X: {data.WorldX.Current} Y: {data.WorldY.Current} - {frameCounter}");
+                        Debug.WriteLineIf(data.IsInEscapeMenu.HasChanged, $"[NoLoads] isInEscapeMenu changed to {data.IsInEscapeMenu.Current} - {frameCounter}");
 
                         frameCounter++;
 
@@ -694,13 +658,7 @@ namespace LiveSplit.Skyrim
                     }
 
                     //pause time when game crashes or closes
-                    _uiThread.Post(d =>
-                    {
-                        if (this.OnLoadStarted != null)
-                        {
-                            this.OnLoadStarted(this, EventArgs.Empty);
-                        }
-                    }, null);
+                    FireEvent(OnLoadStarted);
                 }
                 catch (Exception ex)
                 {
@@ -712,14 +670,14 @@ namespace LiveSplit.Skyrim
 
         private void Split(SplitArea split, string[] templates, uint frame)
         {
-            _uiThread.Post(d =>
-            {
-                if (this.OnSplitCompleted != null)
-                {
-                    this.OnSplitCompleted(this, split, templates, frame);
-                }
-            }, null);
+            FireEvent(OnSplitCompleted, this, split, templates, frame);
         }
+
+        void FireEvent(Delegate handler, params object[] args)
+        {
+            _uiThread.Post(d => handler?.DynamicInvoke(args), null);
+        }
+        void FireEvent(EventHandler handler) => FireEvent(handler, this, EventArgs.Empty);
 
         Process GetGameProcess()
         {

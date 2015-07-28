@@ -1,14 +1,11 @@
 ﻿using LiveSplit.Model;
-using LiveSplit.TimeFormatters;
-using LiveSplit.UI.Components;
 using LiveSplit.UI;
+using LiveSplit.UI.Components;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Xml;
-using System.Windows.Forms;
 using System.Diagnostics;
 using System.Reflection;
+using System.Windows.Forms;
+using System.Xml;
 
 namespace LiveSplit.Skyrim
 {
@@ -36,7 +33,7 @@ namespace LiveSplit.Skyrim
 #if DEBUG
             debug = true;
 #endif
-            Trace.WriteLine("[NoLoads] Using LiveSplit.Skyrim component version " + Assembly.GetExecutingAssembly().GetName().Version + " " + ((debug) ? "Debug" : "Release") + " build");
+            Trace.WriteLine($"[NoLoads] Using LiveSplit.Skyrim component version {Assembly.GetExecutingAssembly().GetName().Version} {(debug ? "Debug" : "Release")} build");
             _state = state;
 
             this.Settings = new SkyrimSettings(this, state);
@@ -60,8 +57,7 @@ namespace LiveSplit.Skyrim
             }
 
             _gameMemory = new GameMemory();
-            _gameMemory.OnFirstLevelLoading += gameMemory_OnFirstLevelLoading;
-            _gameMemory.OnPlayerGainedControl += gameMemory_OnPlayerGainedControl;
+            _gameMemory.OnStartSaveLoad += gameMemory_OnStartSaveLoad;
             _gameMemory.OnLoadStarted += gameMemory_OnLoadStarted;
             _gameMemory.OnLoadFinished += gameMemory_OnLoadFinished;
             _gameMemory.OnSplitCompleted += gameMemory_OnSplitCompleted;
@@ -76,13 +72,8 @@ namespace LiveSplit.Skyrim
             _state.OnStart -= State_OnStart;
             _state.OnReset -= State_OnReset;
 
-            if (_gameMemory != null)
-            {
-                _gameMemory.Stop();
-            }
-
-            if (SoundComponent != null)
-                SoundComponent.Dispose();
+            _gameMemory?.Stop();
+            SoundComponent?.Dispose();
         }
 
         void State_OnStart(object sender, EventArgs e)
@@ -96,22 +87,31 @@ namespace LiveSplit.Skyrim
             UpdateBearCartPB();
         }
 
-        void gameMemory_OnFirstLevelLoading(object sender, EventArgs e)
+        void gameMemory_OnStartSaveLoad(object sender, EventArgs e)
         {
+            Stopwatch s = Stopwatch.StartNew();
+
             if (this.Settings.AutoReset)
             {
                 UpdateBearCartPB(true);
                 _timer.Reset();
             }
-        }
 
-        void gameMemory_OnPlayerGainedControl(object sender, EventArgs e)
-        {
             if (this.Settings.AutoStart)
             {
-                _timer.Start();
+                StartTimer(s.Elapsed);
             }
         }
+
+        void StartTimer(TimeSpan time)
+        {
+            TimeSpan originalOffset = _state.Run.Offset;
+            _state.Run.Offset = time;
+            _timer.Start();
+            _state.Run.Offset = originalOffset;
+            Trace.WriteLine($"[NoLoads] Started timer at {time}");
+        }
+        void StartTimer() => StartTimer(TimeSpan.Zero);
 
         void gameMemory_OnLoadStarted(object sender, EventArgs e)
         {
@@ -132,7 +132,7 @@ namespace LiveSplit.Skyrim
                 foreach (string template in templates)
                 {
                     templatesDbgStr += i > 0 ? " " : "";
-                    templatesDbgStr += "\"" + template + "\"";
+                    templatesDbgStr += $"\"{template}\"";
                     templatesDbgStr += i + 1 != templates.Length ? "," : "";
                     i++;
                 }
@@ -140,7 +140,7 @@ namespace LiveSplit.Skyrim
             else
                 templatesDbgStr = "Any";
 
-            Debug.WriteLineIf(split != SplitArea.None, String.Format("[NoLoads] Trying to split {0} with {1} templates, State: {2} - {3}", split, templatesDbgStr, _gameMemory.splitStates[(int)split], frame));
+            Debug.WriteLineIf(split != SplitArea.None, $"[NoLoads] Trying to split {split} with {templatesDbgStr} templates, State: {_gameMemory.splitStates[(int)split]} - {frame}");
 
             if (_state.CurrentPhase == TimerPhase.Running && !_gameMemory.splitStates[(int)split] && (templates == null || Array.IndexOf(templates, Settings.AnyPercentTemplate) >= 0) &&
                 ((split == SplitArea.Helgen && this.Settings.Helgen) ||
@@ -169,7 +169,7 @@ namespace LiveSplit.Skyrim
                 (split == SplitArea.ThievesGuildQuestlineCompleted && this.Settings.ThievesGuild) ||
                 (split == SplitArea.AlduinDefeated && this.Settings.AlduinDefeated)))
             {
-                Trace.WriteLine(String.Format("[NoLoads] {0} Split with {2} templates - {1}", split, frame, templatesDbgStr));
+                Trace.WriteLine($"[NoLoads] {split} Split with {templatesDbgStr} templates - {frame}");
                 _timer.Split();
                 _gameMemory.splitStates[(int)split] = true;
             }
@@ -211,11 +211,11 @@ namespace LiveSplit.Skyrim
                 DialogResult result = DialogResult.Yes;
                 if (Settings.BearCartPBNotification && !silent)
                 {
-                    string newTime = String.Format("New time: Game Time: {0}, Real Time: {1}\n", BearCartSplit.GameTime.Value.ToString(@"mm\:ss\.fff"), BearCartSplit.RealTime.Value.ToString(@"mm\:ss\.fff"));
+                    string newTime = $"New time: Game Time: {BearCartSplit.GameTime.Value.ToString(@"mm\:ss\.fff")}, Real Time: {BearCartSplit.RealTime.Value.ToString(@"mm\:ss\.fff")}\n";
                     string oldTime = String.Empty;
 
                     if (Settings.BearCartPB.GameTime.Value != new TimeSpan(0))
-                        oldTime = String.Format("Previous time: Game Time: {0}, Real Time: {1}\n", Settings.BearCartPB.GameTime.Value.ToString(@"mm\:ss\.fff"), Settings.BearCartPB.RealTime.Value.ToString(@"mm\:ss\.fff"));
+                        oldTime = $"Previous time: Game Time: {Settings.BearCartPB.GameTime.Value.ToString(@"mm\:ss\.fff")}, Real Time: {Settings.BearCartPB.RealTime.Value.ToString(@"mm\:ss\.fff")}\n";
 
                     result = MessageBox.Show(_state.Form, newTime + oldTime + "\nDo you want to save your new Bear Cart Personal Best?",
                         "New Bear Cart Personal Best", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
