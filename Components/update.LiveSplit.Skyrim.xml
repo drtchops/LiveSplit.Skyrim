@@ -2,7 +2,6 @@
     <update version="2.3">
         <files>
             <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
-            <file path="Components/NAudio.dll" status="added"/>
         </files>
         <changelog>
             <change>

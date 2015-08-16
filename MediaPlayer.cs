@@ -9,7 +9,7 @@ namespace LiveSplit.Skyrim
     public class MediaPlayer
     {
         public int GeneralVolume { get; set; }
-        public WaveOut Player { get; private set; }
+        protected WaveOut Player { get; private set; }
 
         public MediaPlayer()
         {
@@ -51,6 +51,11 @@ namespace LiveSplit.Skyrim
         public void PlaySound(String location)
         {
             PlaySound(location, GeneralVolume);
+        }
+
+        public void Stop()
+        {
+            Player.Stop();
         }
     }
 }

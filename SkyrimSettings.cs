@@ -119,7 +119,8 @@ namespace LiveSplit.Skyrim
             this.chkPlayBearCartSound.DataBindings.Add("Checked", this, "PlayBearCartSound", false, DataSourceUpdateMode.OnPropertyChanged);
             this.txtBearCartSoundPath.DataBindings.Add("Text", this, "BearCartSoundPath");
             this.chkPlayBearCartSoundOnlyOnPB.DataBindings.Add("Checked", this, "PlayBearCartSoundOnlyOnPB", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.tbGeneralVolume.DataBindings.Add("Value", _component.MediaPlayer, "GeneralVolume");
+            if (_component.MediaPlayer != null)
+                this.tbGeneralVolume.DataBindings.Add("Value", _component.MediaPlayer, "GeneralVolume");
 
             // defaults
             this.AutoStart = DEFAULT_AUTOSTART;
@@ -171,6 +172,12 @@ namespace LiveSplit.Skyrim
 
         void Settings_OnLoad(object sender, EventArgs e)
         {
+            if (_component.MediaPlayer == null)
+            {
+                gbBearCartSound.Enabled = false;
+                gbBearCartSound.Text = "Sound (NAudio.dll is missing)";
+            }
+
             if (BearCartPB.RealTime != null && BearCartPB.RealTime != new TimeSpan(0))
             {
                 this.lBearCartPB.Text = String.Format("Personal Best:\n Game Time: {0}, Real Time: {1}", BearCartPB.GameTime.Value.ToString(@"mm\:ss\.fff"), BearCartPB.RealTime.Value.ToString(@"mm\:ss\.fff"));
@@ -226,7 +233,8 @@ namespace LiveSplit.Skyrim
             settingsNode.AppendChild(ToElement(doc, "PlayBearCartSound", this.PlayBearCartSound));
             settingsNode.AppendChild(ToElement(doc, "BearCartSoundPath", this.BearCartSoundPath));
             settingsNode.AppendChild(ToElement(doc, "PlayBearCartSoundOnlyOnPB", this.PlayBearCartSoundOnlyOnPB));
-            settingsNode.AppendChild(ToElement(doc, "Volume", _component.MediaPlayer.GeneralVolume));
+            if (_component.MediaPlayer != null)
+                settingsNode.AppendChild(ToElement(doc, "Volume", _component.MediaPlayer.GeneralVolume));
 
             return settingsNode;
         }
@@ -284,7 +292,8 @@ namespace LiveSplit.Skyrim
             this.PlayBearCartSound = ParseBool(settings, "PlayBearCartSound", DEFAULT_PLAYBEARCARTSOUND);
             this.BearCartSoundPath = settings["BearCartSoundPath"]?.InnerText ?? String.Empty;
             this.PlayBearCartSoundOnlyOnPB = ParseBool(settings, "PlayBearCartSoundOnlyOnPB", DEFAULT_PLAYBEARCARTSOUNDONLYONPB);
-            _component.MediaPlayer.GeneralVolume = ParseInt(settings["Volume"], 100);
+            if (_component.MediaPlayer != null)
+                _component.MediaPlayer.GeneralVolume = ParseInt(settings["Volume"], 100);
 
             if (element["AnyPercentTemplate"] != null)
             {
@@ -488,11 +497,11 @@ namespace LiveSplit.Skyrim
         {
             if (String.IsNullOrEmpty(BearCartSoundPath) || !System.IO.File.Exists(BearCartSoundPath))
             {
-                _component.MediaPlayer.PlaySound(_component.BearCartDefaultSoundPath);
+                _component.MediaPlayer?.PlaySound(_component.BearCartDefaultSoundPath);
             }
             else if (System.IO.File.Exists(BearCartSoundPath))
             {
-                _component.MediaPlayer.PlaySound(BearCartSoundPath);
+                _component.MediaPlayer?.PlaySound(BearCartSoundPath);
             }
         }
 
@@ -514,7 +523,7 @@ namespace LiveSplit.Skyrim
             this.tbGeneralVolume.Enabled = enable;
 
             if (!enable)
-                _component.MediaPlayer.Player.Stop();
+                _component.MediaPlayer?.Stop();
         }
     }
 

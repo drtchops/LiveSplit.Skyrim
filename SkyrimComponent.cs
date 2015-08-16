@@ -36,7 +36,8 @@ namespace LiveSplit.Skyrim
             Trace.WriteLine($"[NoLoads] Using LiveSplit.Skyrim component version {Assembly.GetExecutingAssembly().GetName().Version} {(debug ? "Debug" : "Release")} build");
             _state = state;
 
-            MediaPlayer = new MediaPlayer();
+            try { MediaPlayer = new MediaPlayer(); }
+            catch { MediaPlayer = null; }
             this.Settings = new SkyrimSettings(this, state);
 
             _timer = new TimerModel { CurrentState = state };
@@ -69,7 +70,7 @@ namespace LiveSplit.Skyrim
             _state.OnReset -= State_OnReset;
 
             _gameMemory?.Stop();
-            MediaPlayer.Dispose();
+            MediaPlayer?.Dispose();
         }
 
         void State_OnStart(object sender, EventArgs e)
@@ -184,9 +185,9 @@ namespace LiveSplit.Skyrim
                     if (Settings.IsBearCartSecret || !Settings.PlayBearCartSoundOnlyOnPB || IsBearCartPB(BearCartSplit))
                     {
                         if (String.IsNullOrEmpty(Settings.BearCartSoundPath) || !System.IO.File.Exists(Settings.BearCartSoundPath))
-                            MediaPlayer.PlaySound(BearCartDefaultSoundPath);
+                            MediaPlayer?.PlaySound(BearCartDefaultSoundPath);
                         else
-                            MediaPlayer.PlaySound(Settings.BearCartSoundPath);
+                            MediaPlayer?.PlaySound(Settings.BearCartSoundPath);
                     }
                 }
             }
@@ -224,7 +225,7 @@ namespace LiveSplit.Skyrim
             }
 
             if (!silent)
-                MediaPlayer.Player.Stop();
+                MediaPlayer?.Stop();
 
             BearCartSplit = new Time();
         }
