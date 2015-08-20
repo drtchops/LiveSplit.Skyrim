@@ -6,4 +6,4 @@ if [ -z "$VERSION" ]; then
     exit 1
 fi
 
-zip LiveSplit.Skyrim_v${VERSION}.zip LiveSplit.Skyrim.dll ../readme.txt
+zip -j LiveSplit.Skyrim_v${VERSION}.zip LiveSplit.Skyrim.dll ../README.md
