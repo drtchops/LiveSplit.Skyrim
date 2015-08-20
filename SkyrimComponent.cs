@@ -16,7 +16,7 @@ namespace LiveSplit.Skyrim
             get { return "Skyrim"; }
         }
 
-        public IComponent SoundComponent { get; set; }
+        public MediaPlayer MediaPlayer { get; set; }
         public SkyrimSettings Settings { get; set; }
         public Time BearCartSplit { get; private set; }
 
@@ -36,25 +36,22 @@ namespace LiveSplit.Skyrim
             Trace.WriteLine($"[NoLoads] Using LiveSplit.Skyrim component version {Assembly.GetExecutingAssembly().GetName().Version} {(debug ? "Debug" : "Release")} build");
             _state = state;
 
+            try { MediaPlayer = new MediaPlayer(); }
+            catch { MediaPlayer = null; }
             this.Settings = new SkyrimSettings(this, state);
 
             _timer = new TimerModel { CurrentState = state };
 
             this.BearCartSplit = new Time();
-            IComponentFactory soundFactory;
-            if (ComponentManager.ComponentFactories.TryGetValue("LiveSplit.Sound.dll", out soundFactory))
-            {
-                SoundComponent = soundFactory.Create(_state) as SoundComponent;
 
-                this.BearCartDefaultSoundPath = System.IO.Path.GetTempPath() + @"LiveSplit.Skyrim\bearcart.mp3";
-                //extract embedded sound to temp folder
-                try
-                {
-                    System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(BearCartDefaultSoundPath));
-                    System.IO.File.WriteAllBytes(BearCartDefaultSoundPath, Properties.Resources.bearcart_short);
-                }
-                catch (System.IO.IOException) { Trace.WriteLine("[NoLoads] Error when extracting bear cart sound to temp folder."); }
+            this.BearCartDefaultSoundPath = System.IO.Path.GetTempPath() + @"LiveSplit.Skyrim\bearcart.mp3";
+            //extract embedded sound to temp folder
+            try
+            {
+                System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(BearCartDefaultSoundPath));
+                System.IO.File.WriteAllBytes(BearCartDefaultSoundPath, Properties.Resources.bearcart_short);
             }
+            catch (System.IO.IOException) { Trace.WriteLine("[NoLoads] Error when extracting bear cart sound to temp folder."); }
 
             _gameMemory = new GameMemory();
             _gameMemory.OnStartSaveLoad += gameMemory_OnStartSaveLoad;
@@ -73,7 +70,7 @@ namespace LiveSplit.Skyrim
             _state.OnReset -= State_OnReset;
 
             _gameMemory?.Stop();
-            SoundComponent?.Dispose();
+            MediaPlayer?.Dispose();
         }
 
         void State_OnStart(object sender, EventArgs e)
@@ -183,14 +180,14 @@ namespace LiveSplit.Skyrim
                 Settings.IsBearCartSecret = false;
                 Settings.SaveBearCartConfig();
 
-                if (SoundComponent != null && (Settings.IsBearCartSecret || Settings.PlayBearCartSound)) //force play if it isn't unlocked in case the splits were shared
+                if (Settings.IsBearCartSecret || Settings.PlayBearCartSound) //force play if it isn't unlocked in case the splits were shared
                 {
                     if (Settings.IsBearCartSecret || !Settings.PlayBearCartSoundOnlyOnPB || IsBearCartPB(BearCartSplit))
                     {
-                        if (String.IsNullOrEmpty(Settings.BearCartSoundPath))
-                            ((SoundComponent)SoundComponent).PlaySound(BearCartDefaultSoundPath);
+                        if (String.IsNullOrEmpty(Settings.BearCartSoundPath) || !System.IO.File.Exists(Settings.BearCartSoundPath))
+                            MediaPlayer?.PlaySound(BearCartDefaultSoundPath);
                         else
-                            ((SoundComponent)SoundComponent).PlaySound(Settings.BearCartSoundPath);
+                            MediaPlayer?.PlaySound(Settings.BearCartSoundPath);
                     }
                 }
             }
@@ -227,8 +224,8 @@ namespace LiveSplit.Skyrim
                 }
             }
 
-            if (SoundComponent != null && !silent)
-                ((SoundComponent)SoundComponent).Player.Stop();
+            if (!silent)
+                MediaPlayer?.Stop();
 
             BearCartSplit = new Time();
         }

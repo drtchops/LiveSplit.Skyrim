@@ -1,4 +1,14 @@
 <updates>
+    <update version="2.3">
+        <files>
+            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+        </files>
+        <changelog>
+            <change>
+                Compatibility with LiveSplit 1.6
+            </change>
+        </changelog>
+    </update>
     <update version="2.2.1">
         <files>
             <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>

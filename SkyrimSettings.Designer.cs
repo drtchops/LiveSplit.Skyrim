@@ -40,8 +40,8 @@
             this.chkEsbern = new System.Windows.Forms.CheckBox();
             this.chkRiverwood = new System.Windows.Forms.CheckBox();
             this.chkKarthspire = new System.Windows.Forms.CheckBox();
-            this.chkTheWall = new System.Windows.Forms.CheckBox();
             this.chkSeptimus = new System.Windows.Forms.CheckBox();
+            this.chkTheWall = new System.Windows.Forms.CheckBox();
             this.chkMzarkTower = new System.Windows.Forms.CheckBox();
             this.chkClearSky = new System.Windows.Forms.CheckBox();
             this.chkHorseClimb = new System.Windows.Forms.CheckBox();
@@ -76,9 +76,11 @@
             this.chkBearCartPBNotification = new System.Windows.Forms.CheckBox();
             this.gbBearCartSound = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lVolume = new System.Windows.Forms.Label();
+            this.tbGeneralVolume = new System.Windows.Forms.TrackBar();
             this.chkPlayBearCartSound = new System.Windows.Forms.CheckBox();
             this.btnBrowseBearCartSound = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lSound = new System.Windows.Forms.Label();
             this.txtBearCartSoundPath = new System.Windows.Forms.TextBox();
             this.chkPlayBearCartSoundOnlyOnPB = new System.Windows.Forms.CheckBox();
             this.btnBearCartSoundTest = new System.Windows.Forms.Button();
@@ -105,6 +107,7 @@
             this.tlpBearCart.SuspendLayout();
             this.gbBearCartSound.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGeneralVolume)).BeginInit();
             this.gbStartSplits.SuspendLayout();
             this.flp.SuspendLayout();
             this.SuspendLayout();
@@ -292,29 +295,29 @@
             this.chkKarthspire.Text = "Karthspire";
             this.chkKarthspire.UseVisualStyleBackColor = true;
             // 
-            // chkTheWall
-            // 
-            this.chkTheWall.AutoSize = true;
-            this.chkTheWall.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkTheWall.Location = new System.Drawing.Point(3, 118);
-            this.chkTheWall.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
-            this.chkTheWall.Name = "chkTheWall";
-            this.chkTheWall.Size = new System.Drawing.Size(109, 17);
-            this.chkTheWall.TabIndex = 8;
-            this.chkTheWall.Text = "The Wall";
-            this.chkTheWall.UseVisualStyleBackColor = true;
-            // 
             // chkSeptimus
             // 
             this.chkSeptimus.AutoSize = true;
             this.chkSeptimus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.chkSeptimus.Location = new System.Drawing.Point(3, 141);
+            this.chkSeptimus.Location = new System.Drawing.Point(3, 118);
             this.chkSeptimus.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
             this.chkSeptimus.Name = "chkSeptimus";
             this.chkSeptimus.Size = new System.Drawing.Size(109, 17);
             this.chkSeptimus.TabIndex = 9;
             this.chkSeptimus.Text = "Septimus";
             this.chkSeptimus.UseVisualStyleBackColor = true;
+            // 
+            // chkTheWall
+            // 
+            this.chkTheWall.AutoSize = true;
+            this.chkTheWall.Dock = System.Windows.Forms.DockStyle.Top;
+            this.chkTheWall.Location = new System.Drawing.Point(3, 141);
+            this.chkTheWall.Margin = new System.Windows.Forms.Padding(3, 3, 50, 3);
+            this.chkTheWall.Name = "chkTheWall";
+            this.chkTheWall.Size = new System.Drawing.Size(109, 17);
+            this.chkTheWall.TabIndex = 8;
+            this.chkTheWall.Text = "The Wall";
+            this.chkTheWall.UseVisualStyleBackColor = true;
             // 
             // chkMzarkTower
             // 
@@ -708,7 +711,7 @@
             this.tlpBearCart.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpBearCart.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tlpBearCart.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpBearCart.Size = new System.Drawing.Size(450, 167);
+            this.tlpBearCart.Size = new System.Drawing.Size(450, 196);
             this.tlpBearCart.TabIndex = 0;
             // 
             // chkBearCartPBNotification
@@ -732,7 +735,7 @@
             this.gbBearCartSound.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbBearCartSound.Location = new System.Drawing.Point(3, 58);
             this.gbBearCartSound.Name = "gbBearCartSound";
-            this.gbBearCartSound.Size = new System.Drawing.Size(444, 106);
+            this.gbBearCartSound.Size = new System.Drawing.Size(444, 135);
             this.gbBearCartSound.TabIndex = 6;
             this.gbBearCartSound.TabStop = false;
             this.gbBearCartSound.Text = "Sound";
@@ -745,21 +748,47 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.lVolume, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tbGeneralVolume, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.chkPlayBearCartSound, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnBrowseBearCartSound, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.lSound, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.txtBearCartSoundPath, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.chkPlayBearCartSoundOnlyOnPB, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnBearCartSoundTest, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(438, 87);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(438, 116);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // lVolume
+            // 
+            this.lVolume.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lVolume.AutoSize = true;
+            this.lVolume.Location = new System.Drawing.Point(3, 95);
+            this.lVolume.Name = "lVolume";
+            this.lVolume.Size = new System.Drawing.Size(114, 13);
+            this.lVolume.TabIndex = 10;
+            this.lVolume.Text = "Volume:";
+            // 
+            // tbGeneralVolume
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.tbGeneralVolume, 2);
+            this.tbGeneralVolume.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbGeneralVolume.Location = new System.Drawing.Point(123, 90);
+            this.tbGeneralVolume.Maximum = 100;
+            this.tbGeneralVolume.Name = "tbGeneralVolume";
+            this.tbGeneralVolume.Size = new System.Drawing.Size(312, 23);
+            this.tbGeneralVolume.TabIndex = 9;
+            this.tbGeneralVolume.TickFrequency = 10;
+            this.tbGeneralVolume.Value = 100;
             // 
             // chkPlayBearCartSound
             // 
@@ -789,16 +818,16 @@
             this.btnBrowseBearCartSound.UseVisualStyleBackColor = true;
             this.btnBrowseBearCartSound.Click += new System.EventHandler(this.btnBrowseBearCartSound_Click);
             // 
-            // label1
+            // lSound
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 66);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Sound:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lSound.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lSound.AutoSize = true;
+            this.lSound.Location = new System.Drawing.Point(3, 66);
+            this.lSound.Name = "lSound";
+            this.lSound.Size = new System.Drawing.Size(114, 13);
+            this.lSound.TabIndex = 3;
+            this.lSound.Text = "Sound:";
+            this.lSound.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtBearCartSoundPath
             // 
@@ -945,6 +974,7 @@
             this.gbBearCartSound.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGeneralVolume)).EndInit();
             this.gbStartSplits.ResumeLayout(false);
             this.gbStartSplits.PerformLayout();
             this.flp.ResumeLayout(false);
@@ -1010,11 +1040,13 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.CheckBox chkPlayBearCartSound;
         private System.Windows.Forms.Button btnBrowseBearCartSound;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lSound;
         private System.Windows.Forms.Button btnBearCartSoundTest;
         private System.Windows.Forms.TextBox txtBearCartSoundPath;
         private System.Windows.Forms.Label lBearCartPB;
         private System.Windows.Forms.CheckBox chkPlayBearCartSoundOnlyOnPB;
         private System.Windows.Forms.CheckBox chkKarthspire;
+        private System.Windows.Forms.Label lVolume;
+        private System.Windows.Forms.TrackBar tbGeneralVolume;
     }
 }
