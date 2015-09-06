@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using LiveSplit.ComponentUtil;
+using System.Diagnostics;
 
 namespace LiveSplit.Skyrim
 {
