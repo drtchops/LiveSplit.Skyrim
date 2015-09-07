@@ -1,72 +1,41 @@
 ﻿using LiveSplit.ComponentUtil;
 using System;
 using System.Reflection;
-using System.Linq;
 
 namespace LiveSplit.Skyrim
 {
     public class SkyrimData : MemoryWatcherList
     {
-        public SkyrimData()
-        {
-            // Loads
-            IsQuickLoading = new MemoryWatcher<bool>(new DeepPointer(0x17337CC)); // == 1 if a load is happening (any except loading screens in Helgen for some reason)
-            IsLoadingScreen = new MemoryWatcher<bool>(new DeepPointer(0xEE3561)); // == 1 if in a loading screen
-            IsInFadeOut = new MemoryWatcher<bool>(new DeepPointer(0x172EE2E)); // == 1 when in a fadeout, it goes back to 0 once control is gained
-
-            // Position
-            LocationID = new MemoryWatcher<int>(new DeepPointer(0x01738308, 0x4, 0x78, 0x670, 0xEC)); // ID of the current location (see http://steamcommunity.com/sharedfiles/filedetails/?id=148834641 or http://www.skyrimsearch.com/cells.php)
-            WorldX = new MemoryWatcher<int>(new DeepPointer(0x0172E864, 0x64)); // X world position (cell)
-            WorldY = new MemoryWatcher<int>(new DeepPointer(0x0172E864, 0x68)); // Y world position (cell)
-
-            // Game state
-            IsAlduin2Defeated = new MemoryWatcher<bool>(new DeepPointer(0x1711608)); // == 1 when last blow is struck on alduin
-            QuestlinesCompleted = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x3F0)); // number of questlines completed (from ingame stats)
-            CollegeOfWinterholdQuestsCompleted = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x38c)); // number of college of winterhold quests completed (from ingame stats)
-            CompanionsQuestsCompleted = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x378)); // number of companions quests completed (from ingame stats)
-            DarkBrotherhoodQuestsCompleted = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x3b4)); // number of dark brotherhood quests completed (from ingame stats)
-            ThievesGuildQuestsCompleted = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x3a0)); // number of thieves guild quests completed (from ingame stats)
-            IsInEscapeMenu = new MemoryWatcher<bool>(new DeepPointer(0x172E85E)); // == 1 when in the pause menu or level up menu
-            MainQuestsCompleted = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x350)); // number of main quests completed (from ingame stats)
-            WordsOfPowerLearned = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x558)); // "Words Of Power Learned" from ingame stats
-            Alduin1Health = new MemoryWatcher<float>(new DeepPointer(0x00F41764, 0x74, 0x30, 0x30, 0x1c)); // Alduin 1's health (if it's at 0 it's 99% of the time because it can't be found)
-            LocationsDiscovered = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x170)); // number of locations discovered (from ingame stats)
-            ArePlayerControlsDisabled = new MemoryWatcher<bool>(new DeepPointer(0x172EF30, 0xf)); // == 1 when player controls have been disabled (not necessarily all controls)
-            BearCartHealth = new MemoryWatcher<float>(new DeepPointer(0x00F354DC, 0x74, 0x30, 0x30, 0x1C));
-
-            //add all memory watchers to the list
-            foreach (PropertyInfo p in this.GetType().GetProperties())
-            {
-                if (p.PropertyType.IsGenericType && p.PropertyType.GetGenericTypeDefinition() == typeof(MemoryWatcher<>))
-                    this.Add(p.GetValue(this, null) as MemoryWatcher);
-            }
-        }
-
-        public MemoryWatcher<bool> IsQuickLoading { get; }
-        public MemoryWatcher<bool> IsLoadingScreen { get; }
+        // Loads
+        public MemoryWatcher<bool> IsQuickLoading { get; } = new MemoryWatcher<bool>(new DeepPointer(0x17337CC)); // == 1 if a load is happening (any except loading screens in Helgen for some reason)
+        public MemoryWatcher<bool> IsLoadingScreen { get; } = new MemoryWatcher<bool>(new DeepPointer(0xEE3561)); // == 1 if in a loading screen
+        public MemoryWatcher<bool> IsInFadeOut { get; } = new MemoryWatcher<bool>(new DeepPointer(0x172EE2E)); // == 1 when in a fadeout, it goes back to 0 once control is gained
         public FakeMemoryWatcher<bool> IsLoading => new FakeMemoryWatcher<bool>(
             IsQuickLoading.Old || IsLoadingScreen.Old,
             IsQuickLoading.Current || IsLoadingScreen.Current);
-        public MemoryWatcher<bool> IsInFadeOut { get; }
-        public MemoryWatcher<int> LocationID { get; }
-        public MemoryWatcher<int> WorldX { get; }
-        public MemoryWatcher<int> WorldY { get; }
+
+        // Position
+        public MemoryWatcher<int> LocationID { get; } = new MemoryWatcher<int>(new DeepPointer(0x01738308, 0x4, 0x78, 0x670, 0xEC)); // ID of the current location (see http://steamcommunity.com/sharedfiles/filedetails/?id=148834641 or http://www.skyrimsearch.com/cells.php)
+        public MemoryWatcher<int> WorldX { get; } = new MemoryWatcher<int>(new DeepPointer(0x0172E864, 0x64)); // X world position (cell)
+        public MemoryWatcher<int> WorldY { get; } = new MemoryWatcher<int>(new DeepPointer(0x0172E864, 0x68)); // Y world position (cell)
         public FakeMemoryWatcher<Location> Location => new FakeMemoryWatcher<Location>(
             new Location(LocationID.Old, WorldX.Old, WorldY.Old),
             new Location(LocationID.Current, WorldX.Current, WorldY.Current));
-        public MemoryWatcher<bool> IsAlduin2Defeated { get; }
-        public MemoryWatcher<int> QuestlinesCompleted { get; }
-        public MemoryWatcher<int> CollegeOfWinterholdQuestsCompleted { get; }
-        public MemoryWatcher<int> CompanionsQuestsCompleted { get; }
-        public MemoryWatcher<int> DarkBrotherhoodQuestsCompleted { get; }
-        public MemoryWatcher<int> ThievesGuildQuestsCompleted { get; }
-        public MemoryWatcher<bool> IsInEscapeMenu { get; }
-        public MemoryWatcher<int> MainQuestsCompleted { get; }
-        public MemoryWatcher<int> WordsOfPowerLearned { get; }
-        public MemoryWatcher<float> Alduin1Health { get; }
-        public MemoryWatcher<int> LocationsDiscovered { get; }
-        public MemoryWatcher<bool> ArePlayerControlsDisabled { get; }
-        public MemoryWatcher<float> BearCartHealth { get; }
+
+        // Game state
+        public MemoryWatcher<bool> IsAlduin2Defeated { get; } = new MemoryWatcher<bool>(new DeepPointer(0x1711608)); // == 1 when last blow is struck on alduin
+        public MemoryWatcher<int> QuestlinesCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x3F0)); // number of questlines completed (from ingame stats)
+        public MemoryWatcher<int> CollegeOfWinterholdQuestsCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x38c)); // number of college of winterhold quests completed (from ingame stats)
+        public MemoryWatcher<int> CompanionsQuestsCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x378)); // number of companions quests completed (from ingame stats)
+        public MemoryWatcher<int> DarkBrotherhoodQuestsCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x3b4)); // number of dark brotherhood quests completed (from ingame stats)
+        public MemoryWatcher<int> ThievesGuildQuestsCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x3a0)); // number of thieves guild quests completed (from ingame stats)
+        public MemoryWatcher<bool> IsInEscapeMenu { get; } = new MemoryWatcher<bool>(new DeepPointer(0x172E85E)); // == 1 when in the pause menu or level up menu
+        public MemoryWatcher<int> MainQuestsCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x350)); // number of main quests completed (from ingame stats)
+        public MemoryWatcher<int> WordsOfPowerLearned { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x558)); // "Words Of Power Learned" from ingame stats
+        public MemoryWatcher<float> Alduin1Health { get; } = new MemoryWatcher<float>(new DeepPointer(0x00F41764, 0x74, 0x30, 0x30, 0x1c)); // Alduin 1's health (if it's at 0 it's 99% of the time because it can't be found
+        public MemoryWatcher<int> LocationsDiscovered { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x170)); // number of locations discovered (from ingame stats)
+        public MemoryWatcher<bool> ArePlayerControlsDisabled { get; } = new MemoryWatcher<bool>(new DeepPointer(0x172EF30, 0xf)); // == 1 when player controls have been disabled (not necessarily all controls)
+        public MemoryWatcher<float> BearCartHealth { get; } = new MemoryWatcher<float>(new DeepPointer(0x00F354DC, 0x74, 0x30, 0x30, 0x1C));
 
         public bool loadingScreenStarted = false;
         public bool loadScreenFadeoutStarted = false;
@@ -80,6 +49,16 @@ namespace LiveSplit.Skyrim
         public bool isAlduin1Defeated = false;
         public int leaveSleepingGiantInnCounter = 0;
         public bool isCouncilDone = false;
+
+        public SkyrimData()
+        {
+            //add all memory watchers to the list
+            foreach (PropertyInfo p in this.GetType().GetProperties())
+            {
+                if (p.PropertyType.IsGenericType && p.PropertyType.GetGenericTypeDefinition() == typeof(MemoryWatcher<>))
+                    this.Add(p.GetValue(this, null) as MemoryWatcher);
+            }
+        }
     }
 
     public struct Location
