@@ -37,6 +37,7 @@ namespace LiveSplit.Skyrim
         public bool Companions { get; set; }
         public bool DarkBrotherhood { get; set; }
         public bool ThievesGuild { get; set; }
+        public bool Married { get; set; }
         public string AnyPercentTemplate { get; set; }
         public Time BearCartPB { get; set; }
         public bool BearCartPBNotification { get; set; }
@@ -72,6 +73,7 @@ namespace LiveSplit.Skyrim
         private const bool DEFAULT_COMPANIONS = false;
         private const bool DEFAULT_DARKBROTHERHOOD = false;
         private const bool DEFAULT_THIEVESGUILD = false;
+        private const bool DEFAULT_MARRIED = false;
         private const string DEFAULT_ANYPERCENTTEMPLATE = SplitTemplates.MRWALRUS;
         private const bool DEFAULT_BEARCARTPBNOTIFICATION = true;
         private const bool DEFAULT_PLAYBEARCARTSOUND = true;
@@ -116,6 +118,7 @@ namespace LiveSplit.Skyrim
             this.chkCompanions.DataBindings.Add("Checked", this, "Companions", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkDarkBrotherhood.DataBindings.Add("Checked", this, "DarkBrotherhood", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkThievesGuild.DataBindings.Add("Checked", this, "ThievesGuild", false, DataSourceUpdateMode.OnPropertyChanged);
+            this.chkMarried.DataBindings.Add("Checked", this, "Married", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkBearCartPBNotification.DataBindings.Add("Checked", this, "BearCartPBNotification", false, DataSourceUpdateMode.OnPropertyChanged);
             this.chkPlayBearCartSound.DataBindings.Add("Checked", this, "PlayBearCartSound", false, DataSourceUpdateMode.OnPropertyChanged);
             this.txtBearCartSoundPath.DataBindings.Add("Text", this, "BearCartSoundPath");
@@ -151,6 +154,7 @@ namespace LiveSplit.Skyrim
             this.Companions = DEFAULT_COMPANIONS;
             this.DarkBrotherhood = DEFAULT_DARKBROTHERHOOD;
             this.ThievesGuild = DEFAULT_THIEVESGUILD;
+            this.Married = DEFAULT_MARRIED;
             this.AnyPercentTemplate = DEFAULT_ANYPERCENTTEMPLATE;
             this.BearCartPBNotification = DEFAULT_BEARCARTPBNOTIFICATION;
             this.PlayBearCartSound = DEFAULT_PLAYBEARCARTSOUND;
@@ -227,6 +231,7 @@ namespace LiveSplit.Skyrim
             settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Companions", this.Companions));
             settingsNode.AppendChild(SettingsHelper.ToElement(doc, "DarkBrotherhood", this.DarkBrotherhood));
             settingsNode.AppendChild(SettingsHelper.ToElement(doc, "ThievesGuild", this.ThievesGuild));
+            settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Married", this.Married));
             settingsNode.AppendChild(SettingsHelper.ToElement(doc, "AnyPercentTemplate", this.AnyPercentTemplate));
 
             SaveBearCartConfig();
@@ -287,6 +292,7 @@ namespace LiveSplit.Skyrim
             this.Companions = SettingsHelper.ParseBool(settings["Companions"], DEFAULT_COMPANIONS);
             this.DarkBrotherhood = SettingsHelper.ParseBool(settings["DarkBrotherhood"], DEFAULT_DARKBROTHERHOOD);
             this.ThievesGuild = SettingsHelper.ParseBool(settings["ThievesGuild"], DEFAULT_THIEVESGUILD);
+            this.Married = SettingsHelper.ParseBool(settings["Married"], DEFAULT_MARRIED);
 
             LoadBearCartConfig();
             this.BearCartPBNotification = SettingsHelper.ParseBool(settings["BearCartPBNotification"], DEFAULT_BEARCARTPBNOTIFICATION);
@@ -428,6 +434,11 @@ namespace LiveSplit.Skyrim
                     list.Add(c as CheckBox);
             }
             foreach (Control c in tlpGuildsSplits.Controls)
+            {
+                if (c is CheckBox)
+                    list.Add(c as CheckBox);
+            }
+            foreach (Control c in tlpMiscSplits.Controls)
             {
                 if (c is CheckBox)
                     list.Add(c as CheckBox);

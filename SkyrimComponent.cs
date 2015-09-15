@@ -164,6 +164,7 @@ namespace LiveSplit.Skyrim
                 (split == SplitArea.CompanionsQuestlineCompleted && this.Settings.Companions) ||
                 (split == SplitArea.DarkBrotherhoodQuestlineCompleted && this.Settings.DarkBrotherhood) ||
                 (split == SplitArea.ThievesGuildQuestlineCompleted && this.Settings.ThievesGuild) ||
+                (split == SplitArea.Married && this.Settings.Married) ||
                 (split == SplitArea.AlduinDefeated && this.Settings.AlduinDefeated)))
             {
                 Trace.WriteLine($"[NoLoads] {split} Split with {templatesDbgStr} templates - {frame}");

@@ -574,6 +574,14 @@ namespace LiveSplit.Skyrim
                             Split(data.lastQuestCompleted, null, frameCounter);
                         }
 
+                        //it's 0 for a moment during a load and at the first read, ignore those cases
+                        if (data.MiscObjectivesCompleted.Current > data.MiscObjectivesCompleted.Old && (data.MiscObjectivesCompleted.Old != 0 || (!data.IsLoading.Current && frameCounter != 0))
+                            && data.LocationID.Current == (int)Locations.TempleOfMara)
+                        {
+                            Split(SplitArea.Married, null, frameCounter);
+                        }
+
+                        Debug.WriteLineIf(data.MiscObjectivesCompleted.Changed, $"[NoLoads] MiscObjectivesCompleted changed from {data.MiscObjectivesCompleted.Old} to {data.MiscObjectivesCompleted.Current} - {frameCounter}");
                         Debug.WriteLineIf(data.LocationID.Changed, $"[NoLoads] Location changed to {data.LocationID.Current.ToString("X8")} - {frameCounter}");
                         Debug.WriteLineIf(data.WorldX.Changed || data.WorldY.Changed, $"[NoLoads] Coords changed to X: {data.WorldX.Current} Y: {data.WorldY.Current} - {frameCounter}");
                         Debug.WriteLineIf(data.IsInEscapeMenu.Changed, $"[NoLoads] isInEscapeMenu changed to {data.IsInEscapeMenu.Current} - {frameCounter}");

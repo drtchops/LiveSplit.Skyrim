@@ -90,6 +90,11 @@
             this.chkAutoStart = new System.Windows.Forms.CheckBox();
             this.chkAutoReset = new System.Windows.Forms.CheckBox();
             this.chkHelgen = new System.Windows.Forms.CheckBox();
+            this.tabMisc = new System.Windows.Forms.TabPage();
+            this.tlpMisc = new System.Windows.Forms.TableLayoutPanel();
+            this.gbMiscSplits = new System.Windows.Forms.GroupBox();
+            this.tlpMiscSplits = new System.Windows.Forms.TableLayoutPanel();
+            this.chkMarried = new System.Windows.Forms.CheckBox();
             this.tlpMain.SuspendLayout();
             this.tabsSplits.SuspendLayout();
             this.tabAnyPercent.SuspendLayout();
@@ -110,6 +115,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbGeneralVolume)).BeginInit();
             this.gbStartSplits.SuspendLayout();
             this.flp.SuspendLayout();
+            this.tabMisc.SuspendLayout();
+            this.tlpMisc.SuspendLayout();
+            this.gbMiscSplits.SuspendLayout();
+            this.tlpMiscSplits.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpMain
@@ -135,6 +144,7 @@
             // 
             this.tabsSplits.Controls.Add(this.tabAnyPercent);
             this.tabsSplits.Controls.Add(this.tabGuilds);
+            this.tabsSplits.Controls.Add(this.tabMisc);
             this.tabsSplits.Controls.Add(this.tabBearCart);
             this.tabsSplits.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabsSplits.Location = new System.Drawing.Point(3, 97);
@@ -933,6 +943,74 @@
             this.chkHelgen.Text = "Helgen";
             this.chkHelgen.UseVisualStyleBackColor = true;
             // 
+            // tabMisc
+            // 
+            this.tabMisc.BackColor = System.Drawing.SystemColors.Control;
+            this.tabMisc.Controls.Add(this.tlpMisc);
+            this.tabMisc.Location = new System.Drawing.Point(4, 22);
+            this.tabMisc.Name = "tabMisc";
+            this.tabMisc.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMisc.Size = new System.Drawing.Size(456, 370);
+            this.tabMisc.TabIndex = 3;
+            this.tabMisc.Text = "Misc.";
+            // 
+            // tlpMisc
+            // 
+            this.tlpMisc.AutoSize = true;
+            this.tlpMisc.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tlpMisc.ColumnCount = 1;
+            this.tlpMisc.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpMisc.Controls.Add(this.gbMiscSplits, 0, 0);
+            this.tlpMisc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpMisc.Location = new System.Drawing.Point(3, 3);
+            this.tlpMisc.Name = "tlpMisc";
+            this.tlpMisc.RowCount = 1;
+            this.tlpMisc.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpMisc.Size = new System.Drawing.Size(450, 364);
+            this.tlpMisc.TabIndex = 1;
+            // 
+            // gbMiscSplits
+            // 
+            this.gbMiscSplits.AutoSize = true;
+            this.gbMiscSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gbMiscSplits.Controls.Add(this.tlpMiscSplits);
+            this.gbMiscSplits.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbMiscSplits.Location = new System.Drawing.Point(3, 3);
+            this.gbMiscSplits.Name = "gbMiscSplits";
+            this.gbMiscSplits.Size = new System.Drawing.Size(444, 42);
+            this.gbMiscSplits.TabIndex = 7;
+            this.gbMiscSplits.TabStop = false;
+            this.gbMiscSplits.Text = "Auto-splits";
+            // 
+            // tlpMiscSplits
+            // 
+            this.tlpMiscSplits.AutoSize = true;
+            this.tlpMiscSplits.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tlpMiscSplits.BackColor = System.Drawing.Color.Transparent;
+            this.tlpMiscSplits.ColumnCount = 1;
+            this.tlpMiscSplits.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpMiscSplits.Controls.Add(this.chkMarried, 0, 0);
+            this.tlpMiscSplits.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tlpMiscSplits.Location = new System.Drawing.Point(3, 16);
+            this.tlpMiscSplits.Name = "tlpMiscSplits";
+            this.tlpMiscSplits.RowCount = 1;
+            this.tlpMiscSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpMiscSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpMiscSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpMiscSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpMiscSplits.Size = new System.Drawing.Size(438, 23);
+            this.tlpMiscSplits.TabIndex = 4;
+            // 
+            // chkMarried
+            // 
+            this.chkMarried.AutoSize = true;
+            this.chkMarried.Location = new System.Drawing.Point(3, 3);
+            this.chkMarried.Name = "chkMarried";
+            this.chkMarried.Size = new System.Drawing.Size(61, 17);
+            this.chkMarried.TabIndex = 10;
+            this.chkMarried.Text = "Married";
+            this.chkMarried.UseVisualStyleBackColor = true;
+            // 
             // SkyrimSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -979,6 +1057,14 @@
             this.gbStartSplits.PerformLayout();
             this.flp.ResumeLayout(false);
             this.flp.PerformLayout();
+            this.tabMisc.ResumeLayout(false);
+            this.tabMisc.PerformLayout();
+            this.tlpMisc.ResumeLayout(false);
+            this.tlpMisc.PerformLayout();
+            this.gbMiscSplits.ResumeLayout(false);
+            this.gbMiscSplits.PerformLayout();
+            this.tlpMiscSplits.ResumeLayout(false);
+            this.tlpMiscSplits.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1048,5 +1134,10 @@
         private System.Windows.Forms.CheckBox chkKarthspire;
         private System.Windows.Forms.Label lVolume;
         private System.Windows.Forms.TrackBar tbGeneralVolume;
+        private System.Windows.Forms.TabPage tabMisc;
+        private System.Windows.Forms.TableLayoutPanel tlpMisc;
+        private System.Windows.Forms.GroupBox gbMiscSplits;
+        private System.Windows.Forms.TableLayoutPanel tlpMiscSplits;
+        private System.Windows.Forms.CheckBox chkMarried;
     }
 }

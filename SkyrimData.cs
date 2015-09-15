@@ -24,18 +24,23 @@ namespace LiveSplit.Skyrim
 
         // Game state
         public MemoryWatcher<bool> IsAlduin2Defeated { get; } = new MemoryWatcher<bool>(new DeepPointer(0x1711608)); // == 1 when last blow is struck on alduin
+        public MemoryWatcher<bool> IsInEscapeMenu { get; } = new MemoryWatcher<bool>(new DeepPointer(0x172E85E)); // == 1 when in the pause menu or level up menu
+        public MemoryWatcher<bool> ArePlayerControlsDisabled { get; } = new MemoryWatcher<bool>(new DeepPointer(0x172EF30, 0xf)); // == 1 when player controls have been disabled (not necessarily all controls)
+
+        //NPC
+        public MemoryWatcher<float> Alduin1Health { get; } = new MemoryWatcher<float>(new DeepPointer(0x00F41764, 0x74, 0x30, 0x30, 0x1c)); // Alduin 1's health (if it's at 0 it's 99% of the time because it can't be found
+        public MemoryWatcher<float> BearCartHealth { get; } = new MemoryWatcher<float>(new DeepPointer(0x00F354DC, 0x74, 0x30, 0x30, 0x1C));
+
+        //Stats
+        public MemoryWatcher<int> LocationsDiscovered { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x170)); // number of locations discovered (from ingame stats)
+        public MemoryWatcher<int> WordsOfPowerLearned { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x558)); // "Words Of Power Learned" from ingame stats
+        public MemoryWatcher<int> MiscObjectivesCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x33C)); // number of misc objectives completed (from ingame stats)
+        public MemoryWatcher<int> MainQuestsCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x350)); // number of main quests completed (from ingame stats)
         public MemoryWatcher<int> QuestlinesCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x3F0)); // number of questlines completed (from ingame stats)
         public MemoryWatcher<int> CollegeOfWinterholdQuestsCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x38c)); // number of college of winterhold quests completed (from ingame stats)
         public MemoryWatcher<int> CompanionsQuestsCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x378)); // number of companions quests completed (from ingame stats)
         public MemoryWatcher<int> DarkBrotherhoodQuestsCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x3b4)); // number of dark brotherhood quests completed (from ingame stats)
         public MemoryWatcher<int> ThievesGuildQuestsCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x3a0)); // number of thieves guild quests completed (from ingame stats)
-        public MemoryWatcher<bool> IsInEscapeMenu { get; } = new MemoryWatcher<bool>(new DeepPointer(0x172E85E)); // == 1 when in the pause menu or level up menu
-        public MemoryWatcher<int> MainQuestsCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x350)); // number of main quests completed (from ingame stats)
-        public MemoryWatcher<int> WordsOfPowerLearned { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x558)); // "Words Of Power Learned" from ingame stats
-        public MemoryWatcher<float> Alduin1Health { get; } = new MemoryWatcher<float>(new DeepPointer(0x00F41764, 0x74, 0x30, 0x30, 0x1c)); // Alduin 1's health (if it's at 0 it's 99% of the time because it can't be found
-        public MemoryWatcher<int> LocationsDiscovered { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x170)); // number of locations discovered (from ingame stats)
-        public MemoryWatcher<bool> ArePlayerControlsDisabled { get; } = new MemoryWatcher<bool>(new DeepPointer(0x172EF30, 0xf)); // == 1 when player controls have been disabled (not necessarily all controls)
-        public MemoryWatcher<float> BearCartHealth { get; } = new MemoryWatcher<float>(new DeepPointer(0x00F354DC, 0x74, 0x30, 0x30, 0x1C));
 
         public bool loadingScreenStarted = false;
         public bool loadScreenFadeoutStarted = false;
@@ -184,6 +189,7 @@ namespace LiveSplit.Skyrim
         CompanionsQuestlineCompleted,
         DarkBrotherhoodQuestlineCompleted,
         ThievesGuildQuestlineCompleted,
+        Married,
         AlduinDefeated
     }
 
@@ -208,6 +214,7 @@ namespace LiveSplit.Skyrim
         WindhelmWorld = 0x0001691D,
         WindhelmPalaceoftheKings = 0x0001677C,
         SkuldafnWorld = 0x000278DD,
+        TempleOfMara = 0x00016BD7
     }
 
     public class FakeMemoryWatcher<T>
