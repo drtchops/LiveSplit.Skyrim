@@ -4,6 +4,7 @@
     <CheatEntry>
       <ID>52</ID>
       <Description>"Location"</Description>
+      <Options moManualExpandCollapse="1"/>
       <LastState Value="" Activated="0" RealAddress="00000000"/>
       <Color>80000008</Color>
       <GroupHeader>1</GroupHeader>
@@ -11,6 +12,7 @@
         <CheatEntry>
           <ID>65</ID>
           <Description>"3D position"</Description>
+          <Options moManualExpandCollapse="1"/>
           <LastState Value="" Activated="0" RealAddress="00000000"/>
           <Color>80000008</Color>
           <GroupHeader>1</GroupHeader>
@@ -18,7 +20,7 @@
             <CheatEntry>
               <ID>67</ID>
               <Description>"X"</Description>
-              <LastState Value="-4968.316895" Activated="0" RealAddress="122A28B4"/>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
               <ShowAsSigned>1</ShowAsSigned>
               <Color>80000008</Color>
               <VariableType>Float</VariableType>
@@ -30,7 +32,7 @@
             <CheatEntry>
               <ID>68</ID>
               <Description>"Y"</Description>
-              <LastState Value="-16028.48535" Activated="0" RealAddress="122A28B8"/>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
               <ShowAsSigned>1</ShowAsSigned>
               <Color>80000008</Color>
               <VariableType>Float</VariableType>
@@ -42,7 +44,7 @@
             <CheatEntry>
               <ID>69</ID>
               <Description>"Z"</Description>
-              <LastState Value="-2642.979736" Activated="0" RealAddress="122A28BC"/>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
               <ShowAsSigned>1</ShowAsSigned>
               <Color>80000008</Color>
               <VariableType>Float</VariableType>
@@ -51,12 +53,35 @@
                 <Offset>28</Offset>
               </Offsets>
             </CheatEntry>
+            <CheatEntry>
+              <ID>123</ID>
+              <Description>"Camera Angle X"</Description>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
+              <ShowAsSigned>1</ShowAsSigned>
+              <Color>80000008</Color>
+              <VariableType>Float</VariableType>
+              <Address>"TESV.exe"+00F1063C</Address>
+              <Offsets>
+                <Offset>1C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>125</ID>
+              <Description>"Camera Angle Y"</Description>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
+              <Color>80000008</Color>
+              <VariableType>Float</VariableType>
+              <Address>"TESV.exe"+00F1063C</Address>
+              <Offsets>
+                <Offset>14</Offset>
+              </Offsets>
+            </CheatEntry>
           </CheatEntries>
         </CheatEntry>
         <CheatEntry>
           <ID>9</ID>
           <Description>"X world coord"</Description>
-          <LastState Value="-2" Activated="0" RealAddress="201B4A74"/>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
           <ShowAsSigned>1</ShowAsSigned>
           <Color>80000008</Color>
           <VariableType>4 Bytes</VariableType>
@@ -68,7 +93,7 @@
         <CheatEntry>
           <ID>11</ID>
           <Description>"Y world coord"</Description>
-          <LastState Value="-4" Activated="0" RealAddress="201B4A78"/>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
           <ShowAsSigned>1</ShowAsSigned>
           <Color>80000008</Color>
           <VariableType>4 Bytes</VariableType>
@@ -80,7 +105,7 @@
         <CheatEntry>
           <ID>26</ID>
           <Description>"Location ID"</Description>
-          <LastState Value="0005DE24" Activated="0" RealAddress="201BFE0C"/>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
           <ShowAsHex>1</ShowAsHex>
           <Color>80000008</Color>
           <VariableType>4 Bytes</VariableType>
@@ -95,7 +120,7 @@
         <CheatEntry>
           <ID>18</ID>
           <Description>"isInTamriel"</Description>
-          <LastState Value="0" Activated="0" RealAddress="01B3815C"/>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
           <Color>80000008</Color>
           <VariableType>Byte</VariableType>
           <Address>TESV.exe+173815C</Address>
@@ -105,6 +130,7 @@
     <CheatEntry>
       <ID>53</ID>
       <Description>"Game state"</Description>
+      <Options moManualExpandCollapse="1"/>
       <LastState Value="" Activated="0" RealAddress="00000000"/>
       <Color>80000008</Color>
       <GroupHeader>1</GroupHeader>
@@ -112,7 +138,7 @@
         <CheatEntry>
           <ID>1</ID>
           <Description>"isLoading"</Description>
-          <LastState Value="0" Activated="0" RealAddress="01B337CC"/>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
           <Color>80000008</Color>
           <VariableType>Byte</VariableType>
           <Address>"TESV.exe"+17337CC</Address>
@@ -120,7 +146,7 @@
         <CheatEntry>
           <ID>3</ID>
           <Description>"isLoadscreen"</Description>
-          <LastState Value="0" Activated="0" RealAddress="012E3561"/>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
           <Color>80000008</Color>
           <VariableType>Byte</VariableType>
           <Address>"TESV.exe"+EE3561</Address>
@@ -128,7 +154,7 @@
         <CheatEntry>
           <ID>5</ID>
           <Description>"IsInFadeOut"</Description>
-          <LastState Value="0" Activated="0" RealAddress="01B2EE2E"/>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
           <Color>80000008</Color>
           <VariableType>Byte</VariableType>
           <Address>TESV.exe+172EE2E</Address>
@@ -136,7 +162,7 @@
         <CheatEntry>
           <ID>27</ID>
           <Description>"isInEscapeMenu"</Description>
-          <LastState Value="1" Activated="0" RealAddress="01B2E85E"/>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
           <Color>80000008</Color>
           <VariableType>Byte</VariableType>
           <Address>TESV.exe+172E85E</Address>
@@ -144,7 +170,7 @@
         <CheatEntry>
           <ID>0</ID>
           <Description>"isPaused"</Description>
-          <LastState Value="1" Activated="0" RealAddress="01B2E85F"/>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
           <Color>80000008</Color>
           <VariableType>Byte</VariableType>
           <Address>"TESV.exe"+172E85F</Address>
@@ -152,7 +178,7 @@
         <CheatEntry>
           <ID>12</ID>
           <Description>"IsAlduinDead"</Description>
-          <LastState Value="0" Activated="0" RealAddress="01B11608"/>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
           <Color>80000008</Color>
           <VariableType>Byte</VariableType>
           <Address>TESV.exe+1711608</Address>
@@ -162,14 +188,28 @@
     <CheatEntry>
       <ID>87</ID>
       <Description>"Player"</Description>
+      <Options moManualExpandCollapse="1"/>
       <LastState Value="" Activated="0" RealAddress="00000000"/>
       <Color>80000008</Color>
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
+          <ID>119</ID>
+          <Description>"Inventory Weight"</Description>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
+          <Color>80000008</Color>
+          <VariableType>Float</VariableType>
+          <Address>"TESV.exe"+00F1063C</Address>
+          <Offsets>
+            <Offset>8</Offset>
+            <Offset>8</Offset>
+            <Offset>34</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
           <ID>79</ID>
           <Description>"runningSpeed"</Description>
-          <LastState Value="0" Activated="0" RealAddress="1228DE34"/>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
           <ShowAsSigned>0</ShowAsSigned>
           <Color>80000008</Color>
           <VariableType>Float</VariableType>
@@ -184,7 +224,7 @@
         <CheatEntry>
           <ID>86</ID>
           <Description>"isRidingMount"</Description>
-          <LastState Value="0" Activated="0" RealAddress="01B39A08"/>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
           <Color>80000008</Color>
           <VariableType>4 Bytes</VariableType>
           <Address>TESV.exe+1739A08</Address>
@@ -192,7 +232,7 @@
         <CheatEntry>
           <ID>4</ID>
           <Description>"AreHandsTied?"</Description>
-          <LastState Value="0" Activated="0" RealAddress="01B2EE2C"/>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
           <Color>80000008</Color>
           <VariableType>Byte</VariableType>
           <Address>TESV.exe+172EE2C</Address>
@@ -200,7 +240,7 @@
         <CheatEntry>
           <ID>58</ID>
           <Description>"ArePlayerControlsDisabled"</Description>
-          <LastState Value="0" Activated="0" RealAddress="2006998F"/>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
           <Color>80000008</Color>
           <VariableType>Byte</VariableType>
           <Address>TESV.exe+172EF30</Address>
@@ -211,7 +251,7 @@
         <CheatEntry>
           <ID>108</ID>
           <Description>"0 == feet don't touch the ground"</Description>
-          <LastState Value="1" Activated="0" RealAddress="18C85608"/>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
           <Color>80000008</Color>
           <VariableType>4 Bytes</VariableType>
           <Address>"TESV.exe"+017820C4</Address>
@@ -226,6 +266,7 @@
     <CheatEntry>
       <ID>114</ID>
       <Description>"NPC"</Description>
+      <Options moManualExpandCollapse="1"/>
       <LastState Value="" Activated="0" RealAddress="00000000"/>
       <Color>80000008</Color>
       <GroupHeader>1</GroupHeader>
@@ -261,7 +302,7 @@
         <CheatEntry>
           <ID>113</ID>
           <Description>"Bear Cart Health"</Description>
-          <LastState Value="-6" Activated="0" RealAddress="200C211C"/>
+          <LastState Value="??" Activated="0" RealAddress="00000000"/>
           <Color>80000008</Color>
           <VariableType>Float</VariableType>
           <Address>"TESV.exe"+00F354DC</Address>
@@ -284,6 +325,7 @@
         <CheatEntry>
           <ID>51</ID>
           <Description>"General"</Description>
+          <Options moManualExpandCollapse="1"/>
           <LastState Value="" Activated="0" RealAddress="00000000"/>
           <Color>80000008</Color>
           <GroupHeader>1</GroupHeader>
@@ -291,6 +333,7 @@
             <CheatEntry>
               <ID>85</ID>
               <Description>"Time"</Description>
+              <Options moManualExpandCollapse="1"/>
               <LastState Value="" Activated="0" RealAddress="00000000"/>
               <Color>80000008</Color>
               <GroupHeader>1</GroupHeader>
@@ -298,7 +341,7 @@
                 <CheatEntry>
                   <ID>70</ID>
                   <Description>"Hour"</Description>
-                  <LastState Value="10.25217152" Activated="0" RealAddress="01B39160"/>
+                  <LastState Value="??" Activated="0" RealAddress="00000000"/>
                   <Color>80000008</Color>
                   <VariableType>Float</VariableType>
                   <Address>TESV.exe+1739160</Address>
@@ -306,7 +349,7 @@
                 <CheatEntry>
                   <ID>71</ID>
                   <Description>"Seconds elapsed today"</Description>
-                  <LastState Value="36907.82031" Activated="0" RealAddress="01BA7690"/>
+                  <LastState Value="??" Activated="0" RealAddress="00000000"/>
                   <Color>80000008</Color>
                   <VariableType>Float</VariableType>
                   <Address>TESV.exe+17A7690</Address>
@@ -316,7 +359,7 @@
             <CheatEntry>
               <ID>47</ID>
               <Description>"locationsDiscovered"</Description>
-              <LastState Value="0" Activated="0" RealAddress="129EA290"/>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
               <Color>80000008</Color>
               <VariableType>4 Bytes</VariableType>
               <Address>"TESV.exe"+00EE6C34</Address>
@@ -329,14 +372,27 @@
         <CheatEntry>
           <ID>49</ID>
           <Description>"Quest"</Description>
+          <Options moManualExpandCollapse="1"/>
           <LastState Value="" Activated="0" RealAddress="00000000"/>
           <Color>80000008</Color>
           <GroupHeader>1</GroupHeader>
           <CheatEntries>
             <CheatEntry>
+              <ID>120</ID>
+              <Description>"miscObjectivesCompleted"</Description>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
+              <Color>80000008</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"TESV.exe"+00EE6C34</Address>
+              <Offsets>
+                <Offset>33C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
               <ID>38</ID>
               <Description>"mainQuestsCompleted"</Description>
-              <LastState Value="0" Activated="0" RealAddress="129EA470"/>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
+              <ShowAsSigned>1</ShowAsSigned>
               <Color>80000008</Color>
               <VariableType>4 Bytes</VariableType>
               <Address>"TESV.exe"+00EE6C34</Address>
@@ -347,7 +403,7 @@
             <CheatEntry>
               <ID>28</ID>
               <Description>"companionsQuestsCompleted"</Description>
-              <LastState Value="0" Activated="0" RealAddress="129EA498"/>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
               <Color>80000008</Color>
               <VariableType>4 Bytes</VariableType>
               <Address>"TESV.exe"+00EE6C34</Address>
@@ -358,7 +414,7 @@
             <CheatEntry>
               <ID>29</ID>
               <Description>"collegeQuestsCompleted"</Description>
-              <LastState Value="0" Activated="0" RealAddress="129EA4AC"/>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
               <Color>80000008</Color>
               <VariableType>4 Bytes</VariableType>
               <Address>"TESV.exe"+00EE6C34</Address>
@@ -369,7 +425,7 @@
             <CheatEntry>
               <ID>34</ID>
               <Description>"thievesGuildQuestsCompleted"</Description>
-              <LastState Value="0" Activated="0" RealAddress="129EA4C0"/>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
               <Color>80000008</Color>
               <VariableType>4 Bytes</VariableType>
               <Address>"TESV.exe"+00EE6C34</Address>
@@ -380,7 +436,7 @@
             <CheatEntry>
               <ID>31</ID>
               <Description>"darkBrotherhoodQuestsCompleted"</Description>
-              <LastState Value="0" Activated="0" RealAddress="129EA4D4"/>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
               <Color>80000008</Color>
               <VariableType>4 Bytes</VariableType>
               <Address>"TESV.exe"+00EE6C34</Address>
@@ -391,7 +447,7 @@
             <CheatEntry>
               <ID>20</ID>
               <Description>"questLinesCompleted"</Description>
-              <LastState Value="0" Activated="0" RealAddress="129EA510"/>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
               <Color>80000008</Color>
               <VariableType>4 Bytes</VariableType>
               <Address>"TESV.exe"+00EE6C34</Address>
@@ -411,7 +467,7 @@
             <CheatEntry>
               <ID>41</ID>
               <Description>"wordsOfPowerLearned"</Description>
-              <LastState Value="0" Activated="0" RealAddress="129EA678"/>
+              <LastState Value="??" Activated="0" RealAddress="00000000"/>
               <Color>80000008</Color>
               <VariableType>4 Bytes</VariableType>
               <Address>"TESV.exe"+00EE6C34</Address>
