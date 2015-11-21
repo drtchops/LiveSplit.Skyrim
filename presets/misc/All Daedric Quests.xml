@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<AutoSplitLists>
+  <AutoSplitList>
+    <Name>All Daedric Quests</Name>
+    <AutoSplits>
+      <AutoSplit>
+        <Name>Helgen</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+            <StartLocation equals="True">
+              <Location id="0005DE24" cellX="-2" cellY="-5" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location id="" cellX="" cellY="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Bleak Falls</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+            <StartLocation equals="True">
+              <Location id="0000003C" cellX="4" cellY="-5" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location id="0001A26F" cellX="6" cellY="0" />
+              <Location id="0004A376" cellX="" cellY="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Whiterun 1</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+            <StartLocation equals="True">
+              <Location id="0000003C" cellX="4" cellY="-3" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location id="0000003C" cellX="-18" cellY="24" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Solitude</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+            <StartLocation equals="True">
+              <Location id="00016A0E" cellX="" cellY="" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location id="00016DF3" cellX="" cellY="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Markarth</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+            <StartLocation equals="True">
+              <Location id="00016D71" cellX="-43" cellY="1" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location id="0000003C" cellX="4" cellY="-4" />
+              <Location id="0000003C" cellX="4" cellY="-3" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Gr3ybeards</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+            <StartLocation equals="True">
+              <Location id="0000003C" cellX="13" cellY="-9" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location id="0000003C" cellX="4" cellY="-3" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Septimus</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+            <StartLocation equals="True">
+              <Location id="0000003C" cellX="28" cellY="34" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location id="0000003C" cellX="4" cellY="-3" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Falkreath</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+            <StartLocation equals="True">
+              <Location id="0000003C" cellX="12" cellY="-20" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location id="0000003C" cellX="-18" cellY="23" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Haafingar</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+            <StartLocation equals="True">
+              <Location id="00015223" cellX="" cellY="" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location id="0000003C" cellX="" cellY="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>The Reach</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+            <StartLocation equals="True">
+              <Location id="0000003C" cellX="-20" cellY="1" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location id="0001A26F" cellX="" cellY="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Whiterun 2</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+            <StartLocation equals="True">
+              <Location id="0000003C" cellX="4" cellY="-3" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location id="0000003C" cellX="32" cellY="6" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Eastmarch</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+            <StartLocation equals="True">
+              <Location id="0000003C" cellX="39" cellY="6" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location id="0000003C" cellX="4" cellY="-3" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>The Pale</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+            <StartLocation equals="True">
+              <Location id="0000003C" cellX="9" cellY="24" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location id="0000003C" cellX="-9" cellY="-22" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Falkreath Hold</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+            <StartLocation equals="True">
+              <Location id="0000003C" cellX="-10" cellY="-10" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location id="0000003C" cellX="-42" cellY="1" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Mehrunes</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+            <StartLocation equals="True">
+              <Location id="0000003C" cellX="-1" cellY="12" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location id="0000003C" cellX="-42" cellY="1" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Peryite</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+            <StartLocation equals="True">
+              <Location id="0000003C" cellX="-36" cellY="9" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location id="0000003C" cellX="28" cellY="34" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>The Rift</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>DaedricQuestsCompleted</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>15</Value>
+            <OnValueChanged>True</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+    </AutoSplits>
+  </AutoSplitList>
+</AutoSplitLists>
