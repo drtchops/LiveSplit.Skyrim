@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version='1.0' encoding='utf-8'?>
 <AutoSplitLists>
   <AutoSplitList>
     <Name>Any% (Dalleth)</Name>
@@ -7,7 +7,7 @@
         <Name>Helgen</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-2" cellY="-5" id="0005DE24" />
             </StartLocation>
@@ -21,7 +21,7 @@
         <Name>Whiterun</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="4" cellY="3" id="0000003C" />
             </StartLocation>
@@ -35,7 +35,7 @@
         <Name>Thalmor Embassy</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-20" cellY="28" id="0000003C" />
             </StartLocation>
@@ -49,7 +49,7 @@
         <Name>Esbern</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="42" cellY="-24" id="00016BB4" />
             </StartLocation>
@@ -63,7 +63,7 @@
         <Name>Riverwood</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="5" cellY="-11" id="0000003C" />
             </StartLocation>
@@ -78,7 +78,7 @@
         <Name>Karthspire</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="00035699" />
             </StartLocation>
@@ -92,7 +92,7 @@
         <Name>Septimus</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="28" cellY="34" id="0000003C" />
             </StartLocation>
@@ -106,7 +106,7 @@
         <Name>The Wall</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="00035699" />
             </StartLocation>
@@ -114,7 +114,7 @@
               <Location cellX="" cellY="" id="" />
             </EndLocation>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsSkyHavenTempleVisited</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>True</Value>
@@ -126,7 +126,7 @@
         <Name>Mzark Tower</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="6" cellY="11" id="0000003C" />
             </StartLocation>
@@ -140,14 +140,14 @@
         <Name>Clear Sky</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LocationValue">
+          <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
               <Location cellX="13" cellY="-10" id="0000003C" />
             </Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>WordsOfPowerLearned</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>3</Value>
@@ -159,14 +159,14 @@
         <Name>Cutscene Start</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LocationValue">
+          <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
               <Location cellX="13" cellY="-12" id="0000003C" />
             </Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>ArePlayerControlsDisabled</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>True</Value>
@@ -178,20 +178,20 @@
         <Name>Cutscene End</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LocationValue">
+          <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
               <Location cellX="13" cellY="-12" id="0000003C" />
             </Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>ArePlayerControlsDisabled</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>False</Value>
             <OnValueChanged>True</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsLoading</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>False</Value>
@@ -203,7 +203,7 @@
         <Name>Alduin 1</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="14" cellY="-12" id="0000003C" />
               <Location cellX="14" cellY="-13" id="0000003C" />
@@ -214,7 +214,7 @@
               <Location cellX="6" cellY="-1" id="0001A26F" />
             </EndLocation>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsAlduin1Defeated</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>True</Value>
@@ -226,7 +226,7 @@
         <Name>High Hrothgar</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="13" cellY="-9" id="0000003C" />
               <Location cellX="13" cellY="-10" id="0000003C" />
@@ -235,7 +235,7 @@
               <Location cellX="" cellY="" id="00087764" />
             </EndLocation>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>False</Value>
@@ -247,7 +247,7 @@
         <Name>Solitude</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-16" cellY="26" id="00037EDF" />
             </StartLocation>
@@ -261,7 +261,7 @@
         <Name>Windhelm</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="32" cellY="10" id="0001691D" />
             </StartLocation>
@@ -275,7 +275,7 @@
         <Name>Council</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="13" cellY="-9" id="0000003C" />
               <Location cellX="13" cellY="-10" id="0000003C" />
@@ -284,7 +284,7 @@
               <Location cellX="" cellY="" id="00087764" />
             </EndLocation>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>True</Value>
@@ -296,7 +296,7 @@
         <Name>Odahviing</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="" />
             </StartLocation>
@@ -310,7 +310,7 @@
         <Name>Enter Sovngarde</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="" />
             </StartLocation>
@@ -324,13 +324,13 @@
         <Name>Alduin Defeated</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsAlduin2Defeated</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>True</Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LocationValue">
+          <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
               <Location cellX="" cellY="" id="0002EE41" />
@@ -348,7 +348,7 @@
         <Name>Helgen</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-2" cellY="-5" id="0005DE24" />
             </StartLocation>
@@ -362,7 +362,7 @@
         <Name>Whiterun</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="4" cellY="-3" id="0000003C" />
               <Location cellX="4" cellY="-4" id="0000003C" />
@@ -377,7 +377,7 @@
         <Name>Thalmor Embassy</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-20" cellY="28" id="0000003C" />
             </StartLocation>
@@ -391,7 +391,7 @@
         <Name>Esbern</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="42" cellY="-24" id="00016BB4" />
             </StartLocation>
@@ -405,7 +405,7 @@
         <Name>Riverwood</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="5" cellY="-11" id="0000003C" />
             </StartLocation>
@@ -420,7 +420,7 @@
         <Name>Karthspire</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="00035699" />
             </StartLocation>
@@ -434,7 +434,7 @@
         <Name>Septimus</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="28" cellY="34" id="0000003C" />
             </StartLocation>
@@ -448,7 +448,7 @@
         <Name>The Wall</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="00035699" />
             </StartLocation>
@@ -456,7 +456,7 @@
               <Location cellX="" cellY="" id="" />
             </EndLocation>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsSkyHavenTempleVisited</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>True</Value>
@@ -468,7 +468,7 @@
         <Name>Mzark Tower</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="6" cellY="11" id="0000003C" />
             </StartLocation>
@@ -482,7 +482,7 @@
         <Name>Clear Sky</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="00087764" />
             </StartLocation>
@@ -491,7 +491,7 @@
               <Location cellX="13" cellY="-10" id="0000003C" />
             </EndLocation>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>False</Value>
@@ -503,14 +503,14 @@
         <Name>Cutscene Start</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LocationValue">
+          <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
               <Location cellX="13" cellY="-12" id="0000003C" />
             </Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>ArePlayerControlsDisabled</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>True</Value>
@@ -522,20 +522,20 @@
         <Name>Cutscene End</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LocationValue">
+          <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
               <Location cellX="13" cellY="-12" id="0000003C" />
             </Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>ArePlayerControlsDisabled</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>False</Value>
             <OnValueChanged>True</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsLoading</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>False</Value>
@@ -547,7 +547,7 @@
         <Name>Alduin 1</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="14" cellY="-12" id="0000003C" />
               <Location cellX="14" cellY="-13" id="0000003C" />
@@ -558,7 +558,7 @@
               <Location cellX="6" cellY="-1" id="0001A26F" />
             </EndLocation>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsAlduin1Defeated</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>True</Value>
@@ -570,7 +570,7 @@
         <Name>High Hrothgar</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="13" cellY="-9" id="0000003C" />
               <Location cellX="13" cellY="-10" id="0000003C" />
@@ -579,7 +579,7 @@
               <Location cellX="" cellY="" id="00087764" />
             </EndLocation>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>False</Value>
@@ -591,7 +591,7 @@
         <Name>Solitude</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-16" cellY="26" id="00037EDF" />
             </StartLocation>
@@ -605,7 +605,7 @@
         <Name>Windhelm</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="32" cellY="10" id="0001691D" />
             </StartLocation>
@@ -619,7 +619,7 @@
         <Name>Council</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="13" cellY="-9" id="0000003C" />
               <Location cellX="13" cellY="-10" id="0000003C" />
@@ -628,7 +628,7 @@
               <Location cellX="" cellY="" id="00087764" />
             </EndLocation>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>True</Value>
@@ -640,7 +640,7 @@
         <Name>Odahviing</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="" />
             </StartLocation>
@@ -654,7 +654,7 @@
         <Name>Enter Sovngarde</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="" />
             </StartLocation>
@@ -668,13 +668,13 @@
         <Name>Alduin Defeated</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsAlduin2Defeated</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>True</Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LocationValue">
+          <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
               <Location cellX="" cellY="" id="0002EE41" />
@@ -692,7 +692,7 @@
         <Name>Helgen</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-2" cellY="-5" id="0005DE24" />
             </StartLocation>
@@ -706,7 +706,7 @@
         <Name>Whiterun</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="4" cellY="-3" id="0000003C" />
               <Location cellX="4" cellY="-4" id="0000003C" />
@@ -721,7 +721,7 @@
         <Name>Thalmor Embassy</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="0007DCFC" />
             </StartLocation>
@@ -735,7 +735,7 @@
         <Name>Esbern</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="0003B698" />
             </StartLocation>
@@ -749,7 +749,7 @@
         <Name>Riverwood</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="000133C6" />
             </StartLocation>
@@ -757,7 +757,7 @@
               <Location cellX="5" cellY="-11" id="0000003C" />
             </EndLocation>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>LeaveSleepingGiantInnCounter</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>2</Value>
@@ -769,7 +769,7 @@
         <Name>Karthspire</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-42" cellY="1" id="0000003C" />
             </StartLocation>
@@ -783,7 +783,7 @@
         <Name>Septimus</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="0002D4E4" />
             </StartLocation>
@@ -797,7 +797,7 @@
         <Name>The Wall</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="000161EB" />
             </StartLocation>
@@ -811,7 +811,7 @@
         <Name>Mzark Tower</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="0002D4E3" />
             </StartLocation>
@@ -825,7 +825,7 @@
         <Name>Clear Sky</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="00087764" />
             </StartLocation>
@@ -834,7 +834,7 @@
               <Location cellX="13" cellY="-10" id="0000003C" />
             </EndLocation>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>False</Value>
@@ -846,13 +846,13 @@
         <Name>Horse Climb</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>LocationsDiscovered</MemoryWatcherName>
             <Comparison>IncreasedBy</Comparison>
             <Value>1</Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LocationValue">
+          <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
               <Location cellX="14" cellY="-12" id="0000003C" />
@@ -868,20 +868,20 @@
         <Name>Cutscene End</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LocationValue">
+          <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
               <Location cellX="13" cellY="-12" id="0000003C" />
             </Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>ArePlayerControlsDisabled</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>False</Value>
             <OnValueChanged>True</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsLoading</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>False</Value>
@@ -893,7 +893,7 @@
         <Name>Alduin 1</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="14" cellY="-12" id="0000003C" />
               <Location cellX="14" cellY="-13" id="0000003C" />
@@ -904,7 +904,7 @@
               <Location cellX="6" cellY="-1" id="0001A26F" />
             </EndLocation>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsAlduin1Defeated</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>True</Value>
@@ -916,7 +916,7 @@
         <Name>High Hrothgar</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="13" cellY="-9" id="0000003C" />
               <Location cellX="13" cellY="-10" id="0000003C" />
@@ -925,7 +925,7 @@
               <Location cellX="" cellY="" id="00087764" />
             </EndLocation>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>False</Value>
@@ -937,7 +937,7 @@
         <Name>Solitude</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="000213A0" />
             </StartLocation>
@@ -951,7 +951,7 @@
         <Name>Windhelm</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="0001677C" />
             </StartLocation>
@@ -965,7 +965,7 @@
         <Name>Council</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="00087764" />
             </StartLocation>
@@ -974,7 +974,7 @@
               <Location cellX="13" cellY="-10" id="0000003C" />
             </EndLocation>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>True</Value>
@@ -986,7 +986,7 @@
         <Name>Odahviing</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="" />
             </StartLocation>
@@ -1000,7 +1000,7 @@
         <Name>Enter Sovngarde</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="" />
             </StartLocation>
@@ -1014,13 +1014,13 @@
         <Name>Alduin Defeated</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsAlduin2Defeated</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>True</Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LocationValue">
+          <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
               <Location cellX="" cellY="" id="0002EE41" />
@@ -1038,7 +1038,7 @@
         <Name>Helgen</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-2" cellY="-5" id="0005DE24" />
             </StartLocation>
@@ -1052,7 +1052,7 @@
         <Name>Whiterun</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="6" cellY="0" id="0001A26F" />
             </StartLocation>
@@ -1066,7 +1066,7 @@
         <Name>Thalmor Embassy</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-20" cellY="28" id="0000003C" />
             </StartLocation>
@@ -1080,7 +1080,7 @@
         <Name>Esbern</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="42" cellY="-24" id="00016BB4" />
             </StartLocation>
@@ -1094,7 +1094,7 @@
         <Name>Riverwood</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="5" cellY="-11" id="0000003C" />
             </StartLocation>
@@ -1109,7 +1109,7 @@
         <Name>Karthspire</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="00035699" />
             </StartLocation>
@@ -1123,7 +1123,7 @@
         <Name>Septimus</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="28" cellY="34" id="0000003C" />
             </StartLocation>
@@ -1137,7 +1137,7 @@
         <Name>The Wall</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="00035699" />
             </StartLocation>
@@ -1145,7 +1145,7 @@
               <Location cellX="" cellY="" id="" />
             </EndLocation>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsSkyHavenTempleVisited</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>True</Value>
@@ -1157,7 +1157,7 @@
         <Name>Mzark Tower</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="6" cellY="11" id="0000003C" />
             </StartLocation>
@@ -1171,7 +1171,7 @@
         <Name>Clear Sky</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LocationValue">
+          <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
               <Location cellX="13" cellY="-10" id="0000003C" />
@@ -1179,14 +1179,14 @@
             </Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>WordsOfPowerLearned</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>3</Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.Action">
-            <Value type="LiveSplit.Skyrim.AutoSplitData.SkyrimEvent">QuickSave</Value>
+          <Variable type="Action">
+            <Value type="SkyrimEvent">QuickSave</Value>
           </Variable>
         </Variables>
       </AutoSplit>
@@ -1194,7 +1194,7 @@
         <Name>Alduin 1</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsAlduin1Defeated</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>True</Value>
@@ -1206,7 +1206,7 @@
         <Name>High Hrothgar</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="13" cellY="-9" id="0000003C" />
               <Location cellX="13" cellY="-10" id="0000003C" />
@@ -1215,7 +1215,7 @@
               <Location cellX="" cellY="" id="00087764" />
             </EndLocation>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>False</Value>
@@ -1227,7 +1227,7 @@
         <Name>Solitude</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-16" cellY="26" id="00037EDF" />
             </StartLocation>
@@ -1241,7 +1241,7 @@
         <Name>Windhelm</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="32" cellY="10" id="0001691D" />
             </StartLocation>
@@ -1255,14 +1255,14 @@
         <Name>Council</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LocationValue">
+          <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
               <Location cellX="" cellY="" id="00087764" />
             </Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>MainQuestsCompleted</MemoryWatcherName>
             <Comparison>IncreasedBy</Comparison>
             <Value>1</Value>
@@ -1274,7 +1274,7 @@
         <Name>Odahviing</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="" />
             </StartLocation>
@@ -1288,7 +1288,7 @@
         <Name>Enter Sovngarde</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="" />
             </StartLocation>
@@ -1302,13 +1302,13 @@
         <Name>Alduin Defeated</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsAlduin2Defeated</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>True</Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LocationValue">
+          <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
               <Location cellX="" cellY="" id="0002EE41" />
@@ -1326,7 +1326,7 @@
         <Name>Helgen</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-2" cellY="-5" id="0005DE24" />
             </StartLocation>
@@ -1340,7 +1340,7 @@
         <Name>Bleak Falls</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="4" cellY="-5" id="0000003C" />
             </StartLocation>
@@ -1355,7 +1355,7 @@
         <Name>Whiterun 1</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="4" cellY="-3" id="0000003C" />
             </StartLocation>
@@ -1369,7 +1369,7 @@
         <Name>Solitude</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="00016A0E" />
             </StartLocation>
@@ -1383,7 +1383,7 @@
         <Name>Markarth</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-43" cellY="1" id="00016D71" />
             </StartLocation>
@@ -1398,7 +1398,7 @@
         <Name>Gr3ybeards</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="13" cellY="-9" id="0000003C" />
             </StartLocation>
@@ -1412,7 +1412,7 @@
         <Name>Septimus</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="28" cellY="34" id="0000003C" />
             </StartLocation>
@@ -1426,7 +1426,7 @@
         <Name>Falkreath</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="12" cellY="-20" id="0000003C" />
             </StartLocation>
@@ -1440,7 +1440,7 @@
         <Name>Haafingar</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="00015223" />
             </StartLocation>
@@ -1454,7 +1454,7 @@
         <Name>The Reach</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-20" cellY="1" id="0000003C" />
             </StartLocation>
@@ -1468,7 +1468,7 @@
         <Name>Whiterun 2</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="4" cellY="-3" id="0000003C" />
             </StartLocation>
@@ -1482,7 +1482,7 @@
         <Name>Eastmarch</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="39" cellY="6" id="0000003C" />
             </StartLocation>
@@ -1496,7 +1496,7 @@
         <Name>The Pale</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="9" cellY="24" id="0000003C" />
             </StartLocation>
@@ -1510,7 +1510,7 @@
         <Name>Falkreath Hold</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-10" cellY="-10" id="0000003C" />
             </StartLocation>
@@ -1524,7 +1524,7 @@
         <Name>Mehrunes</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-1" cellY="12" id="0000003C" />
             </StartLocation>
@@ -1538,7 +1538,7 @@
         <Name>Peryite</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-36" cellY="9" id="0000003C" />
             </StartLocation>
@@ -1552,7 +1552,7 @@
         <Name>The Rift</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>DaedricQuestsCompleted</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>15</Value>
@@ -1569,7 +1569,7 @@
         <Name>Helgen</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="-2" cellY="-5" id="0005DE24" />
             </StartLocation>
@@ -1583,7 +1583,7 @@
         <Name>Whiterun</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LoadScreen">
+          <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="6" cellY="0" id="0001A26F" />
             </StartLocation>
@@ -1597,20 +1597,20 @@
         <Name>Married</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LiveSplit.Skyrim.AutoSplitData.Variables.LocationValue">
+          <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
               <Location cellX="" cellY="" id="00016BD7" />
             </Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>MiscObjectivesCompleted</MemoryWatcherName>
             <Comparison>IncreasedBy</Comparison>
             <Value>1</Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="LiveSplit.AutoSplitting.Variables.MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
             <MemoryWatcherName>IsLoading</MemoryWatcherName>
             <Comparison>Equals</Comparison>
             <Value>False</Value>
