@@ -41,7 +41,7 @@ namespace LiveSplit.Skyrim.AutoSplitData.Editors
 			var addTabBtnCms = new ContextMenuStrip();
 			addTabBtnCms.Items.Add("Add new tab", null, (s, e) => locationArrayControl1.AddLocationTab());
 			var locationListCms = new ToolStripMenuItem("Add from list");
-			foreach (var pair in AutoSplitData.Location.StaticLocations)
+			foreach (var pair in AutoSplitData.Location.StaticLocations.OrderBy(p => p.Key))
 			{
 				locationListCms.DropDownItems.Add(pair.Key, null, (s, e) =>
 				{

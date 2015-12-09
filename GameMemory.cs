@@ -104,7 +104,7 @@ namespace LiveSplit.Skyrim
 					Trace.WriteLine("[NoLoads] Got TESV.exe!");
 
 					_data = new SkyrimData();
-					uint? framesCountLoadScreenEnd = null;
+					uint? frameCountAtLoadScreenEnd = null;
 
 					while (!game.HasExited)
 					{
@@ -115,14 +115,11 @@ namespace LiveSplit.Skyrim
 							if (_data.IsLoading.Current)
 							{
 								Trace.WriteLine($"[NoLoads] Load Start - {_data.FrameCounter}");
-
-								// pause game timer
 								FireEvent(OnLoadStarted);
 							}
 							else
 							{
 								Trace.WriteLine($"[NoLoads] Load End - {_data.FrameCounter}");
-
 								if (!_data.LoadScreenFadeoutStarted && !_data.IsLoadingScreen.Old)
 								{
 									if (_data.QuickLoadFadeoutStarted)
@@ -136,8 +133,6 @@ namespace LiveSplit.Skyrim
 										AutoSplitManager.Update(_data, SkyrimEvent.QuickSave);
 									}
 								}
-
-								// unpause game timer
 								FireEvent(OnLoadFinished);
 							}
 						}
@@ -152,7 +147,7 @@ namespace LiveSplit.Skyrim
 								_data.LoadScreenStartLocation = _data.Location.Current;
 								_data.LoadScreenFadeoutStarted = _data.IsInFadeOut.Current;
 								_data.IsLoadingSaveFromMenu = _data.IsInEscapeMenu.Current;
-								framesCountLoadScreenEnd = null;
+								frameCountAtLoadScreenEnd = null;
 
 								// if it isn't a loadscreen from loading a save
 								if (!_data.IsLoadingSaveFromMenu)
@@ -168,7 +163,7 @@ namespace LiveSplit.Skyrim
 								Trace.WriteLine($"[NoLoads] LoadScreen End at {_data.WorldID.Current.ToString("X8")} X: {_data.CellX.Current} Y: {_data.CellY.Current} - {_data.FrameCounter}");
 								_data.LoadingScreenStarted = false;
 								_data.IsLoadingSaveFromMenu = false;
-								framesCountLoadScreenEnd = _data.FrameCounter;
+								frameCountAtLoadScreenEnd = _data.FrameCounter;
 								AutoSplitManager.Update(_data, SkyrimEvent.LoadScreenLoadEnd);
 							}
 						}
@@ -202,7 +197,7 @@ namespace LiveSplit.Skyrim
 						}
 
 						//sometimes the locationID changes a few frames after the end of the loadscreen, wait 2 frames max to trigger the event
-						if (_data.IsWaitingLocationIDUpdate && (_data.WorldID.Changed || (framesCountLoadScreenEnd != null && _data.FrameCounter - framesCountLoadScreenEnd >= 2)))
+						if (_data.IsWaitingLocationIDUpdate && (_data.WorldID.Changed || (frameCountAtLoadScreenEnd != null && _data.FrameCounter - frameCountAtLoadScreenEnd >= 2)))
 						{
 							_data.IsWaitingLocationIDUpdate = false;
 
@@ -231,7 +226,7 @@ namespace LiveSplit.Skyrim
 							_data.IsAlduin1Defeated.Current = true;
 						}
 
-						// the only mainquest you can complete here is the council so when a quest completes, walrus' council split
+						// the only mainquest you can complete here is the council
 						if (_data.MainQuestsCompleted.Current == _data.MainQuestsCompleted.Old + 1 && _data.WorldID.Current == (int)Worlds.HighHrothgar)
 						{
 							_data.IsCouncilDone.Current = true;
@@ -272,7 +267,7 @@ namespace LiveSplit.Skyrim
 
 						Debug.WriteLineIf(_data.MiscObjectivesCompleted.Changed, $"[NoLoads] MiscObjectivesCompleted changed from {_data.MiscObjectivesCompleted.Old} to {_data.MiscObjectivesCompleted.Current} - {_data.FrameCounter}");
 						Debug.WriteLineIf(_data.WorldID.Changed, $"[NoLoads] Location changed to {_data.WorldID.Current.ToString("X8")} - {_data.FrameCounter}");
-						//Debug.WriteLineIf(data.WorldX.Changed || data.WorldY.Changed, $"[NoLoads] Coords changed to X: {data.WorldX.Current} Y: {data.WorldY.Current} - {data.frameCounter}");
+						Debug.WriteLineIf(_data.CellX.Changed || _data.CellY.Changed, $"[NoLoads] Coords changed to X: {_data.CellX.Current} Y: {_data.CellY.Current} - {_data.FrameCounter}");
 						Debug.WriteLineIf(_data.IsInEscapeMenu.Changed, $"[NoLoads] isInEscapeMenu changed to {_data.IsInEscapeMenu.Current} - {_data.FrameCounter}");
 
 						_data.FrameCounter++;

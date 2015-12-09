@@ -74,7 +74,7 @@ namespace LiveSplit.Skyrim.AutoSplitData
 
 		public XmlElement ToXml(XmlDocument doc)
 		{
-			var root = doc.CreateElement("Location");			
+			var root = doc.CreateElement("Location");
 			root.SetAttribute("cellX", worldX.ToString());
 			root.SetAttribute("cellY", worldY.ToString());
 			root.SetAttribute("id", ID != null ? ID.Value.ToString("X") : ID.ToString());
@@ -149,10 +149,7 @@ namespace LiveSplit.Skyrim.AutoSplitData
 
 		public static explicit operator Location(Worlds location) => new Location((int)location);
 
-		public override int GetHashCode()
-		{
-			return ID.GetHashCode() ^ worldX.GetHashCode() ^ worldY.GetHashCode();
-		}
+		public override int GetHashCode() => ID.GetHashCode() ^ worldX.GetHashCode() ^ worldY.GetHashCode();
 	}
 
 	static class LocationExtensions

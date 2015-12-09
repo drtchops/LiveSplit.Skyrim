@@ -82,12 +82,6 @@
     <Compile Include="AutoSplitData\Editors\LocationControl.Designer.cs">
       <DependentUpon>LocationControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="AutoSplitData\Editors\LocationEditor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AutoSplitData\Editors\LocationEditor.Designer.cs">
-      <DependentUpon>LocationEditor.cs</DependentUpon>
-    </Compile>
     <Compile Include="AutoSplitData\Editors\LocationValueControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -197,9 +191,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AutoSplitData\Editors\LocationControl.resx">
       <DependentUpon>LocationControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AutoSplitData\Editors\LocationEditor.resx">
-      <DependentUpon>LocationEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AutoSplitData\Editors\LocationValueControl.resx">
       <DependentUpon>LocationValueControl.cs</DependentUpon>
