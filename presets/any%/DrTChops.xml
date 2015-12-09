@@ -9,10 +9,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="0005DE24" cellX="-2" cellY="-5" />
+              <Location cellX="-2" cellY="-5" id="5DE24" />
             </StartLocation>
             <EndLocation equals="True">
-              <Location id="" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -23,11 +23,11 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="0000003C" cellX="4" cellY="-3" />
-              <Location id="0000003C" cellX="4" cellY="-4" />
+              <Location cellX="4" cellY="-3" id="3C" />
+              <Location cellX="4" cellY="-4" id="3C" />
             </StartLocation>
             <EndLocation equals="True">
-              <Location id="" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -38,10 +38,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="0000003C" cellX="-20" cellY="28" />
+              <Location cellX="-20" cellY="28" id="3C" />
             </StartLocation>
             <EndLocation equals="False">
-              <Location id="0007DCFC" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="7DCFC" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -52,10 +52,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="00016BB4" cellX="42" cellY="-24" />
+              <Location cellX="42" cellY="-24" id="16BB4" />
             </StartLocation>
             <EndLocation equals="False">
-              <Location id="0003B698" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="3B698" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -66,11 +66,11 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="0000003C" cellX="5" cellY="-11" />
+              <Location cellX="5" cellY="-11" id="3C" />
             </StartLocation>
             <EndLocation equals="False">
-              <Location id="000133C6" cellX="" cellY="" />
-              <Location id="00016BB4" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="133C6" />
+              <Location cellX="" cellY="" id="16BB4" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -81,10 +81,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="00035699" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="35699" />
             </StartLocation>
             <EndLocation equals="True">
-              <Location id="0000003C" cellX="-42" cellY="1" />
+              <Location cellX="-42" cellY="1" id="3C" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -95,10 +95,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="0000003C" cellX="28" cellY="34" />
+              <Location cellX="28" cellY="34" id="3C" />
             </StartLocation>
             <EndLocation equals="False">
-              <Location id="0002D4E4" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="2D4E4" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -109,10 +109,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="00035699" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="35699" />
             </StartLocation>
             <EndLocation equals="True">
-              <Location id="" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="" />
             </EndLocation>
           </Variable>
           <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
@@ -129,10 +129,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="0000003C" cellX="6" cellY="11" />
+              <Location cellX="6" cellY="11" id="3C" />
             </StartLocation>
             <EndLocation equals="False">
-              <Location id="0002D4E3" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="2D4E3" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -143,11 +143,11 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="00087764" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="87764" />
             </StartLocation>
             <EndLocation equals="True">
-              <Location id="0000003C" cellX="13" cellY="-9" />
-              <Location id="0000003C" cellX="13" cellY="-10" />
+              <Location cellX="13" cellY="-9" id="3C" />
+              <Location cellX="13" cellY="-10" id="3C" />
             </EndLocation>
           </Variable>
           <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
@@ -165,7 +165,7 @@
           <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
-              <Location id="0000003C" cellX="13" cellY="-12" />
+              <Location cellX="13" cellY="-12" id="3C" />
             </Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
@@ -184,7 +184,7 @@
           <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
-              <Location id="0000003C" cellX="13" cellY="-12" />
+              <Location cellX="13" cellY="-12" id="3C" />
             </Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
@@ -208,13 +208,13 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="0000003C" cellX="14" cellY="-12" />
-              <Location id="0000003C" cellX="14" cellY="-13" />
-              <Location id="0000003C" cellX="13" cellY="-12" />
-              <Location id="0000003C" cellX="13" cellY="-13" />
+              <Location cellX="14" cellY="-12" id="3C" />
+              <Location cellX="14" cellY="-13" id="3C" />
+              <Location cellX="13" cellY="-12" id="3C" />
+              <Location cellX="13" cellY="-13" id="3C" />
             </StartLocation>
             <EndLocation equals="True">
-              <Location id="0001A26F" cellX="6" cellY="-1" />
+              <Location cellX="6" cellY="-1" id="1A26F" />
             </EndLocation>
           </Variable>
           <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
@@ -231,11 +231,11 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="0000003C" cellX="13" cellY="-9" />
-              <Location id="0000003C" cellX="13" cellY="-10" />
+              <Location cellX="13" cellY="-9" id="3C" />
+              <Location cellX="13" cellY="-10" id="3C" />
             </StartLocation>
             <EndLocation equals="False">
-              <Location id="00087764" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="87764" />
             </EndLocation>
           </Variable>
           <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
@@ -252,10 +252,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="00037EDF" cellX="-16" cellY="26" />
+              <Location cellX="-16" cellY="26" id="37EDF" />
             </StartLocation>
             <EndLocation equals="False">
-              <Location id="000213A0" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="213A0" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -266,10 +266,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="0001691D" cellX="32" cellY="10" />
+              <Location cellX="32" cellY="10" id="1691D" />
             </StartLocation>
             <EndLocation equals="False">
-              <Location id="0001677C" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="1677C" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -280,11 +280,11 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="0000003C" cellX="13" cellY="-9" />
-              <Location id="0000003C" cellX="13" cellY="-10" />
+              <Location cellX="13" cellY="-9" id="3C" />
+              <Location cellX="13" cellY="-10" id="3C" />
             </StartLocation>
             <EndLocation equals="False">
-              <Location id="00087764" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="87764" />
             </EndLocation>
           </Variable>
           <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
@@ -301,10 +301,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="" />
             </StartLocation>
             <EndLocation equals="True">
-              <Location id="000278DD" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="278DD" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -315,10 +315,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location id="" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="" />
             </StartLocation>
             <EndLocation equals="True">
-              <Location id="0002EE41" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="2EE41" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -336,7 +336,7 @@
           <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
-              <Location id="0002EE41" cellX="" cellY="" />
+              <Location cellX="" cellY="" id="2EE41" />
             </Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
