@@ -95,9 +95,9 @@ namespace LiveSplit.AutoSplitting.Variables
 				case Comparison.LessThanOrEqualTo:
 					return w => (dynamic)w.Current <= value;
 				case Comparison.IncreasedBy:
-					return w => (dynamic)w.Current - w.Old == value;
+					return w => (dynamic)w.Current - (dynamic)w.Old == value;
 				case Comparison.DecreasedBy:
-					return w => (dynamic)w.Old - w.Current == value;
+					return w => (dynamic)w.Old - (dynamic)w.Current == value;
 				default:
 					throw new InvalidOperationException("Undefined comparison behavior.");
 			}
