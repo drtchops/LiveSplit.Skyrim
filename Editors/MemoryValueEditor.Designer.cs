@@ -111,6 +111,7 @@
 			this.cbComparison.Name = "cbComparison";
 			this.cbComparison.Size = new System.Drawing.Size(115, 21);
 			this.cbComparison.TabIndex = 1;
+			this.cbComparison.SelectedValueChanged += new System.EventHandler(this.cbComparison_SelectedValueChanged);
 			// 
 			// cbValue
 			// 

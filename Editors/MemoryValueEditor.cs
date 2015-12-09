@@ -152,7 +152,16 @@ namespace LiveSplit.AutoSplitting.Editors
 			return false;
 		}
 
-		private void cbValue_KeyPress(object sender, KeyPressEventArgs e)
+		void cbComparison_SelectedValueChanged(object sender, EventArgs e)
+		{
+			if (cbComparison.SelectedIndex == -1)
+				return;
+
+			var selectedItem = (Comparison)cbComparison.SelectedItem;
+			chkOnChange.Enabled = selectedItem != Comparison.IncreasedBy && selectedItem != Comparison.DecreasedBy;
+		}
+
+		void cbValue_KeyPress(object sender, KeyPressEventArgs e)
 		{
 			if (!char.IsControl(e.KeyChar) && IsNumericType(_innerType) && !char.IsDigit(e.KeyChar) && e.KeyChar != '-')
 			{
