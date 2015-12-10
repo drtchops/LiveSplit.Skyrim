@@ -34,5 +34,7 @@ namespace LiveSplit.AutoSplitting.Variables
 		/// Allow multiple variables of this type within an AutoSplit.
 		/// </summary>
 		public bool AllowMultiple { get; set; } = true;
+
+		public string Description { get; set; }
 	}
 }

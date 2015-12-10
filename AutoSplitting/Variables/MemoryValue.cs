@@ -109,6 +109,7 @@ namespace LiveSplit.AutoSplitting.Variables
 		}
 	}
 
+	[VariableDescriptor(Description = "Checks the value of a memory address.")]
 	sealed class MemoryValue<T> : MemoryValue where T : struct
 	{
 		public new T Value

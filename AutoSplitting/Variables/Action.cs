@@ -6,7 +6,7 @@ using System.Xml;
 
 namespace LiveSplit.AutoSplitting.Variables
 {
-	[VariableDescriptor(AllowMultiple = false)]
+	[VariableDescriptor(AllowMultiple = false, Description = "Makes the autosplit trigger only a certain action.")]
 	public sealed class Action : Variable
 	{
 		public override GameEvent[] RestrictedEvents => new GameEvent[] { Value };

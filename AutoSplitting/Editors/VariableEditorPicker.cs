@@ -1,5 +1,6 @@
 ﻿using LiveSplit.AutoSplitting.Variables;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -31,7 +32,8 @@ namespace LiveSplit.AutoSplitting.Editors
 			cbVarTypes.DataSource = new BindingSource(dictionary.OrderBy(p => p.Key), null);
 			cbVarTypes.DisplayMember = "Key";
 			cbVarTypes.ValueMember = "Value";
-			cbVarTypes.SelectedItem = dictionary.First(p => p.Value == env.DefaultVariableType);
+			cbVarTypes.SelectedValueChanged += cbVarTypes_SelectedValueChanged;
+            cbVarTypes.SelectedItem = dictionary.First(p => p.Value == env.DefaultVariableType);
 		}
 
 		public static Variable ShowEditor(AutoSplitEnv env, Variable variable = null)
@@ -46,12 +48,29 @@ namespace LiveSplit.AutoSplitting.Editors
 
 		void btnOK_Click(object sender, EventArgs e)
 		{
+			if (cbVarTypes.SelectedIndex == -1)
+				return;
+
 			Visible = false;
 			EditedVariable = VariableEditor.ShowEditor(_env, (Type)cbVarTypes.SelectedValue);
 			if (EditedVariable != null)
 				DialogResult = DialogResult.OK;
 			else
 				Show();
+		}
+
+		void cbVarTypes_SelectedValueChanged(object sender, EventArgs e)
+		{
+			if (cbVarTypes.SelectedIndex == -1)
+				return;
+
+			var selectedPair = (Type)cbVarTypes.SelectedValue;
+			var attributes = selectedPair.GetCustomAttributes(typeof(VariableDescriptorAttribute), false)
+				.Cast<VariableDescriptorAttribute>()
+				.ToArray();
+			var attr = attributes.Length > 0 ? attributes[0] : null;
+			lDescription.Text = attr?.Description ?? "(none)";
+			lDescription.Enabled = attr?.Description != null;
 		}
 	}
 }
