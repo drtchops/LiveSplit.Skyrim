@@ -57,7 +57,7 @@ namespace LiveSplit.AutoSplitting.Variables
 			return type;
 		}
 
-		public static string RemoveNamespace(string str)
+		static string RemoveNamespace(string str)
 		{
 			var space = str;
 			var genericParams = "";
