@@ -7,6 +7,7 @@ using System.Xml;
 
 namespace LiveSplit.Skyrim.AutoSplitData.Variables
 {
+	[VariableDescriptor(Description = "Checks the location of the player.")]
 	public sealed class LocationValue : MemoryValue
 	{
 		static readonly string _watcherName = new SkyrimData().Location.Name;

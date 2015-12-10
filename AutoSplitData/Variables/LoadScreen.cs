@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace LiveSplit.Skyrim.AutoSplitData.Variables
 {
-	[VariableDescriptor(AllowMultiple = false)]
+	[VariableDescriptor(AllowMultiple = false, Description = "Triggers on a loadscreen distinguished by its start and end location.")]
 	public sealed class LoadScreen : Variable
 	{
 		public Location[] StartLocation { get; set; }
