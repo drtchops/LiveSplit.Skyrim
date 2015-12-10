@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LiveSplit.Skyrim</RootNamespace>
     <AssemblyName>LiveSplit.Skyrim</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +24,7 @@
     <AllowedReferenceRelatedFileExtensions>
 		.pdb
     </AllowedReferenceRelatedFileExtensions>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -34,12 +36,18 @@
     <AllowedReferenceRelatedFileExtensions>
 		.pdb
     </AllowedReferenceRelatedFileExtensions>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LiveSplit.Core">
       <HintPath>..\..\..\..\Program Files\LiveSplit\LiveSplit.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="LiveSplit.View">
+      <HintPath>..\..\..\LiveSplitDevBuild\LiveSplit.View.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="NAudio">
       <HintPath>packages\NAudio.1.7.3\lib\net35\NAudio.dll</HintPath>
       <Private>False</Private>
@@ -56,13 +64,105 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoSplitData\Editors\LoadScreenEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AutoSplitData\Editors\LoadScreenEditor.Designer.cs">
+      <DependentUpon>LoadScreenEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoSplitData\Editors\LocationArrayControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AutoSplitData\Editors\LocationArrayControl.Designer.cs">
+      <DependentUpon>LocationArrayControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoSplitData\Editors\LocationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AutoSplitData\Editors\LocationControl.Designer.cs">
+      <DependentUpon>LocationControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoSplitData\Editors\LocationValueControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AutoSplitData\Editors\LocationValueControl.Designer.cs">
+      <DependentUpon>LocationValueControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoSplitData\Editors\LocationValueEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AutoSplitData\Editors\LocationValueEditor.Designer.cs">
+      <DependentUpon>LocationValueEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoSplitData\Variables\LocationValue.cs" />
+    <Compile Include="AutoSplitting\AutoSplit.cs" />
+    <Compile Include="AutoSplitting\AutoSplitList.cs" />
+    <Compile Include="AutoSplitting\AutoSplitManager.cs" />
+    <Compile Include="AutoSplitting\Editors\ActionEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AutoSplitting\Editors\ActionEditor.Designer.cs">
+      <DependentUpon>ActionEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoSplitting\Editors\AutoSplitEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutoSplitting\Editors\AutoSplitEditor.Designer.cs">
+      <DependentUpon>AutoSplitEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoSplitting\Editors\AutoSplitListEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutoSplitting\Editors\AutoSplitListEditor.Designer.cs">
+      <DependentUpon>AutoSplitListEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoSplitting\AutoSplitEnv.cs" />
+    <Compile Include="AutoSplitting\Editors\MemoryValueEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AutoSplitting\Editors\MemoryValueEditor.Designer.cs">
+      <DependentUpon>MemoryValueEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoSplitting\Editors\VariableEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutoSplitting\Editors\VariableEditor.Designer.cs">
+      <DependentUpon>VariableEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoSplitting\Editors\VariableEditorPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutoSplitting\Editors\VariableEditorPicker.Designer.cs">
+      <DependentUpon>VariableEditorPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoSplitting\GameData.cs" />
+    <Compile Include="AutoSplitting\GameEvent.cs" />
+    <Compile Include="AutoSplitData\Tools\LoadScreenLogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutoSplitData\Tools\LoadScreenLogForm.Designer.cs">
+      <DependentUpon>LoadScreenLogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoSplitting\GameEventRegisterAtttribute.cs" />
+    <Compile Include="AutoSplitting\Tools\RamWatch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AutoSplitting\Tools\RamWatch.Designer.cs">
+      <DependentUpon>RamWatch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AutoSplitting\Variables\Action.cs" />
+    <Compile Include="AutoSplitting\Variables\MemoryValue.cs" />
+    <Compile Include="AutoSplitting\Variables\Variable.cs" />
+    <Compile Include="AutoSplitData\Variables\LoadScreen.cs" />
+    <Compile Include="AutoSplitData\Location.cs" />
+    <Compile Include="AutoSplitting\Variables\VariableRegisterAttribute.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="SkyrimComponent.cs" />
-    <Compile Include="SkyrimData.cs" />
+    <Compile Include="AutoSplitData\SkyrimData.cs" />
     <Compile Include="SkyrimFactory.cs" />
     <Compile Include="SkyrimSettings.cs">
       <SubType>UserControl</SubType>
@@ -70,11 +170,58 @@
     <Compile Include="SkyrimSettings.Designer.cs">
       <DependentUpon>SkyrimSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="SkyrimSettings.FormLogic.cs">
+      <DependentUpon>SkyrimSettings.cs</DependentUpon>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SkyrimSettings.ToolsTab.cs">
+      <DependentUpon>SkyrimSettings.cs</DependentUpon>
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="GameMemory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MediaPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AutoSplitData\Editors\LoadScreenEditor.resx">
+      <DependentUpon>LoadScreenEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutoSplitData\Editors\LocationArrayControl.resx">
+      <DependentUpon>LocationArrayControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutoSplitData\Editors\LocationControl.resx">
+      <DependentUpon>LocationControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutoSplitData\Editors\LocationValueControl.resx">
+      <DependentUpon>LocationValueControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutoSplitData\Editors\LocationValueEditor.resx">
+      <DependentUpon>LocationValueEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutoSplitting\Editors\ActionEditor.resx">
+      <DependentUpon>ActionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutoSplitting\Editors\AutoSplitEditor.resx">
+      <DependentUpon>AutoSplitEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutoSplitting\Editors\AutoSplitListEditor.resx">
+      <DependentUpon>AutoSplitListEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutoSplitting\Editors\MemoryValueEditor.resx">
+      <DependentUpon>MemoryValueEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutoSplitting\Editors\VariableEditor.resx">
+      <DependentUpon>VariableEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutoSplitting\Editors\VariableEditorPicker.resx">
+      <DependentUpon>VariableEditorPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutoSplitData\Tools\LoadScreenLogForm.resx">
+      <DependentUpon>LoadScreenLogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AutoSplitting\Tools\RamWatch.resx">
+      <DependentUpon>RamWatch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -96,6 +243,7 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
