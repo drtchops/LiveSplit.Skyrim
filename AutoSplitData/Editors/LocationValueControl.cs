@@ -4,6 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 using LiveSplit.Properties;
 using LiveSplit.AutoSplitting.Variables;
+using System.Xml;
+using LiveSplit.Skyrim.AutoSplitData.Variables;
 
 namespace LiveSplit.Skyrim.AutoSplitData.Editors
 {
@@ -38,8 +40,20 @@ namespace LiveSplit.Skyrim.AutoSplitData.Editors
 			toolTipTabButtons.SetToolTip(btnRemoveTab, "Remove selected location tab");
 			cbComparison.DataSource = new Comparison[] { Comparison.Equals, Comparison.Unequals };
 
+			btnAddTab.Click += BtnAddTab_Click;
+
+			ValueEquals = valueEquals;
+			Value = value;
+		}
+
+		public LocationValueControl() : this(new Location[] { AutoSplitData.Location.Anywhere }) { }
+
+		void BtnAddTab_Click(object sender, EventArgs ea)
+		{
 			var addTabBtnCms = new ContextMenuStrip();
+
 			addTabBtnCms.Items.Add("Add new tab", null, (s, e) => locationArrayControl1.AddLocationTab());
+
 			var locationListCms = new ToolStripMenuItem("Add from list");
 			foreach (var pair in AutoSplitData.Location.StaticLocations.OrderBy(p => p.Key))
 			{
@@ -51,13 +65,35 @@ namespace LiveSplit.Skyrim.AutoSplitData.Editors
 			}
 			addTabBtnCms.Items.Add(locationListCms);
 
-			btnAddTab.Click += (s, e) => addTabBtnCms.Show(btnAddTab, new Point(0, 0));
+			if (Clipboard.ContainsData(DataFormats.StringFormat))
+			{
+				LoadScreen loadScreen = null;
+				try
+				{
+					var clipboard = (string)Clipboard.GetData(DataFormats.StringFormat);
 
-			ValueEquals = valueEquals;
-			Value = value;
+					var doc = new XmlDocument();
+					doc.LoadXml(clipboard);
+					if (Variable.IsValidXml(doc.DocumentElement))
+						loadScreen = new LoadScreen(doc.DocumentElement);
+				}
+				catch { loadScreen = null; }
+
+				if (loadScreen != null)
+				{
+					addTabBtnCms.Items.Add("Paste Start Location from clipboard", null, (s, e) =>
+					{
+						locationArrayControl1.Value = loadScreen.StartLocation;
+                    });
+					addTabBtnCms.Items.Add("Paste End Location from clipboard", null, (s, e) =>
+					{
+						locationArrayControl1.Value = loadScreen.EndLocation;
+                    });
+				}
+			}
+
+            addTabBtnCms.Show(btnAddTab, new Point(0, 0));
 		}
-
-		public LocationValueControl() : this(new Location[] { AutoSplitData.Location.Anywhere }) { }
 
 		void btnRemoveTab_Click(object sender, EventArgs e)
 		{

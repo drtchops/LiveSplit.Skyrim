@@ -1,4 +1,5 @@
 ﻿using LiveSplit.AutoSplitting;
+using LiveSplit.Skyrim.AutoSplitData.Variables;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -12,7 +13,7 @@ namespace LiveSplit.Skyrim.AutoSplitData.Tools
 	{
 		AutoSplitManager _manager;
 		SynchronizationContext _uiThread;
-		BindingList<LoadScreen> _loadScreens;
+		BindingList<LoadScreenEntry> _loadScreens;
 
 		public LoadScreenLogForm()
 		{
@@ -23,12 +24,12 @@ namespace LiveSplit.Skyrim.AutoSplitData.Tools
 			MinimumSize = new Size(Size.Width, Size.Height);
 
 			_uiThread = SynchronizationContext.Current;
-			_loadScreens = new BindingList<LoadScreen>();
+			_loadScreens = new BindingList<LoadScreenEntry>();
 
 			Disposed += RamWatch_Disposed;
 		}
 
-		void AddLoadScreen(LoadScreen loadscreen)
+		void AddLoadScreen(LoadScreenEntry loadscreen)
 		{
 			_loadScreens.Insert(0, loadscreen);
 			lbLoadScreens.Items.Insert(0, loadscreen);
@@ -74,19 +75,18 @@ namespace LiveSplit.Skyrim.AutoSplitData.Tools
 			var data = (SkyrimData)e.Data;
 			var start = data.LoadScreenStartLocation;
 			var end = data.Location.Current;
-			_uiThread.Post(d => AddLoadScreen(new LoadScreen(start, end)), null);
+			_uiThread.Post(d => AddLoadScreen(new LoadScreenEntry(start, end)), null);
 		}
 
 		void lbLoadScreens_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			if (lbLoadScreens.SelectedIndex == -1)
-			{
-				gbLoadScreenInfo.Enabled = false;
-				return;
-			}
+			var isEntrySelected = lbLoadScreens.SelectedIndex != -1;
+            gbLoadScreenInfo.Enabled = lCopyToClipboard.Visible = isEntrySelected;
 
-			gbLoadScreenInfo.Enabled = true;
-			var loadscreen = (LoadScreen)lbLoadScreens.SelectedItem;
+			if (!isEntrySelected)
+				return;
+
+			var loadscreen = (LoadScreenEntry)lbLoadScreens.SelectedItem;
 			locationStart.Value = loadscreen.StartLocation;
 			locationEnd.Value = loadscreen.EndLocation;
 		}
@@ -105,13 +105,24 @@ namespace LiveSplit.Skyrim.AutoSplitData.Tools
 			lbLoadScreens.Items.Clear();
 		}
 
-		internal class LoadScreen
+		void lCopyToClipboard_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+		{
+			if (lbLoadScreens.SelectedIndex == -1)
+				return;
+			var selectedEntry = (LoadScreenEntry)lbLoadScreens.SelectedItem;
+			Clipboard.SetData(DataFormats.StringFormat,
+				new LoadScreen(selectedEntry.StartLocation, selectedEntry.EndLocation)
+					.ToXml(new System.Xml.XmlDocument())
+					.OuterXml);
+		}
+
+		internal class LoadScreenEntry
 		{
 			public Location StartLocation { get; }
 			public Location EndLocation { get; }
 			public DateTime CreationDate { get; }
 
-			public LoadScreen(Location start, Location end)
+			public LoadScreenEntry(Location start, Location end)
 			{
 				CreationDate = DateTime.UtcNow;
 				StartLocation = start;
