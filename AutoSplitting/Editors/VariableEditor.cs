@@ -51,7 +51,7 @@ namespace LiveSplit.AutoSplitting.Editors
 			}
 			return source;
 		}
-		public static Variable ShowEditor(AutoSplitEnv env, Variable variable) => ShowEditor(env, variable.GetType(), variable);
+		public static Variable ShowEditor(AutoSplitEnv env, Variable source) => ShowEditor(env, source.GetType(), source);
 	}
 
 	public class VariableControl : UserControl

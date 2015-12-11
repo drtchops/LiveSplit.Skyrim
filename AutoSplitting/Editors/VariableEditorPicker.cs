@@ -36,13 +36,13 @@ namespace LiveSplit.AutoSplitting.Editors
             cbVarTypes.SelectedItem = dictionary.First(p => p.Value == env.DefaultVariableType);
 		}
 
-		public static Variable ShowEditor(AutoSplitEnv env, Variable variable = null)
+		public static Variable ShowEditor(AutoSplitEnv env)
 		{
-			using (var form = new VariableEditorPicker(env, variable))
+			using (var form = new VariableEditorPicker(env))
 			{
 				return form.ShowDialog() != DialogResult.Cancel
 					? form.EditedVariable
-					: variable;
+					: null;
 			}
 		}
 
