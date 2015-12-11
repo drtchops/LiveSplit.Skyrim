@@ -7,8 +7,7 @@ Features
 --------
   * Keeps track of Game Time to get rid of loading times.
   * Auto start/stop/reset the timer.
-  * Splits when you finish each split in Any%. (configurable)
-  # Splits when you finish each guild. (configurable)
+  * Customizable autosplitting.
 
 Requirements
 ------------
@@ -22,7 +21,7 @@ If the plugin is not working with this process, download the plugin from the [re
 
 Upgrade
 -------
-You may have issues when upgrading from a version prior to 2.0. Try deactiving the autosplitter from the splits editor, removing it from the layout editor, and restarting LiveSplit before upgrading. If the problem persists, delete the LiveSplit.Skyrim.dll from your Components folder and try again.
+You may have issues when upgrading from a version prior to 2.0. Try deactivating the autosplitter from the splits editor, removing it from the layout editor, and restarting LiveSplit before upgrading. If the problem persists, delete the LiveSplit.Skyrim.dll from your Components folder and try again.
 
 Configure
 ---------
