@@ -18,6 +18,7 @@ namespace LiveSplit.Skyrim.AutoSplitData
 		public MemoryWatcher<int> WorldID { get; } = new MemoryWatcher<int>(new DeepPointer(0x01738308, 0x4, 0x78, 0x670, 0xEC)); // ID of the current world (or cell for interiors) (see http://steamcommunity.com/sharedfiles/filedetails/?id=148834641 or http://www.skyrimsearch.com/cells.php)
 		public MemoryWatcher<int> CellX { get; } = new MemoryWatcher<int>(new DeepPointer(0x0172E864, 0x64)); // X cell coord, often unreliable in interiors
 		public MemoryWatcher<int> CellY { get; } = new MemoryWatcher<int>(new DeepPointer(0x0172E864, 0x68)); // Y cell coord), often unreliable in interiors
+		public MemoryWatcher<Vector3f> Position { get; } = new MemoryWatcher<Vector3f>(new DeepPointer(0xF1063C, 0x20));
 
 		// Game state
 		public MemoryWatcher<bool> IsAlduin2Defeated { get; } = new MemoryWatcher<bool>(new DeepPointer(0x1711608)); // == 1 when last blow is struck on alduin
@@ -46,6 +47,8 @@ namespace LiveSplit.Skyrim.AutoSplitData
 		public FakeMemoryWatcher<bool> IsAlduin1Defeated { get; } = new FakeMemoryWatcher<bool>();
 		public FakeMemoryWatcher<bool> IsSkyHavenTempleVisited { get; } = new FakeMemoryWatcher<bool>();
 		public FakeMemoryWatcher<int> LeaveSleepingGiantInnCounter { get; } = new FakeMemoryWatcher<int>();
+
+		public static readonly Vector3f StartPosition = new Vector3f(15586.7f, -81242f, 8203.3f);
 
 		public SkyrimData()
 		{

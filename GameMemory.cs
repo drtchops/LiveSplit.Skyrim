@@ -183,8 +183,8 @@ namespace LiveSplit.Skyrim
 							{
 								Debug.WriteLine($"[NoLoads] Fadeout ended - {_data.FrameCounter}");
 								// if loadscreen fadeout finishes in helgen
-								if (_data.IsInFadeOut.Old && _data.LoadScreenFadeoutStarted &&
-									_data.Location.Current == new Location((int)Worlds.Tamriel, 3, -20))
+								if (_data.IsInFadeOut.Old && _data.LoadScreenFadeoutStarted && _data.WorldID.Current == (int)Worlds.Tamriel
+									&& _data.Position.Current.DistanceXY(SkyrimData.StartPosition) <= 200)
 								{
 									// start and reset
 									Trace.WriteLine($"[NoLoads] Reset and Start - {_data.FrameCounter}");
