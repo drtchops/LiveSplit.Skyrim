@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <AutoSplitLists>
   <AutoSplitList>
     <Name>Any% (Dalleth)</Name>
@@ -51,10 +51,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location cellX="42" cellY="-24" id="16BB4" />
+              <Location cellX="2" cellY="-18" id="3C" />
             </StartLocation>
-            <EndLocation equals="False">
-              <Location cellX="" cellY="" id="3B698" />
+            <EndLocation equals="True">
+              <Location cellX="4" cellY="-12" id="3C" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -393,10 +393,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location cellX="42" cellY="-24" id="16BB4" />
+              <Location cellX="2" cellY="-18" id="3C" />
             </StartLocation>
-            <EndLocation equals="False">
-              <Location cellX="" cellY="" id="3B698" />
+            <EndLocation equals="True">
+              <Location cellX="4" cellY="-12" id="3C" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -737,10 +737,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location cellX="" cellY="" id="3B698" />
+              <Location cellX="2" cellY="-18" id="3C" />
             </StartLocation>
             <EndLocation equals="True">
-              <Location cellX="42" cellY="-24" id="16BB4" />
+              <Location cellX="4" cellY="-12" id="3C" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -1082,10 +1082,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location cellX="42" cellY="-24" id="16BB4" />
+              <Location cellX="2" cellY="-18" id="3C" />
             </StartLocation>
-            <EndLocation equals="False">
-              <Location cellX="" cellY="" id="3B698" />
+            <EndLocation equals="True">
+              <Location cellX="4" cellY="-12" id="3C" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -1571,7 +1571,7 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location cellX="-2" cellY="-5" id="0005DE24" />
+              <Location cellX="-2" cellY="-5" id="5DE24" />
             </StartLocation>
             <EndLocation equals="True">
               <Location cellX="" cellY="" id="" />
@@ -1585,10 +1585,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location cellX="6" cellY="0" id="0001A26F" />
+              <Location cellX="4" cellY="-3" id="3C" />
             </StartLocation>
-            <EndLocation equals="False">
-              <Location cellX="" cellY="" id="000165A3" />
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -1600,7 +1600,7 @@
           <Variable type="LocationValue">
             <Comparison>Equals</Comparison>
             <Value>
-              <Location cellX="" cellY="" id="00016BD7" />
+              <Location cellX="" cellY="" id="16BD7" />
             </Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
