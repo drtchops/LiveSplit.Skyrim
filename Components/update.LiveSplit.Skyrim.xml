@@ -1,129 +1,139 @@
 <updates>
-    <update version="2.3">
-        <files>
-            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
-        </files>
-        <changelog>
-            <change>
-                Compatibility with LiveSplit 1.6
-            </change>
-        </changelog>
-    </update>
-    <update version="2.2.1">
-        <files>
-            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
-        </files>
-        <changelog>
-            <change>
-                The delay between a reset and the timer start is now compensated. Make sure to reset your helgen gold.
-            </change>
-        </changelog>
-    </update>
-    <update version="2.2.0">
-        <files>
-            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
-        </files>
-        <changelog>
-            <change>
-                Updated autosplits for the new route and added in the Karthspire split.
-            </change>
-            <change>
-                Various fixes and cleanup.
-            </change>
-        </changelog>
-    </update>
-    <update version="2.1.0">
-        <files>
-            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
-        </files>
-        <changelog>
-            <change>
-                New settings interface. It now tells you if you don't have enough enabled autosplits to fully autosplit your run.
-            </change>
-            <change>
-                No more Alduin1 autosplit when traveling elsewhere than to Dragonsreach.
-            </change>
-        </changelog>
-    </update>
-    <update version="2.0.0">
-        <files>
-            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
-        </files>
-        <changelog>
-            <change>
-                Added autosplits for every split in any%.
-            </change>
-            <change>
-                Removed the Alternate Timing layout component. It's now its own component and works for all games.
-            </change>
-            <change>
-                Redesigned settings.
-            </change>
-        </changelog>
-    </update>
-    <update version="1.4.2">
-        <files>
-            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
-        </files>
-        <changelog>
-            <change>
-                Fixed guild autosplits.
-            </change>
-            <change>
-                Fixed timer not starting on first run.
-            </change>
-        </changelog>
-    </update>
-    <update version="1.4.1">
-        <files>
-            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
-        </files>
-        <changelog>
-            <change>
-                Fixed incorrect Helgen autosplit.
-            </change>
-        </changelog>
-    </update>
-    <update version="1.4.0">
-        <files>
-            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
-        </files>
-        <changelog>
-            <change>
-                Added automatic aplits for all guilds.
-            </change>
-            <change>
-                Added check to prevent double loading of component.
-            </change>
-            <change>
-                Added check to prevent incorrect reset in Helgen.
-            </change>
-        </changelog>
-    </update>
-    <update version="1.3.0">
-        <files>
-            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
-        </files>
-        <changelog>
-            <change>
-                Added automatic reset / start / end and Helgen split.
-            </change>
-        </changelog>
-    </update>
-    <update version="1.2.0">
-        <files>
-            <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
-        </files>
-        <changelog>
-            <change>
-                Added support for LiveSplit 1.4's 'Game Time as primary timing method' feature.
-            </change>
-            <change>
-                Right-click -> Compare By -> Game Time
-            </change>
-            <change>
-                Huge thanks to Fatalis and Dalleth.
-            </change>
-        </changelog>
-    </update>
+  <update version="3.0">
+    <files>
+      <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+    </files>
+    <changelog>
+      <change>Customizable autosplits</change>
+		<change>More precise position check for start/reset to accommodate with the new route</change>
+		<change>Added Marriage and All Daedric Quests autosplitting presets</change>
+    </changelog>
+  </update>
+  <update version="2.3">
+    <files>
+      <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+    </files>
+    <changelog>
+      <change>
+        Compatibility with LiveSplit 1.6
+      </change>
+    </changelog>
+  </update>
+  <update version="2.2.1">
+    <files>
+      <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+    </files>
+    <changelog>
+      <change>
+        The delay between a reset and the timer start is now compensated. Make sure to reset your helgen gold.
+      </change>
+    </changelog>
+  </update>
+  <update version="2.2.0">
+    <files>
+      <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+    </files>
+    <changelog>
+      <change>
+        Updated autosplits for the new route and added in the Karthspire split.
+      </change>
+      <change>
+        Various fixes and cleanup.
+      </change>
+    </changelog>
+  </update>
+  <update version="2.1.0">
+    <files>
+      <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+    </files>
+    <changelog>
+      <change>
+        New settings interface. It now tells you if you don't have enough enabled autosplits to fully autosplit your run.
+      </change>
+      <change>
+        No more Alduin1 autosplit when traveling elsewhere than to Dragonsreach.
+      </change>
+    </changelog>
+  </update>
+  <update version="2.0.0">
+    <files>
+      <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+    </files>
+    <changelog>
+      <change>
+        Added autosplits for every split in any%.
+      </change>
+      <change>
+        Removed the Alternate Timing layout component. It's now its own component and works for all games.
+      </change>
+      <change>
+        Redesigned settings.
+      </change>
+    </changelog>
+  </update>
+  <update version="1.4.2">
+    <files>
+      <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+    </files>
+    <changelog>
+      <change>
+        Fixed guild autosplits.
+      </change>
+      <change>
+        Fixed timer not starting on first run.
+      </change>
+    </changelog>
+  </update>
+  <update version="1.4.1">
+    <files>
+      <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+    </files>
+    <changelog>
+      <change>
+        Fixed incorrect Helgen autosplit.
+      </change>
+    </changelog>
+  </update>
+  <update version="1.4.0">
+    <files>
+      <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+    </files>
+    <changelog>
+      <change>
+        Added automatic aplits for all guilds.
+      </change>
+      <change>
+        Added check to prevent double loading of component.
+      </change>
+      <change>
+        Added check to prevent incorrect reset in Helgen.
+      </change>
+    </changelog>
+  </update>
+  <update version="1.3.0">
+    <files>
+      <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+    </files>
+    <changelog>
+      <change>
+        Added automatic reset / start / end and Helgen split.
+      </change>
+    </changelog>
+  </update>
+  <update version="1.2.0">
+    <files>
+      <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+    </files>
+    <changelog>
+      <change>
+        Added support for LiveSplit 1.4's 'Game Time as primary timing method' feature.
+      </change>
+      <change>
+        Right-click -> Compare By -> Game Time
+      </change>
+      <change>
+        Huge thanks to Fatalis and Dalleth.
+      </change>
+    </changelog>
+  </update>
 </updates>
