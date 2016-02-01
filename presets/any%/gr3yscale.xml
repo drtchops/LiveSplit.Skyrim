@@ -52,10 +52,10 @@
         <Variables>
           <Variable type="LoadScreen">
             <StartLocation equals="True">
-              <Location cellX="" cellY="" id="3B698" />
+              <Location cellX="2" cellY="-18" id="3C" />
             </StartLocation>
             <EndLocation equals="True">
-              <Location cellX="42" cellY="-24" id="16BB4" />
+              <Location cellX="4" cellY="-12" id="3C" />
             </EndLocation>
           </Variable>
         </Variables>
