@@ -54,8 +54,8 @@
             <StartLocation equals="True">
               <Location cellX="2" cellY="-18" id="3C" />
             </StartLocation>
-            <EndLocation equals="True">
-              <Location cellX="4" cellY="-12" id="3C" />
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="5DE24" />
             </EndLocation>
           </Variable>
         </Variables>
