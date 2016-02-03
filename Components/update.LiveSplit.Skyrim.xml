@@ -1,4 +1,12 @@
 <updates>
+	 <update version="3.0.1">
+		  <files>
+				<file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+		  </files>
+		  <changelog>
+				<change>The presets list is now automatically updated unless there is a plugin update available. (can be deactivated)</change>
+      </changelog>
+    </update>
   <update version="3.0">
     <files>
       <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>

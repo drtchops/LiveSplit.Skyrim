@@ -1,8 +1,6 @@
 ﻿using LiveSplit.AutoSplitting;
 using LiveSplit.AutoSplitting.Editors;
-using LiveSplit.Skyrim.AutoSplitData;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -15,6 +13,7 @@ namespace LiveSplit.Skyrim
 		{
 			chkAutoStart.DataBindings.Add("Checked", this, "AutoStart", false, DataSourceUpdateMode.OnPropertyChanged);
 			chkAutoReset.DataBindings.Add("Checked", this, "AutoReset", false, DataSourceUpdateMode.OnPropertyChanged);
+			chkAutoUpdatePresets.DataBindings.Add("Checked", this, "AutoUpdatePresets", false, DataSourceUpdateMode.OnPropertyChanged);
 			chkBearCartPBNotification.DataBindings.Add("Checked", this, "BearCartPBNotification", false, DataSourceUpdateMode.OnPropertyChanged);
 			chkPlayBearCartSound.DataBindings.Add("Checked", this, "PlayBearCartSound", false, DataSourceUpdateMode.OnPropertyChanged);
 			txtBearCartSoundPath.DataBindings.Add("Text", this, "BearCartSoundPath", false, DataSourceUpdateMode.OnPropertyChanged);
