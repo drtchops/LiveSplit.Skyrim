@@ -33,9 +33,9 @@
 			this.tabAnyPercent = new System.Windows.Forms.TabPage();
 			this.tlpAutoSplits = new System.Windows.Forms.TableLayoutPanel();
 			this.tlpAutosplitPreset = new System.Windows.Forms.TableLayoutPanel();
-			this.btnCustomize = new System.Windows.Forms.Button();
-			this.btnUpdatePresets = new System.Windows.Forms.Button();
 			this.tlpPresetsList = new System.Windows.Forms.TableLayoutPanel();
+			this.btnUpdatePresets = new System.Windows.Forms.Button();
+			this.btnCustomize = new System.Windows.Forms.Button();
 			this.cbPreset = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.chklbSplits = new System.Windows.Forms.CheckedListBox();
@@ -76,6 +76,7 @@
 			this.flpGeneral = new System.Windows.Forms.FlowLayoutPanel();
 			this.chkAutoStart = new System.Windows.Forms.CheckBox();
 			this.chkAutoReset = new System.Windows.Forms.CheckBox();
+			this.chkAutoUpdatePresets = new System.Windows.Forms.CheckBox();
 			this.tlpMain.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabAnyPercent.SuspendLayout();
@@ -124,11 +125,11 @@
 			this.tabControl1.Controls.Add(this.tabTools);
 			this.tabControl1.Controls.Add(this.tabBearCart);
 			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tabControl1.Location = new System.Drawing.Point(3, 74);
+			this.tabControl1.Location = new System.Drawing.Point(3, 97);
 			this.tabControl1.Multiline = true;
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(464, 419);
+			this.tabControl1.Size = new System.Drawing.Size(464, 396);
 			this.tabControl1.TabIndex = 1;
 			// 
 			// tabAnyPercent
@@ -138,7 +139,7 @@
 			this.tabAnyPercent.Location = new System.Drawing.Point(4, 22);
 			this.tabAnyPercent.Name = "tabAnyPercent";
 			this.tabAnyPercent.Padding = new System.Windows.Forms.Padding(3);
-			this.tabAnyPercent.Size = new System.Drawing.Size(456, 393);
+			this.tabAnyPercent.Size = new System.Drawing.Size(456, 370);
 			this.tabAnyPercent.TabIndex = 0;
 			this.tabAnyPercent.Text = "Autosplits";
 			// 
@@ -156,7 +157,7 @@
 			this.tlpAutoSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
 			this.tlpAutoSplits.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tlpAutoSplits.RowStyles.Add(new System.Windows.Forms.RowStyle());
-			this.tlpAutoSplits.Size = new System.Drawing.Size(450, 387);
+			this.tlpAutoSplits.Size = new System.Drawing.Size(450, 364);
 			this.tlpAutoSplits.TabIndex = 0;
 			// 
 			// tlpAutosplitPreset
@@ -169,35 +170,12 @@
 			this.tlpAutosplitPreset.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tlpAutosplitPreset.Controls.Add(this.tlpPresetsList, 0, 0);
 			this.tlpAutosplitPreset.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tlpAutosplitPreset.Location = new System.Drawing.Point(3, 355);
+			this.tlpAutosplitPreset.Location = new System.Drawing.Point(3, 332);
 			this.tlpAutosplitPreset.Name = "tlpAutosplitPreset";
 			this.tlpAutosplitPreset.RowCount = 1;
 			this.tlpAutosplitPreset.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
 			this.tlpAutosplitPreset.Size = new System.Drawing.Size(444, 29);
 			this.tlpAutosplitPreset.TabIndex = 2;
-			// 
-			// btnCustomize
-			// 
-			this.btnCustomize.Anchor = System.Windows.Forms.AnchorStyles.Left;
-			this.btnCustomize.AutoSize = true;
-			this.btnCustomize.Location = new System.Drawing.Point(257, 3);
-			this.btnCustomize.Name = "btnCustomize";
-			this.btnCustomize.Size = new System.Drawing.Size(74, 23);
-			this.btnCustomize.TabIndex = 1;
-			this.btnCustomize.Text = "Customize...";
-			this.btnCustomize.UseVisualStyleBackColor = true;
-			this.btnCustomize.Click += new System.EventHandler(this.btnCustomize_Click);
-			// 
-			// btnUpdatePresets
-			// 
-			this.btnUpdatePresets.AutoSize = true;
-			this.btnUpdatePresets.Location = new System.Drawing.Point(337, 3);
-			this.btnUpdatePresets.Name = "btnUpdatePresets";
-			this.btnUpdatePresets.Size = new System.Drawing.Size(104, 23);
-			this.btnUpdatePresets.TabIndex = 2;
-			this.btnUpdatePresets.Text = "Update presets list";
-			this.btnUpdatePresets.UseVisualStyleBackColor = true;
-			this.btnUpdatePresets.Click += new System.EventHandler(this.btnUpdatePresets_Click);
 			// 
 			// tlpPresetsList
 			// 
@@ -220,6 +198,29 @@
 			this.tlpPresetsList.RowStyles.Add(new System.Windows.Forms.RowStyle());
 			this.tlpPresetsList.Size = new System.Drawing.Size(444, 29);
 			this.tlpPresetsList.TabIndex = 2;
+			// 
+			// btnUpdatePresets
+			// 
+			this.btnUpdatePresets.AutoSize = true;
+			this.btnUpdatePresets.Location = new System.Drawing.Point(337, 3);
+			this.btnUpdatePresets.Name = "btnUpdatePresets";
+			this.btnUpdatePresets.Size = new System.Drawing.Size(104, 23);
+			this.btnUpdatePresets.TabIndex = 2;
+			this.btnUpdatePresets.Text = "Update presets list";
+			this.btnUpdatePresets.UseVisualStyleBackColor = true;
+			this.btnUpdatePresets.Click += new System.EventHandler(this.btnUpdatePresets_Click);
+			// 
+			// btnCustomize
+			// 
+			this.btnCustomize.Anchor = System.Windows.Forms.AnchorStyles.Left;
+			this.btnCustomize.AutoSize = true;
+			this.btnCustomize.Location = new System.Drawing.Point(257, 3);
+			this.btnCustomize.Name = "btnCustomize";
+			this.btnCustomize.Size = new System.Drawing.Size(74, 23);
+			this.btnCustomize.TabIndex = 1;
+			this.btnCustomize.Text = "Customize...";
+			this.btnCustomize.UseVisualStyleBackColor = true;
+			this.btnCustomize.Click += new System.EventHandler(this.btnCustomize_Click);
 			// 
 			// cbPreset
 			// 
@@ -255,7 +256,7 @@
 			this.chklbSplits.Location = new System.Drawing.Point(3, 23);
 			this.chklbSplits.MultiColumn = true;
 			this.chklbSplits.Name = "chklbSplits";
-			this.chklbSplits.Size = new System.Drawing.Size(444, 326);
+			this.chklbSplits.Size = new System.Drawing.Size(444, 303);
 			this.chklbSplits.TabIndex = 1;
 			// 
 			// tlpAutosplits1stRow
@@ -735,7 +736,7 @@
 			this.gbGeneral.Dock = System.Windows.Forms.DockStyle.Top;
 			this.gbGeneral.Location = new System.Drawing.Point(3, 3);
 			this.gbGeneral.Name = "gbGeneral";
-			this.gbGeneral.Size = new System.Drawing.Size(464, 65);
+			this.gbGeneral.Size = new System.Drawing.Size(464, 88);
 			this.gbGeneral.TabIndex = 0;
 			this.gbGeneral.TabStop = false;
 			this.gbGeneral.Text = "General";
@@ -746,11 +747,12 @@
 			this.flpGeneral.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.flpGeneral.Controls.Add(this.chkAutoStart);
 			this.flpGeneral.Controls.Add(this.chkAutoReset);
+			this.flpGeneral.Controls.Add(this.chkAutoUpdatePresets);
 			this.flpGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.flpGeneral.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
 			this.flpGeneral.Location = new System.Drawing.Point(3, 16);
 			this.flpGeneral.Name = "flpGeneral";
-			this.flpGeneral.Size = new System.Drawing.Size(458, 46);
+			this.flpGeneral.Size = new System.Drawing.Size(458, 69);
 			this.flpGeneral.TabIndex = 0;
 			// 
 			// chkAutoStart
@@ -776,6 +778,18 @@
 			this.chkAutoReset.TabIndex = 1;
 			this.chkAutoReset.Text = "Automatic timer reset";
 			this.chkAutoReset.UseVisualStyleBackColor = true;
+			// 
+			// chkAutoUpdatePresets
+			// 
+			this.chkAutoUpdatePresets.AutoSize = true;
+			this.chkAutoUpdatePresets.Checked = true;
+			this.chkAutoUpdatePresets.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.chkAutoUpdatePresets.Location = new System.Drawing.Point(3, 49);
+			this.chkAutoUpdatePresets.Name = "chkAutoUpdatePresets";
+			this.chkAutoUpdatePresets.Size = new System.Drawing.Size(178, 17);
+			this.chkAutoUpdatePresets.TabIndex = 2;
+			this.chkAutoUpdatePresets.Text = "Update the presets list at launch";
+			this.chkAutoUpdatePresets.UseVisualStyleBackColor = true;
 			// 
 			// SkyrimSettings
 			// 
@@ -882,5 +896,6 @@
 		private System.Windows.Forms.TableLayoutPanel tlpToolSettings;
 		private System.Windows.Forms.Button btnMoveUpAddr;
 		private System.Windows.Forms.Button btnMoveDownAddr;
+		private System.Windows.Forms.CheckBox chkAutoUpdatePresets;
 	}
 }

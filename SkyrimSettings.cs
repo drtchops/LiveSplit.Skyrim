@@ -20,6 +20,7 @@ namespace LiveSplit.Skyrim
 	{
 		public bool AutoStart { get; set; }
 		public bool AutoReset { get; set; }
+		public bool AutoUpdatePresets { get; set; }
 
 		public AutoSplitList AutoSplitList { get; }
 		public BindingList<AutoSplitList> Presets { get; }
@@ -33,22 +34,24 @@ namespace LiveSplit.Skyrim
 		public bool IsBearCartSecret { get; set; }
 		public bool PlayBearCartSoundOnlyOnPB { get; set; }
 
-		private const bool DEFAULT_AUTOSTART = true;
-		private const bool DEFAULT_AUTORESET = true;
-		private const bool DEFAULT_BEARCARTPBNOTIFICATION = true;
-		private const bool DEFAULT_PLAYBEARCARTSOUND = true;
-		private const bool DEFAULT_PLAYBEARCARTSOUNDONLYONPB = false;
-		private readonly string DefaultPreset;
+		const bool DEFAULT_AUTOSTART = true;
+		const bool DEFAULT_AUTORESET = true;
+		const bool DEFAULT_AUTOUPDATEPRESETS = true;
+		const bool DEFAULT_BEARCARTPBNOTIFICATION = true;
+		const bool DEFAULT_PLAYBEARCARTSOUND = true;
+		const bool DEFAULT_PLAYBEARCARTSOUNDONLYONPB = false;
+		const string BEAR_CART_CFG_FILE = "LiveSplit.Skyrim.cfg";
+		const string PRESETS_FILE_NAME = "LiveSplit.Skyrim.Presets.xml";
+		readonly string DefaultPreset;
+		readonly string PRESETS_FILE_PATH;
 
-		private SkyrimComponent _component;
-		private LiveSplitState _state;
-		private SynchronizationContext _uiThread;
+		SkyrimComponent _component;
+		LiveSplitState _state;
+		SynchronizationContext _uiThread;
 		AutoSplitEnv _autoSplitEnv;
 		HashSet<string> _hiddenAddresses;
-		private bool disableNbrSplitCheck;
-		private const string BEAR_CART_CFG_FILE = "LiveSplit.Skyrim.cfg";
-		private const string PRESETS_FILE_NAME = "LiveSplit.Skyrim.Presets.xml";
-		private readonly string PRESETS_FILE_PATH;
+		bool disableNbrSplitCheck;
+		bool updatedPresets;
 
 		public SkyrimSettings(SkyrimComponent component, LiveSplitState state)
 		{
@@ -62,6 +65,7 @@ namespace LiveSplit.Skyrim
 			// defaults
 			AutoStart = DEFAULT_AUTOSTART;
 			AutoReset = DEFAULT_AUTORESET;
+			AutoUpdatePresets = DEFAULT_AUTOUPDATEPRESETS;
 
 			CustomAutosplits = new AutoSplitList("Custom");
 			DefaultPreset = CustomAutosplits.Name;
@@ -87,14 +91,6 @@ namespace LiveSplit.Skyrim
 
 			if (File.Exists(PRESETS_FILE_PATH))
 				LoadPresets();
-			else
-			{
-				System.Threading.Tasks.Task.Run(() =>
-				{
-					if ((!CheckForComponentUpdate() && DownloadPresetsFile()))
-						_uiThread.Post(d => LoadPresets(), null);
-				});
-			}
 
 			Preset = DefaultPreset;
 
@@ -127,6 +123,7 @@ namespace LiveSplit.Skyrim
 			settingsNode.AppendChild(SettingsHelper.ToElement(doc, "AutoStart", AutoStart));
 			settingsNode.AppendChild(SettingsHelper.ToElement(doc, "AutoReset", AutoReset));
 			settingsNode.AppendChild(SettingsHelper.ToElement(doc, "Preset", Preset));
+			settingsNode.AppendChild(SettingsHelper.ToElement(doc, "AutoUpdatePresets", AutoUpdatePresets));
 			settingsNode.AppendChild(CustomAutosplits.ToXml(doc, "AutoSplitList"));
 
 			SaveBearCartConfig();
@@ -162,6 +159,7 @@ namespace LiveSplit.Skyrim
 
 			AutoStart = SettingsHelper.ParseBool(settings["AutoStart"], DEFAULT_AUTOSTART);
 			AutoReset = SettingsHelper.ParseBool(settings["AutoReset"], DEFAULT_AUTORESET);
+			AutoUpdatePresets = SettingsHelper.ParseBool(settings["AutoUpdatePresets"], DEFAULT_AUTOUPDATEPRESETS);
 
 			if (settings["AutoSplitList"] != null)
 			{
@@ -174,6 +172,15 @@ namespace LiveSplit.Skyrim
 			}
 
 			Preset = SettingsHelper.ParseString(settings["Preset"], DefaultPreset);
+			if (!updatedPresets)
+			{
+				if ((AutoUpdatePresets || !File.Exists(PRESETS_FILE_PATH)) && !CheckForComponentUpdate())
+				{
+					if (DownloadPresetsFile())
+						LoadPresets();
+				}
+				updatedPresets = true;
+			}
 			UsePreset(Presets.FirstOrDefault(p => p.Name == Preset) ?? CustomAutosplits);
 
 			LoadBearCartConfig();
