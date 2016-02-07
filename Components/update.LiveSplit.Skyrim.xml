@@ -1,20 +1,20 @@
 <updates>
-	 <update version="3.0.1">
-		  <files>
-				<file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
-		  </files>
-		  <changelog>
-				<change>The presets list is now automatically updated unless there is a plugin update available. (can be deactivated)</change>
-      </changelog>
-    </update>
+  <update version="3.0.1">
+    <files>
+      <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+    </files>
+    <changelog>
+      <change>The presets list is now automatically updated unless there is a plugin update available. (can be deactivated)</change>
+    </changelog>
+  </update>
   <update version="3.0">
     <files>
       <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
     </files>
     <changelog>
       <change>Customizable autosplits</change>
-		<change>More precise position check for start/reset to accommodate with the new route</change>
-		<change>Added Marriage and All Daedric Quests autosplitting presets</change>
+      <change>More precise position check for start/reset to accommodate with the new route</change>
+      <change>Added Marriage and All Daedric Quests autosplitting presets</change>
     </changelog>
   </update>
   <update version="2.3">
