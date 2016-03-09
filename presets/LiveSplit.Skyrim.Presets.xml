@@ -1,0 +1,1623 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<AutoSplitLists>
+  <AutoSplitList>
+    <Name>Any% (Dalleth)</Name>
+    <AutoSplits>
+      <AutoSplit>
+        <Name>Helgen</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-2" cellY="-5" id="5DE24" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Whiterun</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="4" cellY="-3" id="3C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Thalmor Embassy</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-20" cellY="28" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="7DCFC" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Esbern</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="2" cellY="-18" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="5DE24" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Riverwood</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="5" cellY="-11" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="133C6" />
+              <Location cellX="" cellY="" id="16BB4" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Karthspire</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="35699" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="-42" cellY="1" id="3C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Septimus</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="28" cellY="34" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="2D4E4" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>The Wall</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="35699" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </EndLocation>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsSkyHavenTempleVisited</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>True</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Mzark Tower</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="6" cellY="11" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="2D4E3" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Clear Sky</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LocationValue">
+            <Comparison>Equals</Comparison>
+            <Value>
+              <Location cellX="13" cellY="-10" id="3C" />
+            </Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>WordsOfPowerLearned</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>3</Value>
+            <OnValueChanged>True</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Cutscene Start</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LocationValue">
+            <Comparison>Equals</Comparison>
+            <Value>
+              <Location cellX="13" cellY="-12" id="3C" />
+            </Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>ArePlayerControlsDisabled</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>True</Value>
+            <OnValueChanged>True</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Cutscene End</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LocationValue">
+            <Comparison>Equals</Comparison>
+            <Value>
+              <Location cellX="13" cellY="-12" id="3C" />
+            </Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>ArePlayerControlsDisabled</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>False</Value>
+            <OnValueChanged>True</OnValueChanged>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsLoading</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>False</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Alduin 1</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="14" cellY="-12" id="3C" />
+              <Location cellX="14" cellY="-13" id="3C" />
+              <Location cellX="13" cellY="-12" id="3C" />
+              <Location cellX="13" cellY="-13" id="3C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="6" cellY="-1" id="1A26F" />
+            </EndLocation>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsAlduin1Defeated</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>True</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>High Hrothgar</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="13" cellY="-9" id="3C" />
+              <Location cellX="13" cellY="-10" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="87764" />
+            </EndLocation>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>False</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Solitude</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-16" cellY="26" id="37EDF" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="213A0" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Windhelm</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="32" cellY="10" id="1691D" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="1677C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Council</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="13" cellY="-9" id="3C" />
+              <Location cellX="13" cellY="-10" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="87764" />
+            </EndLocation>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>True</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Odahviing</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="278DD" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Enter Sovngarde</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="2EE41" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Alduin Defeated</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsAlduin2Defeated</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>True</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="LocationValue">
+            <Comparison>Equals</Comparison>
+            <Value>
+              <Location cellX="" cellY="" id="2EE41" />
+            </Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+    </AutoSplits>
+  </AutoSplitList>
+  <AutoSplitList>
+    <Name>Any% (DrTChops)</Name>
+    <AutoSplits>
+      <AutoSplit>
+        <Name>Helgen</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-2" cellY="-5" id="5DE24" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Whiterun</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="4" cellY="-3" id="3C" />
+              <Location cellX="4" cellY="-4" id="3C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Thalmor Embassy</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-20" cellY="28" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="7DCFC" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Esbern</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="2" cellY="-18" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="5DE24" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Riverwood</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="5" cellY="-11" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="133C6" />
+              <Location cellX="" cellY="" id="16BB4" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Karthspire</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="35699" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="-42" cellY="1" id="3C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Septimus</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="28" cellY="34" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="2D4E4" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>The Wall</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="35699" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </EndLocation>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsSkyHavenTempleVisited</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>True</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Mzark Tower</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="6" cellY="11" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="2D4E3" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Clear Sky</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="87764" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="13" cellY="-9" id="3C" />
+              <Location cellX="13" cellY="-10" id="3C" />
+            </EndLocation>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>False</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Cutscene Start</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LocationValue">
+            <Comparison>Equals</Comparison>
+            <Value>
+              <Location cellX="13" cellY="-12" id="3C" />
+            </Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>ArePlayerControlsDisabled</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>True</Value>
+            <OnValueChanged>True</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Cutscene End</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LocationValue">
+            <Comparison>Equals</Comparison>
+            <Value>
+              <Location cellX="13" cellY="-12" id="3C" />
+            </Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>ArePlayerControlsDisabled</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>False</Value>
+            <OnValueChanged>True</OnValueChanged>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsLoading</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>False</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Alduin 1</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="14" cellY="-12" id="3C" />
+              <Location cellX="14" cellY="-13" id="3C" />
+              <Location cellX="13" cellY="-12" id="3C" />
+              <Location cellX="13" cellY="-13" id="3C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="6" cellY="-1" id="1A26F" />
+            </EndLocation>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsAlduin1Defeated</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>True</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>High Hrothgar</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="13" cellY="-9" id="3C" />
+              <Location cellX="13" cellY="-10" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="87764" />
+            </EndLocation>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>False</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Solitude</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-16" cellY="26" id="37EDF" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="213A0" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Windhelm</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="32" cellY="10" id="1691D" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="1677C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Council</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="13" cellY="-9" id="3C" />
+              <Location cellX="13" cellY="-10" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="87764" />
+            </EndLocation>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>True</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Odahviing</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="278DD" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Enter Sovngarde</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="2EE41" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Alduin Defeated</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsAlduin2Defeated</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>True</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="LocationValue">
+            <Comparison>Equals</Comparison>
+            <Value>
+              <Location cellX="" cellY="" id="2EE41" />
+            </Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+    </AutoSplits>
+  </AutoSplitList>
+  <AutoSplitList>
+    <Name>Any% (gr3yscale)</Name>
+    <AutoSplits>
+      <AutoSplit>
+        <Name>Helgen</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-2" cellY="-5" id="5DE24" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Whiterun</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="4" cellY="-3" id="3C" />
+              <Location cellX="4" cellY="-4" id="3C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Thalmor Embassy</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="7DCFC" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="-20" cellY="28" id="3C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Esbern</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="2" cellY="-18" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="5DE24" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Riverwood</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="133C6" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="5" cellY="-11" id="3C" />
+            </EndLocation>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>LeaveSleepingGiantInnCounter</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>2</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Karthspire</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-42" cellY="1" id="3C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Septimus</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="2D4E4" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="28" cellY="34" id="3C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>The Wall</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="161EB" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="35699" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Mzark Tower</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="2D4E3" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="6" cellY="11" id="3C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Clear Sky</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="87764" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="13" cellY="-9" id="3C" />
+              <Location cellX="13" cellY="-10" id="3C" />
+            </EndLocation>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>False</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Horse Climb</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>LocationsDiscovered</MemoryWatcherName>
+            <Comparison>IncreasedBy</Comparison>
+            <Value>1</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="LocationValue">
+            <Comparison>Equals</Comparison>
+            <Value>
+              <Location cellX="14" cellY="-12" id="3C" />
+              <Location cellX="14" cellY="-13" id="3C" />
+              <Location cellX="13" cellY="-12" id="3C" />
+              <Location cellX="13" cellY="-13" id="3C" />
+            </Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Cutscene End</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LocationValue">
+            <Comparison>Equals</Comparison>
+            <Value>
+              <Location cellX="13" cellY="-12" id="3C" />
+            </Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>ArePlayerControlsDisabled</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>False</Value>
+            <OnValueChanged>True</OnValueChanged>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsLoading</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>False</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Alduin 1</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="14" cellY="-12" id="3C" />
+              <Location cellX="14" cellY="-13" id="3C" />
+              <Location cellX="13" cellY="-12" id="3C" />
+              <Location cellX="13" cellY="-13" id="3C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="6" cellY="-1" id="1A26F" />
+            </EndLocation>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsAlduin1Defeated</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>True</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>High Hrothgar</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="13" cellY="-9" id="3C" />
+              <Location cellX="13" cellY="-10" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="87764" />
+            </EndLocation>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>False</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Solitude</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="213A0" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="-16" cellY="26" id="37EDF" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Windhelm</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="1677C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="32" cellY="10" id="1691D" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Council</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="87764" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="13" cellY="-9" id="3C" />
+              <Location cellX="13" cellY="-10" id="3C" />
+            </EndLocation>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>True</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Odahviing</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="278DD" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Enter Sovngarde</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="2EE41" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Alduin Defeated</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsAlduin2Defeated</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>True</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="LocationValue">
+            <Comparison>Equals</Comparison>
+            <Value>
+              <Location cellX="" cellY="" id="2EE41" />
+            </Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+    </AutoSplits>
+  </AutoSplitList>
+  <AutoSplitList>
+    <Name>Any% (MrWalrus)</Name>
+    <AutoSplits>
+      <AutoSplit>
+        <Name>Helgen</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-2" cellY="-5" id="5DE24" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Whiterun</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="6" cellY="0" id="1A26F" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="165A3" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Thalmor Embassy</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-20" cellY="28" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="7DCFC" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Esbern</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="2" cellY="-18" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="5DE24" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Riverwood</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="5" cellY="-11" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="133C6" />
+              <Location cellX="" cellY="" id="16BB4" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Karthspire</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="35699" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="-42" cellY="1" id="3C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Septimus</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="28" cellY="34" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="2D4E4" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>The Wall</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="35699" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </EndLocation>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsSkyHavenTempleVisited</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>True</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Mzark Tower</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="6" cellY="11" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="2D4E3" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Clear Sky</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LocationValue">
+            <Comparison>Equals</Comparison>
+            <Value>
+              <Location cellX="13" cellY="-10" id="3C" />
+              <Location cellX="13" cellY="-9" id="3C" />
+            </Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>WordsOfPowerLearned</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>3</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="Action">
+            <Value>0</Value>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Alduin 1</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsAlduin1Defeated</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>True</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>High Hrothgar</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="13" cellY="-9" id="3C" />
+              <Location cellX="13" cellY="-10" id="3C" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="87764" />
+            </EndLocation>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsCouncilDone</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>False</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Solitude</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-16" cellY="26" id="37EDF" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="213A0" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Windhelm</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="32" cellY="10" id="1691D" />
+            </StartLocation>
+            <EndLocation equals="False">
+              <Location cellX="" cellY="" id="1677C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Council</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LocationValue">
+            <Comparison>Equals</Comparison>
+            <Value>
+              <Location cellX="" cellY="" id="87764" />
+            </Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>MainQuestsCompleted</MemoryWatcherName>
+            <Comparison>IncreasedBy</Comparison>
+            <Value>1</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Odahviing</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="278DD" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Enter Sovngarde</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="2EE41" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Alduin Defeated</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsAlduin2Defeated</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>True</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="LocationValue">
+            <Comparison>Equals</Comparison>
+            <Value>
+              <Location cellX="" cellY="" id="2EE41" />
+            </Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+    </AutoSplits>
+  </AutoSplitList>
+  <AutoSplitList>
+    <Name>All Daedric Quests</Name>
+    <AutoSplits>
+      <AutoSplit>
+        <Name>Helgen</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-2" cellY="-5" id="0005DE24" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Bleak Falls</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="4" cellY="-5" id="0000003C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="6" cellY="0" id="0001A26F" />
+              <Location cellX="" cellY="" id="0004A376" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Whiterun 1</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="4" cellY="-3" id="0000003C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="-18" cellY="24" id="0000003C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Solitude</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="00016A0E" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="00016DF3" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Markarth</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-43" cellY="1" id="00016D71" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="4" cellY="-4" id="0000003C" />
+              <Location cellX="4" cellY="-3" id="0000003C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Gr3ybeards</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="13" cellY="-9" id="0000003C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="4" cellY="-3" id="0000003C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Septimus</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="28" cellY="34" id="0000003C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="4" cellY="-3" id="0000003C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Falkreath</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="12" cellY="-20" id="0000003C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="-18" cellY="23" id="0000003C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Haafingar</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="00015223" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="0000003C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>The Reach</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-20" cellY="1" id="0000003C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="0001A26F" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Whiterun 2</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="4" cellY="-3" id="0000003C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="32" cellY="6" id="0000003C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Eastmarch</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="39" cellY="6" id="0000003C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="4" cellY="-3" id="0000003C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>The Pale</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="9" cellY="24" id="0000003C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="-9" cellY="-22" id="0000003C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Falkreath Hold</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-10" cellY="-10" id="0000003C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="-42" cellY="1" id="0000003C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Mehrunes</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-1" cellY="12" id="0000003C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="-42" cellY="1" id="0000003C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Peryite</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-36" cellY="9" id="0000003C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="28" cellY="34" id="0000003C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>The Rift</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>DaedricQuestsCompleted</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>15</Value>
+            <OnValueChanged>True</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+    </AutoSplits>
+  </AutoSplitList>
+  <AutoSplitList>
+    <Name>Marriage</Name>
+    <AutoSplits>
+      <AutoSplit>
+        <Name>Helgen</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-2" cellY="-5" id="5DE24" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Whiterun</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="4" cellY="-3" id="3C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Married</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LocationValue">
+            <Comparison>Equals</Comparison>
+            <Value>
+              <Location cellX="" cellY="" id="16BD7" />
+            </Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>MiscObjectivesCompleted</MemoryWatcherName>
+            <Comparison>IncreasedBy</Comparison>
+            <Value>1</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsLoading</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>False</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+    </AutoSplits>
+  </AutoSplitList>
+</AutoSplitLists>

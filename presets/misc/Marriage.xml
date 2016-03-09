@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<AutoSplitLists>
+  <AutoSplitList>
+    <Name>Marriage</Name>
+    <AutoSplits>
+      <AutoSplit>
+        <Name>Helgen</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="-2" cellY="-5" id="5DE24" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Whiterun</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="4" cellY="-3" id="3C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Married</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LocationValue">
+            <Comparison>Equals</Comparison>
+            <Value>
+              <Location cellX="" cellY="" id="16BD7" />
+            </Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>MiscObjectivesCompleted</MemoryWatcherName>
+            <Comparison>IncreasedBy</Comparison>
+            <Value>1</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>IsLoading</MemoryWatcherName>
+            <Comparison>Equals</Comparison>
+            <Value>False</Value>
+            <OnValueChanged>False</OnValueChanged>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+    </AutoSplits>
+  </AutoSplitList>
+</AutoSplitLists>
