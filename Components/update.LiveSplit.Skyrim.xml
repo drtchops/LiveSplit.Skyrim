@@ -1,4 +1,12 @@
 <updates>
+  <update version="3.0.2">
+    <files>
+      <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+    </files>
+    <changelog>
+      <change>Autosplitting framework: Fixed a bug happening when momentary invalid addresses become valid.</change>
+    </changelog>
+  </update>
   <update version="3.0.1">
     <files>
       <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
