@@ -59,8 +59,8 @@ namespace LiveSplit.AutoSplitting.Variables
 
 		public override bool Verify(GameData data)
 		{
-			var watcher = data.FirstOrDefault(w => w.Name == MemoryWatcherName);
-			if (watcher == null || (OnValueChanged && !watcher.Changed))
+			var watcher = (dynamic)data.FirstOrDefault(w => w.Name == MemoryWatcherName);
+			if (watcher == null || (OnValueChanged && watcher.Current == watcher.Old))
 				return false;
 			return GetPredicate().Invoke(watcher);
 		}
@@ -81,23 +81,23 @@ namespace LiveSplit.AutoSplitting.Variables
 		{
 			dynamic value = Value;
 			switch (Comparison)
-			{
+			{ // cast to dynamic to get the real type instead of object
 				case Comparison.Equals:
-					return w => (dynamic)w.Current == value;
+					return w => ((dynamic)w).Current == value;
 				case Comparison.Unequals:
-					return w => (dynamic)w.Current != value;
+					return w => ((dynamic)w).Current != value;
 				case Comparison.GreaterThan:
-					return w => (dynamic)w.Current > value;
+					return w => ((dynamic)w).Current > value;
 				case Comparison.GreaterThanOrEqualTo:
-					return w => (dynamic)w.Current >= value;
+					return w => ((dynamic)w).Current >= value;
 				case Comparison.LessThan:
-					return w => (dynamic)w.Current < value;
+					return w => ((dynamic)w).Current < value;
 				case Comparison.LessThanOrEqualTo:
-					return w => (dynamic)w.Current <= value;
+					return w => ((dynamic)w).Current <= value;
 				case Comparison.IncreasedBy:
-					return w => (dynamic)w.Current - (dynamic)w.Old == value;
+					return w => ((dynamic)w).Current - ((dynamic)w).Old == value;
 				case Comparison.DecreasedBy:
-					return w => (dynamic)w.Old - (dynamic)w.Current == value;
+					return w => ((dynamic)w).Old - ((dynamic)w).Current == value;
 				default:
 					throw new InvalidOperationException("Undefined comparison behavior.");
 			}
