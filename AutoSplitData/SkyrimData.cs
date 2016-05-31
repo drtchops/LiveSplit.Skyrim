@@ -28,6 +28,7 @@ namespace LiveSplit.Skyrim.AutoSplitData
 		//NPC
 		public MemoryWatcher<float> Alduin1Health { get; } = new MemoryWatcher<float>(new DeepPointer(0x00F41764, 0x74, 0x30, 0x30, 0x1c)); // Alduin 1's health (if it's at 0 it's 99% of the time because it can't be found
 		public MemoryWatcher<float> BearCartHealth { get; } = new MemoryWatcher<float>(new DeepPointer(0x00F354DC, 0x74, 0x30, 0x30, 0x1C));
+		public MemoryWatcher<float> LordHarkonHealth { get; } = new MemoryWatcher<float>(new DeepPointer(0x00F64184, 0x74, 0x30, 0x30, 0x1C));
 
 		//Stats
 		public MemoryWatcher<int> LocationsDiscovered { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x170)); // number of locations discovered (from ingame stats)
