@@ -374,7 +374,7 @@
         </Variables>
       </AutoSplit>
       <AutoSplit>
-        <Name>Thalmor Embassy</Name>
+        <Name>Embassy</Name>
         <Enabled>True</Enabled>
         <Variables>
           <Variable type="LoadScreen">
@@ -402,21 +402,6 @@
         </Variables>
       </AutoSplit>
       <AutoSplit>
-        <Name>Riverwood</Name>
-        <Enabled>True</Enabled>
-        <Variables>
-          <Variable type="LoadScreen">
-            <StartLocation equals="True">
-              <Location cellX="5" cellY="-11" id="3C" />
-            </StartLocation>
-            <EndLocation equals="False">
-              <Location cellX="" cellY="" id="133C6" />
-              <Location cellX="" cellY="" id="16BB4" />
-            </EndLocation>
-          </Variable>
-        </Variables>
-      </AutoSplit>
-      <AutoSplit>
         <Name>Karthspire</Name>
         <Enabled>True</Enabled>
         <Variables>
@@ -425,7 +410,21 @@
               <Location cellX="" cellY="" id="35699" />
             </StartLocation>
             <EndLocation equals="True">
+              <Location cellX="4" cellY="-12" id="3C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Riverwood</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
               <Location cellX="-42" cellY="1" id="3C" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="26" cellY="24" id="3C" />
             </EndLocation>
           </Variable>
         </Variables>
@@ -451,6 +450,7 @@
           <Variable type="LoadScreen">
             <StartLocation equals="True">
               <Location cellX="" cellY="" id="35699" />
+              <Location cellX="-35" cellY="1" id="3C" />
             </StartLocation>
             <EndLocation equals="True">
               <Location cellX="" cellY="" id="" />
@@ -465,7 +465,7 @@
         </Variables>
       </AutoSplit>
       <AutoSplit>
-        <Name>Mzark Tower</Name>
+        <Name>Mzark</Name>
         <Enabled>True</Enabled>
         <Variables>
           <Variable type="LoadScreen">
@@ -479,7 +479,7 @@
         </Variables>
       </AutoSplit>
       <AutoSplit>
-        <Name>Clear Sky</Name>
+        <Name>Horse 1</Name>
         <Enabled>True</Enabled>
         <Variables>
           <Variable type="LoadScreen">
@@ -500,26 +500,35 @@
         </Variables>
       </AutoSplit>
       <AutoSplit>
-        <Name>Cutscene Start</Name>
+        <Name>Horse 2</Name>
         <Enabled>True</Enabled>
         <Variables>
-          <Variable type="LocationValue">
-            <Comparison>Equals</Comparison>
-            <Value>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
               <Location cellX="13" cellY="-12" id="3C" />
-            </Value>
-            <OnValueChanged>False</OnValueChanged>
-          </Variable>
-          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
-            <MemoryWatcherName>ArePlayerControlsDisabled</MemoryWatcherName>
-            <Comparison>Equals</Comparison>
-            <Value>True</Value>
-            <OnValueChanged>True</OnValueChanged>
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="" cellY="" id="16BB4" />
+            </EndLocation>
           </Variable>
         </Variables>
       </AutoSplit>
       <AutoSplit>
-        <Name>Cutscene End</Name>
+        <Name>Marriage</Name>
+        <Enabled>True</Enabled>
+        <Variables>
+          <Variable type="LoadScreen">
+            <StartLocation equals="True">
+              <Location cellX="" cellY="" id="16BD7" />
+            </StartLocation>
+            <EndLocation equals="True">
+              <Location cellX="13" cellY="-12" id="3C" />
+            </EndLocation>
+          </Variable>
+        </Variables>
+      </AutoSplit>
+      <AutoSplit>
+        <Name>Cutscene</Name>
         <Enabled>True</Enabled>
         <Variables>
           <Variable type="LocationValue">
@@ -529,17 +538,11 @@
             </Value>
             <OnValueChanged>False</OnValueChanged>
           </Variable>
-          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
-            <MemoryWatcherName>ArePlayerControlsDisabled</MemoryWatcherName>
-            <Comparison>Equals</Comparison>
-            <Value>False</Value>
+          <Variable type="MemoryValue`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
+            <MemoryWatcherName>Alduin1Health</MemoryWatcherName>
+            <Comparison>GreaterThanOrEqualTo</Comparison>
+            <Value>100</Value>
             <OnValueChanged>True</OnValueChanged>
-          </Variable>
-          <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
-            <MemoryWatcherName>IsLoading</MemoryWatcherName>
-            <Comparison>Equals</Comparison>
-            <Value>False</Value>
-            <OnValueChanged>False</OnValueChanged>
           </Variable>
         </Variables>
       </AutoSplit>
@@ -567,7 +570,7 @@
         </Variables>
       </AutoSplit>
       <AutoSplit>
-        <Name>High Hrothgar</Name>
+        <Name>Hrothgar</Name>
         <Enabled>True</Enabled>
         <Variables>
           <Variable type="LoadScreen">
@@ -651,7 +654,7 @@
         </Variables>
       </AutoSplit>
       <AutoSplit>
-        <Name>Enter Sovngarde</Name>
+        <Name>Skuldafn</Name>
         <Enabled>True</Enabled>
         <Variables>
           <Variable type="LoadScreen">
@@ -665,7 +668,7 @@
         </Variables>
       </AutoSplit>
       <AutoSplit>
-        <Name>Alduin Defeated</Name>
+        <Name>Alduin 2</Name>
         <Enabled>True</Enabled>
         <Variables>
           <Variable type="MemoryValue`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]">
