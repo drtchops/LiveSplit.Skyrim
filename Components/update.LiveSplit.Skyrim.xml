@@ -1,4 +1,12 @@
 <updates>
+  <update version="3.1">
+    <files>
+      <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+    </files>
+    <changelog>
+      <change>Added health addresses for Lord Harkon, Miraak and Ancano.</change>
+    </changelog>
+  </update>
   <update version="3.0.2">
     <files>
       <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
