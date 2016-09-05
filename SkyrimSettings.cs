@@ -42,7 +42,7 @@ namespace LiveSplit.Skyrim
 		const bool DEFAULT_PLAYBEARCARTSOUNDONLYONPB = false;
 		const string BEAR_CART_CFG_FILE = "LiveSplit.Skyrim.cfg";
 		const string PRESETS_FILE_NAME = "LiveSplit.Skyrim.Presets.xml";
-		readonly string DefaultPreset;
+		const string DEFAULT_PRESET_NAME = "Custom";
 		readonly string PRESETS_FILE_PATH;
 
 		SkyrimComponent _component;
@@ -67,8 +67,7 @@ namespace LiveSplit.Skyrim
 			AutoReset = DEFAULT_AUTORESET;
 			AutoUpdatePresets = DEFAULT_AUTOUPDATEPRESETS;
 
-			CustomAutosplits = new AutoSplitList("Custom");
-			DefaultPreset = CustomAutosplits.Name;
+			CustomAutosplits = new AutoSplitList(DEFAULT_PRESET_NAME);
 			AutoSplitList = new AutoSplitList();
 			Presets = new BindingList<AutoSplitList>() { CustomAutosplits };
 
@@ -92,7 +91,7 @@ namespace LiveSplit.Skyrim
 			if (File.Exists(PRESETS_FILE_PATH))
 				LoadPresets();
 
-			Preset = DefaultPreset;
+			Preset = DEFAULT_PRESET_NAME;
 
 			BearCartPBNotification = DEFAULT_BEARCARTPBNOTIFICATION;
 			PlayBearCartSound = DEFAULT_PLAYBEARCARTSOUND;
@@ -171,7 +170,7 @@ namespace LiveSplit.Skyrim
 					CustomAutosplits.AddRange(customList);
 			}
 
-			Preset = SettingsHelper.ParseString(settings["Preset"], DefaultPreset);
+			Preset = SettingsHelper.ParseString(settings["Preset"], DEFAULT_PRESET_NAME);
 			if (!updatedPresets)
 			{
 				if ((AutoUpdatePresets || !File.Exists(PRESETS_FILE_PATH)) && !CheckForComponentUpdate())
@@ -203,7 +202,7 @@ namespace LiveSplit.Skyrim
 
 			if (version < new Version(3, 0) && version >= new Version(2, 0))
 			{
-				var preset = DefaultPreset;
+				var preset = DEFAULT_PRESET_NAME;
 				switch (settings["AnyPercentTemplate"]?.InnerText)
 				{
 					case "MrWalrus":
@@ -322,6 +321,20 @@ namespace LiveSplit.Skyrim
 			return true;
 		}
 
+		void UpdatePresets()
+		{
+			if (!CheckForComponentUpdate())
+			{
+				if (DownloadPresetsFile(false) && LoadPresets(false))
+					MessageBox.Show("Presets successfully updated.", "Presets updated",
+						MessageBoxButtons.OK, MessageBoxIcon.Information);
+				UsePreset(Presets.FirstOrDefault(l => l.Name == Preset) ?? CustomAutosplits);
+			}
+			else
+				MessageBox.Show("An update is available for the autosplitter.\nPresets can only be updated with the latest autosplitter version available.",
+					"Presets update cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+		}
+
 		bool CheckForComponentUpdate()
 		{
 			var updateAvailable = false;
@@ -351,7 +364,7 @@ namespace LiveSplit.Skyrim
 			}
 
 			if (updateAvailable)
-				btnUpdatePresets.Enabled = false;
+				btnOther.Enabled = false;
 
 			return updateAvailable;
 		}

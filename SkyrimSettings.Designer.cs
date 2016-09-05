@@ -34,7 +34,7 @@
 			this.tlpAutoSplits = new System.Windows.Forms.TableLayoutPanel();
 			this.tlpAutosplitPreset = new System.Windows.Forms.TableLayoutPanel();
 			this.tlpPresetsList = new System.Windows.Forms.TableLayoutPanel();
-			this.btnUpdatePresets = new System.Windows.Forms.Button();
+			this.btnOther = new System.Windows.Forms.Button();
 			this.btnCustomize = new System.Windows.Forms.Button();
 			this.cbPreset = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
@@ -186,7 +186,7 @@
 			this.tlpPresetsList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tlpPresetsList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.tlpPresetsList.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-			this.tlpPresetsList.Controls.Add(this.btnUpdatePresets, 3, 0);
+			this.tlpPresetsList.Controls.Add(this.btnOther, 3, 0);
 			this.tlpPresetsList.Controls.Add(this.btnCustomize, 2, 0);
 			this.tlpPresetsList.Controls.Add(this.cbPreset, 1, 0);
 			this.tlpPresetsList.Controls.Add(this.label1, 0, 0);
@@ -199,22 +199,22 @@
 			this.tlpPresetsList.Size = new System.Drawing.Size(444, 29);
 			this.tlpPresetsList.TabIndex = 2;
 			// 
-			// btnUpdatePresets
+			// btnOther
 			// 
-			this.btnUpdatePresets.AutoSize = true;
-			this.btnUpdatePresets.Location = new System.Drawing.Point(337, 3);
-			this.btnUpdatePresets.Name = "btnUpdatePresets";
-			this.btnUpdatePresets.Size = new System.Drawing.Size(104, 23);
-			this.btnUpdatePresets.TabIndex = 2;
-			this.btnUpdatePresets.Text = "Update presets list";
-			this.btnUpdatePresets.UseVisualStyleBackColor = true;
-			this.btnUpdatePresets.Click += new System.EventHandler(this.btnUpdatePresets_Click);
+			this.btnOther.AutoSize = true;
+			this.btnOther.Location = new System.Drawing.Point(367, 3);
+			this.btnOther.Name = "btnOther";
+			this.btnOther.Size = new System.Drawing.Size(74, 23);
+			this.btnOther.TabIndex = 2;
+			this.btnOther.Text = "Other...";
+			this.btnOther.UseVisualStyleBackColor = true;
+			this.btnOther.Click += new System.EventHandler(this.btnOther_Click);
 			// 
 			// btnCustomize
 			// 
 			this.btnCustomize.Anchor = System.Windows.Forms.AnchorStyles.Left;
 			this.btnCustomize.AutoSize = true;
-			this.btnCustomize.Location = new System.Drawing.Point(257, 3);
+			this.btnCustomize.Location = new System.Drawing.Point(287, 3);
 			this.btnCustomize.Name = "btnCustomize";
 			this.btnCustomize.Size = new System.Drawing.Size(74, 23);
 			this.btnCustomize.TabIndex = 1;
@@ -232,7 +232,7 @@
             "Custom"});
 			this.cbPreset.Location = new System.Drawing.Point(46, 4);
 			this.cbPreset.Name = "cbPreset";
-			this.cbPreset.Size = new System.Drawing.Size(205, 21);
+			this.cbPreset.Size = new System.Drawing.Size(235, 21);
 			this.cbPreset.TabIndex = 0;
 			this.cbPreset.ValueMember = "Name";
 			// 
@@ -310,7 +310,7 @@
 			this.tabTools.Location = new System.Drawing.Point(4, 22);
 			this.tabTools.Name = "tabTools";
 			this.tabTools.Padding = new System.Windows.Forms.Padding(3);
-			this.tabTools.Size = new System.Drawing.Size(456, 393);
+			this.tabTools.Size = new System.Drawing.Size(456, 370);
 			this.tabTools.TabIndex = 3;
 			this.tabTools.Text = "Tools";
 			// 
@@ -547,7 +547,7 @@
 			this.tabBearCart.Location = new System.Drawing.Point(4, 22);
 			this.tabBearCart.Name = "tabBearCart";
 			this.tabBearCart.Padding = new System.Windows.Forms.Padding(3);
-			this.tabBearCart.Size = new System.Drawing.Size(456, 393);
+			this.tabBearCart.Size = new System.Drawing.Size(456, 370);
 			this.tabBearCart.TabIndex = 2;
 			this.tabBearCart.Text = "Bear Cart";
 			// 
@@ -877,7 +877,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.ComboBox cbPreset;
 		private System.Windows.Forms.CheckedListBox chklbSplits;
-		private System.Windows.Forms.Button btnUpdatePresets;
+		private System.Windows.Forms.Button btnOther;
 		private System.Windows.Forms.TableLayoutPanel tlpAutosplits1stRow;
 		private System.Windows.Forms.TableLayoutPanel tlpPresetsList;
 		private System.Windows.Forms.TabPage tabTools;
