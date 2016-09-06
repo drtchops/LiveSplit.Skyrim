@@ -78,12 +78,15 @@ namespace LiveSplit.Skyrim
 
 			chklbSplits.Items.Clear();
 
+			disableNbrSplitCheck = true;
 			for (int i = 0; i < AutoSplitList.Count; i++)
 			{
 				var split = AutoSplitList[i];
 				chklbSplits.Items.Add(split);
 				chklbSplits.SetItemChecked(i, split.Enabled);
 			}
+			disableNbrSplitCheck = false;
+			CheckNbrAutoSplits();
 		}
 
 		void CbPreset_SelectionChangeCommitted(object sender, EventArgs e)
@@ -225,7 +228,7 @@ namespace LiveSplit.Skyrim
 			var enabledSplitsCount = AutoSplitList.Count(s => s.Enabled);
 			if (enabledSplitsCount != 0 && enabledSplitsCount != _state.Run.Count)
 			{
-				lWarningNbrAutoSplit.Text = string.Format("Enabled autosplit count: {0}    Segment count: {1}", enabledSplitsCount, _state.Run.Count);
+				lWarningNbrAutoSplit.Text = $"Segment count: {_state.Run.Count}    Enabled autosplit count: {enabledSplitsCount}";
 				lWarningNbrAutoSplit.Visible = true;
 			}
 			else
