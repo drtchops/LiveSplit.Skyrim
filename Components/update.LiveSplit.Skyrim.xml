@@ -1,4 +1,12 @@
 <updates>
+  <update version="3.2">
+    <files>
+      <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
+    </files>
+    <changelog>
+      <change>Added a way to generate segments from autosplit names. (accessible via the "Other" button)</change>
+    </changelog>
+  </update>
   <update version="3.1">
     <files>
       <file path="Components/LiveSplit.Skyrim.dll" status="changed"/>
