@@ -1,5 +1,6 @@
 ﻿using LiveSplit.AutoSplitting;
 using LiveSplit.AutoSplitting.Editors;
+using LiveSplit.Model;
 using System;
 using System.IO;
 using System.Linq;
@@ -9,6 +10,9 @@ namespace LiveSplit.Skyrim
 {
 	partial class SkyrimSettings
 	{
+		ContextMenuStrip _cmsOtherBtn;
+		bool _autoCloseRunEditor = false;
+
 		void InitializeFormLogic()
 		{
 			chkAutoStart.DataBindings.Add("Checked", this, "AutoStart", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -38,6 +42,10 @@ namespace LiveSplit.Skyrim
 			cbPreset.DisplayMember = "Name";
 			cbPreset.SelectedItem = Presets.FirstOrDefault(p => p.Name == Preset) ?? CustomAutosplits;
 			cbPreset.SelectionChangeCommitted += CbPreset_SelectionChangeCommitted;
+
+			_cmsOtherBtn = new ContextMenuStrip();
+			_cmsOtherBtn.Items.Add("Update presets list", null, (s,e) => UpdatePresets());
+			_cmsOtherBtn.Items.Add("Generate segments from preset", null, cmsOtherBtn_GenerateSegments);
 		}
 
 		void Settings_OnLoad(object sender, EventArgs e)
@@ -50,7 +58,8 @@ namespace LiveSplit.Skyrim
 
 			if (BearCartPB.RealTime != null && BearCartPB.RealTime != new TimeSpan(0))
 			{
-				lBearCartPB.Text = string.Format("Personal Best:\n Game Time: {0}, Real Time: {1}", BearCartPB.GameTime.Value.ToString(@"mm\:ss\.fff"), BearCartPB.RealTime.Value.ToString(@"mm\:ss\.fff"));
+				lBearCartPB.Text = string.Format("Personal Best:\n Game Time: {0}, Real Time: {1}",
+					BearCartPB.GameTime.Value.ToString(@"mm\:ss\.fff"), BearCartPB.RealTime.Value.ToString(@"mm\:ss\.fff"));
 				lBearCartPB.Visible = true;
 			}
 			else
@@ -70,12 +79,15 @@ namespace LiveSplit.Skyrim
 
 			chklbSplits.Items.Clear();
 
+			disableNbrSplitCheck = true;
 			for (int i = 0; i < AutoSplitList.Count; i++)
 			{
 				var split = AutoSplitList[i];
 				chklbSplits.Items.Add(split);
 				chklbSplits.SetItemChecked(i, split.Enabled);
 			}
+			disableNbrSplitCheck = false;
+			CheckNbrAutoSplits();
 		}
 
 		void CbPreset_SelectionChangeCommitted(object sender, EventArgs e)
@@ -94,22 +106,106 @@ namespace LiveSplit.Skyrim
 			RefreshSplitsListControl();
 		}
 
-		void btnUpdatePresets_Click(object sender, EventArgs e)
+		void btnOther_Click(object sender, EventArgs e)
 		{
-			if (!CheckForComponentUpdate())
+			_cmsOtherBtn.Show(Cursor.Position);
+		}
+
+		void cmsOtherBtn_GenerateSegments(object sender, EventArgs e)
+		{
+			if (_state.CurrentPhase == TimerPhase.Running)
 			{
-				btnUpdatePresets.Enabled = false;
+				MessageBox.Show(this, "This cannot be done while the timer is running.",
+					"Generate segments", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
 
-				if (DownloadPresetsFile(false) && LoadPresets(false))
-					MessageBox.Show("Presets successfully updated.", "Presets updated",
-						MessageBoxButtons.OK, MessageBoxIcon.Information);
-				UsePreset(Presets.FirstOrDefault(l => l.Name == Preset) ?? CustomAutosplits);
+			var autosplitNames = Presets.First(p => p.Name == Preset)
+				.Select(split => split.Name)
+				.ToList();
 
-				btnUpdatePresets.Enabled = true;
+			if (autosplitNames.Count == 0)
+			{
+				MessageBox.Show(this, "Your autosplit list is empty.", "Generate segments",
+					MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			int i = -1;
+
+			if (_state.Run.Count == autosplitNames.Count)
+			{
+				// find the first index that doesn't match
+				i = 0;
+				while (i < _state.Run.Count)
+				{
+					if (_state.Run[i].Name != autosplitNames[i])
+						break;
+					i++;
+				}
+			}
+
+			if (i == _state.Run.Count)
+			{
+				MessageBox.Show(this, "Your segments already match your autosplits.",
+					"Generate segments", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				return;
+			}
+			else if (i == _state.Run.Count - 1) // everything matched except the last one
+			{
+				_state.Run[i].Name = autosplitNames[i];
 			}
 			else
-				MessageBox.Show("An update is available for the autosplitter.\nPresets can only be updated with the latest autosplitter version available.",
-					"Presets update cancelled", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+			{
+				var result = MessageBox.Show(this, "All your existing segments except the last one will be deleted.\n\nContinue?",
+					"Generate segments", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+				if (result != DialogResult.Yes)
+					return;
+
+				// remove everything except last split
+				while (_state.Run.Count > 1)
+					_state.Run.RemoveAt(0);
+
+				_state.Run[0].Name = autosplitNames[autosplitNames.Count - 1];
+
+				for (int j = 0; j < autosplitNames.Count - 1; j++)
+				{
+					var newSegment = new Segment(autosplitNames[j]);
+
+					_state.Run.ImportBestSegment(j);
+					var maxIndex = _state.Run.AttemptHistory.Select(x => x.Index).DefaultIfEmpty(0).Max();
+					for (var x = _state.Run.GetMinSegmentHistoryIndex(); x <= maxIndex; x++)
+						newSegment.SegmentHistory.Add(x, default(Time));
+
+					_state.Run.Insert(j, newSegment);
+				}
+
+				_state.Run.FixSplits();
+			}
+
+			_state.Run.HasChanged = true;
+			_state.Form.Invalidate();
+			CheckNbrAutoSplits();
+
+			// force close the splits editor because editing the segments messes it up
+			var editor = _state.Form.OwnedForms.FirstOrDefault(f => f.Text == "Splits Editor");
+			if (!_autoCloseRunEditor && editor != null)
+			{
+				ParentForm.FormClosed += (s, ea) =>
+				{
+					if (ParentForm.DialogResult == DialogResult.OK)
+						editor.AcceptButton.PerformClick();
+					else
+						editor.Close();
+
+					_autoCloseRunEditor = false;
+				};
+
+				_autoCloseRunEditor = true;
+			}
+
+			MessageBox.Show(this, "Your segments have been updated.\nYou might want to reset the Best Segment time of your last split.",
+				"Generate segments", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		void llCheckAll_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -136,7 +232,7 @@ namespace LiveSplit.Skyrim
 			var enabledSplitsCount = AutoSplitList.Count(s => s.Enabled);
 			if (enabledSplitsCount != 0 && enabledSplitsCount != _state.Run.Count)
 			{
-				lWarningNbrAutoSplit.Text = string.Format("Enabled autosplit count: {0}    Segment count: {1}", enabledSplitsCount, _state.Run.Count);
+				lWarningNbrAutoSplit.Text = $"Segment count: {_state.Run.Count}    Enabled autosplit count: {enabledSplitsCount}";
 				lWarningNbrAutoSplit.Visible = true;
 			}
 			else
