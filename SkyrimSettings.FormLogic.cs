@@ -58,7 +58,8 @@ namespace LiveSplit.Skyrim
 
 			if (BearCartPB.RealTime != null && BearCartPB.RealTime != new TimeSpan(0))
 			{
-				lBearCartPB.Text = string.Format("Personal Best:\n Game Time: {0}, Real Time: {1}", BearCartPB.GameTime.Value.ToString(@"mm\:ss\.fff"), BearCartPB.RealTime.Value.ToString(@"mm\:ss\.fff"));
+				lBearCartPB.Text = string.Format("Personal Best:\n Game Time: {0}, Real Time: {1}",
+					BearCartPB.GameTime.Value.ToString(@"mm\:ss\.fff"), BearCartPB.RealTime.Value.ToString(@"mm\:ss\.fff"));
 				lBearCartPB.Visible = true;
 			}
 			else
@@ -114,8 +115,8 @@ namespace LiveSplit.Skyrim
 		{
 			if (_state.CurrentPhase == TimerPhase.Running)
 			{
-				MessageBox.Show(this, "This cannot be done while the timer is running.", "Generate segments",
-					MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show(this, "This cannot be done while the timer is running.",
+					"Generate segments", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
 			}
 
@@ -134,6 +135,7 @@ namespace LiveSplit.Skyrim
 
 			if (_state.Run.Count == autosplitNames.Count)
 			{
+				// find the first index that doesn't match
 				i = 0;
 				while (i < _state.Run.Count)
 				{
@@ -145,20 +147,22 @@ namespace LiveSplit.Skyrim
 
 			if (i == _state.Run.Count)
 			{
-				MessageBox.Show(this, "Your segments already match your autosplits.", "Generate segments", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				MessageBox.Show(this, "Your segments already match your autosplits.",
+					"Generate segments", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				return;
 			}
-			else if (i == _state.Run.Count - 1)
+			else if (i == _state.Run.Count - 1) // everything matched except the last one
 			{
 				_state.Run[i].Name = autosplitNames[i];
 			}
 			else
 			{
-				var result = MessageBox.Show(this, "All your existing segments except the last one will be deleted.\n\nContinue?", "Generate segments",
-					MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+				var result = MessageBox.Show(this, "All your existing segments except the last one will be deleted.\n\nContinue?",
+					"Generate segments", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 				if (result != DialogResult.Yes)
 					return;
 
+				// remove everything except last split
 				while (_state.Run.Count > 1)
 					_state.Run.RemoveAt(0);
 
