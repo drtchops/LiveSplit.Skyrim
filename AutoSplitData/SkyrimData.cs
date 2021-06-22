@@ -43,7 +43,7 @@ namespace LiveSplit.Skyrim.AutoSplitData
 		public MemoryWatcher<int> DarkBrotherhoodQuestsCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x3b4)); // number of dark brotherhood quests completed (from ingame stats)
 		public MemoryWatcher<int> ThievesGuildQuestsCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x3a0)); // number of thieves guild quests completed (from ingame stats)
 		public MemoryWatcher<int> DaedricQuestsCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x3dc)); // number of daedric quests completed (from ingame stats)
-
+		public MemoryWatcher<int> CivilWarQuestsCompleted { get; } = new MemoryWatcher<int>(new DeepPointer(0x00EE6C34, 0x3c8)); // number of Civil War quests completed (from ingame stats)
 		//Fake
 		public FakeMemoryWatcher<Location> Location { get; } = new FakeMemoryWatcher<Location>();
 		public FakeMemoryWatcher<bool> IsCouncilDone { get; } = new FakeMemoryWatcher<bool>();
